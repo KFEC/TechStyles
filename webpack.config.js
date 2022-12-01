@@ -32,7 +32,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Atelier',
+      title: 'TechStyle',
+      favicon: './client/src/assets/favicon.png',
     }),
   ],
 };
