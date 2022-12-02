@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -34,6 +35,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'TechStyle',
       favicon: './client/src/assets/favicon.png',
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        API_TOKEN: JSON.stringify(process.env.API_TOKEN),
+      },
     }),
   ],
 };

@@ -1,20 +1,31 @@
 module.exports = {
   env: {
-    es2021: true,
-    node: true,
     browser: true,
+    es2021: true,
   },
-  extends: ['airbnb', 'airbnb/hooks'],
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+    'airbnb/hooks',
+  ],
+  overrides: [
+  ],
   parserOptions: {
-    sourceType: 'module',
     ecmaVersion: 'latest',
+    sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
     },
   },
+  plugins: [
+    'react',
+  ],
   rules: {
-    'indent': [2, 2],
-    'no-console': false,
-    'eol-last': false,
+    indent: [2, 2],
+    'no-console': 0,
+    'eol-last': 0,
+    'no-multiple-empty-lines': 0,
+    'react/function-component-definition': 0,
+    'arrow-body-style': 0,
   },
 };
