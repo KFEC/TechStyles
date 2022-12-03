@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
-import { Div, Button } from '../../../lib/styledComponents';
+import {
+  Div,
+  Button,
+  ModalContent,
+  CloseModalButton,
+} from '../../../lib/styledComponents';
 
-const NewReview = () => {
+const NewReview = ({ setDisplay }) => {
 
   const [rating, setRating] = useState('1');
   const [characteristics, setCharacteristics] = useState(0);
@@ -33,8 +38,9 @@ const NewReview = () => {
   };
 
   return (
-    <Div>
-      New Review Form
+    <ModalContent>
+      <CloseModalButton type="submit" onClick={() => setDisplay(false)}>X</CloseModalButton>
+      <h2>Submit Review</h2>
       <form onSubmit={submitHandler}>
         <Div>
           <label
@@ -156,17 +162,20 @@ const NewReview = () => {
             />
           )}
         </Div>
-        <Button disabled={
-          !body.trim().length
-          || !name.trim().length
-          || !email.trim().length
-        }
+        <Button
+          onClick={() => setDisplay(false)}
+          disabled={
+            !body.trim().length
+            || !name.trim().length
+            || !email.trim().length
+          }
         >
           Submit
         </Button>
       </form>
-    </Div>
+    </ModalContent>
   );
 };
+
 
 export default NewReview;
