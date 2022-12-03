@@ -27,5 +27,9 @@ module.exports = {
     'no-multiple-empty-lines': 0,
     'react/function-component-definition': 0,
     'arrow-body-style': 0,
+    'import/extensions': 0,
+    'no-confusing-arrow': 0,
+    'arrow-parens': 0,
+    'padded-blocks': 0,
   },
 };

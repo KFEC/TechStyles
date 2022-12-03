@@ -1,8 +1,20 @@
 import React from 'react';
+import Overview from './overview/index.jsx';
+import RelatedProducts from './related-products/index.jsx';
+import QA from './qa/index.jsx';
+import Reviews from './reviews/index.jsx';
+import { Wrapper, Div } from '../lib/styledComponents';
 
 const App = () => {
+
   return (
-    <div>Test PR Again, please let me merge</div>
+    <Div>
+      <Wrapper><h1>TechStyles</h1></Wrapper>
+      <Overview />
+      <RelatedProducts />
+      <QA />
+      <Reviews />
+    </Div>
   );
 };
 
