@@ -26,8 +26,38 @@ const Wrapper = styled.section`
   background: papayawhip;
 `;
 
+const Modal = styled.div`
+  display: ${(props) => props.changeDisplay ? 'block' : 'none'};
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0, 0.4);
+`;
+
+const ModalContent = styled.div`
+  background-color: #fefefe;
+  margin: 15% auto;
+  paddding: 5em;
+  border: 1em solid #888;
+  width: 35%;
+`;
+
+const CloseModalButton = styled.button`
+  color: #aaa;
+  float: right;
+  font-size: 2em;
+  font-weight: bold;
+`;
+
 export {
   Button,
   Wrapper,
   Div,
+  Modal,
+  ModalContent,
+  CloseModalButton,
 };
