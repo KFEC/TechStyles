@@ -31,7 +31,6 @@ module.exports = {
     'no-confusing-arrow': 0,
     'arrow-parens': 0,
     'padded-blocks': 0,
-    'max-len': 0,
     'jsx-a11y/label-has-associated-control': 0,
   },
 };

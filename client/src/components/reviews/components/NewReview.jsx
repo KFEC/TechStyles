@@ -3,34 +3,35 @@ import { Div, Button } from '../../../lib/styledComponents';
 
 const NewReview = () => {
 
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState('1');
   const [characteristics, setCharacteristics] = useState(0);
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
-  const [nick, setNick] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [photos, setPhotos] = useState([]);
   const [isRecommended, setIsRecommended] = useState(false);
 
   const resetStates = () => {
-    setRating(0);
+    setRating('1');
     setCharacteristics(0);
     setSummary('');
     setBody('');
-    setNick('');
+    setName('');
     setEmail('');
-    setIsRecommended('');
+    setIsRecommended(false);
+    setPhotos([]);
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
     console.log('Form Submitted!');
     console.log({
-      rating, characteristics, summary, body, nick, email, isRecommended,
+      rating, characteristics, summary, body, name, email, isRecommended, photos,
     });
     resetStates();
   };
-  // Rating: 1-5, recommend: true, false, Characteristics: exact(1-5), review summary: textarea(60char), review body: textarea(1000char)
-  // Upload photos: file selector, nickname: input(60 char), email: input(60char), submit review: button
+
   return (
     <Div>
       New Review Form
@@ -44,14 +45,17 @@ const NewReview = () => {
           </label>
           <input
             type="range"
-            min="0"
+            min="1"
             max="5"
-            step="0.25"
             id="new-review-rating-input"
             value={rating}
             onChange={e => setRating(e.target.value)}
           />
-          {rating}
+          {rating === '1' && <span>Poor</span>}
+          {rating === '2' && <span>Fair</span>}
+          {rating === '3' && <span>Average</span>}
+          {rating === '4' && <span>Good</span>}
+          {rating === '5' && <span>Great</span>}
         </Div>
         <Div>
           <label
@@ -98,15 +102,15 @@ const NewReview = () => {
         </Div>
         <Div>
           <label
-            id="new-review-nick-label"
-            htmlFor="new-review-nick-input"
+            id="new-review-name-label"
+            htmlFor="new-review-name-input"
           >
-            Nickname:
+            Name:
           </label>
           <input
-            id="new-review-nick-input"
-            value={nick}
-            onChange={e => setNick(e.target.value)}
+            id="new-review-name-input"
+            value={name}
+            onChange={e => setName(e.target.value)}
           />
         </Div>
         <Div>
@@ -134,7 +138,7 @@ const NewReview = () => {
             type="checkbox"
             id="new-review-recommended-input"
             defaultChecked={isRecommended}
-            onChange={e => console.log(e)}
+            onChange={() => setIsRecommended(!isRecommended)}
           />
         </Div>
         <Div>
@@ -144,15 +148,17 @@ const NewReview = () => {
           >
             Image:
           </label>
-          <input
-            type="file"
-            id="new-review-image-input"
-          />
+          {photos.length <= 5 && (
+            <input
+              type="file"
+              id="new-review-image-input"
+              onChange={e => setPhotos([...photos, e.target.files[0].name])}
+            />
+          )}
         </Div>
         <Button disabled={
-          !summary.trim().length
-          || !body.trim().length
-          || !nick.trim().length
+          !body.trim().length
+          || !name.trim().length
           || !email.trim().length
         }
         >
