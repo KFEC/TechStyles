@@ -1,4 +1,3 @@
-
 const newestFilter = () => {
 
 };
@@ -11,12 +10,8 @@ const helpfulnessFilter = () => {
 
 };
 
-
-
-
 module.exports = {
   newestFilter,
   relevantFilter,
   helpfulnessFilter,
-
 };
