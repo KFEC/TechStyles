@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
-import { Div, Button } from '../../../lib/styledComponents';
+import {
+  Div,
+  Button,
+  ModalContent,
+  CloseModalButton,
+} from '../../../lib/styledComponents';
 
-const NewAnswer = () => {
+const NewAnswer = ({ setDisplay }) => {
 
   const [body, setBody] = useState('');
   const [name, setName] = useState('');
@@ -25,8 +30,9 @@ const NewAnswer = () => {
   };
 
   return (
-    <Div>
-      I am NewAnswer
+    <ModalContent>
+      <CloseModalButton type="submit" onClick={() => setDisplay(false)}>X</CloseModalButton>
+      <h2>Add Answer</h2>
       <form onSubmit={handleSubmit}>
         <Div>
           <label
@@ -87,16 +93,16 @@ const NewAnswer = () => {
           >
             Photos:
           </label>
-          <input
-            type="file"
-            id="new-question-photos-input"
-            maxLength="60"
-            value={photos}
-            onChange={e => setPhotos([...photos, e.target.files[0].name])}
-          />
-          {photos}
+          {photos.length <= 5 && (
+            <input
+              type="file"
+              id="new-question-photos-input"
+              onChange={e => setPhotos([...photos, e.target.files[0].name])}
+            />
+          )}
         </Div>
         <Button
+          onClick={() => setDisplay(false)}
           disabled={
             !name.trim().length
             || !email.trim().length
@@ -106,7 +112,7 @@ const NewAnswer = () => {
           Submit
         </Button>
       </form>
-    </Div>
+    </ModalContent>
   );
 };
 

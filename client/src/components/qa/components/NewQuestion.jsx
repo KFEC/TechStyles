@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
-import { Div, Button } from '../../../lib/styledComponents';
+import {
+  Div,
+  Button,
+  ModalContent,
+  CloseModalButton,
+} from '../../../lib/styledComponents';
 
-const NewQuestion = () => {
+const NewQuestion = ({ setDisplay }) => {
 
   const [body, setBody] = useState('');
   const [name, setName] = useState('');
@@ -21,8 +26,9 @@ const NewQuestion = () => {
   };
 
   return (
-    <Div>
-      I am NewQuestion
+    <ModalContent>
+      <CloseModalButton type="submit" onClick={() => setDisplay(false)}>X</CloseModalButton>
+      <h2>Add Question</h2>
       <form onSubmit={handleSubmit}>
         <Div>
           <label
@@ -77,6 +83,7 @@ const NewQuestion = () => {
         </Div>
         <p>For authentication reasons, you will not be emailed</p>
         <Button
+          onClick={() => setDisplay(false)}
           disabled={
             !name.trim().length
             || !email.trim().length
@@ -86,7 +93,7 @@ const NewQuestion = () => {
           Submit
         </Button>
       </form>
-    </Div>
+    </ModalContent>
   );
 };
 
