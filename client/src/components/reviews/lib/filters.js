@@ -2,16 +2,16 @@ const newestFilter = () => {
 
 };
 
-const relevantFilter = () => {
+const helpfulnessFilter = () => {
 
 };
 
-const helpfulnessFilter = () => {
+const relevanceFilter = () => {
 
 };
 
 module.exports = {
   newestFilter,
-  relevantFilter,
+  relevanceFilter,
   helpfulnessFilter,
 };

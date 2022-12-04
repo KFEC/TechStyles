@@ -53,6 +53,13 @@ const CloseModalButton = styled.button`
   font-weight: bold;
 `;
 
+const Stars = styled.span`
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+`;
+
 export {
   Button,
   Wrapper,
@@ -60,4 +67,5 @@ export {
   Modal,
   ModalContent,
   CloseModalButton,
+  Stars,
 };
