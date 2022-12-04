@@ -15,6 +15,7 @@ const QuestionList = () => {
       <Modal changeDisplay={display}>
         <NewQuestion setDisplay={setDisplay} />
       </Modal>
+      <Button>More Questions</Button>
       <Button onClick={() => setDisplay(true)}>Add a Question</Button>
     </Div>
   );

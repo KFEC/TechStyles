@@ -12,6 +12,8 @@ const NewQuestion = ({ setDisplay }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
+  const regEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+
   const resetStates = () => {
     setBody('');
     setName('');
@@ -28,66 +30,54 @@ const NewQuestion = ({ setDisplay }) => {
   return (
     <ModalContent>
       <CloseModalButton type="submit" onClick={() => setDisplay(false)}>X</CloseModalButton>
-      <h2>Add Question</h2>
+      <h4>Add Question</h4>
       <form onSubmit={handleSubmit}>
         <Div>
-          <label
-            id="new-question-body-label"
-            htmlFor="new-question-body-input"
-          >
+          <label htmlFor="question-body">
             Body:
           </label>
           <textarea
-            id="new-question-body-input"
+            id="question-body"
             maxLength="1000"
             rows="5"
             cols="50"
             value={body}
-            onChange={e => setBody(e.target.value)}
+            onChange={e => setBody(e.target.value.trim())}
           />
-          {body}
         </Div>
         <Div>
-          <label
-            id="new-question-name-label"
-            htmlFor="new-question-name-input"
-          >
+          <label htmlFor="question-name">
             Name:
           </label>
           <input
-            id="new-question-name-input"
+            id="question-name"
             maxLength="60"
             placeholder="Example: jackson11!"
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={e => setName(e.target.value.trim())}
           />
-          {name}
         </Div>
         <p>For privacy reasons, do not use your full name or email address</p>
         <Div>
-          <label
-            id="new-question-email-label"
-            htmlFor="new-question-email-input"
-          >
+          <label htmlFor="question-email">
             Email:
           </label>
           <input
-            id="new-question-email-input"
+            id="question-email"
             maxLength="60"
             placeholder="Why did you like the product or not?"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value.trim())}
           />
-          {email}
         </Div>
         <p>For authentication reasons, you will not be emailed</p>
         <Button
           onClick={() => setDisplay(false)}
           disabled={
-            !name.trim().length
-            || !email.trim().length
-            || !body.trim().length
+            !name.length
+            || !email.length
+            || !body.length
+            || !regEmail.test(email)
           }
         >
           Submit

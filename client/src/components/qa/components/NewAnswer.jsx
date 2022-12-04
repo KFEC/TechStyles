@@ -13,6 +13,8 @@ const NewAnswer = ({ setDisplay }) => {
   const [email, setEmail] = useState('');
   const [photos, setPhotos] = useState([]);
 
+  const regEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+
   const resetStates = () => {
     setBody('');
     setName('');
@@ -32,71 +34,57 @@ const NewAnswer = ({ setDisplay }) => {
   return (
     <ModalContent>
       <CloseModalButton type="submit" onClick={() => setDisplay(false)}>X</CloseModalButton>
-      <h2>Add Answer</h2>
+      <h4>Add Answer</h4>
       <form onSubmit={handleSubmit}>
         <Div>
-          <label
-            id="new-question-body-label"
-            htmlFor="new-question-body-input"
-          >
+          <label htmlFor="answer-body">
             Body:
           </label>
           <textarea
-            id="new-question-body-input"
+            id="answer-body"
             maxLength="1000"
             rows="5"
             cols="50"
             value={body}
-            onChange={e => setBody(e.target.value)}
+            onChange={e => setBody(e.target.value.trim())}
           />
-          {body}
         </Div>
         <Div>
-          <label
-            id="new-question-name-label"
-            htmlFor="new-question-name-input"
-          >
+          <label htmlFor="answer-name">
             Name:
           </label>
           <input
-            id="new-question-name-input"
+            id="answer-name"
             maxLength="60"
             placeholder="Example: jack543!"
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={e => setName(e.target.value.trim())}
           />
-          {name}
         </Div>
         <p>For privacy reasons, do not use your full name or email address</p>
         <Div>
-          <label
-            id="new-question-email-label"
-            htmlFor="new-question-email-input"
-          >
+          <label htmlFor="answer-email">
             Email:
           </label>
           <input
-            id="new-question-email-input"
+            id="answer-email"
             maxLength="60"
             placeholder="Example: jack@email.com"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value.trim())}
           />
-          {email}
         </Div>
         <p>For authentication reasons, you will not be emailed</p>
         <Div>
-          <label
-            id="new-question-photos-label"
-            htmlFor="new-question-photos-input"
-          >
+          <label htmlFor="answer-photos">
             Photos:
           </label>
           {photos.length <= 5 && (
             <input
+              id="answer-photos"
               type="file"
-              id="new-question-photos-input"
+              accept="image/jpg, image/jpeg, image/png"
+              multiple
               onChange={e => setPhotos([...photos, e.target.files[0].name])}
             />
           )}
@@ -104,9 +92,10 @@ const NewAnswer = ({ setDisplay }) => {
         <Button
           onClick={() => setDisplay(false)}
           disabled={
-            !name.trim().length
-            || !email.trim().length
-            || !body.trim().length
+            !name.length
+            || !email.length
+            || !body.length
+            || !regEmail.test(email)
           }
         >
           Submit
