@@ -45,6 +45,7 @@ const NewQuestion = ({ setDisplay }) => {
           <label htmlFor="question-body">
             Body:
           </label>
+          <br />
           <textarea
             id="question-body"
             maxLength="1000"
@@ -53,8 +54,7 @@ const NewQuestion = ({ setDisplay }) => {
             value={body}
             onChange={changeBody}
           />
-        </Div>
-        <Div>
+          <p />
           <label htmlFor="question-name">
             Name:
           </label>
@@ -65,9 +65,9 @@ const NewQuestion = ({ setDisplay }) => {
             value={name}
             onChange={changeName}
           />
-        </Div>
-        <p>For privacy reasons, do not use your full name or email address</p>
-        <Div>
+          <br />
+          <span>For privacy reasons, do not use your full name or email address</span>
+          <p />
           <label htmlFor="question-email">
             Email:
           </label>
@@ -78,8 +78,9 @@ const NewQuestion = ({ setDisplay }) => {
             value={email}
             onChange={changeEmail}
           />
+          <br />
+          <span>For authentication reasons, you will not be emailed</span>
         </Div>
-        <p>For authentication reasons, you will not be emailed</p>
         <Button
           onClick={() => setDisplay(false)}
           disabled={

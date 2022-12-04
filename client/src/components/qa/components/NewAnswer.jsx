@@ -52,6 +52,7 @@ const NewAnswer = ({ setDisplay }) => {
           <label htmlFor="answer-body">
             Body:
           </label>
+          <br />
           <textarea
             id="answer-body"
             maxLength="1000"
@@ -60,8 +61,7 @@ const NewAnswer = ({ setDisplay }) => {
             value={body}
             onChange={changeBody}
           />
-        </Div>
-        <Div>
+          <p />
           <label htmlFor="answer-name">
             Name:
           </label>
@@ -72,9 +72,9 @@ const NewAnswer = ({ setDisplay }) => {
             value={name}
             onChange={changeName}
           />
-        </Div>
-        <p>For privacy reasons, do not use your full name or email address</p>
-        <Div>
+          <br />
+          <span>For privacy reasons, do not use your full name or email address</span>
+          <p />
           <label htmlFor="answer-email">
             Email:
           </label>
@@ -85,9 +85,9 @@ const NewAnswer = ({ setDisplay }) => {
             value={email}
             onChange={changeEmail}
           />
-        </Div>
-        <p>For authentication reasons, you will not be emailed</p>
-        <Div>
+          <br />
+          <span>For authentication reasons, you will not be emailed</span>
+          <p />
           <label htmlFor="answer-photos">
             Photos:
           </label>
