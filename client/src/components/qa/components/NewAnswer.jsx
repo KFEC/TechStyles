@@ -15,11 +15,20 @@ const NewAnswer = ({ setDisplay }) => {
 
   const regEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 
-  const resetStates = () => {
-    setBody('');
-    setName('');
-    setEmail('');
-    setPhotos([]);
+  const changeBody = (e) => {
+    setBody(e.target.value.trim());
+  };
+
+  const changeName = (e) => {
+    setName(e.target.value.trim());
+  };
+
+  const changeEmail = (e) => {
+    setEmail(e.target.value.trim());
+  };
+
+  const changePhotos = (e) => {
+    setPhotos([...photos, e.target.files[0].name]);
   };
 
   const handleSubmit = (e) => {
@@ -28,12 +37,15 @@ const NewAnswer = ({ setDisplay }) => {
     console.log({
       body, email, name, photos,
     });
-    resetStates();
+    setBody('');
+    setName('');
+    setEmail('');
+    setPhotos([]);
   };
 
   return (
     <ModalContent>
-      <CloseModalButton type="submit" onClick={() => setDisplay(false)}>X</CloseModalButton>
+      <CloseModalButton onClick={() => setDisplay(false)}>❌</CloseModalButton>
       <h4>Add Answer</h4>
       <form onSubmit={handleSubmit}>
         <Div>
@@ -46,7 +58,7 @@ const NewAnswer = ({ setDisplay }) => {
             rows="5"
             cols="50"
             value={body}
-            onChange={e => setBody(e.target.value.trim())}
+            onChange={changeBody}
           />
         </Div>
         <Div>
@@ -58,7 +70,7 @@ const NewAnswer = ({ setDisplay }) => {
             maxLength="60"
             placeholder="Example: jack543!"
             value={name}
-            onChange={e => setName(e.target.value.trim())}
+            onChange={changeName}
           />
         </Div>
         <p>For privacy reasons, do not use your full name or email address</p>
@@ -71,7 +83,7 @@ const NewAnswer = ({ setDisplay }) => {
             maxLength="60"
             placeholder="Example: jack@email.com"
             value={email}
-            onChange={e => setEmail(e.target.value.trim())}
+            onChange={changeEmail}
           />
         </Div>
         <p>For authentication reasons, you will not be emailed</p>
@@ -85,7 +97,7 @@ const NewAnswer = ({ setDisplay }) => {
               type="file"
               accept="image/jpg, image/jpeg, image/png"
               multiple
-              onChange={e => setPhotos([...photos, e.target.files[0].name])}
+              onChange={changePhotos}
             />
           )}
         </Div>

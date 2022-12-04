@@ -14,22 +14,31 @@ const NewQuestion = ({ setDisplay }) => {
 
   const regEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 
-  const resetStates = () => {
-    setBody('');
-    setName('');
-    setEmail('');
+  const changeBody = (e) => {
+    setBody(e.target.value.trim());
   };
+
+  const changeName = (e) => {
+    setName(e.target.value.trim());
+  };
+
+  const changeEmail = (e) => {
+    setEmail(e.target.value.trim());
+  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('New Question Submited!');
     console.log({ body, email, name });
-    resetStates();
+    setBody('');
+    setName('');
+    setEmail('');
   };
 
   return (
     <ModalContent>
-      <CloseModalButton type="submit" onClick={() => setDisplay(false)}>X</CloseModalButton>
+      <CloseModalButton onClick={() => setDisplay(false)}>❌</CloseModalButton>
       <h4>Add Question</h4>
       <form onSubmit={handleSubmit}>
         <Div>
@@ -42,7 +51,7 @@ const NewQuestion = ({ setDisplay }) => {
             rows="5"
             cols="50"
             value={body}
-            onChange={e => setBody(e.target.value.trim())}
+            onChange={changeBody}
           />
         </Div>
         <Div>
@@ -54,7 +63,7 @@ const NewQuestion = ({ setDisplay }) => {
             maxLength="60"
             placeholder="Example: jackson11!"
             value={name}
-            onChange={e => setName(e.target.value.trim())}
+            onChange={changeName}
           />
         </Div>
         <p>For privacy reasons, do not use your full name or email address</p>
@@ -67,7 +76,7 @@ const NewQuestion = ({ setDisplay }) => {
             maxLength="60"
             placeholder="Why did you like the product or not?"
             value={email}
-            onChange={e => setEmail(e.target.value.trim())}
+            onChange={changeEmail}
           />
         </Div>
         <p>For authentication reasons, you will not be emailed</p>
