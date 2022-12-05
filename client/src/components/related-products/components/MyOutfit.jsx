@@ -1,7 +1,9 @@
-import react from 'react'
+import React from 'react';
 
-export default MyOutfit = () => {
+const MyOutfit = () => {
   return (
-    <div>I am the "My Outfit" section</div>
+    <div>I am the My Outfit section</div>
   );
-}
+};
+
+export default MyOutfit;

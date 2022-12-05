@@ -1,9 +1,11 @@
-import react from 'react'
-import ProductDetails from './ProductDetails.jsx'
+import React from 'react';
+import ProductDetails from './ProductDetails.jsx';
 
-export default ProductCard = () => {
+const ProductCard = () => {
   return (
-    //on click show the details of the product
-    <div>I am the product card</div>
+    // on click show the details of the product
+    <div className="card" />
   );
-}
+};
+
+export default ProductCard;

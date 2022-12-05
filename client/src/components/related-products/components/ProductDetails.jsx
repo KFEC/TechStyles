@@ -1,7 +1,9 @@
-import react from 'react'
+import React from 'react';
 
-export default ProductDetails = () => {
+const ProductDetails = () => {
   return (
     <div>I am the product details pop-out card</div>
   );
-}
+};
+
+export default ProductDetails;
