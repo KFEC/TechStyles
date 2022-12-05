@@ -1,15 +1,15 @@
 import React from 'react';
+import ProductCard from './ProductCard.jsx';
 import {
   Div,
   RelatedProductContainer,
 } from '../../../lib/styledComponents';
-import ProductCard from './ProductCard.jsx';
 
-
-const MyOutfit = () => {
+const RelatedProductsList = () => {
   return (
+    // show a list of related product cards
     <Div>
-      My Outfit
+      Related Product List
       <RelatedProductContainer>
         <ProductCard />
         <ProductCard />
@@ -21,4 +21,4 @@ const MyOutfit = () => {
   );
 };
 
-export default MyOutfit;
+export default RelatedProductsList;

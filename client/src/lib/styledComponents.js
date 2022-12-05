@@ -52,6 +52,21 @@ const CloseModalButton = styled.button`
   font-size: 2em;
   font-weight: bold;
 `;
+const Card = styled.section`
+  width: 150px;
+  height: 220px;
+  background: whitesmoke;
+  margin: 0.25em;
+  padding: 0.25em;
+  border: 2px solid black;
+`;
+const RelatedProductContainer = styled.section`
+  display: flex
+`;
+const ImgageRelatedProduct = styled.img`
+  width: 25%;
+  height: 25%;
+`;
 
 export {
   Button,
@@ -60,4 +75,7 @@ export {
   Modal,
   ModalContent,
   CloseModalButton,
+  Card,
+  RelatedProductContainer,
+  ImgageRelatedProduct,
 };
