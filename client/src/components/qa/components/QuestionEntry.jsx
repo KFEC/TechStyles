@@ -11,12 +11,12 @@ const QuestionEntry = ({ question }) => {
   const [display, setDisplay] = useState(false);
   const [answers, setAnswers] = useState([]);
   const [render, setRender] = useState(false);
-  const [pageAnswer, setPageAnswer] = useState(2);
-
-  const currentAnswers = answers.slice(0, pageAnswer);
+  const [currAnswers, setCurrAnswers] = useState(answers.slice(0, 2));
 
   const loadAnswers = () => {
-    setPageAnswer(pageAnswer + 2);
+    if (currAnswers.length === 2) setCurrAnswers(answers);
+    else setCurrAnswers(answers.slice(0, 2));
+    setRender(!render);
   };
 
   const getAnswers = (id) => {
@@ -25,8 +25,11 @@ const QuestionEntry = ({ question }) => {
   };
 
   const helpfulQuestion = (id) => {
-    putData(`/qa/questions/${id}/helpful`)
-      .then(() => setRender(!render));
+    putData(`/qa/questions/${id}/helpful`);
+  };
+
+  const reportQuestion = (id) => {
+    putData(`/qa/questions/${id}/report`);
   };
 
   useEffect(() => {
@@ -52,14 +55,16 @@ const QuestionEntry = ({ question }) => {
       </div>
       <div>
         <span style={{ fontWeight: 'bold', fontSize: 'large' }}>A:</span>
-        {currentAnswers.length !== 0
+        {currAnswers.length !== 0
           ? (
             <div>
-              {currentAnswers.map(answer => (<AnswerEntry key={answer.id} answer={answer} />))}
-              <Button>More Answers</Button>
+              {currAnswers.map(answer => (<AnswerEntry key={answer.id} answer={answer} />))}
             </div>
           )
           : <div>No Answers Available</div>}
+        {(answers.length > 2 && currAnswers.length === 2)
+          ? <Button onClick={loadAnswers}>See more answers</Button>
+          : <Button onClick={loadAnswers}>Collapse answers</Button>}
         <Modal changeDisplay={display}>
           <NewAnswer setDisplay={setDisplay} />
         </Modal>
