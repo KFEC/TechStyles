@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { Div } from '../../lib/styledComponents';
 import ProductCard from './components/ProductCard.jsx';
 import ProductDetails from './components/ProductDetails.jsx';
@@ -9,16 +10,27 @@ import {
 } from '../../lib/apiRoutes.js';
 
 
+
 const RelatedProducts = () => {
-  console.log(getData('/products', {
-    headers: {
-      Authorization: process.env.API_TOKEN,
-    },
-  })
-    .then((result) => console.log(result.data.results))
-    .catch((err) => console.log('failed to get data, error: ', err)));
+  // console.log(
+  //   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products', {
+  //     headers: {
+  //       Authorization: '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',
+  //     },
+  //   })
+  //     .then((results) => console.log(results.data)),
+  // );
+
+  // console.log(getData('/products', {
+  //   headers: {
+  //     Authorization: process.env.API_TOKEN,
+  //   },
+  // }));
+
   return (
-    <Div>I am RelatedProducts</Div>
+    <Div>
+      <ProductCard />
+    </Div>
   );
 };
 
