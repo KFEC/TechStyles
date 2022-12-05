@@ -1,0 +1,60 @@
+/* Reviews Component Main Grid */
+
+#reviews {
+  font-family: 'Palatino Linotype', 'Book Antiqua';
+}
+
+.grid-reviews {
+  display: grid;
+  gap: 1em;
+  grid-auto-columns: 1fr 3fr;
+  grid-template-areas:
+  'rb'
+  'pb'
+  'review';
+}
+
+.rating-breakdown {
+  background-color: purple;
+  grid-area: rb;
+}
+
+.product-breakdown {
+  background-color: skyblue;
+  grid-area: pb;
+}
+
+.review-list {
+  background-color: greenyellow;
+  grid-area: review;
+}
+
+@media (min-width: 50em) {
+  .grid-reviews {
+    grid-template-areas:
+    'rb review'
+    'pb review';
+  }
+}
+
+/* New Review Styling */
+
+#new-review-form {
+  display: grid;
+  justify-content: center;
+}
+
+.input-label {
+  font-weight: bold;
+  font-variant: small-caps;
+}
+
+.sub-label {
+  font-size: 1em;
+  font-style: italic;
+}
+
+.sub-text {
+  font-size: 0.8em;
+  font-style: italic;
+}

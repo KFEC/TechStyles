@@ -12,6 +12,9 @@ const ReviewsDiv = styled.div`
   margin: 0.25em;
   padding: 0.25em;
   display: grid;
+  grid-template-areas:
+  'rb review'
+  'pb review';
 `;
 
 export {

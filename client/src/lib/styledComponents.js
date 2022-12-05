@@ -27,7 +27,7 @@ const Wrapper = styled.section`
 `;
 
 const Modal = styled.div`
-  display: ${(props) => props.changeDisplay ? 'block' : 'none'};
+  display: ${(props) => props.changeDisplay ? 'grid' : 'none'};
   position: fixed;
   z-index: 1;
   left: 0;
