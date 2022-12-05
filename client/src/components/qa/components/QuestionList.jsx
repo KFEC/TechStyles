@@ -4,14 +4,14 @@ import { Div, Button, Modal } from '../../../lib/styledComponents';
 import QuestionEntry from './QuestionEntry.jsx';
 import NewQuestion from './NewQuestion.jsx';
 
-const QuestionList = () => {
+const QuestionList = ({ questions }) => {
 
   const [display, setDisplay] = useState(false);
 
   return (
     <Div>
       I am QuestionList
-      <QuestionEntry />
+      {questions.map(question => <QuestionEntry key={question.question_id} question={question} />)}
       <Modal changeDisplay={display}>
         <NewQuestion setDisplay={setDisplay} />
       </Modal>
