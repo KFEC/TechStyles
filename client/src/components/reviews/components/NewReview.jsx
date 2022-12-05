@@ -236,7 +236,7 @@ const NewReview = ({ setDisplay }) => {
             <input
               type="file"
               id="new-review-image-input"
-              onChange={e => setPhotos([...photos, e.target.files[0].name])}
+              onChange={e => setPhotos([...photos, e.target?.files[0]?.name])}
             />
           )}
         </Div>
@@ -244,8 +244,6 @@ const NewReview = ({ setDisplay }) => {
           onClick={() => (
             !failed
             && body.length > 50
-            && name.length > 1
-            && email.length > 1
           )
           && setDisplay(false)}
         >

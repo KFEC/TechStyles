@@ -1,17 +1,27 @@
-const newestFilter = () => {
+// const newestFilter = (rL) => {
 
-};
+// };
 
-const helpfulnessFilter = () => {
+// const helpfulnessFilter = (rL) => {
 
-};
+// };
 
-const relevanceFilter = () => {
+// const relevanceFilter = (rL) => {
 
-};
+// };
 
-module.exports = {
-  newestFilter,
-  relevanceFilter,
-  helpfulnessFilter,
-};
+// const ratingFilter = (rL, rating) => {
+
+// };
+
+// const searchFilter = (rL, query) => {
+
+// };
+
+// module.exports = {
+//   newestFilter,
+//   relevanceFilter,
+//   helpfulnessFilter,
+//   ratingFilter,
+//   searchFilter,
+// };
