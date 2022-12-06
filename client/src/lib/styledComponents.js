@@ -27,9 +27,9 @@ const Wrapper = styled.section`
 `;
 
 const Modal = styled.div`
-  display: ${(props) => props.changeDisplay ? 'block' : 'none'};
+  display: ${(props) => props.changeDisplay ? 'grid' : 'none'};
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   top: 0;
   width: 100%;
@@ -68,6 +68,13 @@ const ImgageRelatedProduct = styled.img`
   height: 25%;
 `;
 
+const Stars = styled.span`
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+`;
+
 export {
   Button,
   Wrapper,
@@ -75,7 +82,4 @@ export {
   Modal,
   ModalContent,
   CloseModalButton,
-  Card,
-  RelatedProductContainer,
-  ImgageRelatedProduct,
 };
