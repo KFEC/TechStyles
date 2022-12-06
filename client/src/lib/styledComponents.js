@@ -75,11 +75,5 @@ export {
   ModalContent,
   CloseModalButton,
   Card,
-<<<<<<< HEAD
-};
-=======
-  RelatedProductContainer,
-  ImgageRelatedProduct,
   Stars,
 };
->>>>>>> master
