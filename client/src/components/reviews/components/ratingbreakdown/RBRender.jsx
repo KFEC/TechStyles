@@ -4,7 +4,7 @@ import { Div } from '../../../../lib/styledComponents';
 const RBRender = ({ ratings }) => {
 
   return (
-    <div className="ratings-bar-div">
+    <div className="ratings-bar-container">
       <div className="ratings-bar">
         <span className="ratings-percentage">
           {Math.round((ratings.count / ratings.totalRatings) * 100)}

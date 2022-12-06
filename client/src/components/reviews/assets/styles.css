@@ -71,7 +71,7 @@
   justify-items:  center;
 }
 
-.ratings-bar-div {
+.ratings-bar-container {
   font-size: 20px;
   margin: 45px auto;
   overflow: hidden;

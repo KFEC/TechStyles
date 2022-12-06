@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Div,
   RelatedProductContainer,
-} from '../../../lib/styledComponents';
+} from '../lib/styledComponents';
 import ProductCard from './ProductCard.jsx';
 
 

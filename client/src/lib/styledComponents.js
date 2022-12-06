@@ -45,7 +45,6 @@ const ModalContent = styled.div`
   border: 1em solid #888;
   width: 35%;
 `;
-
 const CloseModalButton = styled.button`
   color: #aaa;
   float: right;
@@ -59,13 +58,6 @@ const Card = styled.section`
   margin: 0.25em;
   padding: 0.25em;
   border: 2px solid black;
-`;
-const RelatedProductContainer = styled.section`
-  display: flex
-`;
-const ImgageRelatedProduct = styled.img`
-  width: 25%;
-  height: 25%;
 `;
 
 const Stars = styled.span`
@@ -83,7 +75,5 @@ export {
   ModalContent,
   CloseModalButton,
   Card,
-  RelatedProductContainer,
-  ImgageRelatedProduct,
   Stars,
 };
