@@ -13,6 +13,7 @@ const QuestionEntry = ({ question }) => {
   const [answers, setAnswers] = useState([]);
   const [currAnswers, setCurrAnswers] = useState([]);
   const [helpful, setHelpful] = useState(false);
+  const [update, setUpdate] = useState(false);
 
   const loadAnswers = () => {
     if (currAnswers.length === 2) setCurrAnswers(answers);
@@ -20,7 +21,7 @@ const QuestionEntry = ({ question }) => {
   };
 
   const getAnswers = (id) => {
-    getData(`/qa/questions/${id}/answers`, { count: 10 })
+    getData(`/qa/questions/${id}/answers`, { count: 100 })
       .then(res => {
         setAnswers(res.data.results);
         setCurrAnswers(res.data.results.slice(0, 2));
@@ -40,7 +41,7 @@ const QuestionEntry = ({ question }) => {
 
   useEffect(() => {
     getAnswers(question.question_id);
-  }, [question.question_id]);
+  }, [question.question_id, update]);
 
   return (
     <Div>
@@ -69,7 +70,12 @@ const QuestionEntry = ({ question }) => {
             ? <Button onClick={loadAnswers}>Collapse answers</Button>
             : null}
         <Modal changeDisplay={display}>
-          <NewAnswer setDisplay={setDisplay} />
+          <NewAnswer
+            id={question.question_id}
+            setDisplay={setDisplay}
+            setUpdate={setUpdate}
+            update={update}
+          />
         </Modal>
       </div>
     </Div>

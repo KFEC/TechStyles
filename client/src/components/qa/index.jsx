@@ -9,17 +9,18 @@ const QA = () => {
 
   const [questions, setQuestions] = useState([]);
   const [filter, setFilter] = useState(questions);
+  const [update, setUpdate] = useState(false);
 
   useEffect(() => {
     getData('/qa/questions', {
       product_id: 40344,
-      count: 40,
+      count: 100,
     })
       .then((result) => {
         setQuestions(result.data.results);
         setFilter(result.data.results);
       });
-  }, []);
+  }, [update]);
 
   const search = (query) => {
     if (query.length < 3) setFilter(questions);
@@ -38,7 +39,7 @@ const QA = () => {
     <Div>
       I am QA
       <QuestionSearch search={search} />
-      <QuestionList questions={filter} />
+      <QuestionList id={40344} setUpdate={setUpdate} update={update} questions={filter} />
     </Div>
   );
 };

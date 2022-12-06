@@ -4,7 +4,9 @@ import { Div, Button, Modal } from '../../../lib/styledComponents';
 import QuestionEntry from './QuestionEntry.jsx';
 import NewQuestion from './NewQuestion.jsx';
 
-const QuestionList = ({ questions }) => {
+const QuestionList = ({
+  id, setUpdate, update, questions,
+}) => {
 
   const [display, setDisplay] = useState(false);
   const [currQuestions, setCurrQuestions] = useState([]);
@@ -27,7 +29,7 @@ const QuestionList = ({ questions }) => {
         })
         : null}
       <Modal changeDisplay={display}>
-        <NewQuestion setDisplay={setDisplay} />
+        <NewQuestion id={id} setDisplay={setDisplay} setUpdate={setUpdate} update={update} />
       </Modal>
       {(currQuestions.length !== questions.length)
         && <Button onClick={loadQuestions}>More Questions</Button>}
