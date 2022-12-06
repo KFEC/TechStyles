@@ -21,7 +21,7 @@ const Overview = () => {
   const [price, setPrice] = useState('');
   const [sale, setSale] = useState('');
 
-  /* PRODUCT:ID BASED STATES */
+  //   /* PRODUCT:ID BASED STATES */
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');
 
@@ -74,7 +74,6 @@ const Overview = () => {
       })
       .catch((err) => console.log('failed to get data, error: ', err));
   }, []);
-
   return (
     <div id="overview">
       <div id="overview-left">

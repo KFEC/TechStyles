@@ -6,7 +6,7 @@ import {
   ComparaisonModal,
 } from '../lib/styledComponents';
 
-const ProductCard = () => {
+const ProductCardMyOUtfit = () => {
   const [openModal, setOpenModal] = useState(false);
   return (
     <Card>
@@ -26,4 +26,4 @@ const ProductCard = () => {
   );
 };
 
-export default ProductCard;
+export default ProductCardMyOUtfit;
