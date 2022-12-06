@@ -61,11 +61,7 @@ const QuestionEntry = ({ question }) => {
       </div>
       <div>
         {currAnswers.length !== 0
-          ? (
-            <div>
-              {currAnswers.map(answer => (<AnswerEntry key={answer.id} answer={answer} />))}
-            </div>
-          )
+          ? currAnswers.map(answer => (<AnswerEntry key={answer.id} answer={answer} />))
           : <div>No Answers Available</div>}
         {currAnswers.length !== answers.length
           ? <Button onClick={loadAnswers}>See more answers</Button>

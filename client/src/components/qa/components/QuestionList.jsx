@@ -26,7 +26,6 @@ const QuestionList = ({ questions }) => {
           return <QuestionEntry key={question.question_id} question={question} />;
         })
         : null}
-      {}
       <Modal changeDisplay={display}>
         <NewQuestion setDisplay={setDisplay} />
       </Modal>
