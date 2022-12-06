@@ -11,17 +11,19 @@ const QuestionEntry = ({ question }) => {
   const [display, setDisplay] = useState(false);
   const [answers, setAnswers] = useState([]);
   const [render, setRender] = useState(false);
-  const [currAnswers, setCurrAnswers] = useState(answers.slice(0, 2));
+  const [currAnswers, setCurrAnswers] = useState([]);
 
   const loadAnswers = () => {
     if (currAnswers.length === 2) setCurrAnswers(answers);
     else setCurrAnswers(answers.slice(0, 2));
-    setRender(!render);
   };
 
   const getAnswers = (id) => {
     getData(`/qa/questions/${id}/answers`, { count: 10 })
-      .then(res => setAnswers(res.data.results));
+      .then(res => {
+        setAnswers(res.data.results);
+        setCurrAnswers(res.data.results.slice(0, 2));
+      });
   };
 
   const helpfulQuestion = (id) => {
@@ -54,7 +56,6 @@ const QuestionEntry = ({ question }) => {
         </span>
       </div>
       <div>
-        <span style={{ fontWeight: 'bold', fontSize: 'large' }}>A:</span>
         {currAnswers.length !== 0
           ? (
             <div>
@@ -64,7 +65,9 @@ const QuestionEntry = ({ question }) => {
           : <div>No Answers Available</div>}
         {(answers.length > 2 && currAnswers.length === 2)
           ? <Button onClick={loadAnswers}>See more answers</Button>
-          : <Button onClick={loadAnswers}>Collapse answers</Button>}
+          : currAnswers.length === answers.length
+            ? <Button onClick={loadAnswers}>Collapse answers</Button>
+            : null}
         <Modal changeDisplay={display}>
           <NewAnswer setDisplay={setDisplay} />
         </Modal>

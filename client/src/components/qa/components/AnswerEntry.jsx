@@ -12,6 +12,7 @@ const AnswerEntry = ({ answer }) => {
 
   return (
     <Div>
+      <span style={{ fontWeight: 'bold', fontSize: 'large' }}>A:</span>
       {answer.body}
       <div>
         by
