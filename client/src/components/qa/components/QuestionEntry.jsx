@@ -51,7 +51,7 @@ const QuestionEntry = ({ question }) => {
         </span>
         <span style={{ marginLeft: 'auto', order: '2' }}>
           Helpful?
-          {String.fromCharCode(32)}
+          {' '}
           <button type="button" className="button-link" onClick={helpfulQuestion}>
             Yes
           </button>
@@ -61,7 +61,7 @@ const QuestionEntry = ({ question }) => {
       </div>
       <div>
         {currAnswers.length !== 0
-          ? currAnswers.map(answer => (<AnswerEntry key={answer.id} answer={answer} />))
+          ? currAnswers.map(answer => (<AnswerEntry key={answer.answer_id} answer={answer} />))
           : <div>No Answers Available</div>}
         {currAnswers.length !== answers.length
           ? <Button onClick={loadAnswers}>See more answers</Button>
