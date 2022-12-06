@@ -42,3 +42,33 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+:root {
+  --star-size: 2em;
+  --star-color: rgba(173, 173, 173, 0.685);
+  --star-background: rgb(231, 215, 148);
+}
+
+.Stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+
+  display: inline-block;
+  font-size: var(--star-size);
+  font-family: Times;
+  line-height: 1;
+}
+
+.Stars:before {
+  content: '★★★★★';
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.on {
+  color: #000;
+}
+
+.off {
+  color: #ccc;
