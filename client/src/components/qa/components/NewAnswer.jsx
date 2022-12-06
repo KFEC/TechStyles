@@ -5,6 +5,7 @@ import {
   ModalContent,
   CloseModalButton,
 } from '../../../lib/styledComponents';
+import { postData } from '../../../lib/index.js';
 
 const NewAnswer = ({ setDisplay }) => {
 

@@ -12,7 +12,7 @@ const QA = () => {
 
   useEffect(() => {
     getData('/qa/questions', {
-      product_id: 40347,
+      product_id: 40344,
       count: 40,
     })
       .then((result) => {

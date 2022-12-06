@@ -69,7 +69,7 @@ const QuestionEntry = ({ question }) => {
           : <div>No Answers Available</div>}
         {currAnswers.length !== answers.length
           ? <Button onClick={loadAnswers}>See more answers</Button>
-          : answers.length > 0
+          : answers.length > 2
             ? <Button onClick={loadAnswers}>Collapse answers</Button>
             : null}
         <Modal changeDisplay={display}>

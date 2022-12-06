@@ -82,4 +82,8 @@ export {
   Modal,
   ModalContent,
   CloseModalButton,
+  Card,
+  RelatedProductContainer,
+  ImgageRelatedProduct,
+  Stars,
 };
