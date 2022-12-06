@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Comparaison from './Comparaison.jsx';
 import {
   Card,
-  ImgageRelatedProduct,
-} from '../../../lib/styledComponents';
+  ImageRelatedProduct,
+  ComparaisonModal,
+} from '../lib/styledComponents';
 
 const ProductCard = () => {
+  const [openModal, setOpenModal] = useState(false);
   return (
-    // on click show the details of the product
     <Card>
       Product Card
+      <button type="button" onClick={() => setOpenModal(true)}>Star</button>
+      <ComparaisonModal displayModal={openModal}>
+        <Comparaison setOpenModal={setOpenModal} />
+      </ComparaisonModal>
       <p>
-        <ImgageRelatedProduct src="https://www.pngall.com/wp-content/uploads/4/Leather-Bag-PNG.png" alt="Bag" />
+        <ImageRelatedProduct src="https://www.pngall.com/wp-content/uploads/4/Leather-Bag-PNG.png" alt="Bag" />
       </p>
       <p>Product Category</p>
       <p>Product Name</p>

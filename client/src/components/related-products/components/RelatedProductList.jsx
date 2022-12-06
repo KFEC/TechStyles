@@ -3,19 +3,19 @@ import ProductCard from './ProductCard.jsx';
 import {
   Div,
   RelatedProductContainer,
-} from '../../../lib/styledComponents';
+} from '../lib/styledComponents';
 
-const RelatedProductsList = () => {
+const RelatedProductsList = ({ setOpenModal }) => {
   return (
     // show a list of related product cards
     <Div>
       Related Product List
       <RelatedProductContainer>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        <ProductCard setOpenModal={setOpenModal} />
+        <ProductCard setOpenModal={setOpenModal} />
+        <ProductCard setOpenModal={setOpenModal} />
+        <ProductCard setOpenModal={setOpenModal} />
+        <ProductCard setOpenModal={setOpenModal} />
       </RelatedProductContainer>
     </Div>
   );
