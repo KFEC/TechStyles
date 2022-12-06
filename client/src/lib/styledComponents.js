@@ -82,3 +82,4 @@ export {
   Modal,
   ModalContent,
   CloseModalButton,
+};
