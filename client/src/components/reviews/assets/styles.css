@@ -15,17 +15,17 @@
 }
 
 .rating-breakdown {
-  background-color: purple;
+  background-color: rgb(202, 190, 173);
   grid-area: rb;
 }
 
 .product-breakdown {
-  background-color: skyblue;
+  background-color: rgb(202, 190, 173);
   grid-area: pb;
 }
 
 .review-list {
-  background-color: greenyellow;
+  background-color: rgb(202, 190, 173);
   grid-area: review;
 }
 
@@ -57,4 +57,67 @@
 .sub-text {
   font-size: 0.8em;
   font-style: italic;
+}
+
+
+/* Rating Breakdown Styling */
+
+.rating-breakdown-heading {
+  display: grid;
+  justify-content: center;
+}
+
+.rating-breakdown-heading-container {
+  justify-items:  center;
+}
+
+.ratings-bar-div {
+  font-size: 20px;
+  margin: 45px auto;
+  overflow: hidden;
+}
+
+.ratings-bar {
+  width: 85%;
+  height: 35px;
+  position: relative;
+  background: rgba(173, 173, 173, 0.685);
+  border-radius: 10px;
+  text-transform: uppercase;
+  margin: 20px auto;
+}
+
+.ratings-area {
+  font-size: 16px;
+  z-index: 1;
+  position: absolute;
+  margin-top: 8px;
+  margin-left: 20px;
+  text-shadow: none;
+  color: rgb(0, 0, 0);
+}
+
+.ratings-percentage {
+  z-index: 2;
+  position: relative;
+  margin-right: 5px;
+  margin-top: 8px;
+  float: right;
+  text-shadow: none;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+}
+
+.ratings-bar-content {
+  width: calc(var(--percent) * 1%);
+  animation: animate-breakdown 3s;
+  height: 35px;
+  position: relative;
+  border-radius: 10px;
+  background-color: #94e298;
+}
+
+@keyframes animate-breakdown {
+  from{width: 5px;}
+  to{width: calc(var(--percent) / 100 * 100%);}
 }

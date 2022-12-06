@@ -35,7 +35,6 @@ const NewReview = ({ setDisplay }) => {
       setFailed(true);
       return;
     }
-    console.log('Form Submitted!');
     console.log({
       rating, characteristics, summary, body, name, email, isRecommended: !isRecommended, photos,
     });

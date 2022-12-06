@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, Div } from '../../lib/styledComponents';
-// import { ReviewsDiv } from './lib/reviewStyledComponents';
+// import { Img } from './lib/reviewStyledComponents';
 import NewReview from './components/NewReview.jsx';
 import ProductBreakdown from './components/productbreakdown/ProductBreakdown.jsx';
 import RatingBreakdown from './components/ratingbreakdown/RatingBreakdown.jsx';
