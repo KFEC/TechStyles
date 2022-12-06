@@ -5,8 +5,11 @@ import {
   ModalContent,
   CloseModalButton,
 } from '../../../lib/styledComponents';
+import { postData } from '../../../lib/index.js';
 
-const NewAnswer = ({ setDisplay }) => {
+const NewAnswer = ({
+  id, setDisplay, setUpdate, update,
+}) => {
 
   const [body, setBody] = useState('');
   const [name, setName] = useState('');
@@ -16,15 +19,15 @@ const NewAnswer = ({ setDisplay }) => {
   const regEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 
   const changeBody = (e) => {
-    setBody(e.target.value.trim());
+    setBody(e.target.value);
   };
 
   const changeName = (e) => {
-    setName(e.target.value.trim());
+    setName(e.target.value);
   };
 
   const changeEmail = (e) => {
-    setEmail(e.target.value.trim());
+    setEmail(e.target.value);
   };
 
   const changePhotos = (e) => {
@@ -37,10 +40,18 @@ const NewAnswer = ({ setDisplay }) => {
     console.log({
       body, email, name, photos,
     });
-    setBody('');
-    setName('');
-    setEmail('');
-    setPhotos([]);
+    postData(`/qa/questions/${id}/answers`, {
+      body,
+      name,
+      email,
+      photos,
+    }).then(() => {
+      setBody('');
+      setName('');
+      setEmail('');
+      setPhotos([]);
+      setUpdate(!update);
+    });
   };
 
   return (
@@ -104,9 +115,9 @@ const NewAnswer = ({ setDisplay }) => {
         <Button
           onClick={() => setDisplay(false)}
           disabled={
-            !name.length
-            || !email.length
-            || !body.length
+            !name.trim().length
+            || !email.trim().length
+            || !body.trim().length
             || !regEmail.test(email)
           }
         >
