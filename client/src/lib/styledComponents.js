@@ -86,4 +86,4 @@ export {
   RelatedProductContainer,
   ImgageRelatedProduct,
   Stars,
-}
+};
