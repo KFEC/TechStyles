@@ -9,7 +9,7 @@ const ImageGallery = ({ gallery }) => {
   // state to keep track of current image, need length
 
   // keep track of what image is being rendered by index
-  console.log('inside image gallery:: ', gallery);
+  // console.log('inside image gallery:: ', gallery);
 
   const renderGallery = () => {
     return (

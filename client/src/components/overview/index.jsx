@@ -39,7 +39,7 @@ const Overview = () => {
     getData('/products/40344/styles')
       .then((result) => {
         /* STYLES AND IMAGE GALLERY */
-        console.log('styles-result: ', result.data.results);
+        // console.log('styles-result: ', result.data.results);
         const allStyles = result.data.results;
         const allPhotos = result.data.results[0].photos; // **HARDCODED TO FIRST PRODUCT
 
