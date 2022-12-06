@@ -24,14 +24,13 @@ const RBHeading = ({ ratings: { ratings, totalRatings, recommendedCt } }) => {
     setAvgRecommendation(calculateRecommendedAvg());
   }, []);
 
-
   return (
     <div className="rb-heading">
       {avgRating
       && (
         <div className="rb-heading-container">
-          <span style={{ margin: 0 }}>{Math.round(avgRating * 10) / 10}</span>
-          <span className="Stars, rb-stars" style={{ '--rating': avgRating }} />
+          <span className="rb-avg">{Math.round(avgRating * 10) / 10}</span>
+          <span className="Stars rb-stars" style={{ '--rating': avgRating }} />
           <h5>{`${avgRecommendation}% of people recommend this product`}</h5>
         </div>
       )}
