@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useState, useEffect } from 'react';
 import { Div, Button, Modal } from '../../../lib/styledComponents';
 import { getData, putData } from '../../../lib/index.js';
@@ -10,8 +11,8 @@ const QuestionEntry = ({ question }) => {
 
   const [display, setDisplay] = useState(false);
   const [answers, setAnswers] = useState([]);
-  const [render, setRender] = useState(false);
   const [currAnswers, setCurrAnswers] = useState([]);
+  const [helpful, setHelpful] = useState(false);
 
   const loadAnswers = () => {
     if (currAnswers.length === 2) setCurrAnswers(answers);
@@ -26,8 +27,11 @@ const QuestionEntry = ({ question }) => {
       });
   };
 
-  const helpfulQuestion = (id) => {
-    putData(`/qa/questions/${id}/helpful`);
+  const helpfulQuestion = () => {
+    if (!helpful) {
+      putData(`/qa/questions/${question.question_id}/helpful`);
+      setHelpful(true);
+    }
   };
 
   const reportQuestion = (id) => {
@@ -36,7 +40,7 @@ const QuestionEntry = ({ question }) => {
 
   useEffect(() => {
     getAnswers(question.question_id);
-  }, [render]);
+  }, [question.question_id]);
 
   return (
     <Div>
@@ -48,7 +52,7 @@ const QuestionEntry = ({ question }) => {
         <span style={{ marginLeft: 'auto', order: '2' }}>
           Helpful?
           {String.fromCharCode(32)}
-          <button type="button" className="button-link">
+          <button type="button" className="button-link" onClick={helpfulQuestion}>
             Yes
           </button>
           {` (${question.question_helpfulness}) |`}
