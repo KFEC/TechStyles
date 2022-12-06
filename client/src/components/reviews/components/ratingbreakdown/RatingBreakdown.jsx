@@ -6,9 +6,21 @@ import { getData } from '../../../../lib';
 
 const RatingBreakdown = () => {
 
-  const [ratings, setRatings] = useState([]);
-  const [totalRatings, setTotalRatings] = useState(0);
-  const [recommendedCt, setRecommendedCt] = useState(0);
+  const [ratings, setRatings] = useState(null);
+  const [totalRatings, setTotalRatings] = useState(null);
+  const [recommendedCt, setRecommendedCt] = useState(null);
+
+  const clickRatingHandler = (e) => {
+    console.log(e.target);
+  };
+
+  const getTotalRatings = (receivedRatings) => {
+    return Object.values(receivedRatings)
+      .reduce((acc, rating) => {
+        acc += Number(rating);
+        return acc;
+      }, 0);
+  };
 
   useEffect(() => {
     getData('/reviews/meta', {
@@ -16,11 +28,7 @@ const RatingBreakdown = () => {
     })
       .then((response) => {
         setRatings(Object.values(response.data.ratings));
-        setTotalRatings(Object.values(response.data.ratings)
-          .reduce((acc, rating) => {
-            acc += Number(rating);
-            return acc;
-          }, 0));
+        setTotalRatings(getTotalRatings(response.data.ratings));
         setRecommendedCt(response.data.recommended);
       })
       .catch((err) => console.error(err));
@@ -28,13 +36,15 @@ const RatingBreakdown = () => {
 
   return (
     <div>
-      {ratings.length > 0 && <RBHeading ratings={{ totalRatings, ratings, recommendedCt }} />}
-      {ratings.length > 0
+      {ratings
+      && <RBHeading ratings={{ totalRatings, ratings, recommendedCt }} />}
+      {ratings
       && ratings.map((count, idx) => {
         return (
           <RBRender
             key={Math.random(idx * 54) * 10}
             ratings={{ rating: idx + 1, count, totalRatings }}
+            onClick={clickRatingHandler}
           />
         );
       })}
