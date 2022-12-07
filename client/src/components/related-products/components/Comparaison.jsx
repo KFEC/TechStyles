@@ -11,7 +11,7 @@ const Comparaison = ({ setOpenModal }) => {
     <ModalContent>
       Comparing
       <CloseModalButton onClick={() => setOpenModal(false)}>x</CloseModalButton>
-      <table className="primary">
+      {/* <table className="primary">
         <tr>
           <th>Current Product name</th>
           <th> </th>
@@ -27,7 +27,7 @@ const Comparaison = ({ setOpenModal }) => {
           <td>price</td>
           <td>cheap</td>
         </tr>
-      </table>
+      </table> */}
     </ModalContent>
   );
 };
