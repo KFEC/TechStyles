@@ -5,8 +5,8 @@
     "start": "npx nodemon --watch server server/index.js",
     "dev": "npx webpack --watch",
     "start-dev": "npx nodemon --watch server server/index.js & npx webpack --watch",
-    "test": "jest",
-    "test-watch": "jest --watchAll"
+    "test": "jest --silent",
+    "test-watch": "jest --watchAll --silent"
   },
   "dependencies": {
     "axios": "^1.2.0",
