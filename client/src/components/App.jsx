@@ -8,7 +8,7 @@ import { Wrapper, Div } from '../lib/styledComponents';
 const App = () => {
 
   return (
-    <Div>
+    <Div data-testid="app-1">
       <Wrapper><h1>TechStyles</h1></Wrapper>
       <Overview />
       <RelatedProducts />
