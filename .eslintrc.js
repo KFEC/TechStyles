@@ -19,7 +19,6 @@ module.exports = {
   },
   plugins: [
     'react',
-    'jest',
   ],
   rules: {
     indent: [2, 2],

@@ -29,7 +29,6 @@ const ReviewListEntry = ({ review }) => {
     }
   };
 
-  console.log(review);
   return (
     <Div>
       <div>
@@ -60,7 +59,7 @@ const ReviewListEntry = ({ review }) => {
         <button type="button" className="button-link" onClick={helpfulReview}>
           Yes
         </button>
-        {` (${review.helpfulness}) |`}
+        {`(${review.helpfulness}) | `}
         <button type="button" className="button-link" onClick={reportReview}>
           Report
         </button>
