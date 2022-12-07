@@ -37,7 +37,7 @@ const Reviews = () => {
 
   useEffect(() => {
     filterReviews(filter);
-  }, [filter]);
+  }, [filter, update]);
 
   return (
     <Div id="reviews">
@@ -57,7 +57,7 @@ const Reviews = () => {
               <option value="helpful">Helpful</option>
             </select>
           </div>
-          <ReviewList reviews={currReviews} />
+          <ReviewList reviews={currReviews} update={update} setUpdate={setUpdate} />
           {(currReviews.length !== reviews.length)
         && <Button onClick={loadReviews}>Load More</Button>}
           <Button onClick={() => setDisplay(true)}>Create Review</Button>

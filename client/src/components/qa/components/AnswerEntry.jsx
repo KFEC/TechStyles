@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Div } from '../../../lib/styledComponents';
 import { getData, putData } from '../../../lib/index.js';
 
-const AnswerEntry = ({ answer }) => {
+const AnswerEntry = ({ answer, setUpdate2, update2 }) => {
 
   const [helpful, setHelpful] = useState(false);
   const [reported, setReported] = useState(false);
@@ -17,6 +17,7 @@ const AnswerEntry = ({ answer }) => {
   const helpfulAnswer = () => {
     if (!helpful) {
       putData(`/qa/answers/${answer.answer_id}/helpful`);
+      setUpdate2(!update2);
       setHelpful(true);
     }
   };

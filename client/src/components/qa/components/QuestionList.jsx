@@ -18,14 +18,14 @@ const QuestionList = ({
   };
 
   useEffect(() => {
-    setCurrQuestions(questions.slice(0, 2));
-  }, [questions]);
+    setCurrQuestions(questions.slice(0, questionCounter));
+  }, [questions, update]);
 
   return (
     <Div>
       {currQuestions.length
         ? currQuestions.map(question => {
-          return <QuestionEntry key={question.question_id} question={question} />;
+          return <QuestionEntry key={question.question_id} question={question} setUpdate={setUpdate} update={update} />;
         })
         : null}
       <Modal changeDisplay={display}>

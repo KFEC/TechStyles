@@ -3,7 +3,7 @@ import { Div } from '../../../lib/styledComponents';
 import ReviewListEntry from './ReviewListEntry.jsx';
 
 
-const ReviewList = ({ reviews }) => {
+const ReviewList = ({ reviews, update, setUpdate }) => {
 
 
   return (
@@ -13,6 +13,8 @@ const ReviewList = ({ reviews }) => {
         <ReviewListEntry
           key={review.review_id}
           review={review}
+          update={update}
+          setUpdate={setUpdate}
         />
       ))}
     </Div>

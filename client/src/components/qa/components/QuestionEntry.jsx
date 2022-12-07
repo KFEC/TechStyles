@@ -7,13 +7,13 @@ import AnswerEntry from './AnswerEntry.jsx';
 import NewAnswer from './NewAnswer.jsx';
 import '../assets/styles.css';
 
-const QuestionEntry = ({ question }) => {
+const QuestionEntry = ({ question, update, setUpdate }) => {
 
   const [display, setDisplay] = useState(false);
   const [answers, setAnswers] = useState([]);
   const [currAnswers, setCurrAnswers] = useState([]);
   const [helpful, setHelpful] = useState(false);
-  const [update, setUpdate] = useState(false);
+  const [update2, setUpdate2] = useState(false);
 
   const loadAnswers = () => {
     if (currAnswers.length === 2) setCurrAnswers(answers);
@@ -32,6 +32,7 @@ const QuestionEntry = ({ question }) => {
     if (!helpful) {
       putData(`/qa/questions/${question.question_id}/helpful`);
       setHelpful(true);
+      setUpdate(!update);
     }
   };
 
@@ -41,7 +42,7 @@ const QuestionEntry = ({ question }) => {
 
   useEffect(() => {
     getAnswers(question.question_id);
-  }, [question.question_id, update]);
+  }, [question.question_id, update2]);
 
   return (
     <Div>
@@ -62,7 +63,7 @@ const QuestionEntry = ({ question }) => {
       </div>
       <div>
         {currAnswers.length !== 0
-          ? currAnswers.map(answer => (<AnswerEntry key={answer.answer_id} answer={answer} />))
+          ? currAnswers.map(answer => (<AnswerEntry key={answer.answer_id} answer={answer} setUpdate2={setUpdate2} update2={update2}/>))
           : <div>No Answers Available</div>}
         {currAnswers.length !== answers.length
           ? <Button onClick={loadAnswers}>See more answers</Button>
@@ -73,8 +74,8 @@ const QuestionEntry = ({ question }) => {
           <NewAnswer
             id={question.question_id}
             setDisplay={setDisplay}
-            setUpdate={setUpdate}
-            update={update}
+            setUpdate2={setUpdate2}
+            update2={update2}
           />
         </Modal>
       </div>
