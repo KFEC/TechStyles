@@ -3,7 +3,7 @@ import { FaCheck } from 'react-icons/fa';
 import { Div } from '../../../lib/styledComponents';
 import { putData } from '../../../lib/index.js';
 
-const ReviewListEntry = ({ review }) => {
+const ReviewListEntry = ({ review, update, setUpdate }) => {
 
   const [helpful, setHelpful] = useState(false);
   const [reported, setReported] = useState(false);
@@ -17,19 +17,21 @@ const ReviewListEntry = ({ review }) => {
 
   const helpfulReview = () => {
     if (!helpful) {
-      putData(`/reviews/${review.review_id}/helpful`);
-      setHelpful(true);
+      putData(`/reviews/${review.review_id}/helpful`).then(() => {
+        setUpdate(!update);
+        setHelpful(true);
+      });
     }
   };
 
   const reportReview = () => {
     if (!reported) {
-      putData(`/reviews/${review.review_id}/report`);
-      setReported(true);
+      putData(`/reviews/${review.review_id}/report`).then(() => {
+        setReported(true);
+      });
     }
   };
 
-  console.log(review);
   return (
     <Div>
       <div>
@@ -61,9 +63,13 @@ const ReviewListEntry = ({ review }) => {
           Yes
         </button>
         {` (${review.helpfulness}) |`}
-        <button type="button" className="button-link" onClick={reportReview}>
-          Report
-        </button>
+        {!reported
+          ? (
+            <button type="button" className="button-link" onClick={reportReview}>
+              Report
+            </button>
+          )
+          : <span>Reported</span>}
       </div>
     </Div>
   );

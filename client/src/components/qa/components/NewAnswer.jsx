@@ -8,7 +8,7 @@ import {
 import { postData } from '../../../lib/index.js';
 
 const NewAnswer = ({
-  id, setDisplay, setUpdate, update,
+  id, setDisplay, setUpdate2, update2,
 }) => {
 
   const [body, setBody] = useState('');
@@ -50,7 +50,7 @@ const NewAnswer = ({
       setName('');
       setEmail('');
       setPhotos([]);
-      setUpdate(!update);
+      setUpdate2(!update2);
     });
   };
 
