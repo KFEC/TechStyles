@@ -30,9 +30,10 @@ const QuestionEntry = ({ question, update, setUpdate }) => {
 
   const helpfulQuestion = () => {
     if (!helpful) {
-      putData(`/qa/questions/${question.question_id}/helpful`);
-      setHelpful(true);
-      setUpdate(!update);
+      putData(`/qa/questions/${question.question_id}/helpful`).then(() => {
+        setHelpful(true);
+        setUpdate(!update);
+      });
     }
   };
 

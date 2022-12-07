@@ -16,16 +16,18 @@ const AnswerEntry = ({ answer, setUpdate2, update2 }) => {
 
   const helpfulAnswer = () => {
     if (!helpful) {
-      putData(`/qa/answers/${answer.answer_id}/helpful`);
-      setUpdate2(!update2);
-      setHelpful(true);
+      putData(`/qa/answers/${answer.answer_id}/helpful`).then(() => {
+        setUpdate2(!update2);
+        setHelpful(true);
+      });
     }
   };
 
   const reportAnswer = () => {
     if (!reported) {
-      putData(`/qa/answers/${answer.answer_id}/report`);
-      setReported(true);
+      putData(`/qa/answers/${answer.answer_id}/report`).then(() => {
+        setReported(true);
+      });
     }
   };
 

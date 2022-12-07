@@ -17,16 +17,18 @@ const ReviewListEntry = ({ review, update, setUpdate }) => {
 
   const helpfulReview = () => {
     if (!helpful) {
-      putData(`/reviews/${review.review_id}/helpful`);
-      setUpdate(!update);
-      setHelpful(true);
+      putData(`/reviews/${review.review_id}/helpful`).then(() => {
+        setUpdate(!update);
+        setHelpful(true);
+      });
     }
   };
 
   const reportReview = () => {
     if (!reported) {
-      putData(`/reviews/${review.review_id}/report`);
-      setReported(true);
+      putData(`/reviews/${review.review_id}/report`).then(() => {
+        setReported(true);
+      });
     }
   };
 
