@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSelector } from '../lib/styledOverview.js';
 
-const StyleSelect = ({ styles }) => {
-  const [styleName, setStyleName] = useState('');
-  // console.log(styles[0]?.name)
+const StyleSelect = ({
+  styles, styleName, setStyleName, handleStyleClick,
+}) => {
 
-  const handleClick = (event) => {
-    console.log('new style should re-render');
-    setStyleName(event.target.name);
-  };
+  // console.log(styles[0]?.name)
 
   const renderStyles = () => {
     return (
       <div id="styles">
         {styles.map((style, index) => {
-        // eslint-disable-next-line react/no-array-index-key
-          return <StyleSelector onClick={() => handleClick()} name={`${style.name}`} src={`${style.thumbnail}`} key={index} />;
+          return <StyleSelector onClick={(event) => handleStyleClick(event, index)} name={`${style.name}`} src={`${style.thumbnail}`} key={Math.random(index * 54) * 10} />;
         })}
       </div>
     );

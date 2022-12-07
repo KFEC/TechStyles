@@ -1,23 +1,37 @@
-/* ===============================================
-						Maddie's Components WOOOOOO
- =============================================== */
+/* --OVERVIEW */
 
- /* #overview {
+#overview {
 	display: flex;
+	justify-content: space-evenly;
+	background-color: #F5DCE0;
+	width: 75%;
+	font-family: monospace;
 }
 
 #img-gallery {
-
-}
-
-#product-info {
-
+	display: flex;
 }
 
 #styles {
   display: flex;
+	width: 400px;
+	height: 200px;
+	flex-wrap: wrap;
 }
 
-#add-to-cart {
+#thumbnail-render {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	max-height: 300px;
+	width: 75px;
+}
 
-} */
+#thumbnail-img:hover {
+	background-color: cyan;
+}
+
+#thumbnail-img {
+	max-height: 17%;
+	padding: 5px;
+}

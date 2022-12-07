@@ -8,18 +8,38 @@ import {
 } from '../../../lib/apiRoutes.js';
 
 const ProductInfo = ({
-  category, name, price, sale,
+  category, name, description, price, sale, stars, reviewCount,
 }) => {
+
+  const renderSale = () => {
+    if (sale !== null) {
+      return (
+        <div>{`PRICE: ${price}, SALE: ${sale}`}</div>
+      );
+    } else {
+      return (
+        <div>{`PRICE: ${price}`}</div>
+      );
+    };
+  };
+
+  const renderStars = () => {
+    return (
+      <div>
+        <div className="Stars overview-stars" style={{ '--rating': stars }}>{`Read all ${reviewCount} reviews`}</div>
+      </div>
+    );
+  };
+
   return (
     <div id="product-info">
-      <div>{category}</div>
-      <h4>{name.toUpperCase()}</h4>
-      <h4>{price}</h4>
+      <div>{category.toUpperCase()}</div>
+      <div>{name}</div>
+      {reviewCount > 0 ? renderStars() : null}
+      {typeof price === 'string' ? renderSale() : null}
+      <div>{description}</div>
     </div>
   );
 };
 
 export default ProductInfo;
-
-// GET /products to get all the product IDs
-// mf the sale price is on the individual style?????
