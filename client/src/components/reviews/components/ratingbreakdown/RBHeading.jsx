@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Div } from '../../../../lib/styledComponents';
 
 const RBHeading = ({ ratings: { ratings, totalRatings, recommendedCt } }) => {
 

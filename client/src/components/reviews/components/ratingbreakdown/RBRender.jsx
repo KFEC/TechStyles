@@ -1,5 +1,4 @@
 import React from 'react';
-import { Div } from '../../../../lib/styledComponents';
 
 const RBRender = ({ ratings }) => {
 
