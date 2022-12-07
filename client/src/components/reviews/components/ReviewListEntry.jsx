@@ -62,12 +62,12 @@ const ReviewListEntry = ({ review, update, setUpdate }) => {
         </button>
         {` (${review.helpfulness}) |`}
         {!reported
-          ? <button type="button" className="button-link" onClick={reportReview}>
-            Report
-          </button>
-          : <span>Reported</span>
-        }
-
+          ? (
+            <button type="button" className="button-link" onClick={reportReview}>
+              Report
+            </button>
+          )
+          : <span>Reported</span>}
       </div>
     </Div>
   );

@@ -25,7 +25,14 @@ const QuestionList = ({
     <Div>
       {currQuestions.length
         ? currQuestions.map(question => {
-          return <QuestionEntry key={question.question_id} question={question} setUpdate={setUpdate} update={update} />;
+          return (
+            <QuestionEntry
+              key={question.question_id}
+              question={question}
+              setUpdate={setUpdate}
+              update={update}
+            />
+          );
         })
         : null}
       <Modal changeDisplay={display}>
