@@ -15,14 +15,14 @@ const ReviewListEntry = ({ review }) => {
     day: 'numeric',
   };
 
-  const helpfulAnswer = () => {
+  const helpfulReview = () => {
     if (!helpful) {
       putData(`/reviews/${review.review_id}/helpful`);
       setHelpful(true);
     }
   };
 
-  const reportAnswer = () => {
+  const reportReview = () => {
     if (!reported) {
       putData(`/reviews/${review.review_id}/report`);
       setReported(true);
@@ -57,11 +57,11 @@ const ReviewListEntry = ({ review }) => {
       )}
       <div>
         {' Helpful? '}
-        <button type="button" className="button-link" onClick={helpfulAnswer}>
+        <button type="button" className="button-link" onClick={helpfulReview}>
           Yes
         </button>
         {` (${review.helpfulness}) |`}
-        <button type="button" className="button-link" onClick={reportAnswer}>
+        <button type="button" className="button-link" onClick={reportReview}>
           Report
         </button>
       </div>
