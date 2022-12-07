@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Div } from './lib/styledComponents';
 import RelatedProductList from './components/RelatedProductList.jsx';
-import MyOutfit from './components/MyOutfit.jsx';
+import YourOutfit from './components/YourOutfit.jsx';
 
 
 const RelatedProducts = () => {
@@ -10,7 +10,7 @@ const RelatedProducts = () => {
     <Div>
       I am Related Products
       <RelatedProductList />
-      <MyOutfit />
+      <YourOutfit />
     </Div>
   );
 };

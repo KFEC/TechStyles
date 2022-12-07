@@ -4,7 +4,7 @@ const ButtonFloatRight = styled.button`
   float: right;
 `;
 
-const Card = styled.section`
+const Card = styled.div`
   width: 150px;
   height: 220px;
   background: whitesmoke;
@@ -56,6 +56,17 @@ const CloseModalButton = styled.button`
   font-weight: bold;
 `;
 
+const Table = styled.table`
+border-collapse: collapse;
+border-spacing: 0;
+width: 100%;
+border: 1px solid #ddd;
+`;
+
+const TableText = styled.td`
+text-align: center;
+`;
+
 export {
   ButtonFloatRight,
   Card,
@@ -65,4 +76,6 @@ export {
   ImageRelatedProduct,
   RelatedProductContainer,
   ModalContent,
+  Table,
+  TableText,
 };

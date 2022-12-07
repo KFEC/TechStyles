@@ -11,7 +11,9 @@ const ProductCard = () => {
   return (
     <Card>
       Product Card
-      <button type="button" onClick={() => setOpenModal(true)}>Star</button>
+      <div className="btn-text-right">
+        <button type="button" onClick={() => setOpenModal(true)}>Press</button>
+      </div>
       <ComparaisonModal displayModal={openModal}>
         <Comparaison setOpenModal={setOpenModal} />
       </ComparaisonModal>
