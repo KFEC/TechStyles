@@ -1,5 +1,9 @@
 /* Reviews Component Main Grid */
 
+.flex-container {
+  display: flex;
+}
+
 #reviews {
   font-family: 'Palatino Linotype', 'Book Antiqua';
 }
@@ -15,17 +19,17 @@
 }
 
 .rating-breakdown {
-  background-color: rgb(202, 190, 173);
+  background-color: rgb(252, 234, 208);
   grid-area: rb;
 }
 
 .product-breakdown {
-  background-color: rgb(202, 190, 173);
+  background-color: rgb(252, 234, 208);
   grid-area: pb;
 }
 
 .review-list {
-  background-color: rgb(202, 190, 173);
+  background-color: rgb(252, 234, 208);
   grid-area: review;
 }
 
@@ -120,4 +124,50 @@
 @keyframes animate-breakdown {
   from{width: 0.2em;}
   to{width: calc(var(--percent) / 100 * 100%);}
+}
+
+/* Product Breakdown Styles */
+
+.breakdown-category {
+  margin: 1em;
+}
+
+.pb-char-bar {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: 0.75em;
+  background-color: #ddd;
+}
+
+.pb-style-value {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 5%;
+  left: calc(var(--value) / 5 * 100%);
+  font-size: 2.25em;
+  animation: animate-product 3s;
+}
+
+@keyframes animate-product {
+  from{width: 100%;}
+  to{width: calc(var(--value) / var(--value) * 10%);}
+}
+
+.pb-range-left {
+  flex-basis: 33%;
+  display: inline-block;
+  text-align: left;
+}
+
+.pb-range-center {
+  flex-basis: 33%;
+  display: inline-block;
+  text-align: center;
+}
+
+.pb-range-right {
+  flex-basis: 33%;
+  display: inline-block;
+  text-align: right;
 }

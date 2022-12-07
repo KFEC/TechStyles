@@ -1,7 +1,10 @@
-// import { newestFilter, relevantFilter, helpfulnessFilter } from './filters';
+import { ReviewsDiv, Img, Div } from './reviewStyledComponents';
+import { allCharOptions, descriptions } from './constants';
 
-// export {
-//   newestFilter,
-//   relevantFilter,
-//   helpfulnessFilter,
-// };
+export {
+  ReviewsDiv,
+  Img,
+  Div,
+  allCharOptions,
+  descriptions,
+};
