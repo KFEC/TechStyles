@@ -26,7 +26,7 @@ const Reviews = () => {
 
   const filterReviews = (sort) => {
     getData('/reviews', {
-      product_id: 40437,
+      product_id: 40444,
       count: 100,
       sort,
     }).then((res) => {
