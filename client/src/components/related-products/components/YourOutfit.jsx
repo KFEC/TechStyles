@@ -4,21 +4,19 @@ import {
   RelatedProductContainer,
 } from '../lib/styledComponents';
 import ProductCard from './ProductCard.jsx';
+import AddToOutfit from './AddToOutfit.jsx';
+import ProductCardYourOutfit from './ProductCardMyOutfit.jsx';
 
-
-const MyOutfit = () => {
+const YourOutfit = () => {
   return (
     <Div>
-      My Outfit
+      Your Outfit
       <RelatedProductContainer>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        <AddToOutfit />
+        <ProductCardYourOutfit />
       </RelatedProductContainer>
     </Div>
   );
 };
 
-export default MyOutfit;
+export default YourOutfit;

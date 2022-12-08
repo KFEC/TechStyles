@@ -1,0 +1,47 @@
+.primary {
+  color: orange;
+}
+
+th, td {
+  padding: 15px;
+}
+
+td {
+  text-align: center;
+}
+
+th {
+  text-align: left;
+}
+
+.btn-text-right{
+	text-align: right;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+width: 100%;
+}
+
+th, td {
+  text-align: center;
+  padding: 25px;
+}
+
+th:second-child, td:second-child {
+  text-align: right;
+}
+
+th:third-child, td:third-child {
+  text-align: right;
+}

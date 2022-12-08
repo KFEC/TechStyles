@@ -1,21 +1,37 @@
 import React from 'react';
+import '../lib/myStyles.css';
 
 import {
   ModalContent,
   CloseModalButton,
 } from '../lib/styledComponents';
 
-const Comparaison = ({ setOpenModal }) => {
+const Comparaison = ({ setOpenModal, comparedProduct }) => {
   return (
     <ModalContent>
-      Comparing
-      <CloseModalButton onClick={() => setOpenModal(false)}>X</CloseModalButton>
-      <p>size</p>
-      <p>width</p>
-      <p>comfort</p>
-      <p>quality</p>
-      <p>length</p>
-      <p>fit</p>
+      <CloseModalButton onClick={() => setOpenModal(false)}>x</CloseModalButton>
+      <table className="primary">
+        <caption>Comparing</caption>
+        <thead>
+          <tr>
+            <th>Current Product name</th>
+            <th> </th>
+            <th>{comparedProduct.name}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>leather</td>
+            <td>material</td>
+            <td>fabrics</td>
+          </tr>
+          <tr>
+            <td>0.00</td>
+            <td>price</td>
+            <td>{comparedProduct.default_price}</td>
+          </tr>
+        </tbody>
+      </table>
     </ModalContent>
   );
 };
