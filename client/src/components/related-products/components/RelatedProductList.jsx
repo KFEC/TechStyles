@@ -7,10 +7,10 @@ import {
 
 const RelatedProductsList = ({ setOpenModal, productData }) => {
   return (
-    <Div>
+    <Div data-testid="RelatedProductsList">
       Related Product List
       <RelatedProductContainer>
-        {productData.map((product, idx) => {
+        {productData?.map((product, idx) => {
           return (
             <ProductCard
               key={Math.random(69 * idx) * 3}
