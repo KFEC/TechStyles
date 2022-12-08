@@ -11,29 +11,22 @@ const QuestionEntry = ({ question, update, setUpdate }) => {
 
   const [display, setDisplay] = useState(false);
   const [answers, setAnswers] = useState([]);
-  const [currAnswers, setCurrAnswers] = useState([]);
   const [helpful, setHelpful] = useState(false);
   const [update2, setUpdate2] = useState(false);
-
-  const loadAnswers = () => {
-    if (currAnswers.length === 2) setCurrAnswers(answers);
-    else setCurrAnswers(answers.slice(0, 2));
-  };
+  const [collapse, setCollapse] = useState(false);
 
   const getAnswers = (id) => {
     getData(`/qa/questions/${id}/answers`, { count: 100 })
       .then(res => {
         setAnswers(res.data.results);
-        setCurrAnswers(res.data.results.slice(0, 2));
       });
   };
 
   const helpfulQuestion = () => {
     if (!helpful) {
-      putData(`/qa/questions/${question.question_id}/helpful`).then(() => {
-        setHelpful(true);
-        setUpdate(!update);
-      });
+      putData(`/qa/questions/${question.question_id}/helpful`);
+      setHelpful(true);
+      setUpdate(!update);
     }
   };
 
@@ -46,7 +39,7 @@ const QuestionEntry = ({ question, update, setUpdate }) => {
   }, [question.question_id, update2]);
 
   return (
-    <Div>
+    <Div style={{ border: 'none', backgroundColor: 'rgb(252, 234, 208)' }}>
       <div style={{ display: 'flex' }}>
         <span style={{ fontWeight: 'bold', fontSize: 'large', marginRight: 'auto' }}>
           Q:
@@ -63,21 +56,30 @@ const QuestionEntry = ({ question, update, setUpdate }) => {
         </span>
       </div>
       <div>
-        {currAnswers.length !== 0
-          ? currAnswers.map(answer => (
-            <AnswerEntry
-              key={answer.answer_id}
-              answer={answer}
-              setUpdate2={setUpdate2}
-              update2={update2}
-            />
-          ))
+        {answers.length > 0
+          ? !collapse
+            ? answers.slice(0, 2).map(answer => (
+              <AnswerEntry
+                key={answer.answer_id}
+                answer={answer}
+                setUpdate2={setUpdate2}
+                update2={update2}
+              />
+            ))
+            : answers.map(answer => (
+              <AnswerEntry
+                key={answer.answer_id}
+                answer={answer}
+                setUpdate2={setUpdate2}
+                update2={update2}
+              />
+            ))
           : <div>No Answers Available</div>}
-        {currAnswers.length !== answers.length
-          ? <Button onClick={loadAnswers}>See more answers</Button>
-          : answers.length > 2
-            ? <Button onClick={loadAnswers}>Collapse answers</Button>
-            : null}
+        {answers.length > 2
+          ? !collapse
+            ? <Button onClick={() => { setCollapse(true); }}>See more answers</Button>
+            : <Button onClick={() => { setCollapse(false); }}>Collapse answers</Button>
+          : null}
         <Modal changeDisplay={display}>
           <NewAnswer
             id={question.question_id}
