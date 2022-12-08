@@ -41,8 +41,8 @@ const Div = styled.div`
 `;
 
 const ImageRelatedProduct = styled.img`
-  width: 25%;
-  height: 25%;
+  width: 50%;
+  height: 50%;
 `;
 
 const RelatedProductContainer = styled.section`
