@@ -20,9 +20,9 @@ const noSkusAvailable = [{ quantity: null, size: 'OUT OF STOCK' }];
 
 const Overview = () => {
   /* OVERALL STATE */
-  const [productId, setProductId] = useState('40350');
+  const [productId, setProductId] = useState('40344');
   const [defaultIndex, setDefaultIndex] = useState(0);
-  // 40344
+  // 40344 40345 40350
 
   /* STYLE BASED STATES */
   const [styles, setStyles] = useState([]); // displays first photo thumbnail of each style

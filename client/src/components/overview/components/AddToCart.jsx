@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 const AddToCart = ({
   sku, selectSize, setSelectSize, selectQty, setSelectQty,
 }) => {
-  // console.log('i am sku ', sku, 'qty ', selectQty, 'size ', selectSize);
+  // console.log('i am sku ', sku[0]?.quantity, 'qty ', selectQty, 'size ', selectSize);
 
   const defaultQty = (num) => {
     return Array.apply(null, Array(num)).map((x, i) => { return i; });
@@ -41,7 +41,7 @@ const AddToCart = ({
     //     </select>
     //   </div>
     // );
-    if (sku.quantity === null) {
+    if (sku[0]?.quantity === null) {
       return (
         <div>
           <select disabled>
@@ -111,7 +111,7 @@ const AddToCart = ({
     // message that says to "Please select size"
     // (2) if there is no stock, then button should be hidden (CHECK)
     // (3) if both size and qty are selected, then add to cart
-    if (sku.quantity === null) {
+    if (sku[0]?.quantity === null) {
       return (
         <div />
       );
