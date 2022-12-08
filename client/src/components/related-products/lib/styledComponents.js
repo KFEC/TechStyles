@@ -4,13 +4,12 @@ const ButtonFloatRight = styled.button`
   float: right;
 `;
 
-const Card = styled.section`
+const Card = styled.div`
   width: 150px;
   height: 220px;
-  background: whitesmoke;
+  background: grey;
   margin: 0.25em;
   padding: 0.25em;
-  border: 2px solid black;
 `;
 
 const ComparaisonModal = styled.div`
@@ -41,8 +40,8 @@ const Div = styled.div`
 `;
 
 const ImageRelatedProduct = styled.img`
-  width: 25%;
-  height: 25%;
+  width: 50%;
+  height: 50%;
 `;
 
 const RelatedProductContainer = styled.section`
@@ -56,6 +55,17 @@ const CloseModalButton = styled.button`
   font-weight: bold;
 `;
 
+const Table = styled.table`
+border-collapse: collapse;
+border-spacing: 0;
+width: 100%;
+border: 1px solid #ddd;
+`;
+
+const TableText = styled.td`
+text-align: center;
+`;
+
 export {
   ButtonFloatRight,
   Card,
@@ -65,4 +75,6 @@ export {
   ImageRelatedProduct,
   RelatedProductContainer,
   ModalContent,
+  Table,
+  TableText,
 };

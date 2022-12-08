@@ -6,15 +6,12 @@ import {
   ComparaisonModal,
 } from '../lib/styledComponents';
 
-const ProductCardMyOUtfit = () => {
+const ProductCardYourOutfit = () => {
   const [openModal, setOpenModal] = useState(false);
   return (
     <Card>
       Product Card
-      <button type="button" onClick={() => setOpenModal(true)}>Star</button>
-      <ComparaisonModal displayModal={openModal}>
-        <Comparaison setOpenModal={setOpenModal} />
-      </ComparaisonModal>
+      <button type="button">x</button>
       <p>
         <ImageRelatedProduct src="https://www.pngall.com/wp-content/uploads/4/Leather-Bag-PNG.png" alt="Bag" />
       </p>
@@ -26,4 +23,4 @@ const ProductCardMyOUtfit = () => {
   );
 };
 
-export default ProductCardMyOUtfit;
+export default ProductCardYourOutfit;

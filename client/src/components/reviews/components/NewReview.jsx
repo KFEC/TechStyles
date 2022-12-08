@@ -5,6 +5,7 @@ import {
   CloseModalButton,
 } from '../../../lib/styledComponents';
 import StarRating from './StarRating.jsx';
+import { postData } from '../../../lib/index.js';
 
 const NewReview = ({ setDisplay }) => {
 
@@ -38,7 +39,20 @@ const NewReview = ({ setDisplay }) => {
     console.log({
       rating, characteristics, summary, body, name, email, isRecommended: !isRecommended, photos,
     });
-    resetStates();
+    // doesn't work atm
+    postData('/reviews', {
+      product_id: 40347,
+      rating,
+      summary,
+      body,
+      recommend: isRecommended,
+      name,
+      email,
+      photos,
+      characteristics,
+    }).then(() => {
+      resetStates();
+    });
   };
 
   return (

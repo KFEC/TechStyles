@@ -1,5 +1,9 @@
 /* Reviews Component Main Grid */
 
+.flex-container {
+  display: flex;
+}
+
 #reviews {
   font-family: 'Palatino Linotype', 'Book Antiqua';
 }
@@ -15,17 +19,17 @@
 }
 
 .rating-breakdown {
-  background-color: rgb(202, 190, 173);
+  background-color: rgb(252, 234, 208);
   grid-area: rb;
 }
 
 .product-breakdown {
-  background-color: rgb(202, 190, 173);
+  background-color: rgb(252, 234, 208);
   grid-area: pb;
 }
 
 .review-list {
-  background-color: rgb(202, 190, 173);
+  background-color: rgb(252, 234, 208);
   grid-area: review;
 }
 
@@ -72,27 +76,27 @@
 }
 
 .ratings-bar-container {
-  font-size: 20px;
-  margin: 45px auto;
+  font-size: 1.3em;
+  margin: 1em auto;
   overflow: hidden;
 }
 
 .ratings-bar {
   width: 85%;
-  height: 35px;
+  height: 1.7em;
   position: relative;
   background: rgba(173, 173, 173, 0.685);
-  border-radius: 10px;
+  border-radius: 0.4em;
   text-transform: uppercase;
-  margin: 20px auto;
+  margin: 1em auto;
 }
 
 .ratings-area {
-  font-size: 16px;
+  font-size: 0.8em;
   z-index: 1;
   position: absolute;
-  margin-top: 8px;
-  margin-left: 20px;
+  margin-top: 0.6em;
+  margin-left: 1.3em;
   text-shadow: none;
   color: rgb(0, 0, 0);
 }
@@ -100,24 +104,70 @@
 .ratings-percentage {
   z-index: 2;
   position: relative;
-  margin-right: 5px;
-  margin-top: 8px;
+  margin-right: 0.8em;
+  margin-top: 0.6em;
   float: right;
   text-shadow: none;
   color: rgb(0, 0, 0);
-  font-size: 16px;
+  font-size: 0.8em;
 }
 
 .ratings-bar-content {
   width: calc(var(--percent) * 1%);
   animation: animate-breakdown 3s;
-  height: 35px;
+  height: 1.7em;
   position: relative;
-  border-radius: 10px;
+  border-radius: 0.4em;
   background-color: #94e298;
 }
 
 @keyframes animate-breakdown {
-  from{width: 5px;}
+  from{width: 0.2em;}
   to{width: calc(var(--percent) / 100 * 100%);}
+}
+
+/* Product Breakdown Styles */
+
+.breakdown-category {
+  margin: 1em;
+}
+
+.pb-char-bar {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: 0.75em;
+  background-color: #ddd;
+}
+
+.pb-style-value {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 5%;
+  left: calc(var(--value) / 5 * 100%);
+  font-size: 2.25em;
+  animation: animate-product 3s;
+}
+
+@keyframes animate-product {
+  from{width: 100%;}
+  to{width: calc(var(--value) / var(--value) * 10%);}
+}
+
+.pb-range-left {
+  flex-basis: 33%;
+  display: inline-block;
+  text-align: left;
+}
+
+.pb-range-center {
+  flex-basis: 33%;
+  display: inline-block;
+  text-align: center;
+}
+
+.pb-range-right {
+  flex-basis: 33%;
+  display: inline-block;
+  text-align: right;
 }
