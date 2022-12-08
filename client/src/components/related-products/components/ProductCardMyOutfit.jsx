@@ -6,8 +6,9 @@ import {
   ComparaisonModal,
 } from '../lib/styledComponents';
 
-const ProductCardYourOutfit = () => {
+const ProductCardYourOutfit = ({ outfitItem }) => {
   const [openModal, setOpenModal] = useState(false);
+  console.log(outfitItem);
   return (
     <Card>
       Product Card

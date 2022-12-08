@@ -46,13 +46,19 @@ const YourOutfit = ({ mainItem }) => {
           {/* when clicked add main item to local storage */}
           <button type="button" onClick={handleClick}>Add Item to Your Outfit</button>
         </Card>
-        {/* <ProductCardYourOutfit /> */}
-        <Card>
+        {outfitItems.map((item, idx) => <ProductCardYourOutfit outfitItem={item} key={Math.random(69 * idx) * 3} />)}
+        {/* <Card>
           Item from local storage
           <button type="button">x</button>
-          {outfitItems.length > 0 ? <p>{outfitItems[0].product_id}</p> : null}
-          {/* <p>{outfitItems.results[0].name}</p> */}
-        </Card>
+          {outfitItems.length > 0
+            ? (
+              <>
+                <p>{outfitItems[0].product_id}</p>
+                <ImageRelatedProduct src={outfitItems[0].results[0].photos[0].thumbnail_url} />
+              </>
+            )
+            : null}
+        </Card> */}
       </RelatedProductContainer>
     </Div>
   );

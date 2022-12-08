@@ -12,7 +12,7 @@ const RelatedProducts = () => {
   // pass down this state to Your Outfit component
   const [mainItem, setMainItem] = useState(
     {
-      product_id: '40361',
+      product_id: '40364',
       results: [
         {
           style_id: 240586,
