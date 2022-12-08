@@ -16,11 +16,10 @@ const ProductInfo = ({
       return (
         <div>{`PRICE: ${price}, SALE: ${sale}`}</div>
       );
-    } else {
-      return (
-        <div>{`PRICE: ${price}`}</div>
-      );
-    };
+    }
+    return (
+      <div>{`PRICE: ${price}`}</div>
+    );
   };
 
   const renderStars = () => {

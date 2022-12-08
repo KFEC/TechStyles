@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { IoCheckmarkSharp } from 'react-icons/io5';
 import { StyleSelector } from '../lib/styledOverview.js';
 
 const StyleSelect = ({
@@ -11,7 +12,22 @@ const StyleSelect = ({
     return (
       <div id="styles">
         {styles.map((style, index) => {
-          return <StyleSelector onClick={(event) => handleStyleClick(event, index)} name={`${style.name}`} src={`${style.thumbnail}`} key={Math.random(index * 54) * 10} />;
+          if (index === 0 && styleName.length === 0) {
+            return (
+              <div className="style-container" key={Math.random(index * 54) * 10}>
+                <StyleSelector className="style" onClick={(event) => handleStyleClick(event, index)} name={`${style.name}`} src={`${style.thumbnail}`} />
+                <IoCheckmarkSharp className="checkmark-icon" style={{ color: 'green', zIndex: 1, fontSize: '1.5em' }} />
+              </div>
+            );
+          } if (styleName === style.name) {
+            return (
+              <div className="style-container" key={Math.random(index * 54) * 10}>
+                <StyleSelector className="style" onClick={(event) => handleStyleClick(event, index)} name={`${style.name}`} src={`${style.thumbnail}`} />
+                <IoCheckmarkSharp className="checkmark-icon" style={{ color: 'green', zIndex: 1, fontSize: '1.5em' }} />
+              </div>
+            );
+          }
+          return <StyleSelector className="style" onClick={(event) => handleStyleClick(event, index)} name={`${style.name}`} src={`${style.thumbnail}`} key={Math.random(index * 54) * 10} />;
         })}
       </div>
     );

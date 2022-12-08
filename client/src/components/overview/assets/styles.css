@@ -12,13 +12,6 @@
 	display: flex;
 }
 
-#styles {
-  display: flex;
-	width: 400px;
-	height: 200px;
-	flex-wrap: wrap;
-}
-
 #thumbnail-render {
 	display: flex;
 	flex-direction: column;
@@ -34,4 +27,25 @@
 #thumbnail-img {
 	max-height: 17%;
 	padding: 5px;
+}
+
+/* --style selector */
+#styles {
+  display: flex;
+	width: 400px;
+	height: 200px;
+	flex-wrap: wrap;
+}
+
+.style-container {
+	border: 2px solid black;
+	display: flex;
+	flex-wrap: wrap;
+	/* width: 100px;
+	height: 100px; */
+}
+
+/* --add to cart */
+.dropdown {
+	display: flex;
 }

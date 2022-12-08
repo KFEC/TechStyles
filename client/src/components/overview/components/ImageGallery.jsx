@@ -47,6 +47,9 @@ const ImageGallery = ({ gallery }) => {
           if (index <= 6) {
             return <img id="thumbnail-img" name={index} onClick={(event) => { handleClick(event); }} src={`${image}`} alt="" key={Math.random(index * 54) * 10} />;
           }
+          return (
+            <div /> // fix this
+          );
         })}
 
       </div>

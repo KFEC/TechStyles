@@ -1,10 +1,11 @@
+/* eslint-disable prefer-spread */
+/* eslint-disable no-plusplus */
 import React, { useState, useEffect } from 'react';
 
-const AddToCart = ({ sku }) => {
-  console.log('i am sku ', sku);
-  // quantity is dependent on size selection
-  const [selectSize, setSelectSize] = useState('');
-  const [selectQty, setSelectQty] = useState(0);
+const AddToCart = ({
+  sku, selectSize, setSelectSize, selectQty, setSelectQty,
+}) => {
+  // console.log('i am sku ', sku, 'qty ', selectQty, 'size ', selectSize);
 
   const defaultQty = (num) => {
     return Array.apply(null, Array(num)).map((x, i) => { return i; });
@@ -34,11 +35,21 @@ const AddToCart = ({ sku }) => {
     //     <select id="size-selector" value={selectSize} onChange={handleChange}>
     //       <option value="">Select Size</option>
     //       {sku.map((unit, index) => {
-    //         return <option value={`${unit.size}`} key={Math.random(index * 54) * 10}>{`${unit.size}`}</option>;
+    //         return <option value={`${unit.size}`}
+    //          key={Math.random(index * 54) * 10}>{`${unit.size}`}</option>;
     //       })}
     //     </select>
     //   </div>
     // );
+    if (sku.quantity === null) {
+      return (
+        <div>
+          <select disabled>
+            <option>OUT OF STOCK</option>
+          </select>
+        </div>
+      );
+    }
     return (
       <div>
         <select id="size-selector" value={selectSize} onChange={handleChange}>
@@ -84,10 +95,30 @@ const AddToCart = ({ sku }) => {
     );
   };
 
+  const handleClick = (event) => {
+    if (selectSize.length === 0) {
+      // (1) forcibly open the dropdown - BACKLOG
+      // const targetDropDown = document.getElementById('size-selector');
+      window.alert('Please select size');
+    } else {
+      console.log('You have added to cart');
+    }
+  };
+
   const renderBtn = () => {
+    // onClick will add it into the user's cart -- do this later
+    // (1) if 'select size' then onClick will open the dropdown with a
+    // message that says to "Please select size"
+    // (2) if there is no stock, then button should be hidden (CHECK)
+    // (3) if both size and qty are selected, then add to cart
+    if (sku.quantity === null) {
+      return (
+        <div />
+      );
+    }
     return (
       <div>
-        <button type="button">Add To Cart</button>
+        <button type="button" onClick={(event) => { handleClick(event); }}>Add To Cart</button>
       </div>
     );
   };
@@ -95,8 +126,11 @@ const AddToCart = ({ sku }) => {
   return (
     <div id="add-to-cart">
       {/* option values will be based on items */}
-      {sku.length > 0 ? renderSize() : null}
-      {renderQty()}
+      <div className="dropdown">
+        {sku.length > 0 ? renderSize() : null}
+        {renderQty()}
+      </div>
+      {renderBtn()}
     </div>
   );
 };

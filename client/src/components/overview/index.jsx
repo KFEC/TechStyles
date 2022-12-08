@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import { Div } from '../../lib/styledComponents';
 import {
@@ -14,10 +15,14 @@ import StyleSelect from './components/StyleSelect.jsx';
 import AddToCart from './components/AddToCart.jsx';
 import './assets/styles.css';
 
+const noImageAvailable = [{ thumbnail_url: 'https://i.imgur.com/fVQQcpc.png' }];
+const noSkusAvailable = [{ quantity: null, size: 'OUT OF STOCK' }];
+
 const Overview = () => {
   /* OVERALL STATE */
-  const [productId, setProductId] = useState('40344');
+  const [productId, setProductId] = useState('40350');
   const [defaultIndex, setDefaultIndex] = useState(0);
+  // 40344
 
   /* STYLE BASED STATES */
   const [styles, setStyles] = useState([]); // displays first photo thumbnail of each style
@@ -26,6 +31,8 @@ const Overview = () => {
   const [sale, setSale] = useState('');
   const [styleName, setStyleName] = useState(''); // used in style select
   const [sku, setSku] = useState([]);
+  const [selectSize, setSelectSize] = useState('');
+  const [selectQty, setSelectQty] = useState(0);
 
   /* PRODUCT:ID BASED STATES */
   const [category, setCategory] = useState('');
@@ -33,8 +40,8 @@ const Overview = () => {
   const [description, setDescription] = useState('');
 
   /* REVIEWS BASED STATES */
-  const [stars, setStars] = useState(0); // TO DO LIST
-  const [reviewCount, setReviewCount] = useState(0); // TO DO LIST
+  const [stars, setStars] = useState(0);
+  const [reviewCount, setReviewCount] = useState(0);
 
   /* STAR FUNCTIONS */
   const getTotalRatings = (receivedRatings) => {
@@ -77,9 +84,9 @@ const Overview = () => {
     getData(`/products/${productId}/styles`)
       .then((result) => {
         /* STYLES AND IMAGE GALLERY */
-        // console.log('styles-result: ', result.data.results);
+        // console.log('styles-result: ', result.data);
         const allStyles = result.data.results;
-        const allPhotos = result.data.results[defaultIndex].photos;
+        const allPhotos = result.data.results[defaultIndex].photos.length === 1 ? noImageAvailable : result.data.results[defaultIndex].photos;
 
         /* PRODUCT INFO - PRICE */
         // console.log('styles-result: ', result.data.results[2])
@@ -87,7 +94,8 @@ const Overview = () => {
         const salePrice = result.data.results[defaultIndex].sale_price;
 
         /* ADD TO CART */
-        const allSkus = Object.values(result.data.results[defaultIndex].skus);
+        // console.log('testing skus before add to cart: ', Object.values(result.data.results[defaultIndex].skus).length);
+        const allSkus = Object.values(result.data.results[defaultIndex].skus).length === 1 ? noSkusAvailable : Object.values(result.data.results[defaultIndex].skus);
 
         const displayStyles = allStyles.reduce((acc, style) => {
           const newStyle = { name: style.name, thumbnail: style.photos[0].thumbnail_url };
@@ -109,6 +117,7 @@ const Overview = () => {
         };
       })
       .then((response) => {
+        // setStyleName(response.displayStyles[0].name);
         setStyles(response.displayStyles);
         setGallery(response.displayGallery);
         setPrice(response.originalPrice);
@@ -127,15 +136,13 @@ const Overview = () => {
       });
   }, [reviewCount]);
 
-  // // UH OH
-  // if (stars > 0 && reviewCount > 0) {
-  //   console.log('stars BITC', stars, 'TOTAL MF', reviewCount);
-  // }
-
   const handleStyleClick = (event, index) => {
     console.log('new style should re-render', index);
     setDefaultIndex(index);
     setStyleName(event.target.name);
+    // should reset size and qty dropdowns
+    setSelectSize('');
+    setSelectQty(0);
   };
 
   return (
@@ -146,7 +153,7 @@ const Overview = () => {
       <div id="overview-right">
         <ProductInfo category={category} name={name} description={description} price={price} sale={sale} stars={stars} reviewCount={reviewCount} />
         <StyleSelect styles={styles} styleName={styleName} setStyleName={setStyleName} handleStyleClick={handleStyleClick} />
-        <AddToCart sku={sku} />
+        <AddToCart sku={sku} selectSize={selectSize} setSelectSize={setSelectSize} selectQty={selectQty} setSelectQty={setSelectQty} />
       </div>
     </div>
   );
