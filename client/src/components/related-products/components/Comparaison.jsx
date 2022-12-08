@@ -6,27 +6,29 @@ import {
   CloseModalButton,
 } from '../lib/styledComponents';
 
-const Comparaison = ({ setOpenModal }) => {
+const Comparaison = ({ setOpenModal, comparedProduct }) => {
   return (
     <ModalContent>
-      Comparing
       <CloseModalButton onClick={() => setOpenModal(false)}>x</CloseModalButton>
       <table className="primary">
-        <tbody>
+        <caption>Comparing</caption>
+        <thead>
           <tr>
             <th>Current Product name</th>
             <th> </th>
-            <th>Compared Product name</th>
+            <th>{comparedProduct.name}</th>
           </tr>
+        </thead>
+        <tbody>
           <tr>
             <td>leather</td>
             <td>material</td>
             <td>fabrics</td>
           </tr>
           <tr>
-            <td>expensive</td>
+            <td>0.00</td>
             <td>price</td>
-            <td>cheap</td>
+            <td>{comparedProduct.default_price}</td>
           </tr>
         </tbody>
       </table>

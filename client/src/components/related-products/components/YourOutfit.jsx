@@ -14,9 +14,6 @@ const YourOutfit = () => {
       <RelatedProductContainer>
         <AddToOutfit />
         <ProductCardYourOutfit />
-        <ProductCardYourOutfit />
-        <ProductCardYourOutfit />
-        <ProductCardYourOutfit />
       </RelatedProductContainer>
     </Div>
   );

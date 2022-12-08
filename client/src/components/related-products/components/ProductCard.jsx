@@ -54,13 +54,19 @@ const ProductCard = ({ product: { productDetails, styles } }) => {
       });
   }, [reviewCount]);
 
+  /*
+  Price - As the price is not actually derived from the product,
+  the price displayed should be that for the default style.
+  Sale prices should be reflected. If the style is currently discounted,
+  then the sale price should appear in red, followed by the original price which is struckthrough.
+  */
   return (
     <Card>
       <div className="btn-text-right">
-        <button type="button" onClick={() => setOpenModal(true)}>Press</button>
+        <button type="button" onClick={() => setOpenModal(true)}>★</button>
       </div>
       <ComparaisonModal displayModal={openModal}>
-        <Comparaison setOpenModal={setOpenModal} comparedProduct={productDetails.name} />
+        <Comparaison setOpenModal={setOpenModal} comparedProduct={productDetails} />
       </ComparaisonModal>
       <p>
         <ImageRelatedProduct src={styles.results[0].photos[0].thumbnail_url} alt="Bag" />

@@ -7,10 +7,9 @@ const ButtonFloatRight = styled.button`
 const Card = styled.div`
   width: 150px;
   height: 220px;
-  background: whitesmoke;
+  background: grey;
   margin: 0.25em;
   padding: 0.25em;
-  border: 2px solid black;
 `;
 
 const ComparaisonModal = styled.div`
