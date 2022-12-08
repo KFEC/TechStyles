@@ -38,6 +38,27 @@ const Modal = styled.div`
   background-color: rgb(0, 0, 0, 0.4);
 `;
 
+const SocialMediaModal = styled.div`
+  display: ${(props) => props.changeDisplay ? 'grid' : 'none'};
+  position: absolute;
+  z-index: 5;
+
+  top: 50%;
+  width: 50%;
+  height: 50%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0, 0.4);
+`;
+
+const SocialMediaModalContent = styled.div`
+  background-color: #fefefe;
+  margin: 15% auto;
+  paddding: 5em;
+  border: 1em solid #888;
+  width: 75%;
+  height: 75%;
+`;
+
 const ModalContent = styled.div`
   background-color: #fefefe;
   margin: 15% auto;
@@ -45,6 +66,7 @@ const ModalContent = styled.div`
   border: 1em solid #888;
   width: 35%;
 `;
+
 const CloseModalButton = styled.button`
   color: #aaa;
   float: right;
@@ -72,7 +94,9 @@ export {
   Wrapper,
   Div,
   Modal,
+  SocialMediaModal,
   ModalContent,
+  SocialMediaModalContent,
   CloseModalButton,
   Card,
   Stars,
