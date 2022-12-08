@@ -2,12 +2,21 @@ import React from 'react';
 import { Div } from '../../../lib/styledComponents';
 import ReviewListEntry from './ReviewListEntry.jsx';
 
-const ReviewList = () => {
+
+const ReviewList = ({ reviews, update, setUpdate }) => {
+
 
   return (
     <Div>
       Review List
-      <ReviewListEntry />
+      {reviews.map(review => (
+        <ReviewListEntry
+          key={review.review_id}
+          review={review}
+          update={update}
+          setUpdate={setUpdate}
+        />
+      ))}
     </Div>
   );
 };
