@@ -22,7 +22,7 @@ const QuestionList = ({
   }, [questions, update]);
 
   return (
-    <Div>
+    <Div data-testid="test QuestionList">
       {currQuestions.length
         ? currQuestions.map(question => {
           return (
