@@ -31,8 +31,8 @@ const ProductInfo = ({
   };
 
   return (
-    <div id="product-info">
-      <div>{category.toUpperCase()}</div>
+    <div id="product-info" data-testid="product-info">
+      <div>{category?.toUpperCase()}</div>
       <div>{name}</div>
       {reviewCount > 0 ? renderStars() : null}
       {typeof price === 'string' ? renderSale() : null}
