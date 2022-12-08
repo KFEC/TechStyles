@@ -17,11 +17,11 @@ const QuestionSearch = ({ search }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <input
-          style={{ width: '90%' }}
+          style={{ width: '90%', backgroundColor: 'whitesmoke' }}
           placeholder="Have a question? Search for answers…"
           onChange={(e) => { setQuery(e.target.value); }}
         />
-        <button type="submit">
+        <button type="submit" style={{ backgroundColor: 'whitesmoke', border: 'none' }}>
           <IoSearchSharp />
         </button>
       </form>
