@@ -35,7 +35,7 @@ const RatingBreakdown = () => {
   }, []);
 
   return (
-    <div>
+    <div data-testid="rating-breakdown">
       {ratings
       && <RBHeading ratings={{ totalRatings, ratings, recommendedCt }} />}
       {ratings
