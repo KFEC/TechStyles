@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import PBCharacteristic from './PBCharacteristic.jsx';
 import PBHeading from './PBHeading.jsx';
 import { getData } from '../../../../lib';
 import { allCharOptions } from '../../lib';
 
-const ProductBreakdown = () => {
+const ProductBreakdown = memo(() => {
 
   const [characteristics, setCharacteristics] = useState();
 
@@ -35,7 +35,7 @@ const ProductBreakdown = () => {
     </div>
   );
 
-};
+});
 
 export default ProductBreakdown;
 

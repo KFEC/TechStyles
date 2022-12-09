@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 // import { Div } from '../../../../lib/styledComponents';
 import RBHeading from './RBHeading.jsx';
 import RBRender from './RBRender.jsx';
 import { getData } from '../../../../lib';
 
-const RatingBreakdown = () => {
+const RatingBreakdown = memo(() => {
 
   const [ratings, setRatings] = useState(null);
   const [totalRatings, setTotalRatings] = useState(null);
@@ -50,6 +50,6 @@ const RatingBreakdown = () => {
       })}
     </div>
   );
-};
+});
 
 export default RatingBreakdown;
