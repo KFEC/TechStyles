@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Stars } from '../../../lib/styledComponents';
+import { Stars } from '../../../../lib/styledComponents';
 
-const StarRating = ({ setRating, rating }) => {
+const ReviewStars = ({ setRating, rating }) => {
   const [hover, setHover] = useState(0);
 
   return (
@@ -24,4 +24,4 @@ const StarRating = ({ setRating, rating }) => {
   );
 };
 
-export default StarRating;
+export default ReviewStars;

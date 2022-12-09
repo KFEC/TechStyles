@@ -1,7 +1,7 @@
 import React from 'react';
 import { Div } from '../../../../lib/styledComponents';
 
-const CharacteristicsHeading = () => {
+const CharacteristicHeading = () => {
 
   return (
     <Div>
@@ -10,4 +10,4 @@ const CharacteristicsHeading = () => {
   );
 };
 
-export default CharacteristicsHeading;
+export default CharacteristicHeading;

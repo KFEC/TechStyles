@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import {
+  RatingBreakdown, CharacteristicBreakdown, ReviewForm, ReviewList,
+} from './components';
 import { Button, Modal, Div } from '../../lib/styledComponents';
-// import { Img } from './lib/reviewStyledComponents';
-import NewReview from './components/NewReview.jsx';
-import ProductBreakdown from './components/productbreakdown/ProductBreakdown.jsx';
-import RatingBreakdown from './components/ratingbreakdown/RatingBreakdown.jsx';
-import ReviewList from './components/ReviewList.jsx';
-import './assets/styles.css';
-import { getData } from '../../lib/index.js';
 import { getProductInfo, getProductMeta } from '../../actions';
-
-
+import { getData } from '../../lib/index.js';
+import './assets/styles.css';
 
 const Reviews = () => {
-
   const [display, setDisplay] = useState(false);
   const [currReviews, setCurrReviews] = useState([]);
   const [reviewCounter, setReviewCounter] = useState(2);
@@ -21,10 +16,8 @@ const Reviews = () => {
   const [update, setUpdate] = useState(false);
   const [filter, setFilter] = useState('relevant');
 
-
   const { productInfo, productMeta } = useSelector((state) => state.product);
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     dispatch(getProductInfo({ url: '/products/40344' }));
@@ -62,7 +55,7 @@ const Reviews = () => {
           <RatingBreakdown />
         </div>
         <div className="product-breakdown">
-          <ProductBreakdown />
+          <CharacteristicBreakdown />
         </div>
         <div className="review-list">
           <div>
@@ -80,7 +73,7 @@ const Reviews = () => {
         </div>
         <div>
           <Modal changeDisplay={display}>
-            <NewReview setDisplay={setDisplay} />
+            <ReviewForm setDisplay={setDisplay} />
           </Modal>
         </div>
       </div>
