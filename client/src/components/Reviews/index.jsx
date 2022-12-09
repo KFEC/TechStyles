@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import {
   RatingBreakdown, CharacteristicBreakdown, ReviewForm, ReviewList,
 } from './components';
 import { Button, Modal, Div } from '../../lib/styledComponents';
-import { getProductInfo, getProductMeta } from '../../actions';
 import { getData } from '../../lib/index.js';
 import './assets/styles.css';
 
@@ -15,18 +13,6 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [update, setUpdate] = useState(false);
   const [filter, setFilter] = useState('relevant');
-
-  const { productInfo, productMeta } = useSelector((state) => state.product);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getProductInfo({ url: '/products/40344' }));
-    dispatch(getProductMeta({ url: '/reviews/meta', params: { product_id: 40344 } }));
-  }, []);
-
-  console.log('product info', productInfo);
-  console.log('product meta', productMeta);
-
 
   const loadReviews = () => {
     setCurrReviews(reviews.slice(0, reviewCounter + 2));
