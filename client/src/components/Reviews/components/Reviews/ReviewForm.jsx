@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Button,
   ModalContent,
   CloseModalButton,
-} from '../../../lib/styledComponents';
-import StarRating from './StarRating.jsx';
-import { postData } from '../../../lib/index.js';
+} from '../../../../lib/styledComponents';
+import ReviewStars from './ReviewStars.jsx';
+import { postData } from '../../../../lib/index.js';
 
-const NewReview = ({ setDisplay }) => {
+const ReviewForm = ({ setDisplay }) => {
 
   const [rating, setRating] = useState(0);
   const [characteristics, setCharacteristics] = useState(0);
@@ -92,7 +93,7 @@ const NewReview = ({ setDisplay }) => {
               Rating:
             </label> */}
             <div className="input-label">Rating</div>
-            <StarRating setRating={setRating} rating={rating} />
+            <ReviewStars setRating={setRating} rating={rating} />
             {rating === 1 && <span>Poor</span>}
             {rating === 2 && <span>Fair</span>}
             {rating === 3 && <span>Average</span>}
@@ -278,4 +279,4 @@ const NewReview = ({ setDisplay }) => {
   );
 };
 
-export default NewReview;
+export default ReviewForm;
