@@ -32,7 +32,7 @@ const AnswerEntry = ({ answer, setUpdate2, update2 }) => {
   };
 
   return (
-    <Div>
+    <Div style={{ border: 'none' }}>
       <span style={{ fontWeight: 'bold', fontSize: 'large' }}>A:</span>
       {answer.body}
       <div>
@@ -44,9 +44,13 @@ const AnswerEntry = ({ answer, setUpdate2, update2 }) => {
           Yes
         </button>
         {` (${answer.helpfulness}) |`}
-        <button type="button" className="button-link" onClick={reportAnswer}>
-          Report
-        </button>
+        {!reported
+          ? (
+            <button type="button" className="button-link" onClick={reportAnswer}>
+              Report
+            </button>
+          )
+          : <span>Reported</span>}
       </div>
     </Div>
   );

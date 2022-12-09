@@ -20,9 +20,9 @@ const noSkusAvailable = [{ quantity: null, size: 'OUT OF STOCK' }];
 
 const Overview = () => {
   /* OVERALL STATE */
-  const [productId, setProductId] = useState('40344');
+  const [productId, setProductId] = useState('40351');
   const [defaultIndex, setDefaultIndex] = useState(0);
-  // 40344 40345 40350
+  // 40344 40345 440348 40350
 
   /* STYLE BASED STATES */
   const [styles, setStyles] = useState([]); // displays first photo thumbnail of each style
@@ -37,6 +37,7 @@ const Overview = () => {
   /* PRODUCT:ID BASED STATES */
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');
+  const [slogan, setSlogan] = useState('');
   const [description, setDescription] = useState('');
 
   /* REVIEWS BASED STATES */
@@ -66,6 +67,7 @@ const Overview = () => {
         // console.log('products/id results: ', result.data);
         setCategory(result.data.category);
         setName(result.data.name);
+        setSlogan(result.data.slogan);
         setDescription(result.data.description);
       })
       .catch((err) => console.log('failed to get data, error: ', err));
@@ -137,7 +139,7 @@ const Overview = () => {
   }, [reviewCount]);
 
   const handleStyleClick = (event, index) => {
-    console.log('new style should re-render', index);
+    // console.log('new style should re-render', index);
     setDefaultIndex(index);
     setStyleName(event.target.name);
     // should reset size and qty dropdowns
@@ -146,16 +148,19 @@ const Overview = () => {
   };
 
   return (
-    <div id="overview">
-      <div id="overview-left">
-        <ImageGallery gallery={gallery} />
+    <Div id="overview-container">
+      <div id="overview">
+        <div id="overview-left">
+          <ImageGallery gallery={gallery} />
+        </div>
+        <div id="overview-right">
+          <ProductInfo category={category} name={name} slogan={slogan} description={description} price={price} sale={sale} stars={stars} reviewCount={reviewCount} />
+          <StyleSelect styles={styles} styleName={styleName} setStyleName={setStyleName} handleStyleClick={handleStyleClick} />
+          <AddToCart sku={sku} selectSize={selectSize} setSelectSize={setSelectSize} selectQty={selectQty} setSelectQty={setSelectQty} />
+        </div>
       </div>
-      <div id="overview-right">
-        <ProductInfo category={category} name={name} description={description} price={price} sale={sale} stars={stars} reviewCount={reviewCount} />
-        <StyleSelect styles={styles} styleName={styleName} setStyleName={setStyleName} handleStyleClick={handleStyleClick} />
-        <AddToCart sku={sku} selectSize={selectSize} setSelectSize={setSelectSize} selectQty={selectQty} setSelectQty={setSelectQty} />
-      </div>
-    </div>
+    </Div>
+
   );
 };
 

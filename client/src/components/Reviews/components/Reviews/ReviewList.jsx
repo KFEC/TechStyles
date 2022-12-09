@@ -1,5 +1,5 @@
 import React from 'react';
-import { Div } from '../../../lib/styledComponents';
+import { Div } from '../../../../lib/styledComponents';
 import ReviewListEntry from './ReviewListEntry.jsx';
 
 

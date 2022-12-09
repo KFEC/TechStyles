@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import {
+  RatingBreakdown, CharacteristicBreakdown, ReviewForm, ReviewList,
+} from './components';
 import { Button, Modal, Div } from '../../lib/styledComponents';
-// import { Img } from './lib/reviewStyledComponents';
-import NewReview from './components/NewReview.jsx';
-import ProductBreakdown from './components/productbreakdown/ProductBreakdown.jsx';
-import RatingBreakdown from './components/ratingbreakdown/RatingBreakdown.jsx';
-import ReviewList from './components/ReviewList.jsx';
+import { getData } from '../../lib/index.js';
 import './assets/styles.css';
 
-
-import { getData } from '../../lib/index.js';
-
 const Reviews = () => {
-
   const [display, setDisplay] = useState(false);
   const [currReviews, setCurrReviews] = useState([]);
   const [reviewCounter, setReviewCounter] = useState(2);
@@ -46,7 +41,7 @@ const Reviews = () => {
           <RatingBreakdown />
         </div>
         <div className="product-breakdown">
-          <ProductBreakdown />
+          <CharacteristicBreakdown />
         </div>
         <div className="review-list">
           <div>
@@ -64,7 +59,7 @@ const Reviews = () => {
         </div>
         <div>
           <Modal changeDisplay={display}>
-            <NewReview setDisplay={setDisplay} />
+            <ReviewForm setDisplay={setDisplay} />
           </Modal>
         </div>
       </div>
