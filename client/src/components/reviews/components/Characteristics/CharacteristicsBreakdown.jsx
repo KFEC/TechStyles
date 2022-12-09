@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import PBCharacteristic from './PBCharacteristic.jsx';
-import PBHeading from './PBHeading.jsx';
+import CharacteristicEntry from './CharacteristicEntry.jsx';
+import CharacteristicsHeading from './CharacteristicsHeading.jsx';
 import { getData } from '../../../../lib';
 import { allCharOptions } from '../../lib';
 
-const ProductBreakdown = () => {
+const CharacteristicsBreakdown = () => {
 
   const [characteristics, setCharacteristics] = useState();
 
@@ -30,12 +30,11 @@ const ProductBreakdown = () => {
   return (
     <div>
       {characteristics?.map((char, idx) => {
-        return <PBCharacteristic key={Math.random(69 * idx) * 10} char={char} />;
+        return <CharacteristicEntry key={Math.random(69 * idx) * 10} char={char} />;
       })}
     </div>
   );
 
 };
 
-export default ProductBreakdown;
-
+export default CharacteristicsBreakdown;

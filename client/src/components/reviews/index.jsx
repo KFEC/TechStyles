@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Button, Modal, Div } from '../../lib/styledComponents';
 // import { Img } from './lib/reviewStyledComponents';
 import NewReview from './components/NewReview.jsx';
@@ -6,9 +7,10 @@ import ProductBreakdown from './components/productbreakdown/ProductBreakdown.jsx
 import RatingBreakdown from './components/ratingbreakdown/RatingBreakdown.jsx';
 import ReviewList from './components/ReviewList.jsx';
 import './assets/styles.css';
-
-
 import { getData } from '../../lib/index.js';
+import { getProductInfo, getProductMeta } from '../../actions';
+
+
 
 const Reviews = () => {
 
@@ -18,6 +20,20 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [update, setUpdate] = useState(false);
   const [filter, setFilter] = useState('relevant');
+
+
+  const { productInfo, productMeta } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    dispatch(getProductInfo({ url: '/products/40344' }));
+    dispatch(getProductMeta({ url: '/reviews/meta', params: { product_id: 40344 } }));
+  }, []);
+
+  console.log('product info', productInfo);
+  console.log('product meta', productMeta);
+
 
   const loadReviews = () => {
     setCurrReviews(reviews.slice(0, reviewCounter + 2));
