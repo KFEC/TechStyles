@@ -20,7 +20,7 @@ const noSkusAvailable = [{ quantity: null, size: 'OUT OF STOCK' }];
 
 const Overview = () => {
   /* OVERALL STATE */
-  const [productId, setProductId] = useState('40351');
+  const [productId, setProductId] = useState('40344');
   const [defaultIndex, setDefaultIndex] = useState(0);
   // 40344 40345 440348 40350
 
