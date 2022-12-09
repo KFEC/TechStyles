@@ -1,11 +1,7 @@
 import React from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
-import App from './components/App.jsx';
-import Checkout from './pages/Checkout.jsx';
-import Contact from './pages/Contact.jsx';
-import About from './pages/About.jsx';
+import { NavLink } from 'react-router-dom';
 
-const PageRouter = () => {
+const NavBar = () => {
   return (
     <div>
       <nav className="page-nav">
@@ -24,14 +20,8 @@ const PageRouter = () => {
           </li>
         </ul>
       </nav>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/about/*" element={<About />} />
-        <Route path="/checkout/*" element={<Checkout />} />
-        <Route path="/contact/*" element={<Contact />} />
-      </Routes>
     </div>
   );
 };
 
-export default PageRouter;
+export default NavBar;

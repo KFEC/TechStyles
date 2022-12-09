@@ -1,4 +1,4 @@
-const descriptions = {
+export const DESCRIPTIONS = {
   Size: {
     lower: 'Runs Short',
     middle: 'Perfect',
@@ -31,9 +31,4 @@ const descriptions = {
   },
 };
 
-const allCharOptions = ['Size', 'Width', 'Comfort', 'Quality', 'Length', 'Fit'];
-
-export {
-  descriptions,
-  allCharOptions,
-};
+export const allCharOptions = ['Size', 'Width', 'Comfort', 'Quality', 'Length', 'Fit'];
