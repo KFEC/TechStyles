@@ -2,13 +2,18 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
 import {
-  IoIosArrowBack, IoIosArrowForward, IoIosArrowUp, IoIosArrowDown,
+  IoIosArrowBack, IoIosArrowForward, IoIosArrowUp, IoIosArrowDown, HiMagnifyingGlassPlus,
 } from 'react-icons/io';
+import {
+  ExpandedViewModal,
+} from '../../../lib/styledComponents';
+import ExpandedView from './ExpandedView.jsx';
 
 const ImageGallery = ({ gallery }) => {
   const [main, setMain] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [carouselIndex, setCarouselIndex] = useState([0, 6]);
+  const [display, setDisplay] = useState(false);
   let newIndex = 0;
 
   useEffect(() => {
@@ -44,7 +49,10 @@ const ImageGallery = ({ gallery }) => {
       <div id="main-img-container-arrows">
         <IoIosArrowBack onClick={() => { handleLeftClick(); }} style={{ color: 'green', zIndex: 5, fontSize: '2.5em' }} />
         <div id="main-img-container">
-          <img id="main-img" src={`${main}`} alt="" />
+          <img id="main-img" onClick={() => { setDisplay(!display); }} src={`${main}`} alt="" />
+          <ExpandedViewModal changeDisplay={display}>
+            <ExpandedView setDisplay={setDisplay} main={main} />
+          </ExpandedViewModal>
           {/* <div style={{ width: '100%', backgroundSize: 'cover',
            backgroundImage: `url(${gallery[0]})` }} /> */}
         </div>
@@ -52,7 +60,6 @@ const ImageGallery = ({ gallery }) => {
       </div>
     );
   };
-
 
   const handleUpClick = () => {
     const newCarouselIndex = [carouselIndex[0] - 1, carouselIndex[1] - 1];

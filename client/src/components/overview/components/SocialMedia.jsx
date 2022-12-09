@@ -4,7 +4,6 @@ import {
   SocialMediaModalContent,
   CloseModalButton,
 } from '../../../lib/styledComponents';
-// import { IoCheckmarkSharp } from 'react-icons/io5';
 
 const SocialMedia = ({ setDisplay }) => {
   return (

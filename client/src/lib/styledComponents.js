@@ -50,13 +50,21 @@ const SocialMediaModal = styled.div`
   background-color: rgb(0, 0, 0, 0.4);
 `;
 
-const SocialMediaModalContent = styled.div`
-  background-color: #fefefe;
-  margin: 15% auto;
-  paddding: 5em;
-  border: 1em solid #888;
-  width: 75%;
-  height: 75%;
+const ExpandedViewModal = styled.div`
+  display: ${(props) => props.changeDisplay ? 'flex' : 'none'};
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+
+  top: 10%;
+  width: 80%;
+  height: 80%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0, 0.4);
 `;
 
 const ModalContent = styled.div`
@@ -66,6 +74,29 @@ const ModalContent = styled.div`
   border: 1em solid #888;
   width: 35%;
 `;
+
+const SocialMediaModalContent = styled.div`
+  background-color: #fefefe;
+  margin: 15% auto;
+  paddding: 5em;
+  border: 1em solid #888;
+  width: 75%;
+  height: 75%;
+`;
+
+const ExpandedViewModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  opacity: 90%;
+  paddding: 5em;
+  border: 2em solid white;
+  width: 95%;
+  height: 95%;
+`;
+
 
 const CloseModalButton = styled.button`
   color: #aaa;
@@ -95,8 +126,10 @@ export {
   Div,
   Modal,
   SocialMediaModal,
+  ExpandedViewModal,
   ModalContent,
   SocialMediaModalContent,
+  ExpandedViewModalContent,
   CloseModalButton,
   Card,
   Stars,

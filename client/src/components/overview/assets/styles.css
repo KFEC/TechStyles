@@ -71,10 +71,14 @@
 	animation: fadeMe 1s;
 } */
 
-/* .main-img:hover {
-	opacity: 0;
-	border: 5px solid cyan;
-} */
+#main-img:hover {
+	cursor: zoom-in;
+}
+
+#expanded-main-img {
+	width: 100%;
+	overflow: hidden;
+}
 
 #img-gallery {
 	display: flex;
