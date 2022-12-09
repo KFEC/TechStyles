@@ -5,17 +5,18 @@ import {
   RelatedProductContainer,
 } from '../lib/styledComponents';
 
-const RelatedProductsList = ({ setOpenModal, productData }) => {
+const RelatedProductsList = ({ setOpenModal, productData, mainItem }) => {
   return (
-    <Div>
+    <Div data-testid="RelatedProductsList">
       Related Product List
       <RelatedProductContainer>
-        {productData.map((product, idx) => {
+        {productData?.map((product, idx) => {
           return (
             <ProductCard
               key={Math.random(69 * idx) * 3}
               setOpenModal={setOpenModal}
               product={product}
+              mainItem={mainItem}
             />
           );
         })}
