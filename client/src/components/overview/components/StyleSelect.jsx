@@ -16,14 +16,24 @@ const StyleSelect = ({
             return (
               <div className="style-container" key={Math.random(index * 54) * 10}>
                 <StyleSelector className="style" onClick={(event) => handleStyleClick(event, index)} name={`${style.name}`} src={`${style.thumbnail}`} />
-                <IoCheckmarkSharp className="checkmark-icon" style={{ color: 'green', zIndex: 1, fontSize: '1.5em' }} />
+                <IoCheckmarkSharp
+                  className="checkmark-icon"
+                  style={{
+                    color: 'green', zIndex: 1, fontSize: '2em', position: 'relative', bottom: '70%', right: '25%',
+                  }}
+                />
               </div>
             );
           } if (styleName === style.name) {
             return (
               <div className="style-container" key={Math.random(index * 54) * 10}>
                 <StyleSelector className="style" onClick={(event) => handleStyleClick(event, index)} name={`${style.name}`} src={`${style.thumbnail}`} />
-                <IoCheckmarkSharp className="checkmark-icon" style={{ color: 'green', zIndex: 1, fontSize: '1.5em' }} />
+                <IoCheckmarkSharp
+                  className="checkmark-icon"
+                  style={{
+                    color: 'green', zIndex: 1, fontSize: '2em', position: 'relative', bottom: '70%', right: '25%',
+                  }}
+                />
               </div>
             );
           }
