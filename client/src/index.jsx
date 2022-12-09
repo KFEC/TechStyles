@@ -10,14 +10,12 @@ import About from './pages/About.jsx';
 import NavBar from './NavBar.jsx';
 import './assets/styles.css';
 
-const container = document.createElement('div');
-const root = createRoot(container);
-document.body.appendChild(container);
+const root = createRoot(document.getElementById('root'));
 
 root.render(
   <Provider store={store}>
-    <NavBar />
     <Router>
+      <NavBar />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/about/*" element={<About />} />
