@@ -87,11 +87,12 @@
 	/* flex-wrap: wrap; */
 	height: 500px;
 	width: fit-content;
-	background-color: black;
+	background-color: rgb(255, 255, 255, 0.5);
 	border: 3px dashed cyan;
 }
 
 #thumbnail-img:hover {
+	opacity: 100%;
 	background-color: cyan;
 }
 
