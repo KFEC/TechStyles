@@ -7,7 +7,7 @@ const ReviewList = ({ reviews, update, setUpdate }) => {
 
 
   return (
-    <Div>
+    <Div className="review-list-comp">
       Review List
       {reviews.map(review => (
         <ReviewListEntry

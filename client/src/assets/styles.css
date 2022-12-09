@@ -73,3 +73,36 @@ table {
 .off {
   color: #ccc;
 }
+
+.page-nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  background-color: rgb(109, 109, 109);
+}
+
+.nav-li {
+  display: inline-flex;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.link-text {
+  color:rgb(180, 243, 243);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav-li:hover {
+  background-color: rgb(218, 129, 129);
+}
+
+.nav-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(109, 109, 109);
+}

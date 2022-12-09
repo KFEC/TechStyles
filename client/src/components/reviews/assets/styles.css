@@ -171,3 +171,8 @@
   display: inline-block;
   text-align: right;
 }
+
+.review-list-comp {
+  max-height: 60vh;
+  overflow-y: auto;
+}
