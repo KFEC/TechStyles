@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const RBHeading = ({ ratings: { ratings, totalRatings, recommendedCt } }) => {
+const RatingHeading = ({ ratings: { ratings, totalRatings, recommendedCt } }) => {
 
   const [avgRating, setAvgRating] = useState(null);
   const [avgRecommendation, setAvgRecommendation] = useState(null);
@@ -37,4 +37,4 @@ const RBHeading = ({ ratings: { ratings, totalRatings, recommendedCt } }) => {
   );
 };
 
-export default RBHeading;
+export default RatingHeading;

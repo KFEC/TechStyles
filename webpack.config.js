@@ -33,10 +33,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'TechStyle',
-      favicon: './client/src/assets/favicon.png',
-    }),
     new webpack.DefinePlugin({
       'process.env': {
         API_TOKEN: JSON.stringify(process.env.API_TOKEN),
