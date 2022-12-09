@@ -23,7 +23,7 @@ const ImageGallery = ({ gallery }) => {
   }, [gallery]);
 
   const handleClick = (event) => {
-    console.log(event.target.name);
+    // console.log(event.target.name);
     const changeMain = gallery[event.target.name];
     setMain(changeMain);
     // console.log('check onClick', typeof event.target.name);
@@ -44,10 +44,9 @@ const ImageGallery = ({ gallery }) => {
   };
 
   const renderMain = () => {
-    console.log('fix render main bug in image gallery');
     return (
       <div id="main-img-container-arrows">
-        <IoIosArrowBack onClick={() => { handleLeftClick(); }} style={{ color: 'green', zIndex: 5, fontSize: '2.5em' }} />
+        <IoIosArrowBack className="main-img-arrows" onClick={() => { handleLeftClick(); }} style={{ color: 'rgba(96, 96, 96, 0.4)', zIndex: 5, fontSize: '2.5em' }} />
         <div id="main-img-container">
           <img id="main-img" onClick={() => { setDisplay(!display); }} src={`${main}`} alt="" />
           <ExpandedViewModal changeDisplay={display}>
@@ -56,7 +55,7 @@ const ImageGallery = ({ gallery }) => {
           {/* <div style={{ width: '100%', backgroundSize: 'cover',
            backgroundImage: `url(${gallery[0]})` }} /> */}
         </div>
-        <IoIosArrowForward onClick={() => { handleRightClick(); }} style={{ color: 'green', zIndex: 5, fontSize: '2.5em' }} />
+        <IoIosArrowForward className="main-img-arrows" onClick={() => { handleRightClick(); }} style={{ color: 'rgba(96, 96, 96, 0.4)', zIndex: 5, fontSize: '2.5em' }} />
       </div>
     );
   };
@@ -79,31 +78,6 @@ const ImageGallery = ({ gallery }) => {
       return (
         <div id="thumbnail-render">
           {gallery.map((image, index) => {
-            return (
-              <img
-                id="thumbnail-img"
-                name={index}
-                onClick={(event) => { handleClick(event); }}
-                src={`${image}`}
-                alt=""
-                key={Math.random(index * 54) * 10}
-                style={{
-                  width: '100px',
-                  height: '100px',
-                  objectFit: 'cover',
-                }}
-              />
-            );
-          })}
-        </div>
-      );
-    } if (gallery.length > 7) {
-      return (
-        <div id="thumbnail-render">
-          {carouselIndex[0] !== 0 ? <IoIosArrowUp onClick={() => { handleUpClick(); }} style={{ color: 'black', fontSize: '3.5em' }} /> : null}
-
-          {gallery.map((image, index) => {
-
             if (index === Number(currentIndex)) {
               return (
                 <img
@@ -117,7 +91,57 @@ const ImageGallery = ({ gallery }) => {
                     width: '100px',
                     height: '100px',
                     objectFit: 'cover',
-                    border: '3px solid green',
+                    border: '2px solid rgba(96, 96, 96, 0.7)',
+                    boxShadow: '1.5px 1.5px 1.5px 1.5px rgba(96, 96, 96, 0.6)',
+                  }}
+                />
+              );
+            }
+            if (index >= carouselIndex[0] && index <= carouselIndex[1]
+              && index !== Number(currentIndex)) {
+              return (
+                <img
+                  id="thumbnail-img"
+                  name={index}
+                  onClick={(event) => { handleClick(event); }}
+                  src={`${image}`}
+                  alt=""
+                  key={Math.random(index * 54) * 10}
+                  style={{
+                    width: '100px',
+                    height: '100px',
+                    objectFit: 'cover',
+                  }}
+                />
+              );
+            }
+          })}
+        </div>
+      );
+    } if (gallery.length > 7) {
+      return (
+        <div id="thumbnail-render">
+          <div className="thumbnail-arrow-container">
+            {carouselIndex[0] !== 0 ? <IoIosArrowUp onClick={() => { handleUpClick(); }} style={{ color: 'rgba(96, 96, 96, 0.4)', fontSize: '2em' }} /> : null}
+          </div>
+
+
+          {gallery.map((image, index) => {
+            if (index === Number(currentIndex)) {
+              return (
+                <img
+                  id="thumbnail-img"
+                  name={index}
+                  onClick={(event) => { handleClick(event); }}
+                  src={`${image}`}
+                  alt=""
+                  key={Math.random(index * 54) * 10}
+                  style={{
+                    width: '100px',
+                    height: '100px',
+                    objectFit: 'cover',
+                    border: '2px solid rgba(96, 96, 96, 0.7)',
+                    boxShadow: '1.5px 1.5px 1.5px 1.5px rgba(96, 96, 96, 0.6)',
                   }}
                 />
               );
@@ -146,7 +170,9 @@ const ImageGallery = ({ gallery }) => {
             }
           })}
 
-          {carouselIndex[1] >= 6 && carouselIndex[1] !== gallery.length - 1 ? <IoIosArrowDown onClick={() => { handleDownClick(); }} style={{ color: 'black', fontSize: '3.5em' }} /> : null}
+          <div className="thumbnail-arrow-container">
+            {carouselIndex[1] >= 6 && carouselIndex[1] !== gallery.length - 1 ? <IoIosArrowDown onClick={() => { handleDownClick(); }} style={{ color: 'rgba(96, 96, 96, 0.4)', fontSize: '2em' }} /> : null}
+          </div>
         </div>
       );
     }

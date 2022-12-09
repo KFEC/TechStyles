@@ -41,9 +41,13 @@ const Modal = styled.div`
 const SocialMediaModal = styled.div`
   display: ${(props) => props.changeDisplay ? 'grid' : 'none'};
   position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
   z-index: 5;
 
-  top: 50%;
   width: 50%;
   height: 50%;
   overflow: auto;
@@ -90,13 +94,11 @@ const ExpandedViewModalContent = styled.div`
   align-items: center;
   justify-content: center;
   background-color: white;
-  opacity: 90%;
   paddding: 5em;
   border: 2em solid white;
   width: 95%;
   height: 95%;
 `;
-
 
 const CloseModalButton = styled.button`
   color: #aaa;

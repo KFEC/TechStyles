@@ -9,7 +9,8 @@
 #overview {
 	display: flex;
 	justify-content: space-evenly;
-	background-color: #F5DCE0;
+	/* background-color: #F5DCE0; */
+	background-color: #F5F5F5;
 	width: 75%;
 	font-family: monospace;
 }
@@ -28,10 +29,10 @@
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	background-color: papayawhip;
 	padding: 10px;
 	border: 5px dotted white;
 	margin: 10px;
+	background-color: #F5F5F5;
 }
 
 /* --image gallery */
@@ -39,7 +40,8 @@
 	display: flex;
 	align-items: center;
 	height: 500px;
-	border: 2px dashed blue;
+	/* border: 2px dashed blue; */
+	background-color: #F5F5F5;
 }
 
 #main-img-container {
@@ -47,29 +49,16 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	border: 5px dashed black;
+	/* border: 5px dashed black; */
 	height: 475px;
 	width: 400px;
+	background-color: #F5F5F5;
 }
-
-/* @keyframes fadeMe {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-} */
 
 #main-img {
 	position: relative;
 	overflow: hidden;
 }
-
-/* .run-animation {
-	position: relative;
-	animation: fadeMe 1s;
-} */
 
 #main-img:hover {
 	cursor: zoom-in;
@@ -80,6 +69,12 @@
 	overflow: hidden;
 }
 
+.close-btn {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
 #img-gallery {
 	display: flex;
 }
@@ -88,16 +83,30 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
+	justify-content: center;
 	/* flex-wrap: wrap; */
 	height: 500px;
 	width: fit-content;
-	background-color: rgb(255, 255, 255, 0.5);
-	border: 3px dashed cyan;
+	background: linear-gradient(#B8B8B8, #DADEDF);
+	/* box-shadow: 1.5px 1.5px 1.5px 1.5px rgba(96, 96, 96, 0.35); */
+	z-index: 2;
+	/* border: 3px dashed cyan; */
 }
 
+.thumbnail-arrow-container {
+	display: flex;
+	justify-content: center;
+	background-color: rgba(96, 96, 96, 0.2);
+	width: 100%;
+}
+
+/* .thumbnail-arrow-container:hover {
+
+} */
+
 #thumbnail-img:hover {
-	opacity: 100%;
-	background-color: cyan;
+	opacity: 60%;
+	background-color: #DCFFFB;
 }
 
 #thumbnail-img {
@@ -167,11 +176,9 @@
 
 }
 
-.style-container {
+/* .style-container {
 	border: 2px solid black;
-	display: flex;
-	flex-wrap: wrap;
-}
+} */
 
 /* --add to cart */
 #add-to-cart {
@@ -194,7 +201,7 @@
 	color: black;
 	font-family: monospace;
 	background-color: #fff;
-	padding: 20px;
+	padding: 5px;
 	border-radius: 25px;
 }
 

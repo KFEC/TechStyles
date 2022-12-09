@@ -6,7 +6,7 @@ import {
 import SocialMedia from './SocialMedia.jsx';
 
 const ProductInfo = ({
-  category, name, description, price, sale, stars, reviewCount,
+  category, name, slogan, description, price, sale, stars, reviewCount,
 }) => {
   const [display, setDisplay] = useState(false);
 
@@ -51,6 +51,7 @@ const ProductInfo = ({
       <div>{name}</div>
       {reviewCount > 0 ? renderStars() : null}
       {typeof price === 'string' ? renderSale() : null}
+      <div>{slogan}</div>
       <div>{description}</div>
     </div>
   );

@@ -7,7 +7,7 @@ import {
 const ExpandedView = ({ setDisplay, main }) => {
   return (
     <ExpandedViewModalContent>
-      <CloseModalButton onClick={() => setDisplay(false)}>✖</CloseModalButton>
+      <CloseModalButton className="close-btn" onClick={() => setDisplay(false)}>✖</CloseModalButton>
       <img id="expanded-main-img" src={`${main}`} alt="" />
     </ExpandedViewModalContent>
   );

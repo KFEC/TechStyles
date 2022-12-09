@@ -8,7 +8,7 @@ import {
 const SocialMedia = ({ setDisplay }) => {
   return (
     <SocialMediaModalContent>
-      <CloseModalButton onClick={() => setDisplay(false)}>✖</CloseModalButton>
+      <CloseModalButton className="close-btn" onClick={() => setDisplay(false)}>✖</CloseModalButton>
       <div id="social-media-icon-container">
         <div>Share your look</div>
         <TiSocialFacebook style={{ color: '#4267B2', fontSize: '3.5em' }} />
