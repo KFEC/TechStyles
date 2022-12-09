@@ -22,7 +22,7 @@ const QuestionList = ({
   }, [questions, update]);
 
   return (
-    <Div>
+    <div data-testid="test QuestionList">
       {currQuestions.length
         ? currQuestions.map(question => {
           return (
@@ -41,7 +41,7 @@ const QuestionList = ({
       {(currQuestions.length !== questions.length)
         && <Button onClick={loadQuestions}>More Questions</Button>}
       <Button onClick={() => setDisplay(true)}>Add a Question</Button>
-    </Div>
+    </div>
   );
 };
 
