@@ -1,25 +1,47 @@
 import React, { useState } from 'react';
 import Comparaison from './Comparaison.jsx';
 import {
+  ButtonFloatRight,
   Card,
   ImageRelatedProduct,
   ComparaisonModal,
 } from '../lib/styledComponents';
 
-const ProductCardYourOutfit = ({ outfitItem }) => {
+const ProductCardYourOutfit = ({ outfitItem, outfitItems, setOutfitItems }) => {
   const [openModal, setOpenModal] = useState(false);
-  console.log(outfitItem);
+  // console.log(outfitItem);
+  let image = '';
+  for (let i = 0; i < outfitItem.results.length; i += 1) {
+    if (outfitItem.results[i]['default?'] === true) {
+      image = outfitItem.results[i].photos[0].thumbnail_url;
+      break;
+    }
+  }
+  const deleteItem = () => {
+    // console.log(outfitItem.product_id);
+    for (let i = 0; i < outfitItems.length; i += 1) {
+      // console.log(outfitItems[i]);
+      if (outfitItems[i].product_id === outfitItem.product_id) {
+        const copy = [...outfitItems];
+        // console.log(copy);
+        copy.splice(i, 1);
+        // console.log(copy);
+        setOutfitItems(copy);
+      }
+    }
+  };
+  // console.log(image);
+
   return (
     <Card>
-      Product Card
-      <button type="button">x</button>
+      <ButtonFloatRight type="button" onClick={deleteItem}>x</ButtonFloatRight>
       <p>
-        <ImageRelatedProduct src="https://www.pngall.com/wp-content/uploads/4/Leather-Bag-PNG.png" alt="Bag" />
+        <ImageRelatedProduct src={image} alt="Bag" />
       </p>
-      <p>Product Category</p>
-      <p>Product Name</p>
-      <p>$65</p>
-      <p>5.0</p>
+      <p>category</p>
+      <p>{outfitItem.results[0].name}</p>
+      <p>{outfitItem.results[0].original_price}</p>
+      <p>rating</p>
     </Card>
   );
 };

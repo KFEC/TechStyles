@@ -14,7 +14,7 @@ const YourOutfit = ({ mainItem }) => {
   useEffect(() => {
     // get data in local storage at key outfits
     const dataLocalStorage = localStorage.getItem('outfits');
-    console.log('from useEffect, outfits data from local storage: ', JSON.parse(dataLocalStorage));
+    // console.log('from useEffect, data from local storage: ', JSON.parse(dataLocalStorage));
     // if there is data assign it to outfitItems
     if (dataLocalStorage !== null) {
       // assign array of outfit items to outfits
@@ -46,19 +46,16 @@ const YourOutfit = ({ mainItem }) => {
           {/* when clicked add main item to local storage */}
           <button type="button" onClick={handleClick}>Add Item to Your Outfit</button>
         </Card>
-        {outfitItems.map((item, idx) => <ProductCardYourOutfit outfitItem={item} key={Math.random(69 * idx) * 3} />)}
-        {/* <Card>
-          Item from local storage
-          <button type="button">x</button>
-          {outfitItems.length > 0
-            ? (
-              <>
-                <p>{outfitItems[0].product_id}</p>
-                <ImageRelatedProduct src={outfitItems[0].results[0].photos[0].thumbnail_url} />
-              </>
-            )
-            : null}
-        </Card> */}
+        {outfitItems.map(
+          (item, idx) => (
+            <ProductCardYourOutfit
+              outfitItem={item}
+              key={Math.random(69 * idx) * 3}
+              setOutfitItems={setOutfitItems}
+              outfitItems={outfitItems}
+            />
+          ),
+        )}
       </RelatedProductContainer>
     </Div>
   );
