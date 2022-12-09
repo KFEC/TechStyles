@@ -41,13 +41,42 @@ const Modal = styled.div`
 const SocialMediaModal = styled.div`
   display: ${(props) => props.changeDisplay ? 'grid' : 'none'};
   position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
   z-index: 5;
 
-  top: 50%;
   width: 50%;
   height: 50%;
   overflow: auto;
   background-color: rgb(0, 0, 0, 0.4);
+`;
+
+const ExpandedViewModal = styled.div`
+  display: ${(props) => props.changeDisplay ? 'flex' : 'none'};
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+
+  top: 10%;
+  width: 80%;
+  height: 80%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0, 0.4);
+`;
+
+const ModalContent = styled.div`
+  background-color: #fefefe;
+  margin: 15% auto;
+  paddding: 5em;
+  border: 1em solid #888;
+  width: 35%;
 `;
 
 const SocialMediaModalContent = styled.div`
@@ -59,12 +88,16 @@ const SocialMediaModalContent = styled.div`
   height: 75%;
 `;
 
-const ModalContent = styled.div`
-  background-color: #fefefe;
-  margin: 15% auto;
+const ExpandedViewModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
   paddding: 5em;
-  border: 1em solid #888;
-  width: 35%;
+  border: 2em solid white;
+  width: 95%;
+  height: 95%;
 `;
 
 const CloseModalButton = styled.button`
@@ -95,8 +128,10 @@ export {
   Div,
   Modal,
   SocialMediaModal,
+  ExpandedViewModal,
   ModalContent,
   SocialMediaModalContent,
+  ExpandedViewModalContent,
   CloseModalButton,
   Card,
   Stars,
