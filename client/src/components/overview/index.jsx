@@ -20,7 +20,7 @@ const noSkusAvailable = [{ quantity: null, size: 'OUT OF STOCK' }];
 
 const Overview = () => {
   /* OVERALL STATE */
-  const [productId, setProductId] = useState('40344');
+  const [productId, setProductId] = useState('40348');
   const [defaultIndex, setDefaultIndex] = useState(0);
   // 40344 40345 40350
 
@@ -146,16 +146,19 @@ const Overview = () => {
   };
 
   return (
-    <div id="overview">
-      <div id="overview-left">
-        <ImageGallery gallery={gallery} />
+    <Div id="overview-container">
+      <div id="overview">
+        <div id="overview-left">
+          <ImageGallery gallery={gallery} />
+        </div>
+        <div id="overview-right">
+          <ProductInfo category={category} name={name} description={description} price={price} sale={sale} stars={stars} reviewCount={reviewCount} />
+          <StyleSelect styles={styles} styleName={styleName} setStyleName={setStyleName} handleStyleClick={handleStyleClick} />
+          <AddToCart sku={sku} selectSize={selectSize} setSelectSize={setSelectSize} selectQty={selectQty} setSelectQty={setSelectQty} />
+        </div>
       </div>
-      <div id="overview-right">
-        <ProductInfo category={category} name={name} description={description} price={price} sale={sale} stars={stars} reviewCount={reviewCount} />
-        <StyleSelect styles={styles} styleName={styleName} setStyleName={setStyleName} handleStyleClick={handleStyleClick} />
-        <AddToCart sku={sku} selectSize={selectSize} setSelectSize={setSelectSize} selectQty={selectQty} setSelectQty={setSelectQty} />
-      </div>
-    </div>
+    </Div>
+
   );
 };
 
