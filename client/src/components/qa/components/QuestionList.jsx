@@ -3,6 +3,7 @@ import { Div, Button, Modal } from '../../../lib/styledComponents';
 
 import QuestionEntry from './QuestionEntry.jsx';
 import NewQuestion from './NewQuestion.jsx';
+import '../assets/styles.css';
 
 const QuestionList = ({
   id, setUpdate, update, questions,
@@ -21,8 +22,21 @@ const QuestionList = ({
     setCurrQuestions(questions.slice(0, questionCounter));
   }, [questions, update]);
 
+  const [fetch, setFetch] = useState(false);
+  const updateScroll = () => {
+    const el = document.getElementById('qcontainer');
+    el.scrollTop = el.scrollHeight;
+  };
+  useEffect(() => {
+    updateScroll();
+  }, [fetch]);
+
   return (
-    <div data-testid="test QuestionList">
+    <div
+      id="qcontainer"
+      className="QList"
+      data-testid="test QuestionList"
+    >
       {currQuestions.length
         ? currQuestions.map(question => {
           return (
@@ -31,6 +45,8 @@ const QuestionList = ({
               question={question}
               setUpdate={setUpdate}
               update={update}
+              setFetch={setFetch}
+              fetch={fetch}
             />
           );
         })

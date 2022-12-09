@@ -39,7 +39,12 @@ const QA = () => {
     <Div>
       I am QA
       <QuestionSearch search={search} />
-      <QuestionList id={40344} setUpdate={setUpdate} update={update} questions={filter} />
+      <QuestionList
+        id={40344}
+        setUpdate={setUpdate}
+        update={update}
+        questions={filter}
+      />
     </Div>
   );
 };
