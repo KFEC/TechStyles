@@ -32,7 +32,7 @@ const AnswerEntry = ({ answer, setUpdate2, update2 }) => {
   };
 
   return (
-    <Div style={{ border: 'none' }}>
+    <Div style={{ border: 'none', backgroundColor: 'rgb(252, 234, 208)' }}>
       <span style={{ fontWeight: 'bold', fontSize: 'large' }}>A:</span>
       {answer.body}
       <div>
