@@ -22,8 +22,16 @@ time, mark, audio, video {
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
+  background-color: #f6f5f2;
 	display: block;
 }
+
+html {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300px;
+  background-color: #f6f5f2;
+}
+
 body {
 	line-height: 1;
 }

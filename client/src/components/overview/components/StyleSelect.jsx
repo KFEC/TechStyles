@@ -45,7 +45,7 @@ const StyleSelect = ({
 
   return (
     <div id="style-selector">
-      <div>
+      <div id="style-title">
         STYLE
         {' > '}
         {styles.length && styleName.length > 0 ? styleName : styles[0]?.name}

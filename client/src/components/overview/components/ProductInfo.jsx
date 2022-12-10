@@ -14,13 +14,13 @@ const ProductInfo = ({
     if (sale !== null) {
       return (
         <div id="price-container">
-          <div style={{ textDecoration: 'line-through' }}>{`${price}`}</div>
-          <div style={{ color: 'red' }}>{`${sale}`}</div>
+          <div className="price" style={{ textDecoration: 'line-through' }}>{`${price}`}</div>
+          <div className="sale" style={{ color: 'red' }}>{`${sale}`}</div>
         </div>
       );
     }
     return (
-      <div>{`${price}`}</div>
+      <div className="price">{`${price}`}</div>
     );
   };
 
@@ -39,7 +39,7 @@ const ProductInfo = ({
   return (
     <div id="product-info" data-testid="product-info">
       <div className="social-media-container">
-        {category?.toUpperCase()}
+        <div id="category">{category?.toUpperCase()}</div>
         <RiShareFill
           onClick={() => { setDisplay(!display); }}
           style={{ color: 'black', fontSize: '1.5em' }}
@@ -48,7 +48,7 @@ const ProductInfo = ({
           <SocialMedia setDisplay={setDisplay} />
         </SocialMediaModal>
       </div>
-      <div>{name}</div>
+      <div id="name">{name}</div>
       {reviewCount > 0 ? renderStars() : null}
       {typeof price === 'string' ? renderSale() : null}
       {/* <div>{slogan}</div>
