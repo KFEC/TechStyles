@@ -24,22 +24,11 @@ const Comparaison = ({
     productInfo,
     productMeta,
   } = useSelector((state) => state.product);
-  // console.log('product info:', productInfo);
-  // console.log('compared product', comparedProductDetails);
-  // console.log('chars ', mainProductChars);
   // map
   // need chars of the current product and the related product
   // set an array of chars (compare both products)
   // got through the data of each product
   // console.log(Object.keys(mainProductChars));
-  /*
-  const chars = mainProductChars
-  return <tr>
-  <th>currentProduct.name</th>
-    <th> </th>
-    <th>{comparedProduct.name}</th>
-  </tr>
-  */
   return (
     <ModalContent>
       <CloseModalButton onClick={() => setOpenModal(false)}>x</CloseModalButton>

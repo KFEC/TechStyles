@@ -13,9 +13,6 @@ const ProductCardYourOutfit = ({
   idxOfItem,
 }) => {
   const [openModal, setOpenModal] = useState(false);
-  console.log('-> outfitItem: ', outfitItem);
-  // console.log('outfitItems :', outfitItems);
-
   let image = '';
   for (let i = 0; i < outfitItem.styles.length; i += 1) {
     if (outfitItem.styles[i]['default?'] === true) {
@@ -24,13 +21,11 @@ const ProductCardYourOutfit = ({
     }
   }
   const deleteItem = () => {
-    // console.log(outfitItem.product_id);
     const copy = [...outfitItems];
     copy.splice(idxOfItem, 1);
     setOutfitItems(copy);
     localStorage.setItem('outfits', JSON.stringify([...copy]));
   };
-  // console.log(image);
 
   return (
     <Card>

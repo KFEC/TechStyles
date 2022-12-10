@@ -20,7 +20,6 @@ const ProductCard = ({ product: { productDetails, styles, meta } }) => {
     productStyles,
     relatedProducts,
   } = useSelector((state) => state.product);
-  console.log('id: ', typeof productId);
   const dispatch = useDispatch();
   // dispatch(updateProductId(<'productId'>))
   // onclick={() => dispatch(updateProductId(<'productId'>))}
