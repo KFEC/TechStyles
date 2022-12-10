@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {
+  AddItemCard,
+  ButtonAddItem,
   Card,
   Div,
   ImageRelatedProduct,
   RelatedProductContainer,
 } from '../lib/styledComponents';
-import ProductCardYourOutfit from './ProductCardMyOutfit.jsx';
+import ProductCardYourOutfit from './ProductCardYourOutfit.jsx';
 
 const YourOutfit = ({ mainItem }) => {
   // state for outfit items
@@ -42,10 +44,10 @@ const YourOutfit = ({ mainItem }) => {
     <Div>
       Your Outfit
       <RelatedProductContainer>
-        <Card>
+        <AddItemCard>
           {/* when clicked add main item to local storage */}
-          <button type="button" onClick={handleClick}>Add Item to Your Outfit</button>
-        </Card>
+          <ButtonAddItem type="button" onClick={handleClick}>Add Current Item To Your Outfit</ButtonAddItem>
+        </AddItemCard>
         {outfitItems.map(
           (item, idx) => (
             <ProductCardYourOutfit

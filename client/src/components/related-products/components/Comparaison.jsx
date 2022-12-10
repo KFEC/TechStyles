@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../lib/myStyles.css';
 
 import {
@@ -6,7 +6,28 @@ import {
   CloseModalButton,
 } from '../lib/styledComponents';
 
-const Comparaison = ({ setOpenModal, comparedProduct }) => {
+/*
+The comparison modal window will pull up and compare the characteristics present for each product.
+The modal should be titled “Comparing”. The characteristics to be compared are the same as those
+which appear on the Overview module for each product separately.
+In the comparison modal, all characteristics for both products will be
+combined and reconciled against one another.
+*/
+const Comparaison = ({ setOpenModal, comparedProduct, mainProductChars }) => {
+  // console.log('chars ', mainProductChars);
+  // map
+  // need chars of the current product and the related product
+  // set an array of chars (compare both products)
+  // got through the data of each product
+  // console.log(Object.keys(mainProductChars));
+  /*
+  const chars = mainProductChars
+  return <tr>
+  <th>currentProduct.name</th>
+    <th> </th>
+    <th>{comparedProduct.name}</th>
+  </tr>
+  */
   return (
     <ModalContent>
       <CloseModalButton onClick={() => setOpenModal(false)}>x</CloseModalButton>
@@ -14,7 +35,7 @@ const Comparaison = ({ setOpenModal, comparedProduct }) => {
         <caption>Comparing</caption>
         <thead>
           <tr>
-            <th>Current Product name</th>
+            <th>currentProduct.name</th>
             <th> </th>
             <th>{comparedProduct.name}</th>
           </tr>
@@ -24,11 +45,6 @@ const Comparaison = ({ setOpenModal, comparedProduct }) => {
             <td>leather</td>
             <td>material</td>
             <td>fabrics</td>
-          </tr>
-          <tr>
-            <td>0.00</td>
-            <td>price</td>
-            <td>{comparedProduct.default_price}</td>
           </tr>
         </tbody>
       </table>
