@@ -7,7 +7,9 @@ import AnswerEntry from './AnswerEntry.jsx';
 import NewAnswer from './NewAnswer.jsx';
 import '../assets/styles.css';
 
-const QuestionEntry = ({ question, update, setUpdate }) => {
+const QuestionEntry = ({
+  question, update, setUpdate, fetch, setFetch, pName,
+}) => {
 
   const [display, setDisplay] = useState(false);
   const [answers, setAnswers] = useState([]);
@@ -19,6 +21,7 @@ const QuestionEntry = ({ question, update, setUpdate }) => {
     getData(`/qa/questions/${id}/answers`, { count: 100 })
       .then(res => {
         setAnswers(res.data.results);
+        setFetch(!fetch);
       });
   };
 
@@ -55,7 +58,7 @@ const QuestionEntry = ({ question, update, setUpdate }) => {
           <button type="button" className="button-link" onClick={() => setDisplay(true)}>Add Answer</button>
         </span>
       </div>
-      <div>
+      <div className="AList">
         {answers.length > 0
           ? !collapse
             ? answers.slice(0, 2).map(answer => (
@@ -82,6 +85,8 @@ const QuestionEntry = ({ question, update, setUpdate }) => {
           : null}
         <Modal changeDisplay={display}>
           <NewAnswer
+            pName={pName}
+            qBody={question.question_body}
             id={question.question_id}
             setDisplay={setDisplay}
             setUpdate2={setUpdate2}
