@@ -18,7 +18,7 @@ const productSlice = createSlice({
   initialState,
   reducers: {
     updateProductId: (state, action) => {
-      state.productId = state.payload;
+      state.productId = action.payload;
     },
   },
   extraReducers: (builder) => {
