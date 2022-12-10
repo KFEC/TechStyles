@@ -45,3 +45,8 @@ th:second-child, td:second-child {
 th:third-child, td:third-child {
   text-align: right;
 }
+
+.textCentered {
+  text-align: center;
+  bottom: 0;
+}

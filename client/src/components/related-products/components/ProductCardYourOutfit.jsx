@@ -34,14 +34,18 @@ const ProductCardYourOutfit = ({ outfitItem, outfitItems, setOutfitItems }) => {
 
   return (
     <Card>
-      <ButtonFloatRight type="button" onClick={deleteItem}>x</ButtonFloatRight>
-      <p>
-        <ImageRelatedProduct src={image} alt="Bag" />
-      </p>
-      <p>category</p>
-      <p>{outfitItem.results[0].name}</p>
-      <p>{outfitItem.results[0].original_price}</p>
-      <p>rating</p>
+      <div className="btn-text-right">
+        <ButtonFloatRight type="button" onClick={deleteItem}>x</ButtonFloatRight>
+      </div>
+      <div>
+        <ImageRelatedProduct src={image} alt={outfitItem.results[0].name} />
+      </div>
+      <div className="textCentered">
+        <p>category</p>
+        <p>{outfitItem.results[0].name}</p>
+        <p>{outfitItem.results[0].original_price}</p>
+        <p>rating</p>
+      </div>
     </Card>
   );
 };
