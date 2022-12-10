@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RBRender = ({ ratings }) => {
+const RatingRender = ({ ratings }) => {
 
   return (
     <div className="ratings-bar-container">
@@ -17,4 +17,4 @@ const RBRender = ({ ratings }) => {
   );
 };
 
-export default RBRender;
+export default RatingRender;

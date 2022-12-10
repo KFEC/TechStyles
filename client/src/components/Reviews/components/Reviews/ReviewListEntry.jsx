@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
-import { Div } from '../../../lib/styledComponents';
-import { putData } from '../../../lib/index.js';
+import { Div } from '../../../../lib/styledComponents';
+import { putData } from '../../../../lib/index.js';
 
 const ReviewListEntry = ({ review, update, setUpdate }) => {
 

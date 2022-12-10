@@ -1,5 +1,7 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateProductId } from '../../reducers';
 import { Div } from '../../lib/styledComponents';
 import {
   getData,
@@ -19,17 +21,24 @@ const noImageAvailable = [{ thumbnail_url: 'https://i.imgur.com/fVQQcpc.png' }];
 const noSkusAvailable = [{ quantity: null, size: 'OUT OF STOCK' }];
 
 const Overview = () => {
+  /* REDUX STATES REFACTOR */
+  const {
+    productId, productInfo, productMeta, productStyles,
+  } = useSelector((state) => state.product);
+
+  const dispatch = useDispatch();
+
   /* OVERALL STATE */
-  const [productId, setProductId] = useState('40344');
+  // const [productId, setProductId] = useState('40344');
   const [defaultIndex, setDefaultIndex] = useState(0);
-  // 40344 40345 40350
+  // 40344 40345 440348 40350
 
   /* STYLE BASED STATES */
   const [styles, setStyles] = useState([]); // displays first photo thumbnail of each style
   const [gallery, setGallery] = useState([]); // displays all photos of ONE style
   const [price, setPrice] = useState('');
   const [sale, setSale] = useState('');
-  const [styleName, setStyleName] = useState(''); // used in style select
+  const [styleName, setStyleName] = useState('');
   const [sku, setSku] = useState([]);
   const [selectSize, setSelectSize] = useState('');
   const [selectQty, setSelectQty] = useState(0);
@@ -37,6 +46,7 @@ const Overview = () => {
   /* PRODUCT:ID BASED STATES */
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');
+  const [slogan, setSlogan] = useState('');
   const [description, setDescription] = useState('');
 
   /* REVIEWS BASED STATES */
@@ -60,84 +70,82 @@ const Overview = () => {
     return (totalStars / reviewCount);
   };
 
+  // useEffect(() => {
+  //   dispatch(updateProductId('40350'));
+  // }, []);
+
   useEffect(() => {
-    getData(`/products/${productId}`)
-      .then((result) => {
-        // console.log('products/id results: ', result.data);
-        setCategory(result.data.category);
-        setName(result.data.name);
-        setDescription(result.data.description);
-      })
-      .catch((err) => console.log('failed to get data, error: ', err));
+    setCategory(productInfo.category);
+    setName(productInfo.name);
+    setSlogan(productInfo.slogan);
+    setDescription(productInfo.description);
+  }, [productInfo]);
 
-    //  look here moMO
+  useEffect(() => {
+    if (Object.keys(productMeta).length > 0) {
+      setReviewCount(getTotalRatings(productMeta.ratings));
+    }
+  }, [productMeta]);
 
-    getData('/reviews/meta', {
-      product_id: productId,
-    })
-      .then((result) => {
-        // console.log('meta reviews: ', result.data.ratings);
-        setReviewCount(getTotalRatings(result.data.ratings));
-      })
-      .catch((err) => console.log('failed to get data, error: ', err));
+  useEffect(() => {
+    if (Object.keys(productMeta).length > 0) {
+      setStars(calculateRatingAvg(Object.values(productMeta.ratings)));
+    }
+  }, [reviewCount]);
 
-    getData(`/products/${productId}/styles`)
-      .then((result) => {
-        /* STYLES AND IMAGE GALLERY */
-        // console.log('styles-result: ', result.data);
-        const allStyles = result.data.results;
-        const allPhotos = result.data.results[defaultIndex].photos.length === 1 ? noImageAvailable : result.data.results[defaultIndex].photos;
+  const asyncStyles = async () => {
+    try {
+      const allStyles = productStyles.results;
+      const allPhotos = productStyles.results[defaultIndex]?.photos?.length === 1 ? noImageAvailable : productStyles.results[defaultIndex].photos;
 
-        /* PRODUCT INFO - PRICE */
-        // console.log('styles-result: ', result.data.results[2])
-        const originalPrice = result.data.results[defaultIndex].original_price;
-        const salePrice = result.data.results[defaultIndex].sale_price;
+      /* PRODUCT INFO - PRICE */
+      // console.log('styles-result: ', productStyles.results[2])
+      const originalPrice = productStyles.results[defaultIndex].original_price;
+      const salePrice = productStyles.results[defaultIndex].sale_price;
 
-        /* ADD TO CART */
-        // console.log('testing skus before add to cart: ', Object.values(result.data.results[defaultIndex].skus).length);
-        const allSkus = Object.values(result.data.results[defaultIndex].skus).length === 1 ? noSkusAvailable : Object.values(result.data.results[defaultIndex].skus);
+      /* ADD TO CART */
+      // console.log('testing skus before add to cart: ', Object.values(productStyles.results[defaultIndex].skus).length);
+      const allSkus = await Object.values(productStyles.results[defaultIndex].skus).length === 1 ? noSkusAvailable : await Object.values(productStyles.results[defaultIndex].skus);
 
-        const displayStyles = allStyles.reduce((acc, style) => {
-          const newStyle = { name: style.name, thumbnail: style.photos[0].thumbnail_url };
-          acc.push(newStyle);
-          return acc;
-        }, []);
+      const displayStyles = await allStyles.reduce((acc, style) => {
+        const newStyle = { name: style.name, thumbnail: style.photos[0].thumbnail_url };
+        acc.push(newStyle);
+        return acc;
+      }, []);
 
-        const displayGallery = allPhotos.reduce((acc, style) => {
-          acc.push(style.thumbnail_url);
-          return acc;
-        }, []);
+      const displayGallery = await allPhotos.reduce((acc, style) => {
+        acc.push(style.thumbnail_url);
+        return acc;
+      }, []);
 
-        return {
-          displayStyles,
-          displayGallery,
-          originalPrice,
-          salePrice,
-          allSkus,
-        };
-      })
-      .then((response) => {
-        // setStyleName(response.displayStyles[0].name);
+      return Promise.resolve({
+        displayStyles,
+        displayGallery,
+        originalPrice,
+        salePrice,
+        allSkus,
+      });
+
+    } catch (err) {
+      console.log('err ', err);
+      return Promise.reject(err);
+    }
+  };
+
+  useEffect(() => {
+    if (Object.keys(productStyles).length > 0) {
+      const asyncResults = asyncStyles().then((response) => {
         setStyles(response.displayStyles);
         setGallery(response.displayGallery);
         setPrice(response.originalPrice);
         setSale(response.salePrice);
         setSku(response.allSkus);
-      })
-      .catch((err) => console.log('failed to get data, error: ', err));
-  }, [defaultIndex]);
-
-  useEffect(() => {
-    getData('/reviews/meta', {
-      product_id: productId,
-    })
-      .then((response) => {
-        setStars(calculateRatingAvg(Object.values(response.data.ratings)));
-      });
-  }, [reviewCount]);
+      }).catch((err) => console.log('err ', err));
+    }
+  }, [productStyles, defaultIndex]);
 
   const handleStyleClick = (event, index) => {
-    console.log('new style should re-render', index);
+    // console.log('new style should re-render', index);
     setDefaultIndex(index);
     setStyleName(event.target.name);
     // should reset size and qty dropdowns
@@ -146,18 +154,96 @@ const Overview = () => {
   };
 
   return (
-    <div id="overview">
-      <div id="overview-left">
-        <ImageGallery gallery={gallery} />
+    <Div id="overview-container">
+      <div id="overview">
+        <div id="overview-left">
+          <ImageGallery gallery={gallery} />
+        </div>
+        <div id="overview-right">
+          <ProductInfo category={category} name={name} slogan={slogan} description={description} price={price} sale={sale} stars={stars} reviewCount={reviewCount} />
+          <StyleSelect styles={styles} styleName={styleName} setStyleName={setStyleName} handleStyleClick={handleStyleClick} />
+          <AddToCart sku={sku} selectSize={selectSize} setSelectSize={setSelectSize} selectQty={selectQty} setSelectQty={setSelectQty} />
+        </div>
       </div>
-      <div id="overview-right">
-        <ProductInfo category={category} name={name} description={description} price={price} sale={sale} stars={stars} reviewCount={reviewCount} />
-        <StyleSelect styles={styles} styleName={styleName} setStyleName={setStyleName} handleStyleClick={handleStyleClick} />
-        <AddToCart sku={sku} selectSize={selectSize} setSelectSize={setSelectSize} selectQty={selectQty} setSelectQty={setSelectQty} />
-      </div>
-    </div>
+    </Div>
+
   );
 };
 
 
 export default Overview;
+
+// useEffect(() => {
+//   getData('/reviews/meta', {
+//     product_id: productId,
+//   })
+//     .then((response) => {
+//       setStars(calculateRatingAvg(Object.values(response.data.ratings)));
+//     });
+// }, [reviewCount]);
+
+// useEffect(() => {
+//   getData(`/products/${productId}`)
+//     .then((result) => {
+//       // console.log('products/id results: ', result.data);
+//       setCategory(result.data.category);
+//       setName(result.data.name);
+//       setSlogan(result.data.slogan);
+//       setDescription(result.data.description);
+//     })
+//     .catch((err) => console.log('failed to get data, error: ', err));
+
+//   getData('/reviews/meta', {
+//     product_id: productId,
+//   })
+//     .then((result) => {
+//       console.log('meta reviews: ', result.data.ratings);
+//       setReviewCount(getTotalRatings(result.data.ratings));
+//     })
+//     .catch((err) => console.log('failed to get data, error: ', err));
+
+//   getData(`/products/${productId}/styles`)
+//     .then((result) => {
+//       /* STYLES AND IMAGE GALLERY */
+//       // console.log('styles-result: ', result.data);
+//       const allStyles = result.data.results;
+//       const allPhotos = result.data.results[defaultIndex].photos.length === 1 ? noImageAvailable : result.data.results[defaultIndex].photos;
+
+//       /* PRODUCT INFO - PRICE */
+//       // console.log('styles-result: ', result.data.results[2])
+//       const originalPrice = result.data.results[defaultIndex].original_price;
+//       const salePrice = result.data.results[defaultIndex].sale_price;
+
+//       /* ADD TO CART */
+//       // console.log('testing skus before add to cart: ', Object.values(result.data.results[defaultIndex].skus).length);
+//       const allSkus = Object.values(result.data.results[defaultIndex].skus).length === 1 ? noSkusAvailable : Object.values(result.data.results[defaultIndex].skus);
+
+//       const displayStyles = allStyles.reduce((acc, style) => {
+//         const newStyle = { name: style.name, thumbnail: style.photos[0].thumbnail_url };
+//         acc.push(newStyle);
+//         return acc;
+//       }, []);
+
+//       const displayGallery = allPhotos.reduce((acc, style) => {
+//         acc.push(style.thumbnail_url);
+//         return acc;
+//       }, []);
+
+//       return {
+//         displayStyles,
+//         displayGallery,
+//         originalPrice,
+//         salePrice,
+//         allSkus,
+//       };
+//     })
+//     .then((response) => {
+//       // setStyleName(response.displayStyles[0].name);
+//       setStyles(response.displayStyles);
+//       setGallery(response.displayGallery);
+//       setPrice(response.originalPrice);
+//       setSale(response.salePrice);
+//       setSku(response.allSkus);
+//     })
+//     .catch((err) => console.log('failed to get data, error: ', err));
+// }, [defaultIndex]);

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 // import { Div } from '../../../../lib/styledComponents';
-import RBHeading from './RBHeading.jsx';
-import RBRender from './RBRender.jsx';
+import RatingHeading from './RatingHeading.jsx';
+import RatingRender from './RatingRender.jsx';
 import { getData } from '../../../../lib';
 
-const RatingBreakdown = () => {
+const RatingBreakdown = memo(() => {
 
   const [ratings, setRatings] = useState(null);
   const [totalRatings, setTotalRatings] = useState(null);
@@ -37,11 +37,11 @@ const RatingBreakdown = () => {
   return (
     <div data-testid="rating-breakdown">
       {ratings
-      && <RBHeading ratings={{ totalRatings, ratings, recommendedCt }} />}
+      && <RatingHeading ratings={{ totalRatings, ratings, recommendedCt }} />}
       {ratings
       && ratings.map((count, idx) => {
         return (
-          <RBRender
+          <RatingRender
             key={Math.random(idx * 54) * 10}
             ratings={{ rating: idx + 1, count, totalRatings }}
             onClick={clickRatingHandler}
@@ -50,6 +50,6 @@ const RatingBreakdown = () => {
       })}
     </div>
   );
-};
+});
 
 export default RatingBreakdown;
