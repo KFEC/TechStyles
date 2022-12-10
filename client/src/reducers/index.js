@@ -5,7 +5,7 @@ import {
 } from '../actions';
 
 const initialState = {
-  productId: '40348',
+  productId: '40352',
   productInfo: {},
   productMeta: {},
   productStyles: {},
