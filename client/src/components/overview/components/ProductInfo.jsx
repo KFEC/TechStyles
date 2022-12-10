@@ -51,8 +51,8 @@ const ProductInfo = ({
       <div>{name}</div>
       {reviewCount > 0 ? renderStars() : null}
       {typeof price === 'string' ? renderSale() : null}
-      <div>{slogan}</div>
-      <div>{description}</div>
+      {/* <div>{slogan}</div>
+      <div>{description}</div> */}
     </div>
   );
 };

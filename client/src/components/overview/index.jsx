@@ -3,18 +3,19 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateProductId } from '../../reducers';
 import { Div } from '../../lib/styledComponents';
-import {
-  getData,
-  postData,
-  patchData,
-  putData,
-  postAndGet,
-} from '../../lib/apiRoutes.js';
+// import {
+//   getData,
+//   postData,
+//   patchData,
+//   putData,
+//   postAndGet,
+// } from '../../lib/apiRoutes.js';
 import ImageGallery from './components/ImageGallery.jsx';
 import ProductInfo from './components/ProductInfo.jsx';
 // eslint-disable-next-line import/no-named-as-default
 import StyleSelect from './components/StyleSelect.jsx';
 import AddToCart from './components/AddToCart.jsx';
+import Description from './components/Description.jsx';
 import './assets/styles.css';
 
 const noImageAvailable = [{ thumbnail_url: 'https://i.imgur.com/fVQQcpc.png' }];
@@ -48,6 +49,7 @@ const Overview = () => {
   const [name, setName] = useState('');
   const [slogan, setSlogan] = useState('');
   const [description, setDescription] = useState('');
+  const [features, setFeatures] = useState([]);
 
   /* REVIEWS BASED STATES */
   const [stars, setStars] = useState(0);
@@ -79,6 +81,7 @@ const Overview = () => {
     setName(productInfo.name);
     setSlogan(productInfo.slogan);
     setDescription(productInfo.description);
+    setFeatures(productInfo.features);
   }, [productInfo]);
 
   useEffect(() => {
@@ -161,9 +164,14 @@ const Overview = () => {
         </div>
         <div id="overview-right">
           <ProductInfo category={category} name={name} slogan={slogan} description={description} price={price} sale={sale} stars={stars} reviewCount={reviewCount} />
-          <StyleSelect styles={styles} styleName={styleName} setStyleName={setStyleName} handleStyleClick={handleStyleClick} />
-          <AddToCart sku={sku} selectSize={selectSize} setSelectSize={setSelectSize} selectQty={selectQty} setSelectQty={setSelectQty} />
+          <div id="styles-cart-container">
+            <StyleSelect styles={styles} styleName={styleName} setStyleName={setStyleName} handleStyleClick={handleStyleClick} />
+            <AddToCart sku={sku} selectSize={selectSize} setSelectSize={setSelectSize} selectQty={selectQty} setSelectQty={setSelectQty} />
+          </div>
         </div>
+      </div>
+      <div id="overview-bottom">
+        <Description slogan={slogan} description={description} features={features} />
       </div>
     </Div>
 
