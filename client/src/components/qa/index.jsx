@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProductQuestions } from '../../actions';
 import { Div } from '../../lib/styledComponents';
 import { getData } from '../../lib/index.js';
 
@@ -7,26 +9,37 @@ import QuestionList from './components/QuestionList.jsx';
 
 const QA = () => {
 
-  const [questions, setQuestions] = useState([]);
-  const [filter, setFilter] = useState(questions);
+  const { productId, productInfo, productQuestions } = useSelector(state => state.product);
+  const dispatch = useDispatch();
+
+  const [filter, setFilter] = useState([]);
   const [update, setUpdate] = useState(false);
 
   useEffect(() => {
-    getData('/qa/questions', {
-      product_id: 40344,
-      count: 100,
-    })
-      .then((result) => {
-        setQuestions(result.data.results);
-        setFilter(result.data.results);
-      });
+    setFilter(productQuestions);
+  });
+
+  useEffect(() => {
+    dispatch(getProductQuestions({ url: '/qa/questions', params: { product_id: productId, count: 999 } }));
+    setFilter(productQuestions);
   }, [update]);
 
+  // useEffect(() => {
+  //   getData('/qa/questions', {
+  //     product_id: 40344,
+  //     count: 100,
+  //   })
+  //     .then((result) => {
+  //       setQuestions(result.data.results);
+  //       setFilter(result.data.results);
+  //     });
+  // }, [update]);
+
   const search = (query) => {
-    if (query.length < 3) setFilter(questions);
+    if (query.length < 3) setFilter(productQuestions);
     else {
       const filtered = [];
-      questions.forEach((question) => {
+      productQuestions.forEach((question) => {
         if (question.question_body.toLowerCase().includes(query.toLowerCase())) {
           filtered.push(question);
         }
@@ -37,9 +50,14 @@ const QA = () => {
 
   return (
     <Div>
-      I am QA
       <QuestionSearch search={search} />
-      <QuestionList id={40344} setUpdate={setUpdate} update={update} questions={filter} />
+      <QuestionList
+        pName={productInfo.name}
+        id={40344}
+        setUpdate={setUpdate}
+        update={update}
+        questions={filter}
+      />
     </Div>
   );
 };
