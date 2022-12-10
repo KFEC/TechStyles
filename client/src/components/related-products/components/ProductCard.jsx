@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Comparaison from './Comparaison.jsx';
 import {
   ButtonFloatRight,
@@ -11,6 +12,7 @@ import defaultImage from '../lib/images/noProductAvailable.png';
 // Image unavailable https://i.imgur.com/MyKhQau.png
 
 const ProductCard = ({ product: { productDetails, styles, meta } }) => {
+  const { productMeta } = useSelector((state) => state.product);
   const [openModal, setOpenModal] = useState(false);
   const [stars, setStars] = useState(0);
   const [reviewCount, setReviewCount] = useState(0);
@@ -36,26 +38,36 @@ const ProductCard = ({ product: { productDetails, styles, meta } }) => {
     return (totalStars / reviewCount);
   };
 
+  // useEffect(() => {
+  //   getData('/reviews/meta', {
+  //     product_id: productDetails.id,
+  //   })
+  //     .then((response) => {
+  //       const result = response.data.ratings;
+  //       setMainProductChars(response.data.characteristics); // main product chars for comparaison
+  //       setReviewCount(getTotalRatings(result));
+  //       return result;
+  //     })
+  //     .catch((err) => console.error(err));
+  // }, []);
+
+
+  // useEffect(() => {
+  //   getData('/reviews/meta', {
+  //     product_id: productDetails.id,
+  //   })
+  //     .then((response) => {
+  //       setStars(calculateRatingAvg(Object.values(response.data.ratings)));
+  //     });
+  // }, [reviewCount]);
+
   useEffect(() => {
-    getData('/reviews/meta', {
-      product_id: productDetails.id,
-    })
-      .then((response) => {
-        const result = response.data.ratings;
-        setMainProductChars(response.data.characteristics); // main product chars for comparaison
-        setReviewCount(getTotalRatings(result));
-        return result;
-      })
-      .catch((err) => console.error(err));
+    setMainProductChars(productMeta.characteristics); // main product chars for comparaison
+    setReviewCount(getTotalRatings(productMeta.ratings));
   }, []);
 
   useEffect(() => {
-    getData('/reviews/meta', {
-      product_id: productDetails.id,
-    })
-      .then((response) => {
-        setStars(calculateRatingAvg(Object.values(response.data.ratings)));
-      });
+    setStars(calculateRatingAvg(Object.values(productMeta.ratings)));
   }, [reviewCount]);
 
   /*
