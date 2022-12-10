@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IoClose } from 'react-icons/io5';
 import {
   Div,
   Button,
@@ -8,12 +9,13 @@ import {
 import { postData } from '../../../lib/index.js';
 
 const NewQuestion = ({
-  id, setDisplay, setUpdate, update,
+  pName, id, setDisplay, setUpdate, update,
 }) => {
 
   const [body, setBody] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [failed, setFailed] = useState(false);
 
   const regEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 
@@ -32,6 +34,11 @@ const NewQuestion = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!body.trim().length || !name.trim().length || !email.trim().length
+      || !regEmail.test(email)) {
+      setFailed(true);
+      return;
+    }
     console.log('New Question Submited!');
     console.log({ body, email, name });
     postData('/qa/questions', {
@@ -48,13 +55,35 @@ const NewQuestion = ({
   };
 
   return (
-    <ModalContent>
-      <CloseModalButton onClick={() => setDisplay(false)}>❌</CloseModalButton>
-      <h4>Add Question</h4>
+    <ModalContent id="QAForm">
+      {failed
+      && (
+        <ModalContent style={{
+          zIndex: '5',
+          margin: '5% auto',
+          border: '1px solid black',
+          width: '50%',
+        }}
+        >
+          <CloseModalButton style={{ fontSize: '0.5em' }} type="submit" onClick={() => setFailed(false)}>
+            <IoClose />
+          </CloseModalButton>
+          <div>
+            <div>You must enter the following.</div>
+            <div>Body</div>
+            <div>Name</div>
+            <div>Email</div>
+            <div>Email must be formatted correctly</div>
+          </div>
+        </ModalContent>
+      )}
+      <CloseModalButton style={{ height: '1em' }} onClick={() => setDisplay(false)}><IoClose /></CloseModalButton>
+      <div style={{ fontSize: '1.5em' }}>Ask Your Question</div>
+      <div style={{ fontSize: '1.2em' }}>{`About the ${pName}`}</div>
       <form onSubmit={handleSubmit}>
-        <Div>
-          <label htmlFor="question-body">
-            Body:
+        <div>
+          <label id="answer-label" htmlFor="question-body">
+            Body*
           </label>
           <br />
           <textarea
@@ -69,40 +98,49 @@ const NewQuestion = ({
             onChange={changeBody}
           />
           <p />
-          <label htmlFor="question-name">
-            Name:
+          <label id="answer-label" htmlFor="question-name">
+            Name*
           </label>
-          <input
+          <br />
+          <textarea
             id="question-name"
             maxLength="60"
+            style={{
+              width: '20em',
+              height: '3em',
+              resize: 'none',
+            }}
             placeholder="Example: jackson11!"
             value={name}
             onChange={changeName}
           />
           <br />
-          <span>For privacy reasons, do not use your full name or email address</span>
+          <span id="answer-warning">For privacy reasons, do not use your full name or email address</span>
           <p />
-          <label htmlFor="question-email">
-            Email:
+          <label id="answer-label" htmlFor="question-email">
+            Email*
           </label>
-          <input
+          <br />
+          <textarea
             id="question-email"
             maxLength="60"
+            style={{
+              width: '20em',
+              height: '3em',
+              resize: 'none',
+            }}
             placeholder="Why did you like the product or not?"
             value={email}
             onChange={changeEmail}
           />
           <br />
-          <span>For authentication reasons, you will not be emailed</span>
-        </Div>
-        <Button
-          onClick={() => setDisplay(false)}
-          disabled={
-            !name.trim().length
-            || !email.trim().length
-            || !body.trim().length
-            || !regEmail.test(email)
-          }
+          <span id="answer-warning">For authentication reasons, you will not be emailed</span>
+        </div>
+        <Button onClick={() => (
+          !failed
+          && regEmail.test(email)
+        )
+        && setDisplay(false)}
         >
           Submit
         </Button>

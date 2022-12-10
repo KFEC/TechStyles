@@ -3,10 +3,9 @@ import { Div, Button, Modal } from '../../../lib/styledComponents';
 
 import QuestionEntry from './QuestionEntry.jsx';
 import NewQuestion from './NewQuestion.jsx';
-import '../assets/styles.css';
 
 const QuestionList = ({
-  id, setUpdate, update, questions,
+  pName, id, setUpdate, update, questions,
 }) => {
 
   const [display, setDisplay] = useState(false);
@@ -47,16 +46,25 @@ const QuestionList = ({
               update={update}
               setFetch={setFetch}
               fetch={fetch}
+              pName={pName}
             />
           );
         })
         : null}
       <Modal changeDisplay={display}>
-        <NewQuestion id={id} setDisplay={setDisplay} setUpdate={setUpdate} update={update} />
+        <NewQuestion
+          pName={pName}
+          id={id}
+          setDisplay={setDisplay}
+          setUpdate={setUpdate}
+          update={update}
+        />
       </Modal>
-      {(currQuestions.length !== questions.length)
-        && <Button onClick={loadQuestions}>More Questions</Button>}
-      <Button onClick={() => setDisplay(true)}>Add a Question</Button>
+      <div className="QuestionButton">
+        {(currQuestions.length !== questions.length)
+          && <Button onClick={loadQuestions}>More Questions</Button>}
+        <Button onClick={() => setDisplay(true)}>Add a Question</Button>
+      </div>
     </div>
   );
 };

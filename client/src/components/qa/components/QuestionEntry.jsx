@@ -8,7 +8,7 @@ import NewAnswer from './NewAnswer.jsx';
 import '../assets/styles.css';
 
 const QuestionEntry = ({
-  question, update, setUpdate, fetch, setFetch,
+  question, update, setUpdate, fetch, setFetch, pName,
 }) => {
 
   const [display, setDisplay] = useState(false);
@@ -85,6 +85,8 @@ const QuestionEntry = ({
           : null}
         <Modal changeDisplay={display}>
           <NewAnswer
+            pName={pName}
+            qBody={question.question_body}
             id={question.question_id}
             setDisplay={setDisplay}
             setUpdate2={setUpdate2}

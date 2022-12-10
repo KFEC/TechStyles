@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProductQuestions } from '../../actions';
 import { Div } from '../../lib/styledComponents';
 import { getData } from '../../lib/index.js';
 
@@ -8,14 +9,20 @@ import QuestionList from './components/QuestionList.jsx';
 
 const QA = () => {
 
+  const { productId, productInfo, productQuestions } = useSelector(state => state.product);
+  const dispatch = useDispatch();
+
   const [filter, setFilter] = useState([]);
   const [update, setUpdate] = useState(false);
 
-  const { productId, productInfo, productQuestions } = useSelector(state => state.product);
-
   useEffect(() => {
     setFilter(productQuestions);
-  }, [productId]);
+  });
+
+  useEffect(() => {
+    dispatch(getProductQuestions({ url: '/qa/questions', params: { product_id: productId, count: 999 } }));
+    setFilter(productQuestions);
+  }, [update]);
 
   // useEffect(() => {
   //   getData('/qa/questions', {
@@ -43,9 +50,9 @@ const QA = () => {
 
   return (
     <Div>
-      I am QA
       <QuestionSearch search={search} />
       <QuestionList
+        pName={productInfo.name}
         id={40344}
         setUpdate={setUpdate}
         update={update}

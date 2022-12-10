@@ -10,7 +10,7 @@
 .QList {
   width: 100%;
   max-width: 100%;
-  max-height: 100vh;
+  max-height: 60vh;
   overflow-y:hidden;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -25,7 +25,7 @@
 .AList {
   width: 100%;
   max-width: 100%;
-  max-height: 50vh;
+  max-height: 30vh;
   overflow-y:hidden;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -35,4 +35,20 @@
   overflow-y:auto;
   overflow-x: hidden;
   scroll-behavior: smooth;
+}
+
+#QAForm {
+  display: grid;
+  grid-auto-rows: min-content;
+  justify-content: center;
+}
+
+#answer-label {
+  font-weight: bold;
+  font-variant: small-caps;
+}
+
+#answer-warning {
+  font-size: 0.8em;
+  font-style: italic;
 }
