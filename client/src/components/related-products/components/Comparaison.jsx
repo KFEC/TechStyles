@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import '../lib/myStyles.css';
 
 import {
@@ -13,7 +14,18 @@ which appear on the Overview module for each product separately.
 In the comparison modal, all characteristics for both products will be
 combined and reconciled against one another.
 */
-const Comparaison = ({ setOpenModal, comparedProduct, mainProductChars }) => {
+const Comparaison = ({
+  setOpenModal,
+  comparedProductDetails,
+  comparedProductChars,
+}) => {
+  const {
+    productId,
+    productInfo,
+    productMeta,
+  } = useSelector((state) => state.product);
+  // console.log('product info:', productInfo);
+  // console.log('compared product', comparedProductDetails);
   // console.log('chars ', mainProductChars);
   // map
   // need chars of the current product and the related product
@@ -35,9 +47,9 @@ const Comparaison = ({ setOpenModal, comparedProduct, mainProductChars }) => {
         <caption>Comparing</caption>
         <thead>
           <tr>
-            <th>currentProduct.name</th>
+            <th>{productInfo.name}</th>
             <th> </th>
-            <th>{comparedProduct.name}</th>
+            <th>{comparedProductDetails.name}</th>
           </tr>
         </thead>
         <tbody>

@@ -50,3 +50,31 @@ th:third-child, td:third-child {
   text-align: center;
   bottom: 0;
 }
+
+#related-product-container {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+  height: 80%;
+}
+
+.StarsRelatedProducts {
+  --percent: calc(var(--rating) / 5 * 100%);
+  --star-size: 1em;
+  --star-color: rgba(173, 173, 173, 0.685);
+  --star-background: rgb(227, 148, 231);
+  display: inline-block;
+  font-size: var(--star-size);
+  font-family: Times;
+  line-height: 1;
+}
+
+.StarsRelatedProducts:before {
+  content: '★★★★★';
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

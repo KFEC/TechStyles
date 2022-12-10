@@ -7,28 +7,28 @@ import {
   ComparaisonModal,
 } from '../lib/styledComponents';
 
-const ProductCardYourOutfit = ({ outfitItem, outfitItems, setOutfitItems }) => {
+const ProductCardYourOutfit = ({
+  outfitItem, outfitItems,
+  setOutfitItems,
+  idxOfItem,
+}) => {
   const [openModal, setOpenModal] = useState(false);
-  // console.log(outfitItem);
+  console.log('-> outfitItem: ', outfitItem);
+  // console.log('outfitItems :', outfitItems);
+
   let image = '';
-  for (let i = 0; i < outfitItem.results.length; i += 1) {
-    if (outfitItem.results[i]['default?'] === true) {
-      image = outfitItem.results[i].photos[0].thumbnail_url;
+  for (let i = 0; i < outfitItem.styles.length; i += 1) {
+    if (outfitItem.styles[i]['default?'] === true) {
+      image = outfitItem.styles[i].photos[0].thumbnail_url;
       break;
     }
   }
   const deleteItem = () => {
     // console.log(outfitItem.product_id);
-    for (let i = 0; i < outfitItems.length; i += 1) {
-      // console.log(outfitItems[i]);
-      if (outfitItems[i].product_id === outfitItem.product_id) {
-        const copy = [...outfitItems];
-        // console.log(copy);
-        copy.splice(i, 1);
-        // console.log(copy);
-        setOutfitItems(copy);
-      }
-    }
+    const copy = [...outfitItems];
+    copy.splice(idxOfItem, 1);
+    setOutfitItems(copy);
+    localStorage.setItem('outfits', JSON.stringify([...copy]));
   };
   // console.log(image);
 
@@ -38,12 +38,12 @@ const ProductCardYourOutfit = ({ outfitItem, outfitItems, setOutfitItems }) => {
         <ButtonFloatRight type="button" onClick={deleteItem}>x</ButtonFloatRight>
       </div>
       <div>
-        <ImageRelatedProduct src={image} alt={outfitItem.results[0].name} />
+        <ImageRelatedProduct src={image} alt={outfitItem.name} />
       </div>
       <div className="textCentered">
-        <p>category</p>
-        <p>{outfitItem.results[0].name}</p>
-        <p>{outfitItem.results[0].original_price}</p>
+        <p>{outfitItem.category}</p>
+        <p>{outfitItem.name}</p>
+        <p>{outfitItem.styles[0].original_price}</p>
         <p>rating</p>
       </div>
     </Card>
