@@ -37,17 +37,22 @@ const YourOutfit = () => {
     };
     // check if item already present in outfits items
     if (outfitItems.length > 0) {
+      console.log('>0');
+      console.log('outfititem length: ', outfitItems.length);
       for (let i = 0; i < outfitItems.length; i += 1) {
-        if (outfitItems[i].product_id === productId) {
+        console.log(typeof outfitItems[i].product_id.toString(), typeof productId);
+        if (outfitItems[i].product_id.toString() === productId) {
+          console.log('true');
           break;
         } else if (i === outfitItems.length - 1) {
           setOutfitItems([...outfitItems, ItemObject]);
           localStorage.setItem('outfits', JSON.stringify([...outfitItems, ItemObject]));
         }
       }
-    } else {
+    } else if (outfitItems.length === 0) {
+      console.log('0');
       localStorage.setItem('outfits', JSON.stringify([ItemObject]));
-      setOutfitItems([ItemObject]);
+      setOutfitItems([...outfitItems, ItemObject]);
     }
   };
   return (
