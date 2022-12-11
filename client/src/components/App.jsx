@@ -13,7 +13,8 @@ import Overview from './overview/index.jsx';
 import RelatedProducts from './related-products/index.jsx';
 import QA from './qa/index.jsx';
 import Reviews from './Reviews/index.jsx';
-import { Wrapper, Div } from '../lib/styledComponents';
+import Footer from './Footer.jsx';
+import { AppDiv, Wrapper, Div } from '../lib/styledComponents';
 
 const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -105,13 +106,14 @@ const App = () => {
   }
 
   return (
-    <Div data-testid="app-1">
-      <Wrapper><h1>TechStyles</h1></Wrapper>
+    <AppDiv data-testid="app-1">
+      <Wrapper><img id="app-logo" src="./fec-logo.png" alt="TechStyles" /></Wrapper>
       <Overview />
       <RelatedProducts />
       <QA />
       <Reviews />
-    </Div>
+      <Footer />
+    </AppDiv>
   );
 };
 
