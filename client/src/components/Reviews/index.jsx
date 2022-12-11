@@ -35,7 +35,7 @@ const Reviews = () => {
   }, [filter, update]);
 
   return (
-    <Div id="reviews">
+    <div id="reviews">
       <div className="grid-reviews">
         <div className="rating-breakdown">
           <RatingBreakdown />
@@ -44,15 +44,13 @@ const Reviews = () => {
           <CharacteristicBreakdown />
         </div>
         <div className="review-list">
-          <div>
-            {`${reviews.length} reviews, sorted by `}
-            <select onChange={(e) => setFilter(e.target.value)}>
-              <option value="relevant">Relevant</option>
-              <option value="newest">Newest</option>
-              <option value="helpful">Helpful</option>
-            </select>
-          </div>
-          <ReviewList reviews={currReviews} update={update} setUpdate={setUpdate} />
+          <ReviewList
+            reviews={currReviews}
+            update={update}
+            setUpdate={setUpdate}
+            setFilter={setFilter}
+            allReviews={reviews}
+          />
           {(currReviews.length !== reviews.length)
         && <Button onClick={loadReviews}>Load More</Button>}
           <Button onClick={() => setDisplay(true)}>Create Review</Button>
@@ -63,7 +61,7 @@ const Reviews = () => {
           </Modal>
         </div>
       </div>
-    </Div>
+    </div>
   );
 };
 

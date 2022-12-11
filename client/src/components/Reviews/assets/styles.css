@@ -172,7 +172,98 @@
   text-align: right;
 }
 
-.review-list-comp {
-  max-height: 60vh;
+.review-list {
+  max-height: 90vh;
   overflow-y: auto;
+}
+
+.review-list-comp {
+  display: grid;
+  border: solid 5px rgb(89, 92, 73);
+  border-radius: 2em;
+  grid-auto-columns: 1fr 1fr 1fr 1fr;
+  gap: 1em;
+  margin: 1.5em;
+  padding: 1em;
+  grid-template-areas:
+  'stars stars'
+  'user date'
+  'sum sum'
+  'bod bod'
+  'rec rec'
+  'res res'
+  'img img'
+  'helpful report';
+}
+
+@media (min-width: 50em) {
+  .review-list-comp {
+    grid-template-areas:
+    'stars stars user date'
+    'sum sum sum sum'
+    'bod bod bod bod'
+    'rec rec rec rec'
+    'res res res res'
+    'img img img img'
+    'helpful report report report';
+  }
+}
+
+.reviews-stars {
+  grid-area: stars;
+}
+
+.reviews-user {
+  grid-area: user;
+  justify-self: right;
+  font-style: italic;
+}
+
+.reviews-date {
+  grid-area: date;
+  justify-self: center;
+}
+
+.reviews-summary {
+  grid-area: sum;
+  font-weight: 400;
+}
+
+.reviews-body {
+  grid-area: bod;
+}
+
+.reviews-recommended {
+  grid-area: rec;
+}
+
+.reviews-response {
+  grid-area: res;
+}
+
+.reviews-img-container {
+  grid-area: img;
+  display: flex;
+  width: fit-content;
+  justify-content: space-between;
+  padding: 0.5em;
+  border: solid 2px rgb(89, 92, 73);
+  border-radius: 2em;
+}
+
+.reviews-img {
+  padding-left: 0.65em;
+  padding-right: 0.65em;
+  width: 65px;
+  height: 65px;
+}
+
+.reviews-helpful {
+  grid-area: helpful;
+  font-style: italic;
+}
+
+.reviews-report {
+  grid-area: report;
+  font-weight: 400;
 }

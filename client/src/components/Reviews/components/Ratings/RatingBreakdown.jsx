@@ -1,5 +1,5 @@
 import React, { useState, useEffect, memo } from 'react';
-// import { Div } from '../../../../lib/styledComponents';
+import { useSelector } from 'react-redux';
 import RatingHeading from './RatingHeading.jsx';
 import RatingRender from './RatingRender.jsx';
 import { getData } from '../../../../lib';
@@ -8,8 +8,10 @@ const RatingBreakdown = memo(() => {
 
   const [ratings, setRatings] = useState(null);
   const [totalRatings, setTotalRatings] = useState(null);
-  const [recommendedCt, setRecommendedCt] = useState(null);
 
+  const {
+    relatedProducts, productMeta, productReviews: { stars, recommended, totalReviews },
+  } = useSelector((state) => state.product);
   const clickRatingHandler = (e) => {
     console.log(e.target);
   };
@@ -23,27 +25,35 @@ const RatingBreakdown = memo(() => {
   };
 
   useEffect(() => {
-    getData('/reviews/meta', {
-      product_id: 40347,
-    })
-      .then((response) => {
-        setRatings(Object.values(response.data.ratings));
-        setTotalRatings(getTotalRatings(response.data.ratings));
-        setRecommendedCt(response.data.recommended);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+    if (Object.values(productMeta).length > 0) {
+      setRatings(Object.values(productMeta.ratings));
+      setTotalRatings(getTotalRatings(productMeta.ratings));
+    }
+  }, [productMeta]);
+
+  // useEffect(() => {
+  //   getData('/reviews/meta', {
+  //     product_id: 40347,
+  //   })
+  //     .then((response) => {
+  //       setRatings(Object.values(response.data.ratings));
+  //       setTotalRatings(getTotalRatings(response.data.ratings));
+  //     })
+  //     .catch((err) => console.error(err));
+  // }, []);
 
   return (
     <div data-testid="rating-breakdown">
-      {ratings
-      && <RatingHeading ratings={{ totalRatings, ratings, recommendedCt }} />}
-      {ratings
+      {Object.values(relatedProducts).length > 0
+      && <RatingHeading stars={stars} recommended={recommended} /> }
+      {Object.values(relatedProducts).length > 0 && ratings
       && ratings.map((count, idx) => {
         return (
           <RatingRender
             key={Math.random(idx * 54) * 10}
-            ratings={{ rating: idx + 1, count, totalRatings }}
+            totalReviews={totalReviews}
+            stars={stars}
+            rating={{ rating: idx + 1, count }}
             onClick={clickRatingHandler}
           />
         );

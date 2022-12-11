@@ -3,12 +3,21 @@ import { Div } from '../../../../lib/styledComponents';
 import ReviewListEntry from './ReviewListEntry.jsx';
 
 
-const ReviewList = ({ reviews, update, setUpdate }) => {
+const ReviewList = ({
+  reviews, update, setUpdate, setFilter, allReviews,
+}) => {
 
 
   return (
-    <Div className="review-list-comp">
-      Review List
+    <div>
+      <div>
+        {`${allReviews.length} reviews, sorted by `}
+        <select onChange={(e) => setFilter(e.target.value)}>
+          <option value="relevant">Relevant</option>
+          <option value="newest">Newest</option>
+          <option value="helpful">Helpful</option>
+        </select>
+      </div>
       {reviews.map(review => (
         <ReviewListEntry
           key={review.review_id}
@@ -17,7 +26,7 @@ const ReviewList = ({ reviews, update, setUpdate }) => {
           setUpdate={setUpdate}
         />
       ))}
-    </Div>
+    </div>
   );
 };
 

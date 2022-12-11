@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import CharacteristicEntry from './CharacteristicEntry.jsx';
 import CharacteristicHeading from './CharacteristicHeading.jsx';
 import { getData } from '../../../../lib';
 import { allCharOptions } from '../../lib';
 
-const CharacteristicBreakdown = () => {
+const CharacteristicBreakdown = memo(() => {
 
   const [characteristics, setCharacteristics] = useState();
 
@@ -35,6 +35,6 @@ const CharacteristicBreakdown = () => {
     </div>
   );
 
-};
+});
 
 export default CharacteristicBreakdown;
