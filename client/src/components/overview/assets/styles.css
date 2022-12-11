@@ -365,7 +365,7 @@ border: 5px dashed coral; */
 	font-size: 25px;
 	font-style: italic;
 	font-weight: 300;
-	padding: 5px;
+	padding-bottom: 5px;
 }
 
 #description {

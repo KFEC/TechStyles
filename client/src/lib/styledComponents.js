@@ -25,11 +25,23 @@ const Button = styled.button`
   };
 `;
 
+const AppDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  margin: 1em;
+  padding: 0.25em;
+  border: 2px solid black;
+`;
+
 const Div = styled.div`
   background-color: #fff;
   margin: 0.25em;
-  padding: 0.25em;
+  padding: 2em;
   border: 2px solid black;
+  width: 85%;
+  background-color: #fff;
 `;
 
 const Wrapper = styled.section`
@@ -136,6 +148,7 @@ const Stars = styled.span`
 export {
   Button,
   Wrapper,
+  AppDiv,
   Div,
   Modal,
   SocialMediaModal,

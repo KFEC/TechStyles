@@ -10,7 +10,7 @@ import Overview from './overview/index.jsx';
 import RelatedProducts from './related-products/index.jsx';
 import QA from './qa/index.jsx';
 import Reviews from './Reviews/index.jsx';
-import { Wrapper, Div } from '../lib/styledComponents';
+import { AppDiv, Wrapper, Div } from '../lib/styledComponents';
 
 const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -89,13 +89,13 @@ const App = () => {
   }
 
   return (
-    <Div data-testid="app-1">
+    <AppDiv data-testid="app-1">
       <Wrapper><h1>TechStyles</h1></Wrapper>
       <Overview />
       <RelatedProducts />
       <QA />
       <Reviews />
-    </Div>
+    </AppDiv>
   );
 };
 

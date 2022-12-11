@@ -24,7 +24,7 @@ const noSkusAvailable = [{ quantity: null, size: 'OUT OF STOCK' }];
 const Overview = () => {
   /* REDUX STATES REFACTOR */
   const {
-    productId, productInfo, productMeta, productStyles,
+    productId, productInfo, productMeta, productStyles, productReviews,
   } = useSelector((state) => state.product);
 
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const Overview = () => {
   const [defaultIndex, setDefaultIndex] = useState(0);
   const [carouselIndex, setCarouselIndex] = useState([0, 6]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  // 40344 40345 440348 40350
+
   /* STYLE BASED STATES */
   const [styles, setStyles] = useState([]); // displays first photo thumbnail of each style
   const [gallery, setGallery] = useState([]); // displays all photos of ONE style
@@ -52,26 +52,26 @@ const Overview = () => {
   const [description, setDescription] = useState('');
   const [features, setFeatures] = useState([]);
 
-  /* REVIEWS BASED STATES */
-  const [stars, setStars] = useState(0);
-  const [reviewCount, setReviewCount] = useState(0);
+  // /* REVIEWS BASED STATES */
+  // const [stars, setStars] = useState(0);
+  // const [reviewCount, setReviewCount] = useState(0);
 
-  /* STAR FUNCTIONS */
-  const getTotalRatings = (receivedRatings) => {
-    return Object.values(receivedRatings)
-      .reduce((acc, rating) => {
-        acc += Number(rating);
-        return acc;
-      }, 0);
-  };
+  // /* STAR FUNCTIONS */
+  // const getTotalRatings = (receivedRatings) => {
+  //   return Object.values(receivedRatings)
+  //     .reduce((acc, rating) => {
+  //       acc += Number(rating);
+  //       return acc;
+  //     }, 0);
+  // };
 
-  const calculateRatingAvg = (data) => {
-    const totalStars = data.reduce((acc, rating, index) => {
-      acc += Number(rating) * (index + 1);
-      return acc;
-    }, 0);
-    return (totalStars / reviewCount);
-  };
+  // const calculateRatingAvg = (data) => {
+  //   const totalStars = data.reduce((acc, rating, index) => {
+  //     acc += Number(rating) * (index + 1);
+  //     return acc;
+  //   }, 0);
+  //   return (totalStars / reviewCount);
+  // };
 
   // useEffect(() => {
   //   dispatch(updateProductId('40350'));
@@ -83,19 +83,26 @@ const Overview = () => {
     setSlogan(productInfo.slogan);
     setDescription(productInfo.description);
     setFeatures(productInfo.features);
-  }, [productInfo]);
 
-  useEffect(() => {
-    if (Object.keys(productMeta).length > 0) {
-      setReviewCount(getTotalRatings(productMeta.ratings));
-    }
-  }, [productMeta]);
+    setDefaultIndex(0);
+    setStyleName('');
+    setSelectSize('');
+    setSelectQty(0);
+    setCarouselIndex([0, 6]);
+    setCurrentIndex(0);
+  }, [productId, productInfo]);
 
-  useEffect(() => {
-    if (Object.keys(productMeta).length > 0) {
-      setStars(calculateRatingAvg(Object.values(productMeta.ratings)));
-    }
-  }, [reviewCount]);
+  // useEffect(() => {
+  //   if (Object.keys(productMeta).length > 0) {
+  //     setReviewCount(getTotalRatings(productMeta.ratings));
+  //   }
+  // }, [productMeta]);
+
+  // useEffect(() => {
+  //   if (Object.keys(productMeta).length > 0) {
+  //     setStars(calculateRatingAvg(Object.values(productMeta.ratings)));
+  //   }
+  // }, [productId, reviewCount]);
 
   const asyncStyles = async () => {
     try {
@@ -146,7 +153,7 @@ const Overview = () => {
         setSku(response.allSkus);
       }).catch((err) => console.log('err ', err));
     }
-  }, [productStyles, defaultIndex]);
+  }, [productId, productStyles, defaultIndex]);
 
   const handleStyleClick = (event, index) => {
     // console.log('new style should re-render', index);
@@ -167,7 +174,7 @@ const Overview = () => {
           <ImageGallery gallery={gallery} carouselIndex={carouselIndex} setCarouselIndex={setCarouselIndex} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
         </div>
         <div id="overview-right">
-          <ProductInfo category={category} name={name} slogan={slogan} description={description} price={price} sale={sale} stars={stars} reviewCount={reviewCount} />
+          <ProductInfo category={category} name={name} slogan={slogan} description={description} price={price} sale={sale} stars={productReviews.stars} reviewCount={productReviews.totalReviews} />
           <div id="styles-cart-container">
             <StyleSelect styles={styles} styleName={styleName} setStyleName={setStyleName} handleStyleClick={handleStyleClick} />
             <AddToCart sku={sku} selectSize={selectSize} setSelectSize={setSelectSize} selectQty={selectQty} setSelectQty={setSelectQty} />

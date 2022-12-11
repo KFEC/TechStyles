@@ -12,6 +12,7 @@
   'rb'
   'pb'
   'review';
+  padding: 5em;
 }
 
 .rating-breakdown {
@@ -66,8 +67,8 @@
 
 .rb-avg {
   justify-self: left;
-  font-size: 2.5em;
-  font-weight: bold;
+  font-size: 2em;
+  font-weight: 500;
 }
 
 .rb-recommended {
@@ -193,8 +194,8 @@
   display: grid;
   background: linear-gradient(#fff, #fff) padding-box,
               linear-gradient(to top, rgb(87, 87, 87), #f6f5f2) border-box;
-  border-radius: 2em;
-  border: 3px solid transparent;
+  border-radius: 0.5em;
+  border: 2px solid transparent;
   grid-auto-columns: 1fr 1fr 1fr 1fr;
   gap: 1em;
   margin: 1.5em;

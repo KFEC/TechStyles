@@ -30,10 +30,8 @@ html {
   font-family: 'Work Sans', sans-serif;
   font-weight: 300px;
   background-color: #fff;
-}
-
-#app-1 {
-  background-color: #fff;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 body {
@@ -125,3 +123,7 @@ table {
   overflow: hidden;
   background-color: rgb(109, 109, 109);
 }
+
+/* #reviews {
+  width: 75%;
+} */
