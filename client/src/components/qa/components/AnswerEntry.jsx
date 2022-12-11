@@ -32,21 +32,24 @@ const AnswerEntry = ({ answer, setUpdate2, update2 }) => {
   };
 
   return (
-    <Div style={{ border: 'none', backgroundColor: 'rgb(252, 234, 208)' }}>
-      <span style={{ fontWeight: 'bold', fontSize: 'large' }}>A:</span>
+    <Div style={{ border: 'none', borderBottom: '1px solid grey', backgroundColor: '#fff' }}>
+      <span style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: '500', fontSize: '16px' }}>A: </span>
       {answer.body}
-      <div>
+      <div style={{
+        color: '#3A3B3C', fontFamily: 'Noto Sans, sans-serif', fontWeight: '400', fontSize: '14px',
+      }}
+      >
         by
         {` ${answer.answerer_name},`}
         {` ${date.toLocaleDateString('en-US', dateOptions)} |`}
         {' Helpful? '}
-        <button type="button" className="button-link" onClick={helpfulAnswer}>
+        <button type="button" className="button-link helpful" onClick={helpfulAnswer}>
           Yes
         </button>
         {` (${answer.helpfulness}) |`}
         {!reported
           ? (
-            <button type="button" className="button-link" onClick={reportAnswer}>
+            <button type="button" className="button-link report" onClick={reportAnswer}>
               Report
             </button>
           )
