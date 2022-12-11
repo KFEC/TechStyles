@@ -1,10 +1,21 @@
 import React, { useState } from 'react';
+import { HiCheck } from 'react-icons/hi';
 
 const Description = ({ slogan, description, features }) => {
   const renderFeatures = () => {
     return (
       features.map((feature, index) => {
-        return (<div className="feature" key={Math.random(index * 54) * 10}>{`${feature.feature} - ${feature.value}`}</div>);
+        return (
+          <div className="checkmark-feature-container">
+            <HiCheck
+              className="checkmark-icon"
+              style={{
+                color: '#434E61', fontSize: '1em',
+              }}
+            />
+            <div className="feature" key={Math.random(index * 54) * 10}>{`${feature.feature} - ${feature.value}`}</div>
+          </div>
+        );
       })
     );
   };
