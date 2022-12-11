@@ -19,6 +19,7 @@ const getData = async ({ url, params = {} }, options) => {
 };
 
 const getRelatedProductsData = async (productId) => {
+  console.log('making get request');
   try {
     const relatedProducts = await getData({ url: `/products/${productId}/related` });
     const mappedData = await Promise.all(relatedProducts.map(async (product) => {
@@ -43,6 +44,7 @@ const getProductInfo = createAsyncThunk('product/getProductInfo', getData);
 const getProductMeta = createAsyncThunk('product/getProductMeta', getData);
 const getProductStyles = createAsyncThunk('product/getProductStyles', getData);
 const getProductQuestions = createAsyncThunk('product/getProductQuestions', getData);
+const getProductReviews = createAsyncThunk('product/getProductReviews', getData);
 const getRelatedProducts = createAsyncThunk('product/getRelatedProducts', getRelatedProductsData);
 
 export {
@@ -51,4 +53,5 @@ export {
   getProductStyles,
   getProductQuestions,
   getRelatedProducts,
+  getProductReviews,
 };

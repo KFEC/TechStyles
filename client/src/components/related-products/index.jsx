@@ -17,7 +17,7 @@ const RelatedProducts = () => {
   } = useSelector((state) => state.product);
   return (
     <Div>
-      { relatedProducts.length > 0
+      { relatedProducts.length > 0 && Object.keys(relatedProducts).length > 0
       && (
         <div>
           Related Products
