@@ -102,13 +102,16 @@ table {
 }
 
 .link-text {
+  font-family: 'Work Sans', sans-serif;
+  text-transform: uppercase;
   color:rgb(180, 243, 243);
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 300;
   text-decoration: none;
 }
 
 .nav-li:hover {
-  background-color: rgb(218, 129, 129);
+  background-color: rgb(212, 228, 248, 0.50);
 }
 
 .nav-ul {
