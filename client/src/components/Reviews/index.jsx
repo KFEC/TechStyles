@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import {
   RatingBreakdown, CharacteristicBreakdown, ReviewForm, ReviewList,
 } from './components';
@@ -13,6 +14,7 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [update, setUpdate] = useState(false);
   const [filter, setFilter] = useState('relevant');
+  const { productId } = useSelector((state) => state.product);
 
   const loadReviews = () => {
     setCurrReviews(reviews.slice(0, reviewCounter + 2));
@@ -21,8 +23,8 @@ const Reviews = () => {
 
   const filterReviews = (sort) => {
     getData('/reviews', {
-      product_id: 40444,
-      count: 100,
+      product_id: productId,
+      count: 6969,
       sort,
     }).then((res) => {
       setReviews(res.data.results);
@@ -35,24 +37,22 @@ const Reviews = () => {
   }, [filter, update]);
 
   return (
-    <Div id="reviews">
+    <div id="reviews">
       <div className="grid-reviews">
         <div className="rating-breakdown">
-          <RatingBreakdown />
+          <RatingBreakdown setCurrReviews={setCurrReviews} />
         </div>
         <div className="product-breakdown">
           <CharacteristicBreakdown />
         </div>
         <div className="review-list">
-          <div>
-            {`${reviews.length} reviews, sorted by `}
-            <select onChange={(e) => setFilter(e.target.value)}>
-              <option value="relevant">Relevant</option>
-              <option value="newest">Newest</option>
-              <option value="helpful">Helpful</option>
-            </select>
-          </div>
-          <ReviewList reviews={currReviews} update={update} setUpdate={setUpdate} />
+          <ReviewList
+            reviews={currReviews}
+            update={update}
+            setUpdate={setUpdate}
+            setFilter={setFilter}
+            allReviews={reviews}
+          />
           {(currReviews.length !== reviews.length)
         && <Button onClick={loadReviews}>Load More</Button>}
           <Button onClick={() => setDisplay(true)}>Create Review</Button>
@@ -63,7 +63,7 @@ const Reviews = () => {
           </Modal>
         </div>
       </div>
-    </Div>
+    </div>
   );
 };
 

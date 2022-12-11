@@ -1,38 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
-const RatingHeading = ({ ratings: { ratings, totalRatings, recommendedCt } }) => {
+const RatingHeading = () => {
 
-  const [avgRating, setAvgRating] = useState(null);
-  const [avgRecommendation, setAvgRecommendation] = useState(null);
-
-  const calculateRatingAvg = () => {
-    const totalStars = ratings.reduce((acc, rating, idx) => {
-      acc += Number(rating) * (idx + 1);
-      return acc;
-    }, 0);
-    return (totalStars / totalRatings);
-  };
-
-  const calculateRecommendedAvg = () => {
-    const totalRecommendations = Number(recommendedCt.false) + Number(recommendedCt.true);
-    return Math.round((Number(recommendedCt.true) / totalRecommendations) * 100);
-  };
-
-  useEffect(() => {
-    setAvgRating(calculateRatingAvg());
-    setAvgRecommendation(calculateRecommendedAvg());
-  }, []);
+  const { productReviews: { stars, recommended } } = useSelector((state) => state.product);
 
   return (
     <div className="rb-heading">
-      {avgRating
-      && (
-        <div className="rb-heading-container">
-          <span className="rb-avg">{Math.round(avgRating * 10) / 10}</span>
-          <span className="Stars rb-stars" style={{ '--rating': avgRating }} />
-          <h5>{`${avgRecommendation}% of people recommend this product`}</h5>
+      <div className="rb-heading-container">
+        <div className="rb-stars-container">
+          <span className="rb-avg">{stars}</span>
+          <span className="Stars rb-stars" style={{ '--rating': stars }} />
         </div>
-      )}
+        <div className="rb-recommended">{`${recommended}% of reviews recommended this product`}</div>
+      </div>
     </div>
   );
 };

@@ -6,6 +6,11 @@ import {
 
 const initialState = {
   productId: '40344',
+  productReviews: {
+    stars: 0,
+    recommended: 0,
+    totalReviews: 0,
+  },
   productInfo: {},
   productMeta: {},
   productStyles: {},
@@ -19,6 +24,15 @@ const productSlice = createSlice({
   reducers: {
     updateProductId: (state, action) => {
       state.productId = action.payload;
+    },
+    updateProductStars: (state, action) => {
+      state.productReviews.stars = action.payload;
+    },
+    updateProductRecommended: (state, action) => {
+      state.productReviews.recommended = action.payload;
+    },
+    updateProductTotalReviews: (state, action) => {
+      state.productReviews.totalReviews = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -41,6 +55,9 @@ const productSlice = createSlice({
   },
 });
 
-export const { updateProductId } = productSlice.actions;
+export const {
+  updateProductId, updateProductStars, updateProductRecommended,
+  updateProductTotalReviews,
+} = productSlice.actions;
 
 export default productSlice.reducer;

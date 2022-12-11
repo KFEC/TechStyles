@@ -4,10 +4,6 @@
   display: flex;
 }
 
-#reviews {
-  font-family: 'Palatino Linotype', 'Book Antiqua';
-}
-
 .grid-reviews {
   display: grid;
   gap: 1em;
@@ -19,17 +15,14 @@
 }
 
 .rating-breakdown {
-  background-color: rgb(252, 234, 208);
   grid-area: rb;
 }
 
 .product-breakdown {
-  background-color: rgb(252, 234, 208);
   grid-area: pb;
 }
 
 .review-list {
-  background-color: rgb(252, 234, 208);
   grid-area: review;
 }
 
@@ -66,13 +59,32 @@
 
 /* Rating Breakdown Styling */
 
-.rating-breakdown-heading {
+.rb-heading {
   display: grid;
   justify-content: center;
 }
 
-.rating-breakdown-heading-container {
-  justify-items:  center;
+.rb-avg {
+  justify-self: left;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.rb-recommended {
+  font-weight: italic;
+  font-size: 1em;
+}
+
+.rb-stars {
+  justify-self: right;
+}
+
+.rb-stars-container {
+  justify-content: space-between;
+}
+
+.rb-heading-container {
+  display: grid;
 }
 
 .ratings-bar-container {
@@ -88,7 +100,7 @@
   background: rgba(173, 173, 173, 0.685);
   border-radius: 0.4em;
   text-transform: uppercase;
-  margin: 1em auto;
+  margin: 0.5em auto;
 }
 
 .ratings-area {
@@ -118,7 +130,7 @@
   height: 1.7em;
   position: relative;
   border-radius: 0.4em;
-  background-color: #94e298;
+  background-color: #bbe2bd;
 }
 
 @keyframes animate-breakdown {
@@ -129,7 +141,7 @@
 /* Product Breakdown Styles */
 
 .breakdown-category {
-  margin: 1em;
+  margin: 2em;
 }
 
 .pb-char-bar {
@@ -137,7 +149,7 @@
   position: relative;
   width: 100%;
   height: 0.75em;
-  background-color: #ddd;
+  background-color: rgba(173, 173, 173, 0.685);
 }
 
 .pb-style-value {
@@ -172,7 +184,118 @@
   text-align: right;
 }
 
-.review-list-comp {
-  max-height: 60vh;
+.review-list {
+  max-height: 90vh;
   overflow-y: auto;
+}
+
+.review-list-comp {
+  display: grid;
+  background: linear-gradient(#fff, #fff) padding-box,
+              linear-gradient(to top, rgb(87, 87, 87), #f6f5f2) border-box;
+  border-radius: 2em;
+  border: 3px solid transparent;
+  grid-auto-columns: 1fr 1fr 1fr 1fr;
+  gap: 1em;
+  margin: 1.5em;
+  padding: 1em;
+  grid-template-areas:
+  'stars stars'
+  'user date'
+  'sum sum'
+  'bod bod'
+  'rec rec'
+  'res res'
+  'img img'
+  'helpful report';
+}
+
+@media (min-width: 50em) {
+  .review-list-comp {
+    grid-template-areas:
+    'stars stars user date'
+    'sum sum sum sum'
+    'bod bod bod bod'
+    'rec rec rec rec'
+    'res res res res'
+    'img img img img'
+    'helpful helpful report report';
+  }
+}
+
+.reviews-stars {
+  grid-area: stars;
+}
+
+.reviews-user {
+  grid-area: user;
+  justify-self: right;
+  font-style: italic;
+}
+
+.reviews-date {
+  grid-area: date;
+  justify-self: center;
+}
+
+.reviews-summary {
+  grid-area: sum;
+  font-weight: 400;
+}
+
+.reviews-body {
+  grid-area: bod;
+}
+
+.reviews-recommended {
+  grid-area: rec;
+}
+
+.reviews-response {
+  grid-area: res;
+}
+
+.reviews-img-container {
+  grid-area: img;
+  display: flex;
+  width: fit-content;
+  justify-content: space-between;
+  padding: 0.5em;
+  border: solid 2px rgb(104, 104, 104);
+  border-radius: 2em;
+}
+
+.reviews-img {
+  padding-left: 0.65em;
+  padding-right: 0.65em;
+  width: 65px;
+  height: 65px;
+}
+
+.reviews-helpful {
+  grid-area: helpful;
+  font-style: italic;
+}
+
+.reviews-report {
+  grid-area: report;
+  font-weight: 400;
+}
+
+.char-prop {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.sort-select-text {
+  font-size: 1em;
+}
+
+.sort-select {
+  font-size: 1em;
+  font-weight: 400;
+  font-style: italic;
+  text-decoration: underline;
+  background-color: transparent;
+  border-color: transparent;
 }
