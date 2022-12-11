@@ -232,7 +232,8 @@ border: 5px dashed coral; */
 	align-items: flex-start;
 	width: 100%;
 	height: 70%;
-	/* border: 5px dashed coral; */
+	margin-top: 2.5%;
+	/* border: 5px solid coral; */
 }
 
 #styles {
