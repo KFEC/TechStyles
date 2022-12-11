@@ -15,7 +15,7 @@ const Button = styled.button`
 `;
 
 const Div = styled.div`
-  background: whitesmoke;
+  background-color: #f6f5f2;
   margin: 0.25em;
   padding: 0.25em;
   border: 2px solid black;
@@ -23,7 +23,7 @@ const Div = styled.div`
 
 const Wrapper = styled.section`
   padding: 4em;
-  background: papayawhip;
+  background-color: #f6f5f2;
 `;
 
 const Modal = styled.div`

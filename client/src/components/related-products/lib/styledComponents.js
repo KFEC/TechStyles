@@ -8,11 +8,13 @@ const ButtonFloatRight = styled.button`
   cursor: pointer;
   overflow: hidden;
   outline: none;
+  z-index: 2;
+  color: purple;
 `;
 
 const Card = styled.div`
-  width: 200px;
-  height: 380px;
+  width: 220px;
+  height: 320px;
   background: white;
   margin: 0.25em;
   padding: 0.25em;
@@ -58,9 +60,9 @@ const Div = styled.div`
 `;
 
 const ImageRelatedProduct = styled.img`
-  width: 100%;
-  height: 100%;
-  display: block;
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
 `;
 
 const RelatedProductContainer = styled.section`

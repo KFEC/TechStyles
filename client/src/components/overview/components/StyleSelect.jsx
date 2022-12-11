@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IoCheckmarkSharp } from 'react-icons/io5';
+import { HiCheck } from 'react-icons/hi';
 import { StyleSelector } from '../lib/styledOverview.js';
 
 const StyleSelect = ({
@@ -16,10 +16,10 @@ const StyleSelect = ({
             return (
               <div className="style-container" key={Math.random(index * 54) * 10}>
                 <StyleSelector className="style" onClick={(event) => handleStyleClick(event, index)} name={`${style.name}`} src={`${style.thumbnail}`} />
-                <IoCheckmarkSharp
+                <HiCheck
                   className="checkmark-icon"
                   style={{
-                    color: 'green', zIndex: 1, fontSize: '2em', position: 'relative', bottom: '70%', right: '25%',
+                    color: '#434E61', zIndex: 1, fontSize: '1.5em', position: 'absolute', bottom: '80%', right: '2%',
                   }}
                 />
               </div>
@@ -28,10 +28,10 @@ const StyleSelect = ({
             return (
               <div className="style-container" key={Math.random(index * 54) * 10}>
                 <StyleSelector className="style" onClick={(event) => handleStyleClick(event, index)} name={`${style.name}`} src={`${style.thumbnail}`} />
-                <IoCheckmarkSharp
+                <HiCheck
                   className="checkmark-icon"
                   style={{
-                    color: 'green', zIndex: 1, fontSize: '2em', position: 'relative', bottom: '70%', right: '25%',
+                    color: '#434E61', zIndex: 1, fontSize: '1.5em', position: 'absolute', bottom: '80%', right: '2%',
                   }}
                 />
               </div>
@@ -45,7 +45,7 @@ const StyleSelect = ({
 
   return (
     <div id="style-selector">
-      <div>
+      <div id="style-title">
         STYLE
         {' > '}
         {styles.length && styleName.length > 0 ? styleName : styles[0]?.name}

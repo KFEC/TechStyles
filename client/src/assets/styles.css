@@ -21,9 +21,21 @@ time, mark, audio, video {
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+footer, header, hgroup, menu, nav, section, h1 {
+  background-color: #f6f5f2;
 	display: block;
 }
+
+html {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300px;
+  background-color: #f6f5f2;
+}
+
+#app-1 {
+  background-color: #f6f5f2;
+}
+
 body {
 	line-height: 1;
 }
@@ -90,13 +102,16 @@ table {
 }
 
 .link-text {
+  font-family: 'Work Sans', sans-serif;
+  text-transform: uppercase;
   color:rgb(180, 243, 243);
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 300;
   text-decoration: none;
 }
 
 .nav-li:hover {
-  background-color: rgb(218, 129, 129);
+  background-color: rgb(212, 228, 248, 0.50);
 }
 
 .nav-ul {
