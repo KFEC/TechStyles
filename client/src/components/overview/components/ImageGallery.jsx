@@ -11,10 +11,12 @@ import {
 } from '../../../lib/styledComponents';
 import ExpandedView from './ExpandedView.jsx';
 
-const ImageGallery = ({ gallery }) => {
+const ImageGallery = ({
+  gallery, carouselIndex, setCarouselIndex, currentIndex, setCurrentIndex,
+}) => {
   const [main, setMain] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [carouselIndex, setCarouselIndex] = useState([0, 6]);
+  // const [currentIndex, setCurrentIndex] = useState(0);
+  // const [carouselIndex, setCarouselIndex] = useState([0, 6]);
   const [display, setDisplay] = useState(false);
   let newIndex = 0;
 
