@@ -17,12 +17,14 @@ const QuestionSearch = ({ search }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <input
-          style={{ width: '90%', backgroundColor: 'whitesmoke' }}
+          style={{
+            width: '90%', backgroundColor: 'whitesmoke', fontFamily: 'Work Sans, sans-serif', fontSize: '16px',
+          }}
           placeholder="Have a question? Search for answers…"
           onChange={(e) => { setQuery(e.target.value); }}
         />
-        <button type="submit" style={{ backgroundColor: 'whitesmoke', border: 'none' }}>
-          <IoSearchSharp />
+        <button type="submit" style={{ backgroundColor: 'none', border: 'none' }}>
+          <IoSearchSharp style={{ fontSize: '1.25em' }} />
         </button>
       </form>
     </div>
