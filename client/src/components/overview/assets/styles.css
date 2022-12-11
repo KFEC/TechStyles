@@ -405,3 +405,43 @@ border: 5px dashed coral; */
 	padding-left: 2px;
 	/* border: 1px dashed blue; */
 }
+
+/* --footer */
+#footer-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 720px;
+	/* border: 1px dashed blue; */
+}
+
+#footer-title {
+	font-family: 'Tenor Sans', sans-serif;
+	font-size: 20px;
+}
+
+#footer-content {
+	margin: 10px;
+	font-size: 14px;
+	/* border: 1px dashed blue; */
+}
+
+#footer-icon-container {
+	display: flex;
+	justify-content: space-evenly;
+	width: 250px;
+	/* border: 1px dashed blue; */
+}
+
+#icon-price-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* border: 1px dashed blue; */
+
+}
+
+.icon-description {
+	font-weight: 300;
+	/* border: 1px dashed blue; */
+}

@@ -10,6 +10,7 @@ import Overview from './overview/index.jsx';
 import RelatedProducts from './related-products/index.jsx';
 import QA from './qa/index.jsx';
 import Reviews from './Reviews/index.jsx';
+import Footer from './Footer.jsx';
 import { AppDiv, Wrapper, Div } from '../lib/styledComponents';
 
 const App = () => {
@@ -95,6 +96,7 @@ const App = () => {
       <RelatedProducts />
       <QA />
       <Reviews />
+      <Footer />
     </AppDiv>
   );
 };
