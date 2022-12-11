@@ -23,7 +23,7 @@ const Div = styled.div`
 
 const Wrapper = styled.section`
   padding: 4em;
-  background: papayawhip;
+  background-color: #f6f5f2;
 `;
 
 const Modal = styled.div`

@@ -5,8 +5,7 @@ const StyleSelector = styled.img`
   width: 75px;
   border: 1px solid white;
   border-radius: 50%;
-  margin: 5px;
-  background-color: blue;
+  margin: 2px;
   object-fit: cover;
 `;
 

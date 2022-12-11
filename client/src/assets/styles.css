@@ -21,7 +21,7 @@ time, mark, audio, video {
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+footer, header, hgroup, menu, nav, section, h1 {
   background-color: #f6f5f2;
 	display: block;
 }
@@ -29,6 +29,10 @@ footer, header, hgroup, menu, nav, section {
 html {
   font-family: 'Work Sans', sans-serif;
   font-weight: 300px;
+  background-color: #f6f5f2;
+}
+
+#app-1 {
   background-color: #f6f5f2;
 }
 

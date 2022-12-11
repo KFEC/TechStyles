@@ -15,7 +15,7 @@ const ProductInfo = ({
       return (
         <div id="price-container">
           <div className="price" style={{ textDecoration: 'line-through' }}>{`${price}`}</div>
-          <div className="sale" style={{ color: 'red' }}>{`${sale}`}</div>
+          <div className="sale" style={{ color: 'red' }}>{`  ${sale}`}</div>
         </div>
       );
     }
