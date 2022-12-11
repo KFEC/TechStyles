@@ -32,6 +32,8 @@ const Overview = () => {
   /* OVERALL STATE */
   // const [productId, setProductId] = useState('40344');
   const [defaultIndex, setDefaultIndex] = useState(0);
+  const [carouselIndex, setCarouselIndex] = useState([0, 6]);
+  const [currentIndex, setCurrentIndex] = useState(0);
   // 40344 40345 440348 40350
   /* STYLE BASED STATES */
   const [styles, setStyles] = useState([]); // displays first photo thumbnail of each style
@@ -153,13 +155,16 @@ const Overview = () => {
     // should reset size and qty dropdowns
     setSelectSize('');
     setSelectQty(0);
+    // should reset starting carousel index
+    setCarouselIndex([0, 6]);
+    setCurrentIndex(0);
   };
 
   return (
     <Div id="overview-container">
       <div id="overview">
         <div id="overview-left">
-          <ImageGallery gallery={gallery} />
+          <ImageGallery gallery={gallery} carouselIndex={carouselIndex} setCarouselIndex={setCarouselIndex} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
         </div>
         <div id="overview-right">
           <ProductInfo category={category} name={name} slogan={slogan} description={description} price={price} sale={sale} stars={stars} reviewCount={reviewCount} />
