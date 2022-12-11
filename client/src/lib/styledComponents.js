@@ -1,29 +1,52 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
-  background: palevioletred;
-  color: whitesmoke;
-  font-size: 1em;
+  background-color: rgb(60, 74, 118, 0.3);
+  font-family: 'Work Sans', sans-serif;
+  font-size: 14px;
   margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
+  border: 1.5px solid #DFDFDF;
+  border-radius: 16px;
+  box-sizing: border-box;
+  color: #000000;
   border-radius: 3px;
+  line-height: 22px;
+  padding: 5px 9px;
+  text-decoration: none;
+  transition: all .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  touch-action: manipulation;
   &:hover {
-    opacity: 0.9;
-    transform: scale(0.98);
+    background-color: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0.19);
   };
 `;
 
-const Div = styled.div`
-  background: whitesmoke;
-  margin: 0.25em;
+const AppDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  margin: 1em;
   padding: 0.25em;
   border: 2px solid black;
 `;
 
+const Div = styled.div`
+  background-color: #fff;
+  margin: 0.25em;
+  padding: 2em;
+  border: 2px solid black;
+  width: 85%;
+  background-color: #fff;
+`;
+
 const Wrapper = styled.section`
   padding: 4em;
-  background: papayawhip;
+  background-color: #fff;
 `;
 
 const Modal = styled.div`
@@ -125,6 +148,7 @@ const Stars = styled.span`
 export {
   Button,
   Wrapper,
+  AppDiv,
   Div,
   Modal,
   SocialMediaModal,

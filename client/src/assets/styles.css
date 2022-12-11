@@ -21,9 +21,23 @@ time, mark, audio, video {
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+footer, header, hgroup, menu, nav, section, h1 {
+  background-color: #fff;
 	display: block;
 }
+
+html {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300px;
+  background-color: #fff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#app-logo {
+  width: 500px;
+}
+
 body {
 	line-height: 1;
 }
@@ -45,7 +59,11 @@ table {
 :root {
   --star-size: 2em;
   --star-color: rgba(173, 173, 173, 0.685);
-  --star-background: rgb(231, 215, 148);
+  --star-background: rgb(97, 113, 142);
+
+  background-color: #fff;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
 }
 
 .Stars {
@@ -90,13 +108,16 @@ table {
 }
 
 .link-text {
+  font-family: 'Work Sans', sans-serif;
+  text-transform: uppercase;
   color:rgb(180, 243, 243);
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 300;
   text-decoration: none;
 }
 
 .nav-li:hover {
-  background-color: rgb(218, 129, 129);
+  background-color: rgb(212, 228, 248, 0.50);
 }
 
 .nav-ul {
@@ -106,3 +127,7 @@ table {
   overflow: hidden;
   background-color: rgb(109, 109, 109);
 }
+
+/* #reviews {
+  width: 75%;
+} */

@@ -102,9 +102,12 @@ const AddToCart = ({
 
   return (
     <div id="add-to-cart">
-      <div className="dropdown">
-        {sku.length > 0 ? renderSize() : null}
-        {renderQty()}
+      <div className="dropdown-container">
+        <div className="dropdown">
+          {sku.length > 0 ? renderSize() : null}
+          {renderQty()}
+        </div>
+        <div id="size-guide">Size Guide</div>
       </div>
       {renderBtn()}
     </div>

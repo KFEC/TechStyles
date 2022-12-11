@@ -33,45 +33,60 @@ const ReviewListEntry = ({ review, update, setUpdate }) => {
   };
 
   return (
-    <Div>
-      <div>
-        {review.rating}
+    <div className="review-list-comp">
+      <div className="reviews-stars">
+        <span className="Stars rl-stars" style={{ '--rating': review.rating }} />
+      </div>
+      <div className="reviews-user">
         {review.reviewer_name}
+      </div>
+      <div className="reviews-date">
         {date.toLocaleDateString('en-US', dateOptions)}
       </div>
-      <div style={{ fontWeight: 'bold', fontSize: 'large' }}>
+      <div className="reviews-summary">
         {review.summary}
       </div>
-      <div>
-        {review.body}
+      <div className="reviews-body">
+        <p>{review.body}</p>
       </div>
       {review.recommend && (
-        <div>
+        <div className="reviews-recommended">
           <FaCheck />
-          {' I recommend this product'}
+          {'  I recommend this product'}
         </div>
       )}
       {review.response && (
-        <div>
-          <h5>Response: </h5>
+        <div className="reviews-response">
+          {'Response:  '}
           {review.response}
         </div>
       )}
-      <div>
-        {' Helpful? '}
+      {review.photos.length > 0 && (
+        <div className="reviews-img-container">
+          {review.photos.map((photo, idx) => {
+            return <img className="reviews-img" alt="" src={photo.url} key={Math.random(69 * idx) * 59} />;
+          })}
+        </div>
+      )}
+      <div className="reviews-helpful">
+        Helpful?
         <button type="button" className="button-link" onClick={helpfulReview}>
           Yes
         </button>
-        {` (${review.helpfulness}) |`}
-        {!reported
-          ? (
-            <button type="button" className="button-link" onClick={reportReview}>
-              Report
-            </button>
-          )
-          : <span>Reported</span>}
+        <span>
+          {` (${review.helpfulness}) |`}
+        </span>
+        <span>
+          {!reported
+            ? (
+              <button type="button" className="button-link" onClick={reportReview}>
+                Report
+              </button>
+            )
+            : <span>Reported</span>}
+        </span>
       </div>
-    </Div>
+    </div>
   );
 };
 
