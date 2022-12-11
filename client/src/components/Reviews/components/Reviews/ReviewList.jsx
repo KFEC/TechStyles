@@ -10,12 +10,12 @@ const ReviewList = ({
 
   return (
     <div>
-      <div>
-        {`${allReviews.length} reviews, sorted by `}
-        <select onChange={(e) => setFilter(e.target.value)}>
-          <option value="relevant">Relevant</option>
+      <div className="sort-select-text">
+        {`${allReviews.length} reviews, sorted by`}
+        <select className="sort-select" onChange={(e) => setFilter(e.target.value)}>
+          <option value="relevant">Relevance</option>
           <option value="newest">Newest</option>
-          <option value="helpful">Helpful</option>
+          <option value="helpful">Helpfulness</option>
         </select>
       </div>
       {reviews.map(review => (

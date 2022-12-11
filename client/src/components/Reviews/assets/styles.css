@@ -286,3 +286,16 @@
   font-weight: bold;
   font-size: 1em;
 }
+
+.sort-select-text {
+  font-size: 1em;
+}
+
+.sort-select {
+  font-size: 1em;
+  font-weight: 400;
+  font-style: italic;
+  text-decoration: underline;
+  background-color: transparent;
+  border-color: transparent;
+}

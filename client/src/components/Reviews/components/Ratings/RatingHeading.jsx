@@ -12,7 +12,7 @@ const RatingHeading = () => {
           <span className="rb-avg">{stars}</span>
           <span className="Stars rb-stars" style={{ '--rating': stars }} />
         </div>
-        <div className="rb-recommended">{`${recommended}% recommended`}</div>
+        <div className="rb-recommended">{`${recommended}% of reviews recommended this product`}</div>
       </div>
     </div>
   );
