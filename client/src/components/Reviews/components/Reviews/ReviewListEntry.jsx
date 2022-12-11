@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { FaCheck } from 'react-icons/fa';
 import { Div } from '../../../../lib/styledComponents';
 import { putData } from '../../../../lib/index.js';
+import {
+  updateRenderedReviews, updateIsReviewForm, updateIsReviewsUpdated,
+  updateFilter, updateRenderedReviewCt,
+} from '../../../../reducers/reviewComponentSlice';
 
-const ReviewListEntry = ({ review, update, setUpdate }) => {
+const ReviewListEntry = ({ review }) => {
 
   const [helpful, setHelpful] = useState(false);
   const [reported, setReported] = useState(false);
+
+  const { reviewList: { allReviews, renderedReviews } } = useSelector((state) => state.reviews);
+  const dispatch = useDispatch();
 
   const date = new Date(review.date);
   const dateOptions = {
@@ -18,7 +26,7 @@ const ReviewListEntry = ({ review, update, setUpdate }) => {
   const helpfulReview = () => {
     if (!helpful) {
       putData(`/reviews/${review.review_id}/helpful`).then(() => {
-        setUpdate(!update);
+        dispatch(updateIsReviewsUpdated());
         setHelpful(true);
       });
     }

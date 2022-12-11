@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Stars } from '../../../../lib/styledComponents';
 
 const ReviewStars = ({ setRating, rating }) => {
+
   const [hover, setHover] = useState(0);
 
   return (

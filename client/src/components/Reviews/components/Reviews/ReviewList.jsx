@@ -1,29 +1,35 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Div } from '../../../../lib/styledComponents';
 import ReviewListEntry from './ReviewListEntry.jsx';
+import {
+  updateRenderedReviews, updateIsReviewForm, updateIsReviewsUpdated,
+  updateFilter, updateRenderedReviewCt,
+} from '../../../../reducers/reviewComponentSlice';
+
 
 
 const ReviewList = ({
-  reviews, update, setUpdate, setFilter, allReviews,
+  reviews, update, setUpdate, setFilter,
 }) => {
 
+  const dispatch = useDispatch();
+  const { reviewList: { allReviews, renderedReviews } } = useSelector((state) => state.reviews);
 
   return (
     <div>
       <div className="sort-select-text">
         {`${allReviews.length} reviews, sorted by`}
-        <select className="sort-select" onChange={(e) => setFilter(e.target.value)}>
+        <select className="sort-select" onChange={(e) => dispatch(updateFilter(e.target.value))}>
           <option value="relevant">Relevance</option>
           <option value="newest">Newest</option>
           <option value="helpful">Helpfulness</option>
         </select>
       </div>
-      {reviews.map(review => (
+      {renderedReviews.map(review => (
         <ReviewListEntry
           key={review.review_id}
           review={review}
-          update={update}
-          setUpdate={setUpdate}
         />
       ))}
     </div>
