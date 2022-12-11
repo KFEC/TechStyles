@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateProductId } from '../../../reducers';
 import Comparaison from './Comparaison.jsx';
 import {
   ButtonFloatRight,
@@ -12,15 +13,20 @@ import defaultImage from '../lib/images/noProductAvailable.png';
 // Image unavailable https://i.imgur.com/MyKhQau.png
 
 const ProductCard = ({ product: { productDetails, styles, meta } }) => {
-  const { productMeta } = useSelector((state) => state.product);
+  const {
+    productId,
+    productInfo,
+    productMeta,
+    productStyles,
+    relatedProducts,
+  } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+  // dispatch(updateProductId(<'productId'>))
+  // onclick={() => dispatch(updateProductId(<'productId'>))}
   const [openModal, setOpenModal] = useState(false);
   const [stars, setStars] = useState(0);
   const [reviewCount, setReviewCount] = useState(0);
   const [mainProductChars, setMainProductChars] = useState();
-  // console.log('product details in product card: ', productDetails);
-  // console.log('product styles in product card: ', styles);
-  // console.log(styles.results[0].photos[0].thumbnail_url);
-  // console.log('meta: ', meta);
 
   const getTotalRatings = (receivedRatings) => {
     return Object.values(receivedRatings)
@@ -113,35 +119,49 @@ const ProductCard = ({ product: { productDetails, styles, meta } }) => {
   return (
     <Card>
       <div className="btn-text-right">
-        <ButtonFloatRight type="button" onClick={() => setOpenModal(true)}>Compare Item</ButtonFloatRight>
+        <ButtonFloatRight type="button" onClick={() => setOpenModal(true)}>★</ButtonFloatRight>
+        {/* <button
+          type="button"
+          // onClick={
+          //   () => dispatch(updateProductId(productDetails.id.toString()))
+          // }
+        >
+          switch current product
+        </button> */}
       </div>
       <ComparaisonModal displayModal={openModal}>
         <Comparaison
           setOpenModal={setOpenModal}
-          comparedProduct={productDetails}
+          comparedProductDetails={productDetails}
+          comparedProductChars={meta}
           mainProductChars={mainProductChars}
         />
       </ComparaisonModal>
       <div>
-        <ImageRelatedProduct src={productImage} alt={productDetails.name} />
-      </div>
-      <div className="textCentered">
-        <div>{productDetails.category}</div>
-        <div>{productDetails.name}</div>
-        {discountedPrice === null
-          ? (
-            <p>
-              $
-              {price}
-
-            </p>
-          ) : (
-            <p>
-              {price}
-              {discountedPrice}
-            </p>
-          )}
-        <span className="Stars" style={{ '--rating': stars }} />
+        <div id="related-product-container">
+          <ImageRelatedProduct
+            src={productImage}
+            alt={productDetails.name}
+            onClick={() => dispatch(updateProductId(productDetails.id.toString()))}
+          />
+        </div>
+        <div className="textCentered">
+          <div>{productDetails.category}</div>
+          <div>{productDetails.name}</div>
+          {discountedPrice === null
+            ? (
+              <p>
+                $
+                {price}
+              </p>
+            ) : (
+              <p>
+                {price}
+                {discountedPrice}
+              </p>
+            )}
+          <span className="StarsRelatedProducts" style={{ '--rating': stars }} />
+        </div>
       </div>
     </Card>
   );
