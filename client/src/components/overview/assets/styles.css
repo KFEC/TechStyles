@@ -109,6 +109,8 @@
 	/* box-shadow: 1.5px 1.5px 1.5px 1.5px rgba(96, 96, 96, 0.35); */
 	z-index: 2;
 	/* border: 3px dashed cyan; */
+	border-left: 1px solid black;
+	border-right: 1px solid black;
 }
 
 .thumbnail-arrow-container {
@@ -352,7 +354,7 @@ border: 5px dashed coral; */
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	padding: 20px;
+	padding: 15px;
 	width: 60%;
 	/* border: 1px dashed blue; */
 }
@@ -362,7 +364,7 @@ border: 5px dashed coral; */
 	font-size: 25px;
 	font-style: italic;
 	font-weight: 300;
-	padding: 8px;
+	padding: 5px;
 }
 
 #description {
