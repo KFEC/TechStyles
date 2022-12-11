@@ -13,6 +13,7 @@ import Reviews from './Reviews/index.jsx';
 import { Wrapper, Div } from '../lib/styledComponents';
 
 const App = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const {
     productInfo, productMeta, productId, relatedProducts,
     productStyles, productQuestions, productStars,
@@ -56,15 +57,14 @@ const App = () => {
     }
   };
 
-  const [searchParams, setSearchParams] = useSearchParams();
-
   useEffect(() => {
+    dispatch(getRelatedProducts(productId));
     dispatch(getProductInfo({ url: `/products/${productId}` }));
     dispatch(getProductMeta({ url: '/reviews/meta', params: { product_id: productId } }));
     dispatch(getProductStyles({ url: `/products/${productId}/styles` }));
     dispatch(getProductQuestions({
       url: '/qa/questions',
-      params: { product_id: productId, count: 999 },
+      params: { product_id: productId, count: 6969 },
     }));
     setSearchParams(`product_id=${productId}`);
   }, [productId]);

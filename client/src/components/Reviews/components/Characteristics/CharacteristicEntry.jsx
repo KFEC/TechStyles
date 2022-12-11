@@ -5,8 +5,7 @@ import { DESCRIPTIONS } from '../../lib';
 const CharacteristicEntry = ({ char }) => {
   return (
     <div className="breakdown-category">
-      {char.prop}
-      <br />
+      <span className="char-prop">{char.prop}</span>
       <span className="pb-char-bar">
         <div className="pb-style-value" style={{ '--value': Math.round((char[char.prop].value)) }}><FaSortDown /></div>
       </span>

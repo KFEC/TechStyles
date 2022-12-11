@@ -35,7 +35,7 @@ const ReviewListEntry = ({ review, update, setUpdate }) => {
   return (
     <div className="review-list-comp">
       <div className="reviews-stars">
-        {review.rating}
+        <span className="Stars rl-stars" style={{ '--rating': review.rating }} />
       </div>
       <div className="reviews-user">
         {review.reviewer_name}
@@ -47,7 +47,7 @@ const ReviewListEntry = ({ review, update, setUpdate }) => {
         {review.summary}
       </div>
       <div className="reviews-body">
-        {review.body}
+        <p>{review.body}</p>
       </div>
       {review.recommend && (
         <div className="reviews-recommended">

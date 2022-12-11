@@ -1,4 +1,5 @@
 import React, { useState, useEffect, memo } from 'react';
+import { useSelector } from 'react-redux';
 import CharacteristicEntry from './CharacteristicEntry.jsx';
 import CharacteristicHeading from './CharacteristicHeading.jsx';
 import { getData } from '../../../../lib';
@@ -7,6 +8,7 @@ import { allCharOptions } from '../../lib';
 const CharacteristicBreakdown = memo(() => {
 
   const [characteristics, setCharacteristics] = useState();
+  const { productMeta } = useSelector((state) => state.product);
 
   const grabCharacteristics = (data) => {
     return allCharOptions.reduce((acc, char) => {
@@ -18,14 +20,10 @@ const CharacteristicBreakdown = memo(() => {
   };
 
   useEffect(() => {
-    getData('/reviews/meta', {
-      product_id: 40348,
-    })
-      .then((response) => {
-        setCharacteristics((grabCharacteristics(response.data.characteristics)));
-      })
-      .catch((err) => console.error(err));
-  }, []);
+    if (Object.keys(productMeta).length > 0) {
+      setCharacteristics((grabCharacteristics(productMeta.characteristics)));
+    }
+  }, [productMeta]);
 
   return (
     <div>

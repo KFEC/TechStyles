@@ -8,9 +8,11 @@ const RatingHeading = () => {
   return (
     <div className="rb-heading">
       <div className="rb-heading-container">
-        <span className="rb-avg">{stars}</span>
-        <span className="Stars rb-stars" style={{ '--rating': stars }} />
-        <h5>{`${recommended}% of people recommend this product`}</h5>
+        <div className="rb-stars-container">
+          <span className="rb-avg">{stars}</span>
+          <span className="Stars rb-stars" style={{ '--rating': stars }} />
+        </div>
+        <div className="rb-recommended">{`${recommended}% recommended`}</div>
       </div>
     </div>
   );
