@@ -15,7 +15,6 @@ const RelatedProducts = () => {
     productStyles,
     relatedProducts,
   } = useSelector((state) => state.product);
-
   return (
     <Div>
       { relatedProducts.length > 0

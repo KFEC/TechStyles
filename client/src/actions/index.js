@@ -25,7 +25,7 @@ const getRelatedProductsData = async (productId) => {
       try {
         const productDetails = await getData({ url: `/products/${product}` });
         const styles = await getData({ url: `/products/${product}/styles` });
-        const meta = await (getData({ url: '/reviews/meta', params: { product_id: productId } }));
+        const meta = await (getData({ url: '/reviews/meta', params: { product_id: product } }));
         return { productDetails, styles, meta };
       } catch (err) {
         console.error(err);
