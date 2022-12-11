@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import ProductCard from './ProductCard.jsx';
 import {
@@ -23,21 +23,48 @@ const RelatedProductsList = ({ setOpenModal, productData, currentProduct }) => {
   container
   cards
   */
+  console.log(relatedProducts);
+  const numberOfCards = relatedProducts.length;
+  const [property, setProperty] = useState(0);
+  const nextProperty = () => {
+    setProperty(property + 1);
+  };
+  const prevProperty = () => {
+    const newNumber = property - 1;
+    setProperty(property - 1);
+  };
+  // const number = 20;
 
+  // ${property * (100 / relatedProducts.length)}
   return (
-    <div className="cardsContainer">
-      <div className="cards-slider-wrapper">
-        <button type="button" className="left-arrow"> ← </button>
-        {relatedProducts?.map((product, idx) => {
-          return (
-            <ProductCard
-              className="card"
-              key={product.productDetails.id}
-              product={product}
-              setOpenModal={setOpenModal}
-            />
-          );
-        })}
+    <div className="related-product-list">
+      <button
+        onClick={nextProperty}
+        type="button"
+        className="left-arrow"
+      >
+        ←
+      </button>
+      <button
+        onClick={prevProperty}
+        type="button"
+        className="right-arrow"
+      >
+        →
+      </button>
+      <div className="cards-slider">
+        <div className="cards-slider-wrapper" style={{ transform: `translateX(-${property * (100 / numberOfCards)}%)` }}>
+          {relatedProducts?.map((product, idx) => {
+            return (
+              <ProductCard
+                className="card"
+                key={product.productDetails.id}
+                product={product}
+                setOpenModal={setOpenModal}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
     // <Div data-testid="RelatedProductsList">

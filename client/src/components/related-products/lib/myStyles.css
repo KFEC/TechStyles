@@ -74,11 +74,19 @@ th:third-child, td:third-child {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .cards-slider-wrapper {
   display: flex;
+  position: absolute;
+  transition: 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+}
+.cards-slider {
+  position: relative;
+  max-width: 226px;
 }
 .card {
-  width: 220px;
+  min-width: 220px;
   height: 320px;
   background: white;
   margin: 0.25em;
@@ -89,4 +97,7 @@ th:third-child, td:third-child {
 }
 .related-products{
   display: flex;
+}
+.related-product-list {
+  position:relative;
 }
