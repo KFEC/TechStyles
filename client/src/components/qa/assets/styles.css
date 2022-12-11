@@ -1,10 +1,18 @@
 .button-link {
   background: none!important;
-  background-color: whitesmoke;
+  background-color: #fff;
   border: none;
   text-decoration: underline;
   cursor: pointer;
   font-size: 1em;
+}
+
+.helpful:hover {
+  color: #88AED0;
+}
+
+.report:hover {
+  color: red;
 }
 
 .QList {
@@ -14,6 +22,7 @@
   overflow-y:hidden;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  background-color: #fff;
 }
 
 .QList:hover {
@@ -29,6 +38,7 @@
   overflow-y:hidden;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  background-color: #fff;
 }
 
 .AList:hover {
@@ -51,4 +61,9 @@
 #answer-warning {
   font-size: 0.8em;
   font-style: italic;
+}
+
+/* --added */
+#qcontainer {
+  background-color: #fff;
 }

@@ -42,20 +42,25 @@ const QuestionEntry = ({
   }, [question.question_id, update2]);
 
   return (
-    <Div style={{ border: 'none', backgroundColor: 'rgb(252, 234, 208)' }}>
+    <Div style={{
+      border: '1.5px solid grey', backgroundColor: '#fff', borderRadius: '25px', padding: '10px',
+    }}
+    >
       <div style={{ display: 'flex' }}>
-        <span style={{ fontWeight: 'bold', fontSize: 'large', marginRight: 'auto' }}>
-          Q:
-          {question.question_body}
+        <span style={{
+          fontFamily: 'Noto Sans, sans-serif', fontWeight: '500', fontSize: '16px', marginRight: 'auto',
+        }}
+        >
+          {`Q: ${question.question_body}`}
         </span>
         <span style={{ marginLeft: 'auto', order: '2' }}>
           Helpful?
           {' '}
-          <button type="button" className="button-link" onClick={helpfulQuestion}>
+          <button type="button" className="button-link helpful" onClick={helpfulQuestion}>
             Yes
           </button>
           {` (${question.question_helpfulness}) |`}
-          <button type="button" className="button-link" onClick={() => setDisplay(true)}>Add Answer</button>
+          <button type="button" className="button-link helpful" onClick={() => setDisplay(true)}>Add Answer</button>
         </span>
       </div>
       <div className="AList">
