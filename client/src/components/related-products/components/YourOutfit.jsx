@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux';
 import {
   AddItemCard,
   ButtonAddItem,
-  Card,
-  Div,
   ImageRelatedProduct,
   RelatedProductContainer,
 } from '../lib/styledComponents';
@@ -56,13 +54,13 @@ const YourOutfit = () => {
     }
   };
   return (
-    <Div>
+    <div>
       Your Outfit
       <RelatedProductContainer>
-        <AddItemCard>
+        <div className="card">
           {/* when clicked add main item to local storage */}
           <ButtonAddItem type="button" onClick={addItem}>Add Current Item To Your Outfit</ButtonAddItem>
-        </AddItemCard>
+        </div>
         {outfitItems.map(
           (item, idx) => (
             <ProductCardYourOutfit
@@ -75,7 +73,7 @@ const YourOutfit = () => {
           ),
         )}
       </RelatedProductContainer>
-    </Div>
+    </div>
   );
 };
 

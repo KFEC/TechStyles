@@ -4,7 +4,6 @@ import { updateProductId } from '../../../reducers';
 import Comparaison from './Comparaison.jsx';
 import {
   ButtonFloatRight,
-  Card,
   ImageRelatedProduct,
   ComparaisonModal,
 } from '../lib/styledComponents';
@@ -21,8 +20,6 @@ const ProductCard = ({ product: { productDetails, styles, meta } }) => {
     relatedProducts,
   } = useSelector((state) => state.product);
   const dispatch = useDispatch();
-  // dispatch(updateProductId(<'productId'>))
-  // onclick={() => dispatch(updateProductId(<'productId'>))}
   const [openModal, setOpenModal] = useState(false);
   const [stars, setStars] = useState(0);
   const [reviewCount, setReviewCount] = useState(0);
@@ -43,29 +40,6 @@ const ProductCard = ({ product: { productDetails, styles, meta } }) => {
     }, 0);
     return (totalStars / reviewCount);
   };
-
-  // useEffect(() => {
-  //   getData('/reviews/meta', {
-  //     product_id: productDetails.id,
-  //   })
-  //     .then((response) => {
-  //       const result = response.data.ratings;
-  //       setMainProductChars(response.data.characteristics); // main product chars for comparaison
-  //       setReviewCount(getTotalRatings(result));
-  //       return result;
-  //     })
-  //     .catch((err) => console.error(err));
-  // }, []);
-
-
-  // useEffect(() => {
-  //   getData('/reviews/meta', {
-  //     product_id: productDetails.id,
-  //   })
-  //     .then((response) => {
-  //       setStars(calculateRatingAvg(Object.values(response.data.ratings)));
-  //     });
-  // }, [reviewCount]);
 
   useEffect(() => {
     setMainProductChars(productMeta.characteristics); // main product chars for comparaison
@@ -110,24 +84,10 @@ const ProductCard = ({ product: { productDetails, styles, meta } }) => {
     productImage = defaultImage;
   }
 
-  // console.log('product data: ', productDetails);
-  // console.log('styles data: ', styles);
-  // console.log('image: ', productImage);
-  // console.log('price: ', price);
-
-
   return (
-    <Card>
+    <div className="card">
       <div className="btn-text-right">
         <ButtonFloatRight type="button" onClick={() => setOpenModal(true)}>★</ButtonFloatRight>
-        {/* <button
-          type="button"
-          // onClick={
-          //   () => dispatch(updateProductId(productDetails.id.toString()))
-          // }
-        >
-          switch current product
-        </button> */}
       </div>
       <ComparaisonModal displayModal={openModal}>
         <Comparaison
@@ -163,7 +123,7 @@ const ProductCard = ({ product: { productDetails, styles, meta } }) => {
           <span className="StarsRelatedProducts" style={{ '--rating': stars }} />
         </div>
       </div>
-    </Card>
+    </div>
   );
 };
 

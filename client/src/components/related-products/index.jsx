@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Div } from './lib/styledComponents';
+// import { Div } from './lib/styledComponents';
 import RelatedProductList from './components/RelatedProductList.jsx';
 import YourOutfit from './components/YourOutfit.jsx';
 import { getData } from '../../lib/apiRoutes.js';
@@ -16,7 +16,7 @@ const RelatedProducts = () => {
     relatedProducts,
   } = useSelector((state) => state.product);
   return (
-    <Div>
+    <div>
       { relatedProducts.length > 0
       && (
         <div>
@@ -28,7 +28,7 @@ const RelatedProducts = () => {
           <YourOutfit currrentProduct={productInfo} />
         </div>
       )}
-    </Div>
+    </div>
 
   );
 };

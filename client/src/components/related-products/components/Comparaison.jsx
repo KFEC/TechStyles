@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import '../lib/myStyles.css';
-
 import {
   ModalContent,
   CloseModalButton,
@@ -45,7 +44,6 @@ const Comparaison = ({
         break;
       } else if (j === productInfo.features.length - 1
         && featuresArray[i].feature !== currentProductFeatures[j].feature) {
-      //   // console.log(false);
         const object = { feature: featuresArray[i].feature, value1: featuresArray[i].value };
         currentProductFeatures.push(object);
       }

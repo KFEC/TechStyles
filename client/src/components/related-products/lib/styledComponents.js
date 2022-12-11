@@ -12,26 +12,6 @@ const ButtonFloatRight = styled.button`
   color: purple;
 `;
 
-const Card = styled.div`
-  width: 220px;
-  height: 320px;
-  background: white;
-  margin: 0.25em;
-  padding: 0.25em;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  cursor: pointer;
-`;
-const AddItemCard = styled.div`
-  width: 200px;
-  height: 380px;
-  background: white;
-  margin: 0.25em;
-  padding: 0.25em;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-`;
-
 const ComparaisonModal = styled.div`
   display:  ${(props) => props.displayModal ? 'block' : 'none'};
   position: fixed;
@@ -52,12 +32,12 @@ const ModalContent = styled.div`
   width: 35%;
 `;
 
-const Div = styled.div`
-  background: whitesmoke;
-  margin: 0.25em;
-  padding: 0.25em;
-  border: 2px solid black;
-`;
+// const Div = styled.div`
+//   background: whitesmoke;
+//   margin: 0.25em;
+//   padding: 0.25em;
+//   border: 2px solid black;
+// `;
 
 const ImageRelatedProduct = styled.img`
   width: 200px;
@@ -97,13 +77,10 @@ const ButtonAddItem = styled.button`
 `;
 
 export {
-  AddItemCard,
   ButtonAddItem,
   ButtonFloatRight,
-  Card,
   CloseModalButton,
   ComparaisonModal,
-  Div,
   ImageRelatedProduct,
   RelatedProductContainer,
   ModalContent,

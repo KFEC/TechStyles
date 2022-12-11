@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import Comparaison from './Comparaison.jsx';
 import {
   ButtonFloatRight,
-  Card,
   ImageRelatedProduct,
-  ComparaisonModal,
 } from '../lib/styledComponents';
 
 const ProductCardYourOutfit = ({
@@ -12,7 +10,6 @@ const ProductCardYourOutfit = ({
   setOutfitItems,
   idxOfItem,
 }) => {
-  const [openModal, setOpenModal] = useState(false);
   let image = '';
   for (let i = 0; i < outfitItem.styles.length; i += 1) {
     if (outfitItem.styles[i]['default?'] === true) {
@@ -28,7 +25,7 @@ const ProductCardYourOutfit = ({
   };
 
   return (
-    <Card>
+    <div className="card">
       <div className="btn-text-right">
         <ButtonFloatRight type="button" onClick={deleteItem}>x</ButtonFloatRight>
       </div>
@@ -38,10 +35,13 @@ const ProductCardYourOutfit = ({
       <div className="textCentered">
         <p>{outfitItem.category}</p>
         <p>{outfitItem.name}</p>
-        <p>{outfitItem.styles[0].original_price}</p>
+        <p>
+          $
+          {outfitItem.styles[0].original_price}
+        </p>
         <p>rating</p>
       </div>
-    </Card>
+    </div>
   );
 };
 
