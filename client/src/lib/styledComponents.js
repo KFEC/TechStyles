@@ -87,12 +87,14 @@ const ExpandedViewModal = styled.div`
   margin-right: auto;
   left: 0;
   right: 0;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
   z-index: 10;
 
-  top: 10%;
-  width: 80%;
-  height: 80%;
+  width: 70%;
+  height: 70%;
+  width: 950px;
+  height: 950px;
   overflow: auto;
   background-color: rgb(0, 0, 0, 0.4);
 `;
@@ -109,7 +111,7 @@ const SocialMediaModalContent = styled.div`
   background-color: #fefefe;
   margin: 15% auto;
   paddding: 5em;
-  border: 1em solid #888;
+  border: 2em solid purple;
   width: 75%;
   height: 75%;
 `;
@@ -119,11 +121,11 @@ const ExpandedViewModalContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: white;
-  paddding: 5em;
-  border: 2em solid white;
-  width: 95%;
-  height: 95%;
+  background-color: transparent;
+  paddding: 0.5em;
+
+  width: 100%;
+  height: 100%;
 `;
 
 const CloseModalButton = styled.button`
