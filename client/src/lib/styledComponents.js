@@ -69,19 +69,22 @@ const AppDiv = styled.div`
   align-items: center;
   margin: 1em;
   padding: 0.25em;
-  border: 2px solid black;
+  border: 2px none black;
 `;
 
 const Div = styled.div`
   margin: 0.25em;
   padding: 2em;
-  border: 2px solid black;
+  border: 2px none black;
   width: 85%;
 `;
 
 const Wrapper = styled.section`
-  padding: 4em;
-  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(33, 76, 119, 0.2);
+  width: 100%
 `;
 
 const Modal = styled.div`
@@ -119,12 +122,14 @@ const ExpandedViewModal = styled.div`
   margin-right: auto;
   left: 0;
   right: 0;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
   z-index: 10;
 
-  top: 10%;
-  width: 80%;
-  height: 80%;
+  width: 70%;
+  height: 70%;
+  width: 950px;
+  height: 950px;
   overflow: auto;
   background-color: rgb(0, 0, 0, 0.4);
 `;
@@ -141,7 +146,7 @@ const SocialMediaModalContent = styled.div`
   background-color: #fefefe;
   margin: 15% auto;
   paddding: 5em;
-  border: 1em solid #888;
+  border: 2em solid purple;
   width: 75%;
   height: 75%;
 `;
@@ -151,11 +156,11 @@ const ExpandedViewModalContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: white;
-  paddding: 5em;
-  border: 2em solid white;
-  width: 95%;
-  height: 95%;
+  background-color: transparent;
+  paddding: 0.5em;
+
+  width: 100%;
+  height: 100%;
 `;
 
 const CloseModalButton = styled.button`

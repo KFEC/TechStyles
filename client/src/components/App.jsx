@@ -20,6 +20,7 @@ import Footer from './Footer.jsx';
 import {
   AppDiv, Wrapper, Div, Button,
 } from '../lib/styledComponents';
+import Logo from '../assets/fec-logo.png';
 
 const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -115,6 +116,7 @@ const App = () => {
     <AppDiv data-testid="app-1" isDarkMode={isDarkMode}>
       <Wrapper><img id="app-logo" src="./fec-logo.png" alt="TechStyles" /></Wrapper>
       <Button isDarkMode={isDarkMode} type="submit" onClick={() => dispatch(updateIsDarkMode())}>Dark Mode</Button>
+      <Wrapper><img id="app-logo" src={Logo} alt="TechStyles" /></Wrapper>
       <Overview />
       <RelatedProducts />
       <QA />
