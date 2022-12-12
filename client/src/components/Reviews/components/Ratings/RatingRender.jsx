@@ -11,6 +11,7 @@ const RatingRender = memo(({ rating }) => {
 
   const [isFiltered, setIsFiltered] = useState(false);
   const { productReviews: { totalRatings, stars } } = useSelector((state) => state.product);
+  const { isDarkMode } = useSelector((state) => state.productPage);
   const {
     reviewList: {
       allReviews,
@@ -21,6 +22,15 @@ const RatingRender = memo(({ rating }) => {
 
   const dispatch = useDispatch();
   const ratingRef = useRef();
+
+  const barStyle = {
+    '--percent': Math.round((rating.count / totalRatings) * 100),
+    '--bar-color': isDarkMode ? '#333d33' : '#bbe2bd',
+  };
+
+  const barBackground = {
+    '--bar-background': isDarkMode ? 'rgba(95, 95, 95, 0.685)' : 'rgba(173, 173, 173, 0.685)',
+  };
 
   const handleRatingClick = (e) => {
     const ratingVal = ratingRef.current.getAttribute('data-rating');
@@ -42,12 +52,13 @@ const RatingRender = memo(({ rating }) => {
         data-rating={rating.rating}
         ref={ratingRef}
         onClick={handleRatingClick}
+        style={barBackground}
       >
         <span className="ratings-percentage">
           {Math.round((rating.count / totalRatings) * 100)}
           %
         </span>
-        <div className="ratings-bar-content" style={{ '--percent': Math.round((rating.count / totalRatings) * 100) }}>
+        <div className="ratings-bar-content" style={barStyle}>
           <span className="ratings-area">{rating.rating}</span>
         </div>
       </div>

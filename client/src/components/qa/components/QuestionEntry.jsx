@@ -1,6 +1,9 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState, useEffect } from 'react';
-import { Div, Button, Modal } from '../../../lib/styledComponents';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  Div, Button, Modal, HelpfulButton, ExtrasButton,
+} from '../../../lib/styledComponents';
 import { getData, putData } from '../../../lib/index.js';
 
 import AnswerEntry from './AnswerEntry.jsx';
@@ -10,6 +13,8 @@ import '../assets/styles.css';
 const QuestionEntry = ({
   question, update, setUpdate, fetch, setFetch, pName,
 }) => {
+
+  const { isDarkMode } = useSelector((state) => state.productPage);
 
   const [display, setDisplay] = useState(false);
   const [answers, setAnswers] = useState([]);
@@ -43,7 +48,7 @@ const QuestionEntry = ({
 
   return (
     <Div style={{
-      border: '1.5px solid grey', backgroundColor: '#fff', borderRadius: '25px', padding: '10px',
+      border: '1.5px solid grey', borderRadius: '25px', padding: '10px',
     }}
     >
       <div style={{ display: 'flex' }}>
@@ -56,11 +61,16 @@ const QuestionEntry = ({
         <span style={{ marginLeft: 'auto', order: '2' }}>
           Helpful?
           {' '}
-          <button type="button" className="button-link helpful" onClick={helpfulQuestion}>
+          <HelpfulButton isDarkMode={isDarkMode} onClick={helpfulQuestion}>
             Yes
-          </button>
+          </HelpfulButton>
           {` (${question.question_helpfulness}) |`}
-          <button type="button" className="button-link helpful" onClick={() => setDisplay(true)}>Add Answer</button>
+          <ExtrasButton
+            isDarkMode={isDarkMode}
+            onClick={() => setDisplay(true)}
+          >
+            Add Answer
+          </ExtrasButton>
         </span>
       </div>
       <div className="AList">

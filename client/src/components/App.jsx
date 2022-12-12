@@ -9,12 +9,17 @@ import {
   updateProductStars, updateProductRecommended,
   updateProductTotalRatings, updateProductTotalReviews,
 } from '../reducers/productSlice';
+import {
+  updateIsDarkMode,
+} from '../reducers/productPageSlice';
 import Overview from './overview/index.jsx';
 import RelatedProducts from './related-products/index.jsx';
 import QA from './qa/index.jsx';
 import Reviews from './Reviews/index.jsx';
 import Footer from './Footer.jsx';
-import { AppDiv, Wrapper, Div } from '../lib/styledComponents';
+import {
+  AppDiv, Wrapper, Div, Button,
+} from '../lib/styledComponents';
 
 const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,6 +29,7 @@ const App = () => {
   } = useSelector((state) => state.product);
 
   const { reviewList } = useSelector((state) => state.reviews);
+  const { isDarkMode } = useSelector((state) => state.productPage);
   const dispatch = useDispatch();
 
   const calculateTotalRatings = (ratings) => {
@@ -106,8 +112,9 @@ const App = () => {
   }
 
   return (
-    <AppDiv data-testid="app-1">
+    <AppDiv data-testid="app-1" isDarkMode={isDarkMode}>
       <Wrapper><img id="app-logo" src="./fec-logo.png" alt="TechStyles" /></Wrapper>
+      <Button isDarkMode={isDarkMode} type="submit" onClick={() => dispatch(updateIsDarkMode())}>Dark Mode</Button>
       <Overview />
       <RelatedProducts />
       <QA />

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
+  color: ${(props) => props.isDarkMode ? 'white' : 'black'};
   background-color: rgb(60, 74, 118, 0.3);
   font-family: 'Work Sans', sans-serif;
   font-size: 14px;
@@ -8,7 +9,6 @@ const Button = styled.button`
   border: 1.5px solid #DFDFDF;
   border-radius: 16px;
   box-sizing: border-box;
-  color: #000000;
   border-radius: 3px;
   line-height: 22px;
   padding: 5px 9px;
@@ -20,28 +20,63 @@ const Button = styled.button`
   width: fit-content;
   touch-action: manipulation;
   &:hover {
-    background-color: #FFFFFF;
+    background-color: ${(props) => props.isDarkMode ? '#242526' : 'white'};
     border-color: rgba(0, 0, 0, 0.19);
   };
 `;
 
+const HelpfulButton = styled.button`
+  color: ${(props) => props.isDarkMode ? 'white' : 'black'};
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1em;
+  &:hover {
+    color: ${(props) => props.isDarkMode ? '#88AED0' : '#88AED0'};
+  }
+`;
+
+const ReportButton = styled.button`
+  color: ${(props) => props.isDarkMode ? 'white' : 'black'};
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1em;
+  &:hover {
+    color: ${(props) => props.isDarkMode ? 'darkred' : 'red'};
+  }
+`;
+
+const ExtrasButton = styled.button`
+color: ${(props) => props.isDarkMode ? 'white' : 'black'};
+background: none;
+border: none;
+text-decoration: underline;
+cursor: pointer;
+font-size: 1em;
+&:hover {
+  color: ${(props) => props.isDarkMode ? 'black' : 'white'};
+}
+`;
+
 const AppDiv = styled.div`
+  color: ${(props) => props.isDarkMode ? 'white' : '#242526'};
+  background-color: ${(props) => props.isDarkMode ? '#242526' : 'white'};
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
   margin: 1em;
   padding: 0.25em;
   border: 2px solid black;
 `;
 
 const Div = styled.div`
-  background-color: #fff;
   margin: 0.25em;
   padding: 2em;
   border: 2px solid black;
   width: 85%;
-  background-color: #fff;
 `;
 
 const Wrapper = styled.section`
@@ -159,4 +194,7 @@ export {
   CloseModalButton,
   Card,
   Stars,
+  HelpfulButton,
+  ReportButton,
+  ExtrasButton,
 };

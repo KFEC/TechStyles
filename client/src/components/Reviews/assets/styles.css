@@ -98,7 +98,7 @@
   width: 85%;
   height: 1.7em;
   position: relative;
-  background: rgba(173, 173, 173, 0.685);
+  background: var(--bar-background);
   border-radius: 0.4em;
   text-transform: uppercase;
   margin: 0.5em auto;
@@ -111,7 +111,6 @@
   margin-top: 0.6em;
   margin-left: 1.3em;
   text-shadow: none;
-  color: rgb(0, 0, 0);
 }
 
 .ratings-percentage {
@@ -121,7 +120,6 @@
   margin-top: 0.6em;
   float: right;
   text-shadow: none;
-  color: rgb(0, 0, 0);
   font-size: 0.8em;
 }
 
@@ -131,7 +129,7 @@
   height: 1.7em;
   position: relative;
   border-radius: 0.4em;
-  background-color: #bbe2bd;
+  background-color: var(--bar-color);
 }
 
 @keyframes animate-breakdown {
@@ -150,7 +148,7 @@
   position: relative;
   width: 100%;
   height: 0.75em;
-  background-color: rgba(173, 173, 173, 0.685);
+  background-color: var(--bar-background);
 }
 
 .pb-style-value {
@@ -192,8 +190,8 @@
 
 .review-list-comp {
   display: grid;
-  background: linear-gradient(#fff, #fff) padding-box,
-              linear-gradient(to top, rgb(87, 87, 87), #f6f5f2) border-box;
+  background: linear-gradient(var(--color), var(--color)) padding-box,
+              linear-gradient(to top, var(--border-color), var(--color)) border-box;
   border-radius: 0.5em;
   border: 2px solid transparent;
   grid-auto-columns: 1fr 1fr 1fr 1fr;
@@ -262,7 +260,7 @@
   width: fit-content;
   justify-content: space-between;
   padding: 0.5em;
-  border: solid 2px rgb(104, 104, 104);
+  border: solid 2px var(--border-color);
   border-radius: 2em;
 }
 

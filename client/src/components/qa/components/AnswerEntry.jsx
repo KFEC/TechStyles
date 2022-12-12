@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Div } from '../../../lib/styledComponents';
+import { useSelector, useDispatch } from 'react-redux';
+import { Div, HelpfulButton, ReportButton } from '../../../lib/styledComponents';
 import { getData, putData } from '../../../lib/index.js';
 
 const AnswerEntry = ({ answer, setUpdate2, update2 }) => {
 
   const [helpful, setHelpful] = useState(false);
   const [reported, setReported] = useState(false);
+  const { isDarkMode } = useSelector((state) => state.productPage);
 
   const date = new Date(answer.date);
   const dateOptions = {
@@ -32,26 +34,26 @@ const AnswerEntry = ({ answer, setUpdate2, update2 }) => {
   };
 
   return (
-    <Div style={{ border: 'none', borderBottom: '1px solid grey', backgroundColor: '#fff' }}>
+    <Div style={{ border: 'none', borderBottom: '1px solid grey' }}>
       <span style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: '500', fontSize: '16px' }}>A: </span>
       {answer.body}
       <div style={{
-        color: '#3A3B3C', fontFamily: 'Noto Sans, sans-serif', fontWeight: '400', fontSize: '14px',
+        /* color: '#3A3B3C', */ fontFamily: 'Noto Sans, sans-serif', fontWeight: '400', fontSize: '14px',
       }}
       >
         by
         {` ${answer.answerer_name},`}
         {` ${date.toLocaleDateString('en-US', dateOptions)} |`}
         {' Helpful? '}
-        <button type="button" className="button-link helpful" onClick={helpfulAnswer}>
+        <HelpfulButton isDarkMode={isDarkMode} onClick={helpfulAnswer}>
           Yes
-        </button>
+        </HelpfulButton>
         {` (${answer.helpfulness}) |`}
         {!reported
           ? (
-            <button type="button" className="button-link report" onClick={reportAnswer}>
+            <ReportButton isDarkMode={isDarkMode} onClick={reportAnswer}>
               Report
-            </button>
+            </ReportButton>
           )
           : <span>Reported</span>}
       </div>

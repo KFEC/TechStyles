@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaCheck } from 'react-icons/fa';
-import { Div } from '../../../../lib/styledComponents';
+import { Div, HelpfulButton, ReportButton } from '../../../../lib/styledComponents';
 import { putData } from '../../../../lib/index.js';
 import {
   updateRenderedReviews, updateIsReviewForm, updateIsReviewsUpdated,
@@ -14,7 +14,17 @@ const ReviewListEntry = ({ review }) => {
   const [reported, setReported] = useState(false);
 
   const { reviewList: { allReviews, renderedReviews } } = useSelector((state) => state.reviews);
+  const { isDarkMode } = useSelector((state) => state.productPage);
   const dispatch = useDispatch();
+
+  const themedStyle = {
+    '--color': isDarkMode ? '#242526' : 'white',
+    '--border-color': isDarkMode ? 'white' : 'rgb(87, 87, 87)',
+  };
+
+  const imgContainer = {
+    '--border-color': isDarkMode ? 'white' : 'rgb(87, 87, 87)',
+  };
 
   const date = new Date(review.date);
   const dateOptions = {
@@ -41,7 +51,7 @@ const ReviewListEntry = ({ review }) => {
   };
 
   return (
-    <div className="review-list-comp">
+    <div className="review-list-comp" style={themedStyle}>
       <div className="reviews-stars">
         <span className="Stars rl-stars" style={{ '--rating': review.rating }} />
       </div>
@@ -70,7 +80,7 @@ const ReviewListEntry = ({ review }) => {
         </div>
       )}
       {review.photos.length > 0 && (
-        <div className="reviews-img-container">
+        <div className="reviews-img-container" style={imgContainer}>
           {review.photos.map((photo, idx) => {
             return <img className="reviews-img" alt="" src={photo.url} key={Math.random(69 * idx) * 59} />;
           })}
@@ -78,18 +88,18 @@ const ReviewListEntry = ({ review }) => {
       )}
       <div className="reviews-helpful">
         Helpful?
-        <button type="button" className="button-link" onClick={helpfulReview}>
+        <HelpfulButton isDarkMode={isDarkMode} onClick={helpfulReview}>
           Yes
-        </button>
+        </HelpfulButton>
         <span>
           {` (${review.helpfulness}) |`}
         </span>
         <span>
           {!reported
             ? (
-              <button type="button" className="button-link" onClick={reportReview}>
+              <ReportButton isDarkMode={isDarkMode} onClick={reportReview}>
                 Report
-              </button>
+              </ReportButton>
             )
             : <span>Reported</span>}
         </span>

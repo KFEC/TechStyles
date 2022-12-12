@@ -21,6 +21,7 @@ const Reviews = () => {
     },
     page: { isReviewForm, isReviewsUpdated },
   } = useSelector((state) => state.reviews);
+  const { isDarkMode } = useSelector((state) => state.productPage);
 
   const loadReviews = () => {
     dispatch((updateRenderedReviews(allReviews.slice(0, renderedReviewsCt + 2))));
@@ -53,8 +54,13 @@ const Reviews = () => {
         <div className="review-list">
           <ReviewList />
           {(allReviews.length !== renderedReviews.length)
-        && <Button onClick={loadReviews}>Load More</Button>}
-          <Button onClick={() => dispatch(updateIsReviewForm())}>Create Review</Button>
+        && <Button isDarkMode={isDarkMode} onClick={loadReviews}>Load More</Button>}
+          <Button
+            isDarkMode={isDarkMode}
+            onClick={() => dispatch(updateIsReviewForm())}
+          >
+            Create Review
+          </Button>
         </div>
         <div>
           <Modal changeDisplay={isReviewForm}>
