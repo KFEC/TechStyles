@@ -55,7 +55,7 @@ const Comparaison = ({
       <table>
         <caption>Comparing</caption>
         <thead>
-          <tr>
+          <tr className="tableRow">
             <th>{productInfo.name}</th>
             <th> </th>
             <th>{comparedProductDetails.name}</th>
@@ -63,7 +63,7 @@ const Comparaison = ({
         </thead>
         <tbody>
           {currentProductFeatures.map((feature, idx) => (
-            <tr key={Math.random(69 * idx) * 3}>
+            <tr key={Math.random(69 * idx) * 3} className="tableRow">
               {feature.value === undefined
                 ? <td> </td> : <td>{feature.value}</td>}
               <td>{feature.feature}</td>
@@ -71,7 +71,6 @@ const Comparaison = ({
                 ? <td> </td> : <td>{feature.value1}</td>}
             </tr>
           ))}
-
         </tbody>
       </table>
     </ModalContent>

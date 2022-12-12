@@ -5,11 +5,10 @@ import styled from 'styled-components';
 const ComparaisonModal = styled.div`
   display:  ${(props) => props.displayModal ? 'block' : 'none'};
   position: fixed;
-  z-index: 3;
+  z-index: 99;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
+  width: 50%;
   overflow: auto;
   background-color: rgb(0, 0, 0, 0);
 `;
@@ -17,9 +16,8 @@ const ComparaisonModal = styled.div`
 const ModalContent = styled.div`
   background-color: #fefefe;
   margin: 10% auto;
-  paddding: 50em;
-  width: 35%;
-
+  width: 100%;
+  z-index: 100;
 `;
 
 // const Div = styled.div`
@@ -48,16 +46,16 @@ const CloseModalButton = styled.button`
   font-weight: bold;
 `;
 
-const Table = styled.table`
-border-collapse: collapse;
-border-spacing: 0;
-width: 100%;
-border: 1px solid #ddd;
-`;
+// const Table = styled.table`
+// border-collapse: collapse;
+// border-spacing: 0;
+// width: 100%;
+// border: 1px solid #ddd;
+// `;
 
-const TableText = styled.td`
-text-align: center;
-`;
+// const TableText = styled.td`
+// text-align: center;
+// `;
 
 const ButtonAddItem = styled.button`
   background-color: transparent;
@@ -75,6 +73,4 @@ export {
   ImageRelatedProduct,
   RelatedProductContainer,
   ModalContent,
-  Table,
-  TableText,
 };

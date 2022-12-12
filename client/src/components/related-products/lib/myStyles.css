@@ -168,6 +168,10 @@ th:third-child, td:third-child {
     top: 0;
 }
 
+.tableRow {
+  padding-bottom: 5em;
+}
+
 /* Your Outfit */
 
 /* .addButton {
