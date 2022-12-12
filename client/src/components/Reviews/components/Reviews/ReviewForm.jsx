@@ -10,6 +10,7 @@ import {
   CloseModalButton,
 } from '../../../../lib/styledComponents';
 import ReviewStars from './ReviewStars.jsx';
+import ReviewFormChars from './ReviewFormChars.jsx';
 import { postData } from '../../../../lib/index.js';
 
 const ReviewForm = ({ setDisplay }) => {
@@ -23,6 +24,14 @@ const ReviewForm = ({ setDisplay }) => {
   const [photos, setPhotos] = useState([]);
   const [isRecommended, setIsRecommended] = useState(false);
   const [failed, setFailed] = useState(false);
+
+  const { productMeta } = useSelector((state) => state.product);
+  let tempChars = [];
+  if (productMeta.characteristics) {
+    tempChars = Object.keys(productMeta.characteristics).map(key => (
+      [key, productMeta.characteristics[key].id]
+    ));
+  }
 
   const dispatch = useDispatch();
 
@@ -114,7 +123,7 @@ const ReviewForm = ({ setDisplay }) => {
               characteristics:
             </label> */}
             <div className="input-label">Characteristics</div>
-            <input
+            {/* <input
               type="range"
               min="0"
               max="5"
@@ -122,7 +131,16 @@ const ReviewForm = ({ setDisplay }) => {
               value={characteristics}
               onChange={e => setCharacteristics(e.target.value)}
             />
-            {characteristics}
+            {characteristics} */}
+            {tempChars.map((pair, index) => {
+              return (
+                <ReviewFormChars
+                  key={Math.random(index * 54) * 10}
+                  char={pair[0]}
+                  id={pair[1]}
+                />
+              );
+            })}
           </div>
           <div>
             {/* <label

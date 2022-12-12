@@ -107,7 +107,7 @@ const App = () => {
 
   return (
     <AppDiv data-testid="app-1">
-      <Wrapper><img id="app-logo" src="./fec-logo.png" alt="TechStyles" /></Wrapper>
+      {/* <Wrapper><img id="app-logo" src="./fec-logo.png" alt="TechStyles" /></Wrapper> */}
       <Overview />
       <RelatedProducts />
       <QA />
