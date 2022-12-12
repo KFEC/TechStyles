@@ -4,6 +4,7 @@ import {
   updateRenderedReviews, updateIsReviewForm, updateIsReviewsUpdated,
   updateFilter, updateRenderedReviewCt,
 } from '../../../../reducers/reviewComponentSlice';
+import { getProductReviews } from '../../../../actions';
 import {
   Button,
   ModalContent,
@@ -13,10 +14,10 @@ import ReviewStars from './ReviewStars.jsx';
 import ReviewFormChars from './ReviewFormChars.jsx';
 import { postData } from '../../../../lib/index.js';
 
-const ReviewForm = ({ setDisplay }) => {
+const ReviewForm = () => {
 
   const [rating, setRating] = useState(0);
-  const [characteristics, setCharacteristics] = useState(0);
+  const [characteristics, setCharacteristics] = useState({});
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
   const [name, setName] = useState('');
@@ -25,7 +26,7 @@ const ReviewForm = ({ setDisplay }) => {
   const [isRecommended, setIsRecommended] = useState(false);
   const [failed, setFailed] = useState(false);
 
-  const { productMeta } = useSelector((state) => state.product);
+  const { productId, productMeta } = useSelector((state) => state.product);
   let tempChars = [];
   if (productMeta.characteristics) {
     tempChars = Object.keys(productMeta.characteristics).map(key => (
@@ -37,7 +38,7 @@ const ReviewForm = ({ setDisplay }) => {
 
   const resetStates = () => {
     setRating(0);
-    setCharacteristics(0);
+    setCharacteristics({});
     setSummary('');
     setBody('');
     setName('');
@@ -55,9 +56,9 @@ const ReviewForm = ({ setDisplay }) => {
     console.log({
       rating, characteristics, summary, body, name, email, isRecommended: !isRecommended, photos,
     });
-    // doesn't work atm
+
     postData('/reviews', {
-      product_id: 40347,
+      product_id: Number(productId),
       rating,
       summary,
       body,
@@ -68,6 +69,11 @@ const ReviewForm = ({ setDisplay }) => {
       characteristics,
     }).then(() => {
       resetStates();
+      dispatch(getProductReviews({
+        url: '/reviews',
+        params: { product_id: productId, count: 6969 },
+      }));
+      dispatch(updateIsReviewForm());
     });
   };
 
@@ -138,6 +144,8 @@ const ReviewForm = ({ setDisplay }) => {
                   key={Math.random(index * 54) * 10}
                   char={pair[0]}
                   id={pair[1]}
+                  setCharacteristics={setCharacteristics}
+                  characteristics={characteristics}
                 />
               );
             })}
@@ -292,8 +300,7 @@ const ReviewForm = ({ setDisplay }) => {
             onClick={() => (
               !failed
               && body.length > 50
-            )
-            && setDisplay(false)}
+            )}
           >
             Submit
           </Button>
