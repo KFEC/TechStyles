@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import {
+  RiDeleteBin6Line,
+} from 'react-icons/ri';
 import Comparaison from './Comparaison.jsx';
 import {
-  ButtonFloatRight,
   ImageRelatedProduct,
 } from '../lib/styledComponents';
 
@@ -26,20 +28,17 @@ const ProductCardYourOutfit = ({
 
   return (
     <div className="card">
-      <div className="btn-text-right">
-        <ButtonFloatRight type="button" onClick={deleteItem}>x</ButtonFloatRight>
-      </div>
+      <RiDeleteBin6Line type="button" className="removeButton" onClick={deleteItem} />
       <div>
         <ImageRelatedProduct src={image} alt={outfitItem.name} />
       </div>
-      <div className="textCentered">
-        <p>{outfitItem.category}</p>
-        <p>{outfitItem.name}</p>
-        <p>
+      <div className="productInfo">
+        <p className="productName">{outfitItem.name}</p>
+        <p className="itemCategory">{outfitItem.category}</p>
+        <p className="productPrice">
           $
           {outfitItem.styles[0].original_price}
         </p>
-        <p>rating</p>
       </div>
     </div>
   );

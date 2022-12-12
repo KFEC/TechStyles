@@ -1,15 +1,6 @@
 import styled from 'styled-components';
 
-const ButtonFloatRight = styled.button`
-  float: right;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  outline: none;
-  color: purple;
-`;
+
 
 const ComparaisonModal = styled.div`
   display:  ${(props) => props.displayModal ? 'block' : 'none'};
@@ -24,12 +15,11 @@ const ComparaisonModal = styled.div`
 `;
 
 const ModalContent = styled.div`
-
   background-color: #fefefe;
   margin: 10% auto;
-  paddding: 5em;
-  border: 1em solid #888;
+  paddding: 50em;
   width: 35%;
+
 `;
 
 // const Div = styled.div`
@@ -43,6 +33,8 @@ const ImageRelatedProduct = styled.img`
   width: 240px;
   height: 240px;
   object-fit: cover;
+  z-index: 1;
+  position: relative;
 `;
 
 const RelatedProductContainer = styled.section`
@@ -78,7 +70,6 @@ const ButtonAddItem = styled.button`
 
 export {
   ButtonAddItem,
-  ButtonFloatRight,
   CloseModalButton,
   ComparaisonModal,
   ImageRelatedProduct,

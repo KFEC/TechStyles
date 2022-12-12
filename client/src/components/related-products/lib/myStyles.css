@@ -27,6 +27,7 @@ table {
 border-collapse: collapse;
 border-spacing: 0;
 width: 100%;
+border: 5px solid;
 }
 
 th, td {
@@ -44,6 +45,7 @@ th:third-child, td:third-child {
 
 /* product card */
 .card {
+  position: relative;
   width: 240px;
   height: 320px;
   background: rgb(251, 249, 249);
@@ -52,6 +54,33 @@ th:third-child, td:third-child {
   transition: 0.3s;
   cursor: pointer;
 }
+
+.comparisonButton {
+  z-index: 2;
+  position: absolute;
+  right: 0;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: purple;
+}
+
+.removeButton {
+  z-index: 2;
+  position: absolute;
+  right: 0;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: purple;
+}
+
 .related-product-container {
   height: 80%;
   padding:5px
@@ -72,6 +101,7 @@ th:third-child, td:third-child {
 .productName {
   font-weight: bold;
 }
+
 .productPrice {
   font-weight: bold;
 }
@@ -137,3 +167,9 @@ th:third-child, td:third-child {
     right: 0;
     top: 0;
 }
+
+/* Your Outfit */
+
+/* .addButton {
+  size: 70;
+} */

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import {
+  AiFillStar,
+} from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateProductId } from '../../../reducers';
 import Comparaison from './Comparaison.jsx';
 import {
-  ButtonFloatRight,
   ImageRelatedProduct,
   ComparaisonModal,
 } from '../lib/styledComponents';
@@ -95,44 +97,41 @@ const ProductCard = ({
   }
 
   return (
-    <div className="card" style={{ opacity: `${opacity}` }}>
-      <ButtonFloatRight type="button" style={{ zIndex: '2', float: 'right', position: 'absolute' }} onClick={() => setOpenModal(true)}>★</ButtonFloatRight>
+    <div className="card" style={{ display: 'flex', flexDirection: 'column', opacity: `${opacity}` }}>
       <ComparaisonModal displayModal={openModal}>
         <Comparaison
+          key={Math.random(69 * idx) * 3}
           setOpenModal={setOpenModal}
           comparedProductDetails={productDetails}
           comparedProductChars={meta}
           mainProductChars={mainProductChars}
         />
       </ComparaisonModal>
-      <div>
-        <div>
-          <ImageRelatedProduct
-            src={productImage}
-            alt={productDetails.name}
-            onClick={() => {
-              dispatch(updateProductId(productDetails.id.toString()));
-              setProperty(0);
-            }}
-          />
-        </div>
-        <div className="productInfo">
-          <div className="productName">{productDetails.name}</div>
-          <div className="itemCategory">{productDetails.category}</div>
-          {discountedPrice === null
-            ? (
-              <p className="productPrice">
-                $
-                {price}
-              </p>
-            ) : (
-              <p className="productPrice">
-                {price}
-                {discountedPrice}
-              </p>
-            )}
-          <span className="StarsRelatedProducts" style={{ '--rating': stars }} />
-        </div>
+      <AiFillStar type="button" className="comparisonButton" onClick={() => setOpenModal(true)} />
+      <ImageRelatedProduct
+        src={productImage}
+        alt={productDetails.name}
+        onClick={() => {
+          dispatch(updateProductId(productDetails.id.toString()));
+          setProperty(0);
+        }}
+      />
+      <div className="productInfo">
+        <div className="productName">{productDetails.name}</div>
+        <div className="itemCategory">{productDetails.category}</div>
+        {discountedPrice === null
+          ? (
+            <p className="productPrice">
+              $
+              {price}
+            </p>
+          ) : (
+            <p className="productPrice">
+              {price}
+              {discountedPrice}
+            </p>
+          )}
+        <span className="StarsRelatedProducts" style={{ '--rating': stars }} />
       </div>
     </div>
   );

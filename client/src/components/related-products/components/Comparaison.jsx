@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+import {
+  AiOutlineClose,
+} from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import '../lib/myStyles.css';
 import {
   ModalContent,
   CloseModalButton,
-  ButtonFloatRight,
 } from '../lib/styledComponents';
 
 /*
+AiOutlineClose
 The comparison modal window will pull up and compare the characteristics present for each product.
 The modal should be titled “Comparing”. The characteristics to be compared are the same as those
 which appear on the Overview module for each product separately.
@@ -24,10 +27,6 @@ const Comparaison = ({
     productInfo,
     productMeta,
   } = useSelector((state) => state.product);
-
-  // console.log('current product features: ', productInfo.features);
-  // console.log('compared product features :', comparedProductDetails.features);
-
   const featuresArray = [...comparedProductDetails.features];
   const currentProductFeatures = [...productInfo.features];
 
@@ -50,10 +49,9 @@ const Comparaison = ({
     }
   }
 
-  console.log('current product features: ', currentProductFeatures);
   return (
     <ModalContent>
-      <ButtonFloatRight onClick={() => setOpenModal(false)}>x</ButtonFloatRight>
+      <AiOutlineClose type="button" onClick={() => setOpenModal(false)} />
       <table>
         <caption>Comparing</caption>
         <thead>
@@ -65,7 +63,7 @@ const Comparaison = ({
         </thead>
         <tbody>
           {currentProductFeatures.map((feature, idx) => (
-            <tr>
+            <tr key={Math.random(69 * idx) * 3}>
               {feature.value === undefined
                 ? <td> </td> : <td>{feature.value}</td>}
               <td>{feature.feature}</td>
