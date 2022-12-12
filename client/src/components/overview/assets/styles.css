@@ -84,8 +84,10 @@
 }
 
 #expanded-main-img {
-	width: 100%;
-	overflow: hidden;
+	width: 75%;
+	height: auto;
+	object-fit: cover;
+	object-position: 50% 50%;
 }
 
 .close-btn {

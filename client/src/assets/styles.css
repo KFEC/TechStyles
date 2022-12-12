@@ -35,7 +35,8 @@ html {
 }
 
 #app-logo {
-  width: 500px;
+  width: 400px;
+  padding: 2em;
 }
 
 body {
@@ -127,7 +128,3 @@ table {
   overflow: hidden;
   background-color: rgb(109, 109, 109);
 }
-
-/* #reviews {
-  width: 75%;
-} */
