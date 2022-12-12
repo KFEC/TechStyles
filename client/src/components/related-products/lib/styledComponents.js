@@ -8,14 +8,13 @@ const ButtonFloatRight = styled.button`
   cursor: pointer;
   overflow: hidden;
   outline: none;
-  z-index: 2;
   color: purple;
 `;
 
 const ComparaisonModal = styled.div`
   display:  ${(props) => props.displayModal ? 'block' : 'none'};
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   left: 0;
   top: 0;
   width: 100%;
@@ -25,8 +24,9 @@ const ComparaisonModal = styled.div`
 `;
 
 const ModalContent = styled.div`
+
   background-color: #fefefe;
-  margin: 15% auto;
+  margin: 10% auto;
   paddding: 5em;
   border: 1em solid #888;
   width: 35%;
@@ -40,8 +40,8 @@ const ModalContent = styled.div`
 // `;
 
 const ImageRelatedProduct = styled.img`
-  width: 200px;
-  height: 250px;
+  width: 240px;
+  height: 240px;
   object-fit: cover;
 `;
 

@@ -11,7 +11,12 @@ import { getData } from '../../../lib';
 import defaultImage from '../lib/images/noProductAvailable.png';
 // Image unavailable https://i.imgur.com/MyKhQau.png
 
-const ProductCard = ({ product: { productDetails, styles, meta } }) => {
+const ProductCard = ({
+  product: { productDetails, styles, meta },
+  setProperty,
+  property,
+  idx,
+}) => {
   const {
     productId,
     productInfo,
@@ -83,12 +88,15 @@ const ProductCard = ({ product: { productDetails, styles, meta } }) => {
   if (productImage === null) {
     productImage = defaultImage;
   }
+  // hide cards that are outside of related profucts box
+  let opacity = 1;
+  if (idx < property || idx > property + 3) {
+    opacity = 0;
+  }
 
   return (
-    <div className="card">
-      <div className="btn-text-right">
-        <ButtonFloatRight type="button" onClick={() => setOpenModal(true)}>★</ButtonFloatRight>
-      </div>
+    <div className="card" style={{ opacity: `${opacity}` }}>
+      <ButtonFloatRight type="button" style={{ zIndex: '2', float: 'right', position: 'absolute' }} onClick={() => setOpenModal(true)}>★</ButtonFloatRight>
       <ComparaisonModal displayModal={openModal}>
         <Comparaison
           setOpenModal={setOpenModal}
@@ -98,24 +106,27 @@ const ProductCard = ({ product: { productDetails, styles, meta } }) => {
         />
       </ComparaisonModal>
       <div>
-        <div id="related-product-container">
+        <div>
           <ImageRelatedProduct
             src={productImage}
             alt={productDetails.name}
-            onClick={() => dispatch(updateProductId(productDetails.id.toString()))}
+            onClick={() => {
+              dispatch(updateProductId(productDetails.id.toString()));
+              setProperty(0);
+            }}
           />
         </div>
-        <div className="textCentered">
-          <div>{productDetails.category}</div>
-          <div>{productDetails.name}</div>
+        <div className="productInfo">
+          <div className="productName">{productDetails.name}</div>
+          <div className="itemCategory">{productDetails.category}</div>
           {discountedPrice === null
             ? (
-              <p>
+              <p className="productPrice">
                 $
                 {price}
               </p>
             ) : (
-              <p>
+              <p className="productPrice">
                 {price}
                 {discountedPrice}
               </p>

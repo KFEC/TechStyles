@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import {
+  IoIosArrowBack, IoIosArrowForward,
+} from 'react-icons/io';
 import { useSelector } from 'react-redux';
 import ProductCard from './ProductCard.jsx';
 import {
@@ -38,7 +41,11 @@ const RelatedProductsList = ({ setOpenModal, productData, currentProduct }) => {
   // ${property * (100 / relatedProducts.length)}
   return (
     <div className="related-product-list">
-      <button
+      {/* <div>
+        property#
+        {property}
+      </div> */}
+      {/* <button
         onClick={nextProperty}
         type="button"
         className="left-arrow"
@@ -51,21 +58,42 @@ const RelatedProductsList = ({ setOpenModal, productData, currentProduct }) => {
         className="right-arrow"
       >
         →
-      </button>
+      </button> */}
+      { numberOfCards < 5 || numberOfCards - 4 === property ? null : (
+        <IoIosArrowBack
+          onClick={nextProperty}
+          type="button"
+          style={{
+            margin: 'auto', zIndex: '2', fontSize: '2em', border: '3px dashed rgb(89, 0, 255)',
+          }}
+        />
+      ) }
       <div className="cards-slider">
         <div className="cards-slider-wrapper" style={{ transform: `translateX(-${property * (100 / numberOfCards)}%)` }}>
           {relatedProducts?.map((product, idx) => {
             return (
               <ProductCard
                 className="card"
+                idx={idx}
                 key={product.productDetails.id}
                 product={product}
                 setOpenModal={setOpenModal}
+                setProperty={setProperty}
+                property={property}
               />
             );
           })}
         </div>
       </div>
+      { property === 0 || numberOfCards < 5 ? null : (
+        <IoIosArrowForward
+          onClick={prevProperty}
+          type="button"
+          style={{
+            margin: 'auto', zIndex: '2', fontSize: '2em', border: '3px dashed rgb(89, 0, 255)',
+          }}
+        />
+      )}
     </div>
     // <Div data-testid="RelatedProductsList">
     //   Related Product List

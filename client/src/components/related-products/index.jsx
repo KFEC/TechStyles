@@ -19,7 +19,7 @@ const RelatedProducts = () => {
     <Div>
       { relatedProducts.length > 0
       && (
-        <div>
+        <div id="related-products-container" style={{ display: 'flex', flexDirection: 'column' }}>
           Related Products
           {/* pass current product to use the details and chars for comparaison modal */}
           {/* pass an array of related products with product details and product styles */}

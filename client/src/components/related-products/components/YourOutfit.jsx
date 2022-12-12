@@ -53,7 +53,7 @@ const YourOutfit = () => {
     }
   };
   return (
-    <div>
+    <div id="your-outfit">
       Your Outfit
       <RelatedProductContainer>
         <div className="card">
