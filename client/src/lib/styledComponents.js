@@ -32,21 +32,24 @@ const AppDiv = styled.div`
   background-color: #fff;
   margin: 1em;
   padding: 0.25em;
-  border: 2px solid black;
+  border: 2px none black;
 `;
 
 const Div = styled.div`
   background-color: #fff;
   margin: 0.25em;
   padding: 2em;
-  border: 2px solid black;
+  border: 2px none black;
   width: 85%;
   background-color: #fff;
 `;
 
 const Wrapper = styled.section`
-  padding: 4em;
-  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(33, 76, 119, 0.2);
+  width: 100%
 `;
 
 const Modal = styled.div`
