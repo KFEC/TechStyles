@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
+  updateRenderedReviews, updateIsReviewForm, updateIsReviewsUpdated,
+  updateFilter, updateRenderedReviewCt,
+} from '../../../../reducers/reviewComponentSlice';
+import {
   Button,
   ModalContent,
   CloseModalButton,
@@ -19,6 +23,8 @@ const ReviewForm = ({ setDisplay }) => {
   const [photos, setPhotos] = useState([]);
   const [isRecommended, setIsRecommended] = useState(false);
   const [failed, setFailed] = useState(false);
+
+  const dispatch = useDispatch();
 
   const resetStates = () => {
     setRating(0);
@@ -82,7 +88,7 @@ const ReviewForm = ({ setDisplay }) => {
           </ModalContent>
         )}
 
-        <CloseModalButton type="submit" onClick={() => setDisplay(false)}>❌</CloseModalButton>
+        <CloseModalButton type="submit" onClick={() => dispatch(updateIsReviewForm())}>❌</CloseModalButton>
         <h2>Submit Review</h2>
         <form onSubmit={submitHandler}>
           <div>

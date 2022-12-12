@@ -45,7 +45,6 @@ const patchData = async (url, options) => {
       },
       data: options,
     });
-    console.log(data);
     return Promise.resolve(data);
   } catch (err) {
     console.error(err);
@@ -64,7 +63,6 @@ const putData = async (url, options) => {
       },
       data: options,
     });
-    console.log(data);
     return Promise.resolve(data);
   } catch (err) {
     console.error(err);

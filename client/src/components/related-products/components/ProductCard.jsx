@@ -3,7 +3,7 @@ import {
   AiFillStar,
 } from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateProductId } from '../../../reducers';
+import { updateProductId } from '../../../reducers/productSlice';
 import Comparaison from './Comparaison.jsx';
 import {
   ImageRelatedProduct,

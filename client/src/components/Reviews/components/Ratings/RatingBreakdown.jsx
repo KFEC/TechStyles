@@ -6,13 +6,7 @@ import { getData } from '../../../../lib';
 
 const RatingBreakdown = memo(() => {
 
-  const {
-    relatedProducts, productMeta, productReviews: { stars, recommended, totalReviews },
-  } = useSelector((state) => state.product);
-
-  const clickRatingHandler = (e) => {
-    console.log(e.target);
-  };
+  const { relatedProducts, productMeta } = useSelector((state) => state.product);
 
   return (
     <div data-testid="rating-breakdown">
@@ -24,7 +18,6 @@ const RatingBreakdown = memo(() => {
           <RatingRender
             key={Math.random(idx * 54) * 10}
             rating={{ rating: idx + 1, count }}
-            onClick={clickRatingHandler}
           />
         );
       })}

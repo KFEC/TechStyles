@@ -3,9 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import {
   getProductInfo, getProductMeta, getRelatedProducts, getProductStyles,
-  getProductQuestions,
+  getProductQuestions, getProductReviews,
 } from '../actions';
-import { updateProductStars, updateProductRecommended, updateProductTotalReviews } from '../reducers';
+import {
+  updateProductStars, updateProductRecommended,
+  updateProductTotalRatings, updateProductTotalReviews,
+} from '../reducers/productSlice';
 import Overview from './overview/index.jsx';
 import RelatedProducts from './related-products/index.jsx';
 import QA from './qa/index.jsx';
@@ -17,8 +20,10 @@ const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const {
     productInfo, productMeta, productId, relatedProducts,
-    productStyles, productQuestions, productStars,
+    productStyles, productQuestions, productStars, productReviews,
   } = useSelector((state) => state.product);
+
+  const { reviewList } = useSelector((state) => state.reviews);
   const dispatch = useDispatch();
 
   const calculateTotalRatings = (ratings) => {
@@ -63,6 +68,10 @@ const App = () => {
     dispatch(getProductInfo({ url: `/products/${productId}` }));
     dispatch(getProductMeta({ url: '/reviews/meta', params: { product_id: productId } }));
     dispatch(getProductStyles({ url: `/products/${productId}/styles` }));
+    dispatch(getProductReviews({
+      url: '/reviews',
+      params: { product_id: productId, count: 6969 },
+    }));
     dispatch(getProductQuestions({
       url: '/qa/questions',
       params: { product_id: productId, count: 6969 },
@@ -76,10 +85,16 @@ const App = () => {
         .then((result) => {
           dispatch(updateProductStars(result.ratingAvg));
           dispatch(updateProductRecommended(result.recommendedAvg));
-          dispatch(updateProductTotalReviews(result.totalRatings));
+          dispatch(updateProductTotalRatings(result.totalRatings));
         });
     }
   }, [productMeta]);
+
+  useEffect(() => {
+    if (reviewList.allReviews.length > 0) {
+      dispatch(updateProductTotalReviews(reviewList.allReviews.length));
+    }
+  }, [reviewList]);
 
   if (Object.keys(relatedProducts).length > 0) {
     console.log('product info', productInfo);
@@ -87,6 +102,7 @@ const App = () => {
     console.log('related products', relatedProducts);
     console.log('product styles', productStyles);
     console.log('product questions', productQuestions);
+    console.log('product reviews', productReviews);
   }
 
   return (
