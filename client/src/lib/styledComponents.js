@@ -180,9 +180,7 @@ const ExpandedViewModalContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: white;
   paddding: 5em;
-  border: 2em solid white;
   width: 95%;
   height: 95%;
 `;
