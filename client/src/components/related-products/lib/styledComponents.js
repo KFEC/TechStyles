@@ -2,23 +2,47 @@ import styled from 'styled-components';
 
 
 
-const ComparaisonModal = styled.div`
-  display:  ${(props) => props.displayModal ? 'block' : 'none'};
-  position: fixed;
-  z-index: 99;
-  left: 0;
-  top: 0;
-  width: 50%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0, 0);
-`;
+// const ComparaisonModal = styled.div`
+//   display:  ${(props) => props.displayModal ? 'block' : 'none'};
+//   position: fixed;
+//   z-index: 99;
+//   // left: 0;
+//   // top: 0;
+//   width: 50%;
+//   overflow: auto;
+//   background-color: rgb(0, 0, 0, 0);
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// `;
 
-const ModalContent = styled.div`
-  background-color: #fefefe;
-  margin: 10% auto;
-  width: 100%;
-  z-index: 100;
-`;
+// original
+// const ComparaisonModal = styled.div`
+//   display:  ${(props) => props.displayModal ? 'block' : 'none'};
+//   position: fixed;
+//   z-index: 99;
+//   left: 0;
+//   top: 0;
+//   width: 50%;
+//   overflow: auto;
+//   background-color: rgb(0, 0, 0, 0);
+// `;
+
+// original
+// const ModalContent = styled.div`
+//   background-color: #fefefe;
+//   margin: 10% auto;
+//   width: 100%;
+//   z-index: 100;
+// `;
+
+// const ModalContent = styled.div`
+//   position: relative;
+//   background-color: #fefefe;
+//   margin: 10% auto;
+//   width: 100%;
+//   z-index: 100;
+// `;
 
 // const Div = styled.div`
 //   background: whitesmoke;
@@ -31,8 +55,8 @@ const ImageRelatedProduct = styled.img`
   width: 240px;
   height: 240px;
   object-fit: cover;
-  z-index: 1;
-  position: relative;
+  // z-index: 1;
+  // position: relative;
 `;
 
 const RelatedProductContainer = styled.section`
@@ -69,8 +93,8 @@ const ButtonAddItem = styled.button`
 export {
   ButtonAddItem,
   CloseModalButton,
-  ComparaisonModal,
+  // ComparaisonModal,
   ImageRelatedProduct,
   RelatedProductContainer,
-  ModalContent,
+  // ModalContent,
 };

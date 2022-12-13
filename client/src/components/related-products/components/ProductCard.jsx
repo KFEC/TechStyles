@@ -7,7 +7,6 @@ import { updateProductId } from '../../../reducers/productSlice';
 import Comparaison from './Comparaison.jsx';
 import {
   ImageRelatedProduct,
-  ComparaisonModal,
 } from '../lib/styledComponents';
 import { getData } from '../../../lib';
 import defaultImage from '../lib/images/noProductAvailable.png';
@@ -18,6 +17,7 @@ const ProductCard = ({
   setProperty,
   property,
   idx,
+  rpl,
 }) => {
   const {
     productId,
@@ -27,6 +27,8 @@ const ProductCard = ({
     relatedProducts,
   } = useSelector((state) => state.product);
   const dispatch = useDispatch();
+  // modal display property set to false by default
+  // original is false
   const [openModal, setOpenModal] = useState(false);
   const [stars, setStars] = useState(0);
   const [reviewCount, setReviewCount] = useState(0);
@@ -92,12 +94,31 @@ const ProductCard = ({
   }
   // hide cards that are outside of related profucts box
   let opacity = 1;
+  let disable = 'false';
   if (idx < property || idx > property + 3) {
     opacity = 0;
+    disable = 'true';
   }
 
   return (
-    <div className="card" style={{ display: 'flex', flexDirection: 'column', opacity: `${opacity}` }}>
+    <div
+      className="card"
+      style={{ display: 'flex', flexDirection: 'column', opacity: `${opacity}` }}
+    >
+      {openModal && (
+        <div className="modalTest" display={openModal ? 'block' : 'none'}>
+          <Comparaison
+            key={Math.random(69 * idx) * 3}
+            setOpenModal={setOpenModal}
+            comparedProductDetails={productDetails}
+            comparedProductChars={meta}
+            mainProductChars={mainProductChars}
+            rpl={rpl}
+          />
+        </div>
+      )}
+
+      {/* original starts here
       <ComparaisonModal displayModal={openModal}>
         <Comparaison
           key={Math.random(69 * idx) * 3}
@@ -106,12 +127,12 @@ const ProductCard = ({
           comparedProductChars={meta}
           mainProductChars={mainProductChars}
         />
-      </ComparaisonModal>
+      </ComparaisonModal> */}
+
       <AiFillStar type="button" className="comparisonButton" onClick={() => setOpenModal(true)} />
       <ImageRelatedProduct
         src={productImage}
         alt={productDetails.name}
-        style={{ cursor: 'pointer' }}
         onClick={() => {
           if (opacity === 1) {
             dispatch(updateProductId(productDetails.id.toString()));

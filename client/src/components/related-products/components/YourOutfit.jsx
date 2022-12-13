@@ -55,14 +55,17 @@ const YourOutfit = () => {
       Your Outfit
       <RelatedProductContainer>
         <div className="card">
+          <p style={{ top: '20%', left: '30%' }}>Add to Outfit</p>
           <GrAdd
+            className="center"
             type="button"
             style={{
               fontSize: '100px',
+              left: '30%',
+              top: '28%',
             }}
             onClick={addItem}
           />
-          <p style={{ textAlign: 'center' }}>Add the current product to Your Outfit</p>
         </div>
         {outfitItems.map(
           (item, idx) => (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   IoIosArrowBack, IoIosArrowForward,
 } from 'react-icons/io';
@@ -8,7 +8,7 @@ import {
   RelatedProductContainer,
 } from '../lib/styledComponents';
 
-const RelatedProductsList = ({ setOpenModal, productData, currentProduct }) => {
+const RelatedProductsList = ({ setOpenModaproductData, currentProduct }) => {
   const {
     productId,
     productInfo,
@@ -25,13 +25,14 @@ const RelatedProductsList = ({ setOpenModal, productData, currentProduct }) => {
     const newNumber = property - 1;
     setProperty(property - 1);
   };
+  const rpl = useRef();
   return (
-    <div className="related-product-list">
+    <div className="related-product-list" ref={rpl}>
       { numberOfCards < 5 || property === 0
         ? (
           <IoIosArrowBack
             type="button"
-            disabled="true"
+            disabled
             style={{
               opacity: '0', top: '45%', left: '45%', cursor: 'pointer', margin: 'auto', zIndex: '2', fontSize: '2em',
             }}
@@ -55,9 +56,9 @@ const RelatedProductsList = ({ setOpenModal, productData, currentProduct }) => {
                 idx={idx}
                 key={Math.random(69 * idx) * 3}
                 product={product}
-                setOpenModal={setOpenModal}
                 setProperty={setProperty}
                 property={property}
+                rpl={rpl}
               />
             );
           })}
@@ -67,7 +68,7 @@ const RelatedProductsList = ({ setOpenModal, productData, currentProduct }) => {
         ? (
           <IoIosArrowForward
             type="button"
-            disabled="true"
+            disabled
             style={{
               opacity: '0', margin: 'auto', zIndex: '2', fontSize: '2em',
             }}
