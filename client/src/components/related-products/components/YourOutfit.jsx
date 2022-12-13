@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
-  AddItemCard,
+  GrAdd,
+} from 'react-icons/gr';
+import {
   ButtonAddItem,
-  Card,
-  Div,
   ImageRelatedProduct,
   RelatedProductContainer,
 } from '../lib/styledComponents';
@@ -37,12 +37,8 @@ const YourOutfit = () => {
     };
     // check if item already present in outfits items
     if (outfitItems.length > 0) {
-      console.log('>0');
-      console.log('outfititem length: ', outfitItems.length);
       for (let i = 0; i < outfitItems.length; i += 1) {
-        console.log(typeof outfitItems[i].product_id.toString(), typeof productId);
         if (outfitItems[i].product_id.toString() === productId) {
-          console.log('true');
           break;
         } else if (i === outfitItems.length - 1) {
           setOutfitItems([...outfitItems, ItemObject]);
@@ -50,19 +46,27 @@ const YourOutfit = () => {
         }
       }
     } else if (outfitItems.length === 0) {
-      console.log('0');
       localStorage.setItem('outfits', JSON.stringify([ItemObject]));
       setOutfitItems([...outfitItems, ItemObject]);
     }
   };
   return (
-    <Div>
+    <div id="your-outfit">
       Your Outfit
       <RelatedProductContainer>
-        <AddItemCard>
-          {/* when clicked add main item to local storage */}
-          <ButtonAddItem type="button" onClick={addItem}>Add Current Item To Your Outfit</ButtonAddItem>
-        </AddItemCard>
+        <div className="card">
+          <p style={{ top: '20%', left: '30%' }}>Add to Outfit</p>
+          <GrAdd
+            className="center"
+            type="button"
+            style={{
+              fontSize: '100px',
+              left: '30%',
+              top: '28%',
+            }}
+            onClick={addItem}
+          />
+        </div>
         {outfitItems.map(
           (item, idx) => (
             <ProductCardYourOutfit
@@ -75,7 +79,7 @@ const YourOutfit = () => {
           ),
         )}
       </RelatedProductContainer>
-    </Div>
+    </div>
   );
 };
 
