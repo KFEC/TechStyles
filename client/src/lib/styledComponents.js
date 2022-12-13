@@ -67,7 +67,6 @@ const Modal = styled.div`
 const SocialMediaModal = styled.div`
   display: ${(props) => props.changeDisplay ? 'flex' : 'none'};
   position: fixed;
-
   left: 0;
   top: 0;
   align-items: center;
