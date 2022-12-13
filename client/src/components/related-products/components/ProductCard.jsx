@@ -19,6 +19,7 @@ const ProductCard = ({
   idx,
   rpl,
 }) => {
+  const { isDarkMode } = useSelector((state) => state.productPage);
   const {
     productId,
     productInfo,
@@ -99,11 +100,16 @@ const ProductCard = ({
     opacity = 0;
     disable = 'true';
   }
-
+  const cardStyle = {
+    '--card-color': isDarkMode ? '#303233' : '#FBF9F9',
+    display: 'flex',
+    flexDirection: 'column',
+    opacity: `${opacity}`,
+  };
   return (
     <div
       className="card"
-      style={{ display: 'flex', flexDirection: 'column', opacity: `${opacity}` }}
+      style={cardStyle}
     >
       {openModal && (
         <div className="modalTest" display={openModal ? 'block' : 'none'}>
