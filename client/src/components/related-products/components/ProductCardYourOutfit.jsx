@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import {
   RiDeleteBin6Line,
 } from 'react-icons/ri';
@@ -23,7 +24,7 @@ const ProductCardYourOutfit = ({
   setOutfitItems,
   idxOfItem,
 }) => {
-
+  const { isDarkMode } = useSelector((state) => state.productPage);
   let image = '';
   for (let i = 0; i < outfitItem.styles.length; i += 1) {
     if (outfitItem.styles[i]['default?'] === true) {
@@ -37,9 +38,11 @@ const ProductCardYourOutfit = ({
     setOutfitItems(copy);
     localStorage.setItem('outfits', JSON.stringify([...copy]));
   };
-
+  const cardStyle = {
+    '--card-color': isDarkMode ? '#303233' : '#FBF9F9',
+  };
   return (
-    <div className="card">
+    <div className="card" style={cardStyle}>
       <RiDeleteBin6Line type="button" className="removeButton" onClick={deleteItem} />
       <div>
         <ImageRelatedProduct src={image} alt={outfitItem.name} />
