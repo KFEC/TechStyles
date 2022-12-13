@@ -16,6 +16,7 @@ const Comparaison = ({
     productInfo,
     productMeta,
   } = useSelector((state) => state.product);
+  const { isDarkMode } = useSelector((state) => state.productPage);
   const featuresArray = [...comparedProductDetails.features];
   const currentProductFeatures = [...productInfo.features];
   // console.log('rpl', rpl)
@@ -36,9 +37,9 @@ const Comparaison = ({
       }
     }
   }
-
+  const modalStyle = { '--bg-color': isDarkMode ? '#303233' : '#FBF9F9' };
   return (
-    <div className="modal-contentTest">
+    <div className="modal-contentTest" style={modalStyle}>
       <AiOutlineClose type="button" onClick={() => setOpenModal(false)} />
       <table>
         <caption>Comparing</caption>

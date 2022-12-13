@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { IoClose } from 'react-icons/io5';
 import {
   Div,
@@ -11,6 +12,8 @@ import { postData } from '../../../lib/index.js';
 const NewQuestion = ({
   pName, id, setDisplay, setUpdate, update,
 }) => {
+
+  const { isDarkMode } = useSelector((state) => state.productPage);
 
   const [body, setBody] = useState('');
   const [name, setName] = useState('');
@@ -55,15 +58,17 @@ const NewQuestion = ({
   };
 
   return (
-    <ModalContent id="QAForm">
+    <ModalContent id="QAForm" isDarkMode={isDarkMode}>
       {failed
       && (
-        <ModalContent style={{
-          zIndex: '5',
-          margin: '5% auto',
-          border: '1px solid black',
-          width: '50%',
-        }}
+        <ModalContent
+          isDarkMode={isDarkMode}
+          style={{
+            zIndex: '5',
+            margin: '5% auto',
+            border: '1px solid black',
+            width: '50%',
+          }}
         >
           <CloseModalButton style={{ fontSize: '0.5em' }} type="submit" onClick={() => setFailed(false)}>
             <IoClose />
@@ -136,10 +141,12 @@ const NewQuestion = ({
           <br />
           <span id="answer-warning">For authentication reasons, you will not be emailed</span>
         </div>
-        <Button onClick={() => (
-          !failed
+        <Button
+          isDarkMode={isDarkMode}
+          onClick={() => (
+            !failed
           && regEmail.test(email)
-        )
+          )
         && setDisplay(false)}
         >
           Submit

@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+/* eslint-disable-next-line import/no-named-as-default */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateProductId } from '../../reducers';
@@ -12,13 +13,12 @@ import { Div } from '../../lib/styledComponents';
 // } from '../../lib/apiRoutes.js';
 import ImageGallery from './components/ImageGallery.jsx';
 import ProductInfo from './components/ProductInfo.jsx';
-// eslint-disable-next-line import/no-named-as-default
 import StyleSelect from './components/StyleSelect.jsx';
 import AddToCart from './components/AddToCart.jsx';
 import Description from './components/Description.jsx';
 import './assets/styles.css';
 
-const noImageAvailable = [{ thumbnail_url: 'https://i.imgur.com/fVQQcpc.png' }];
+const noImageAvailable = [{ thumbnail_url: 'https://i.imgur.com/safclRR.png' }];
 const noSkusAvailable = [{ quantity: null, size: 'OUT OF STOCK' }];
 
 const Overview = () => {
@@ -168,13 +168,13 @@ const Overview = () => {
   };
 
   return (
-    <Div id="overview-container">
+    <Div id="overview-container" data-testid="overview">
       <div id="overview">
         <div id="overview-left">
           <ImageGallery gallery={gallery} carouselIndex={carouselIndex} setCarouselIndex={setCarouselIndex} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
         </div>
         <div id="overview-right">
-          <ProductInfo category={category} name={name} slogan={slogan} description={description} price={price} sale={sale} stars={productReviews.stars} reviewCount={productReviews.totalReviews} />
+          <ProductInfo category={category} name={name} slogan={slogan} description={description} price={price} sale={sale} stars={productReviews.stars} reviewCount={productReviews.totalReviews} gallery={gallery} currentIndex={currentIndex} />
           <div id="styles-cart-container">
             <StyleSelect styles={styles} styleName={styleName} setStyleName={setStyleName} handleStyleClick={handleStyleClick} />
             <AddToCart sku={sku} selectSize={selectSize} setSelectSize={setSelectSize} selectQty={selectQty} setSelectQty={setSelectQty} />

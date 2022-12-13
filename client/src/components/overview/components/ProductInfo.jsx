@@ -6,7 +6,7 @@ import {
 import SocialMedia from './SocialMedia.jsx';
 
 const ProductInfo = ({
-  category, name, slogan, description, price, sale, stars, reviewCount,
+  category, name, slogan, description, price, sale, stars, reviewCount, gallery, currentIndex,
 }) => {
   const [display, setDisplay] = useState(false);
 
@@ -28,10 +28,12 @@ const ProductInfo = ({
     return (
       <div id="stars-reviews-container">
         <div className="overview-stars" style={{ '--rating': stars }} />
-        <div className="overview-reviews">
-          {`Read all ${reviewCount} reviews`}
-          {/* add href anchor here */}
-        </div>
+        <a href="#reviews" style={{ color: 'black', textDecoration: 'none' }}>
+          <div className="overview-reviews" style={{ paddingLeft: '8px' }}>
+            {`Read all ${reviewCount} reviews`}
+            {/* add href anchor here */}
+          </div>
+        </a>
       </div>
     );
   };
@@ -45,7 +47,7 @@ const ProductInfo = ({
           style={{ fontSize: '1.5em' }}
         />
         <SocialMediaModal changeDisplay={display}>
-          <SocialMedia setDisplay={setDisplay} />
+          <SocialMedia setDisplay={setDisplay} gallery={gallery} currentIndex={currentIndex} />
         </SocialMediaModal>
       </div>
       <div id="name">{name}</div>

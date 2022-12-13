@@ -124,17 +124,16 @@ const Modal = styled.div`
 `;
 
 const SocialMediaModal = styled.div`
-  display: ${(props) => props.changeDisplay ? 'grid' : 'none'};
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
+  display: ${(props) => props.changeDisplay ? 'flex' : 'none'};
+  position: fixed;
   left: 0;
-  right: 0;
-  text-align: center;
-  z-index: 5;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 
-  width: 50%;
-  height: 50%;
+  width: 100%;
+  height: 100%;
   overflow: auto;
   background-color: rgb(0, 0, 0, 0.4);
 `;
@@ -149,11 +148,12 @@ const ExpandedViewModal = styled.div`
   text-align: center;
   z-index: 10;
 
-  top: 10%;
-  width: 80%;
-  height: 80%;
+  width: 70%;
+  height: 70%;
+  width: 100%;
+  height: 950px;
   overflow: auto;
-  background-color: rgb(0, 0, 0, 0.4);
+  background-color: rgb(0, 0, 0, 0.9);
 `;
 
 const ModalContent = styled.div`
@@ -165,12 +165,14 @@ const ModalContent = styled.div`
 `;
 
 const SocialMediaModalContent = styled.div`
-  background-color: #fefefe;
-  margin: 15% auto;
-  paddding: 5em;
-  border: 1em solid #888;
-  width: 75%;
-  height: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  margin: 10% auto;
+  width: 500px;
+  height: 500px;
 `;
 
 const ExpandedViewModalContent = styled.div`
@@ -178,9 +180,7 @@ const ExpandedViewModalContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: white;
   paddding: 5em;
-  border: 2em solid white;
   width: 95%;
   height: 95%;
 `;
