@@ -6,7 +6,7 @@ import {
 import SocialMedia from './SocialMedia.jsx';
 
 const ProductInfo = ({
-  category, name, slogan, description, price, sale, stars, reviewCount,
+  category, name, slogan, description, price, sale, stars, reviewCount, gallery, currentIndex,
 }) => {
   const [display, setDisplay] = useState(false);
 
@@ -45,7 +45,7 @@ const ProductInfo = ({
           style={{ color: 'black', fontSize: '1.5em' }}
         />
         <SocialMediaModal changeDisplay={display}>
-          <SocialMedia setDisplay={setDisplay} />
+          <SocialMedia setDisplay={setDisplay} gallery={gallery} currentIndex={currentIndex} />
         </SocialMediaModal>
       </div>
       <div id="name">{name}</div>

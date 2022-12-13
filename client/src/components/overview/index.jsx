@@ -174,7 +174,7 @@ const Overview = () => {
           <ImageGallery gallery={gallery} carouselIndex={carouselIndex} setCarouselIndex={setCarouselIndex} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
         </div>
         <div id="overview-right">
-          <ProductInfo category={category} name={name} slogan={slogan} description={description} price={price} sale={sale} stars={productReviews.stars} reviewCount={productReviews.totalReviews} />
+          <ProductInfo category={category} name={name} slogan={slogan} description={description} price={price} sale={sale} stars={productReviews.stars} reviewCount={productReviews.totalReviews} gallery={gallery} currentIndex={currentIndex} />
           <div id="styles-cart-container">
             <StyleSelect styles={styles} styleName={styleName} setStyleName={setStyleName} handleStyleClick={handleStyleClick} />
             <AddToCart sku={sku} selectSize={selectSize} setSelectSize={setSelectSize} selectQty={selectQty} setSelectQty={setSelectQty} />
