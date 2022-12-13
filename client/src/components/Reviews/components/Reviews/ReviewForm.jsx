@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { IoClose } from 'react-icons/io5';
 import {
   updateRenderedReviews, updateIsReviewForm, updateIsReviewsUpdated,
   updateFilter, updateRenderedReviewCt,
@@ -94,7 +95,7 @@ const ReviewForm = () => {
             }}
           >
             <CloseModalButton style={{ fontSize: '0.5em' }} type="submit" onClick={() => setFailed(false)}>
-              ❌
+              <IoClose />
             </CloseModalButton>
             <div>
               <div>You must enter the following.</div>
@@ -107,7 +108,7 @@ const ReviewForm = () => {
           </ModalContent>
         )}
 
-        <CloseModalButton type="submit" onClick={() => dispatch(updateIsReviewForm())}>❌</CloseModalButton>
+        <CloseModalButton type="submit" onClick={() => dispatch(updateIsReviewForm())}><IoClose /></CloseModalButton>
         <h2>Submit Review</h2>
         <form onSubmit={submitHandler}>
           <div>
