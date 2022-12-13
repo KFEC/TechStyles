@@ -12,7 +12,6 @@ const NavBar = () => {
 
   const settingsClick = () => {
     dispatch(updateIsDarkMode());
-    console.log('settings clicked');
   };
 
   return (

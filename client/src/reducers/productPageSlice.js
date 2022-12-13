@@ -9,7 +9,6 @@ const productPageSlice = createSlice({
   initialState,
   reducers: {
     updateIsDarkMode: (state, action) => {
-      console.log('updating dark mode');
       state.isDarkMode = !state.isDarkMode;
     },
   },
