@@ -18,7 +18,7 @@ import AddToCart from './components/AddToCart.jsx';
 import Description from './components/Description.jsx';
 import './assets/styles.css';
 
-const noImageAvailable = [{ thumbnail_url: 'https://i.imgur.com/fVQQcpc.png' }];
+const noImageAvailable = [{ thumbnail_url: 'https://i.imgur.com/safclRR.png' }];
 const noSkusAvailable = [{ quantity: null, size: 'OUT OF STOCK' }];
 
 const Overview = () => {

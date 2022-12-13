@@ -2,9 +2,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect } from 'react';
 import {
-  RxDot, RxDotFilled,
-} from 'react-icons/rx';
-import {
   IoIosArrowBack, IoIosArrowForward,
 } from 'react-icons/io';
 import ImageMagnifier from './Zoom.jsx';
