@@ -154,7 +154,8 @@
 	width: 600px;
 	height: 800px;
 	position: relative;
-	overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 	/* border: 10px dashed pink; */
 }
 

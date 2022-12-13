@@ -93,7 +93,7 @@ const ExpandedViewModal = styled.div`
 
   width: 70%;
   height: 70%;
-  width: 950px;
+  width: 100%;
   height: 950px;
   overflow: auto;
   background-color: rgb(0, 0, 0, 0.9);

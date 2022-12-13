@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
 import {
-  IoIosArrowBack, IoIosArrowForward, IoIosArrowUp, IoIosArrowDown, HiMagnifyingGlassPlus,
+  IoIosArrowBack, IoIosArrowForward, IoIosArrowUp, IoIosArrowDown,
 } from 'react-icons/io';
 import {
   ExpandedViewModal,
@@ -66,7 +66,6 @@ const ImageGallery = ({
           <ExpandedViewModal changeDisplay={display}>
             <ExpandedView
               setDisplay={setDisplay}
-              main={main}
               setMain={setMain}
               gallery={gallery}
               expandedMain={expandedMain}

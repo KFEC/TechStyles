@@ -7,6 +7,7 @@ import {
 import {
   IoIosArrowBack, IoIosArrowForward,
 } from 'react-icons/io';
+import ImageMagnifier from './Zoom.jsx';
 import {
   ExpandedViewModalContent,
   CloseModalButton,
@@ -14,7 +15,6 @@ import {
 
 const ExpandedView = ({
   setDisplay,
-  main,
   gallery,
   expandedMain,
   setExpandedMain,
@@ -26,7 +26,7 @@ const ExpandedView = ({
   const renderExpandedMain = () => {
     return (
       <div id="expanded-img-container">
-        <img id="expanded-main-img" src={`${expandedMain}`} alt="" />
+        <ImageMagnifier id="expanded-main-img" src={`${expandedMain}`} alt="" />
       </div>
     );
   };
@@ -73,16 +73,11 @@ const ExpandedView = ({
   return (
     <ExpandedViewModalContent>
       <CloseModalButton className="close-btn" onClick={() => setDisplay(false)}>✖</CloseModalButton>
-
       <div id="expanded-arrows-container">
         <IoIosArrowBack onClick={(event) => { handleLeftClick(event); }} style={{ color: 'white', fontSize: '2.5em' }} />
-
         {expandedMain?.length > 0 ? renderExpandedMain() : null}
         {renderDots()}
-        {console.log('INDEX', currentExpandedIndex)}
-
         <IoIosArrowForward onClick={(event) => { handleRightClick(event); }} style={{ color: 'white', fontSize: '2.5em' }} />
-
       </div>
     </ExpandedViewModalContent>
   );
