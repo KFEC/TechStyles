@@ -28,10 +28,12 @@ const ProductInfo = ({
     return (
       <div id="stars-reviews-container">
         <div className="overview-stars" style={{ '--rating': stars }} />
-        <div className="overview-reviews">
-          {`Read all ${reviewCount} reviews`}
-          {/* add href anchor here */}
-        </div>
+        <a href="#reviews" style={{ color: 'black', textDecoration: 'none' }}>
+          <div className="overview-reviews" style={{ paddingLeft: '8px' }}>
+            {`Read all ${reviewCount} reviews`}
+            {/* add href anchor here */}
+          </div>
+        </a>
       </div>
     );
   };
