@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+/* eslint-disable-next-line import/no-named-as-default */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateProductId } from '../../reducers';
@@ -12,7 +13,6 @@ import { Div } from '../../lib/styledComponents';
 // } from '../../lib/apiRoutes.js';
 import ImageGallery from './components/ImageGallery.jsx';
 import ProductInfo from './components/ProductInfo.jsx';
-// eslint-disable-next-line import/no-named-as-default
 import StyleSelect from './components/StyleSelect.jsx';
 import AddToCart from './components/AddToCart.jsx';
 import Description from './components/Description.jsx';
@@ -168,7 +168,7 @@ const Overview = () => {
   };
 
   return (
-    <Div id="overview-container">
+    <Div id="overview-container" data-testid="overview">
       <div id="overview">
         <div id="overview-left">
           <ImageGallery gallery={gallery} carouselIndex={carouselIndex} setCarouselIndex={setCarouselIndex} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />

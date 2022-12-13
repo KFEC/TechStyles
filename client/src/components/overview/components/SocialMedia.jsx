@@ -13,7 +13,7 @@ const SocialMedia = ({ setDisplay, gallery, currentIndex }) => {
       <div id="social-media-icon-container">
         <div id="share-look">Share your look</div>
         <div id="share-img-container">
-          {gallery.length > 0 ? <img id="share-img" src={gallery[currentIndex]} alt="" /> : null}
+          {gallery !== undefined ? <img id="share-img" src={gallery[currentIndex]} alt="" /> : null}
         </div>
         <div id="social-media-icons">
           <a href="http://www.facebook.com/" target="_blank" rel="noopener noreferrer"><TiSocialFacebook style={{ color: '#4267B2', fontSize: '3.5em' }} /></a>

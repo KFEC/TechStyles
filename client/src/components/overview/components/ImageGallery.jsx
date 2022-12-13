@@ -201,7 +201,7 @@ const ImageGallery = ({
   };
 
   return (
-    <div id="img-gallery">
+    <div id="img-gallery" data-testid="image-gallery">
       {gallery?.length > 0 ? renderGallery() : null}
       {main?.length > 0 ? renderMain() : null}
     </div>
