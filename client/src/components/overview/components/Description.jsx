@@ -6,7 +6,7 @@ const Description = ({ slogan, description, features }) => {
     return (
       features.map((feature, index) => {
         return (
-          <div className="checkmark-feature-container">
+          <div className="checkmark-feature-container" key={Math.random(index * 54) * 10}>
             <HiCheck
               className="checkmark-icon"
               style={{
