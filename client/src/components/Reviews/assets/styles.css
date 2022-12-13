@@ -271,6 +271,11 @@
   height: 65px;
 }
 
+.reviews-img-expanded {
+  z-index: 5;
+  align-self: center;
+}
+
 .reviews-helpful {
   grid-area: helpful;
   font-style: italic;

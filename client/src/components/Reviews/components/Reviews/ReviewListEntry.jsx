@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaCheck } from 'react-icons/fa';
+import Thumbnail from './Thumbnail.jsx';
 import { Div, HelpfulButton, ReportButton } from '../../../../lib/styledComponents';
 import { putData } from '../../../../lib/index.js';
 import {
@@ -82,7 +83,7 @@ const ReviewListEntry = ({ review }) => {
       {review.photos.length > 0 && (
         <div className="reviews-img-container" style={imgContainer}>
           {review.photos.map((photo, idx) => {
-            return <img className="reviews-img" alt="" src={photo.url} key={Math.random(69 * idx) * 59} />;
+            return <Thumbnail photo={photo.url} key={Math.random(69 * idx) * 59} />;
           })}
         </div>
       )}
@@ -101,7 +102,7 @@ const ReviewListEntry = ({ review }) => {
                 Report
               </ReportButton>
             )
-            : <span>Reported</span>}
+            : <span>{' Reported'}</span>}
         </span>
       </div>
     </div>

@@ -9,9 +9,6 @@ import {
   updateProductStars, updateProductRecommended,
   updateProductTotalRatings, updateProductTotalReviews,
 } from '../reducers/productSlice';
-import {
-  updateIsDarkMode,
-} from '../reducers/productPageSlice';
 import Overview from './overview/index.jsx';
 import RelatedProducts from './related-products/index.jsx';
 import QA from './qa/index.jsx';
@@ -104,24 +101,21 @@ const App = () => {
   }, [reviewList]);
 
   useEffect(() => {
-    const root = document.getElementById('root');
-    console.log('HTML????', document.documentElement);
-    document.documentElement.backgroundColor = isDarkMode ? '#242526' : 'white';
-    root.style.backgroundColor = isDarkMode ? '#242526' : 'white';
+    document.getElementById('root').style.backgroundColor = isDarkMode ? '#242526' : 'white';
+    document.documentElement.style.backgroundColor = isDarkMode ? '#242526' : 'white';
   }, [isDarkMode]);
 
-  if (Object.keys(relatedProducts).length > 0) {
-    console.log('product info', productInfo);
-    console.log('product meta', productMeta);
-    console.log('related products', relatedProducts);
-    console.log('product styles', productStyles);
-    console.log('product questions', productQuestions);
-    console.log('product reviews', productReviews);
-  }
+  // if (Object.keys(relatedProducts).length > 0) {
+  //   console.log('product info', productInfo);
+  //   console.log('product meta', productMeta);
+  //   console.log('related products', relatedProducts);
+  //   console.log('product styles', productStyles);
+  //   console.log('product questions', productQuestions);
+  //   console.log('product reviews', productReviews);
+  // }
 
   return (
     <AppDiv data-testid="app-1" isDarkMode={isDarkMode}>
-      <Button isDarkMode={isDarkMode} type="submit" onClick={() => dispatch(updateIsDarkMode())}>Dark Mode</Button>
       <Wrapper><img id="app-logo" src={Logo} alt="TechStyles" /></Wrapper>
       <Overview />
       <RelatedProducts />
