@@ -22,7 +22,7 @@ const getRelatedProductsData = async (productId) => {
   console.log('making get request');
   try {
     const relatedProducts = await getData({ url: `/products/${productId}/related` });
-    const mappedData = await Promise.all(relatedProducts.map(async (product) => {
+    const mappedData = await Promise.all([...(new Set(relatedProducts))].map(async (product) => {
       try {
         const productDetails = await getData({ url: `/products/${product}` });
         const styles = await getData({ url: `/products/${product}/styles` });

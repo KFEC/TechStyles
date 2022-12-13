@@ -1,68 +1,62 @@
 import styled from 'styled-components';
 
-const ButtonFloatRight = styled.button`
-  float: right;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  outline: none;
-  z-index: 2;
-  color: purple;
-`;
 
-const Card = styled.div`
-  width: 220px;
-  height: 320px;
-  background: white;
-  margin: 0.25em;
-  padding: 0.25em;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  cursor: pointer;
-`;
-const AddItemCard = styled.div`
-  width: 200px;
-  height: 380px;
-  background: white;
-  margin: 0.25em;
-  padding: 0.25em;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-`;
 
-const ComparaisonModal = styled.div`
-  display:  ${(props) => props.displayModal ? 'block' : 'none'};
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0, 0);
-`;
+// const ComparaisonModal = styled.div`
+//   display:  ${(props) => props.displayModal ? 'block' : 'none'};
+//   position: fixed;
+//   z-index: 99;
+//   // left: 0;
+//   // top: 0;
+//   width: 50%;
+//   overflow: auto;
+//   background-color: rgb(0, 0, 0, 0);
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// `;
 
-const ModalContent = styled.div`
-  background-color: #fefefe;
-  margin: 15% auto;
-  paddding: 5em;
-  border: 1em solid #888;
-  width: 35%;
-`;
+// original
+// const ComparaisonModal = styled.div`
+//   display:  ${(props) => props.displayModal ? 'block' : 'none'};
+//   position: fixed;
+//   z-index: 99;
+//   left: 0;
+//   top: 0;
+//   width: 50%;
+//   overflow: auto;
+//   background-color: rgb(0, 0, 0, 0);
+// `;
 
-const Div = styled.div`
-  background: whitesmoke;
-  margin: 0.25em;
-  padding: 0.25em;
-  border: 2px solid black;
-`;
+// original
+// const ModalContent = styled.div`
+//   background-color: #fefefe;
+//   margin: 10% auto;
+//   width: 100%;
+//   z-index: 100;
+// `;
+
+// const ModalContent = styled.div`
+//   position: relative;
+//   background-color: #fefefe;
+//   margin: 10% auto;
+//   width: 100%;
+//   z-index: 100;
+// `;
+
+// const Div = styled.div`
+//   background: whitesmoke;
+//   margin: 0.25em;
+//   padding: 0.25em;
+//   border: 2px solid black;
+// `;
 
 const ImageRelatedProduct = styled.img`
-  width: 200px;
-  height: 250px;
+  width: 240px;
+  height: 240px;
   object-fit: cover;
+  // z-index: 1;
+  // position: relative;
 `;
 
 const RelatedProductContainer = styled.section`
@@ -76,16 +70,16 @@ const CloseModalButton = styled.button`
   font-weight: bold;
 `;
 
-const Table = styled.table`
-border-collapse: collapse;
-border-spacing: 0;
-width: 100%;
-border: 1px solid #ddd;
-`;
+// const Table = styled.table`
+// border-collapse: collapse;
+// border-spacing: 0;
+// width: 100%;
+// border: 1px solid #ddd;
+// `;
 
-const TableText = styled.td`
-text-align: center;
-`;
+// const TableText = styled.td`
+// text-align: center;
+// `;
 
 const ButtonAddItem = styled.button`
   background-color: transparent;
@@ -97,16 +91,10 @@ const ButtonAddItem = styled.button`
 `;
 
 export {
-  AddItemCard,
   ButtonAddItem,
-  ButtonFloatRight,
-  Card,
   CloseModalButton,
-  ComparaisonModal,
-  Div,
+  // ComparaisonModal,
   ImageRelatedProduct,
   RelatedProductContainer,
-  ModalContent,
-  Table,
-  TableText,
+  // ModalContent,
 };
