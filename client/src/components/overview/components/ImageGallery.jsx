@@ -15,6 +15,8 @@ const ImageGallery = ({
   gallery, carouselIndex, setCarouselIndex, currentIndex, setCurrentIndex,
 }) => {
   const [main, setMain] = useState('');
+  const [expandedMain, setExpandedMain] = useState(main);
+  const [currentExpandedIndex, setCurrentExpandedIndex] = useState('');
   // const [currentIndex, setCurrentIndex] = useState(0);
   // const [carouselIndex, setCarouselIndex] = useState([0, 6]);
   const [display, setDisplay] = useState(false);
@@ -23,6 +25,8 @@ const ImageGallery = ({
   useEffect(() => {
     if (gallery?.length > 0) {
       setMain(gallery[0]);
+      setExpandedMain(gallery[0]);
+      setCurrentExpandedIndex(0);
     }
   }, [gallery]);
 
@@ -30,21 +34,27 @@ const ImageGallery = ({
     // console.log(event.target.name);
     const changeMain = gallery[event.target.name];
     setMain(changeMain);
+    setExpandedMain(changeMain);
     // console.log('check onClick', typeof event.target.name);
     // FOUND THE BUG
     setCurrentIndex(Number(event.target.name));
+    setCurrentExpandedIndex(Number(event.target.name));
   };
 
   const handleLeftClick = () => {
     newIndex = currentIndex === 0 ? gallery.length - 1 : currentIndex - 1;
     setMain(gallery[newIndex]);
+    setExpandedMain(gallery[newIndex]);
     setCurrentIndex(newIndex);
+    setCurrentExpandedIndex(newIndex);
   };
 
   const handleRightClick = () => {
     newIndex = currentIndex === gallery.length - 1 ? 0 : currentIndex + 1;
     setMain(gallery[newIndex]);
+    setExpandedMain(gallery[newIndex]);
     setCurrentIndex(newIndex);
+    setCurrentExpandedIndex(newIndex);
   };
 
   const renderMain = () => {
@@ -54,7 +64,16 @@ const ImageGallery = ({
         <div id="main-img-container">
           <img id="main-img" onClick={() => { setDisplay(!display); }} src={`${main}`} alt="" />
           <ExpandedViewModal changeDisplay={display}>
-            <ExpandedView setDisplay={setDisplay} main={main} />
+            <ExpandedView
+              setDisplay={setDisplay}
+              main={main}
+              setMain={setMain}
+              gallery={gallery}
+              expandedMain={expandedMain}
+              setExpandedMain={setExpandedMain}
+              currentExpandedIndex={currentExpandedIndex}
+              setCurrentExpandedIndex={setCurrentExpandedIndex}
+            />
           </ExpandedViewModal>
           {/* <div style={{ width: '100%', backgroundSize: 'cover',
            backgroundImage: `url(${gallery[0]})` }} /> */}
