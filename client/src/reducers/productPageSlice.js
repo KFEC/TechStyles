@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  isDarkMode: true,
+  isDarkMode: false,
 };
 
 const productPageSlice = createSlice({

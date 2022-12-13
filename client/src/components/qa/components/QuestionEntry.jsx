@@ -95,8 +95,22 @@ const QuestionEntry = ({
           : <div>No Answers Available</div>}
         {answers.length > 2
           ? !collapse
-            ? <Button onClick={() => { setCollapse(true); }}>See more answers</Button>
-            : <Button onClick={() => { setCollapse(false); }}>Collapse answers</Button>
+            ? (
+              <Button
+                isDarkMode={isDarkMode}
+                onClick={() => { setCollapse(true); }}
+              >
+                See more answers
+              </Button>
+            )
+            : (
+              <Button
+                isDarkMode={isDarkMode}
+                onClick={() => { setCollapse(false); }}
+              >
+                Collapse answers
+              </Button>
+            )
           : null}
         <Modal changeDisplay={display}>
           <NewAnswer

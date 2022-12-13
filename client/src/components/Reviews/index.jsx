@@ -63,7 +63,7 @@ const Reviews = () => {
           </Button>
         </div>
         <div>
-          <Modal changeDisplay={isReviewForm}>
+          <Modal isDarkMode={isDarkMode} changeDisplay={isReviewForm}>
             <ReviewForm />
           </Modal>
         </div>

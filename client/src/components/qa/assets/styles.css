@@ -40,7 +40,7 @@
 
 .AList:hover {
   overflow-y:auto;
-  overflow-x: hidden;
+  overflow-x: auto;
   scroll-behavior: smooth;
 }
 

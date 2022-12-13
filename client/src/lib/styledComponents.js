@@ -25,6 +25,30 @@ const Button = styled.button`
   };
 `;
 
+const CartButton = styled.button`
+  color: ${(props) => props.isDarkMode ? 'white' : 'black'};
+  font-family: 'Work Sans', sans-serif;
+  font-size: 14px;
+  background-color: rgb(60, 74, 118, 0.3);
+  border: 1px solid #DFDFDF;
+  border-radius: 16px;
+  box-sizing: border-box;
+  justify-content: center;
+  line-height: 22px;
+  max-width: 100%;
+  padding: 10px 18px;
+  text-decoration: none;
+  transition: all .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  &:hover {
+    background-color: ${(props) => props.isDarkMode ? '#242526' : 'white'};
+    border-color: rgba(0, 0, 0, 0.19);
+  };
+  `;
+
 const HelpfulButton = styled.button`
   color: ${(props) => props.isDarkMode ? 'white' : 'black'};
   background: none;
@@ -57,7 +81,7 @@ text-decoration: underline;
 cursor: pointer;
 font-size: 1em;
 &:hover {
-  color: ${(props) => props.isDarkMode ? 'black' : 'white'};
+  color: ${(props) => props.isDarkMode ? '#88AED0' : '#88AED0'};
 }
 `;
 
@@ -122,20 +146,18 @@ const ExpandedViewModal = styled.div`
   margin-right: auto;
   left: 0;
   right: 0;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
   z-index: 10;
 
-  width: 70%;
-  height: 70%;
-  width: 950px;
-  height: 950px;
+  top: 10%;
+  width: 80%;
+  height: 80%;
   overflow: auto;
   background-color: rgb(0, 0, 0, 0.4);
 `;
 
 const ModalContent = styled.div`
-  background-color: #fefefe;
+  background-color: ${(props) => props.isDarkMode ? '#242526' : 'white'};
   margin: 15% auto;
   paddding: 5em;
   border: 1em solid #888;
@@ -146,7 +168,7 @@ const SocialMediaModalContent = styled.div`
   background-color: #fefefe;
   margin: 15% auto;
   paddding: 5em;
-  border: 2em solid purple;
+  border: 1em solid #888;
   width: 75%;
   height: 75%;
 `;
@@ -156,11 +178,11 @@ const ExpandedViewModalContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
-  paddding: 0.5em;
-
-  width: 100%;
-  height: 100%;
+  background-color: white;
+  paddding: 5em;
+  border: 2em solid white;
+  width: 95%;
+  height: 95%;
 `;
 
 const CloseModalButton = styled.button`
@@ -202,4 +224,5 @@ export {
   HelpfulButton,
   ReportButton,
   ExtrasButton,
+  CartButton,
 };

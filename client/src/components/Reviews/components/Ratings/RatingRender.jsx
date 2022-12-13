@@ -25,7 +25,7 @@ const RatingRender = memo(({ rating }) => {
 
   const barStyle = {
     '--percent': Math.round((rating.count / totalRatings) * 100),
-    '--bar-color': isDarkMode ? '#333d33' : '#bbe2bd',
+    '--bar-color': isDarkMode ? '#87a589' : '#bbe2bd',
   };
 
   const barBackground = {

@@ -103,6 +103,13 @@ const App = () => {
     }
   }, [reviewList]);
 
+  useEffect(() => {
+    const root = document.getElementById('root');
+    console.log('HTML????', document.documentElement);
+    document.documentElement.backgroundColor = isDarkMode ? '#242526' : 'white';
+    root.style.backgroundColor = isDarkMode ? '#242526' : 'white';
+  }, [isDarkMode]);
+
   if (Object.keys(relatedProducts).length > 0) {
     console.log('product info', productInfo);
     console.log('product meta', productMeta);
@@ -114,7 +121,6 @@ const App = () => {
 
   return (
     <AppDiv data-testid="app-1" isDarkMode={isDarkMode}>
-      <Wrapper><img id="app-logo" src="./fec-logo.png" alt="TechStyles" /></Wrapper>
       <Button isDarkMode={isDarkMode} type="submit" onClick={() => dispatch(updateIsDarkMode())}>Dark Mode</Button>
       <Wrapper><img id="app-logo" src={Logo} alt="TechStyles" /></Wrapper>
       <Overview />
