@@ -27,15 +27,25 @@ const RelatedProductsList = ({ setOpenModal, productData, currentProduct }) => {
   };
   return (
     <div className="related-product-list">
-      { numberOfCards < 5 || numberOfCards - 4 === property ? null : (
-        <IoIosArrowBack
-          onClick={nextProperty}
-          type="button"
-          style={{
-            top: '45%', left: '45%', cursor: 'pointer', margin: 'auto', zIndex: '2', fontSize: '2em',
-          }}
-        />
-      ) }
+      { numberOfCards < 5 || property === 0
+        ? (
+          <IoIosArrowBack
+            type="button"
+            disabled="true"
+            style={{
+              opacity: '0', top: '45%', left: '45%', cursor: 'pointer', margin: 'auto', zIndex: '2', fontSize: '2em',
+            }}
+          />
+        )
+        : (
+          <IoIosArrowBack
+            onClick={prevProperty}
+            type="button"
+            style={{
+              top: '45%', left: '45%', cursor: 'pointer', margin: 'auto', zIndex: '2', fontSize: '2em',
+            }}
+          />
+        ) }
       <div className="cards-slider">
         <div className="cards-slider-wrapper" style={{ transform: `translateX(-${property * (100 / numberOfCards)}%)` }}>
           {relatedProducts?.map((product, idx) => {
@@ -53,17 +63,27 @@ const RelatedProductsList = ({ setOpenModal, productData, currentProduct }) => {
           })}
         </div>
       </div>
-      { property === 0 || numberOfCards < 5 ? null : (
-        <IoIosArrowForward
-          onClick={prevProperty}
-          type="button"
-          style={{
-            margin: 'auto', zIndex: '2', fontSize: '2em',
-          }}
-        />
-      )}
+      { numberOfCards < 5 || (numberOfCards - 4) === property
+        ? (
+          <IoIosArrowForward
+            type="button"
+            disabled="true"
+            style={{
+              opacity: '0', margin: 'auto', zIndex: '2', fontSize: '2em',
+            }}
+          />
+        ) : (
+          <IoIosArrowForward
+            onClick={nextProperty}
+            type="button"
+            style={{
+              margin: 'auto', zIndex: '2', fontSize: '2em',
+            }}
+          />
+        )}
     </div>
   );
+
 };
 
 export default RelatedProductsList;

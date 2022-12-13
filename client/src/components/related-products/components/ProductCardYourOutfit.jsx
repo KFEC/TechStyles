@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   RiDeleteBin6Line,
 } from 'react-icons/ri';
@@ -6,12 +6,24 @@ import Comparaison from './Comparaison.jsx';
 import {
   ImageRelatedProduct,
 } from '../lib/styledComponents';
+import { getData } from '../../../lib';
+
+// what info do I need to use same component as product card
+/*
+{
+  product: { productDetails, styles, meta },
+  setProperty,
+  property,
+  idx,
+}
+*/
 
 const ProductCardYourOutfit = ({
   outfitItem, outfitItems,
   setOutfitItems,
   idxOfItem,
 }) => {
+
   let image = '';
   for (let i = 0; i < outfitItem.styles.length; i += 1) {
     if (outfitItem.styles[i]['default?'] === true) {

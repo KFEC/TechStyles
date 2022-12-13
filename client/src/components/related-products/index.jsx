@@ -18,18 +18,17 @@ const RelatedProducts = () => {
   return (
     <Div>
       { relatedProducts.length > 0 && Object.keys(relatedProducts).length > 0
-      && (
-        <div id="related-products-container" style={{ display: 'flex', flexDirection: 'column' }}>
-          Related Products
-          {/* pass current product to use the details and chars for comparaison modal */}
-          {/* pass an array of related products with product details and product styles */}
-          <RelatedProductList productData={relatedProducts} currrentProduct={productInfo} />
-          {/* pass current product to your outfit to be able to add it to Your Outfit */}
-          <YourOutfit currrentProduct={productInfo} />
-        </div>
-      )}
+        && (
+          <div id="related-products-container" style={{ display: 'flex', flexDirection: 'column' }}>
+            Related Products
+            {/* pass current product to use the details and chars for comparaison modal */}
+            {/* pass an array of related products with product details and product styles */}
+            <RelatedProductList productData={relatedProducts} currrentProduct={productInfo} />
+            {/* pass current product to your outfit to be able to add it to Your Outfit */}
+            <YourOutfit currrentProduct={productInfo} />
+          </div>
+        )}
     </Div>
-
   );
 };
 

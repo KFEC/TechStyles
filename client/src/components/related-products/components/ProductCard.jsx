@@ -111,8 +111,11 @@ const ProductCard = ({
       <ImageRelatedProduct
         src={productImage}
         alt={productDetails.name}
+        style={{ cursor: 'pointer' }}
         onClick={() => {
-          dispatch(updateProductId(productDetails.id.toString()));
+          if (opacity === 1) {
+            dispatch(updateProductId(productDetails.id.toString()));
+          }
           setProperty(0);
         }}
       />
