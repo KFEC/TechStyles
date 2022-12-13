@@ -1,4 +1,4 @@
-th, td {
+/* th, td {
   padding: 10px;
 }
 
@@ -8,31 +8,32 @@ td {
 
 th {
   text-align: left;
-}
+} */
 
 .btn-text-right {
 	text-align: right;
 }
 
-table {
+/* .table {
 border-collapse: collapse;
 border-spacing: 0;
-width: 100%;
+width: 200px;
+height: 200px;
 border: 5px solid;
-}
+}  */
 
 th, td {
   text-align: center;
   padding: 10px;
 }
 
-th:second-child, td:second-child {
+/* th:second-child, td:second-child {
   text-align: right;
 }
 
 th:third-child, td:third-child {
   text-align: right;
-}
+} */
 
 /* product card - background color: rgb(251, 249, 249) */
 .card {
@@ -72,10 +73,11 @@ th:third-child, td:third-child {
   color: purple;
 }
 
-.related-product-container {
+/* .related-product-container {
   height: 80%;
   padding:5px
-}
+}  */
+
 
 .productInfo {
   text-align: center;
@@ -161,28 +163,34 @@ th:third-child, td:third-child {
 
 
 .modalTest {
-  position: fixed; /* Stay in place */
+  position: static; /* Stay in place */
   z-index: 999; /* Sit on top */
   /* padding-top: 100px;  Location of the box */
   display: block;
-  left: 0;
-  /* right: 0; */
+  /* width: 200px; */
+  /* height: 200px;
+  width: 200px; */
+  /* right: 0;
+  left: 0; */
+  /* right: 0;
   top: 0;
   width: 80%;
-  height: 100%;
-  overflow: auto;
+  height: 100%; */
+  /* overflow: auto; */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 .modal-contentTest {
-  /* position: absolute; */
+  position: fixed;
   z-index: 1000;
   background-color: #303233;
   background-color: var(--bg-color);
-  margin: auto;
+  /* margin: auto; */
   /* padding: 20px; */
-  border: 1px solid #888;
-  /* width: 80%; */
+  /* border: 1px solid #888; */
+  /* height: 200px;
+  width: 200px; */
+  border: 5px;
 }
 
 .tableRow {

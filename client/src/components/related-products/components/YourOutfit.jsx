@@ -11,6 +11,7 @@ import {
 import ProductCardYourOutfit from './ProductCardYourOutfit.jsx';
 
 const YourOutfit = () => {
+  const { isDarkMode } = useSelector((state) => state.productPage);
   // state for outfit items
   const [outfitItems, setOutfitItems] = useState([]);
   const {
@@ -50,16 +51,20 @@ const YourOutfit = () => {
       setOutfitItems([...outfitItems, ItemObject]);
     }
   };
+  const cardStyle = {
+    '--card-color': isDarkMode ? '#303233' : '#FBF9F9',
+  };
   return (
     <div id="your-outfit">
       Your Outfit
       <RelatedProductContainer>
-        <div className="card">
+        <div className="card" style={cardStyle}>
           <p style={{ top: '20%', left: '30%' }}>Add to Outfit</p>
           <GrAdd
             className="center"
             type="button"
             style={{
+              color: isDarkMode ? 'white' : 'black',
               fontSize: '100px',
               left: '30%',
               top: '28%',

@@ -41,8 +41,8 @@ const Comparaison = ({
   return (
     <div className="modal-contentTest" style={modalStyle}>
       <AiOutlineClose type="button" onClick={() => setOpenModal(false)} />
-      <table>
-        <caption>Comparing</caption>
+      <table className="table">
+        <caption>comparison</caption>
         <thead>
           <tr>
             <th>{productInfo.name}</th>
