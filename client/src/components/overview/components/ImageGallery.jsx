@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   IoIosArrowBack, IoIosArrowForward, IoIosArrowUp, IoIosArrowDown,
 } from 'react-icons/io';
@@ -14,6 +15,9 @@ import ExpandedView from './ExpandedView.jsx';
 const ImageGallery = ({
   gallery, carouselIndex, setCarouselIndex, currentIndex, setCurrentIndex,
 }) => {
+
+  const { isDarkMode } = useSelector((state) => state.productPage);
+
   const [main, setMain] = useState('');
   const [expandedMain, setExpandedMain] = useState(main);
   const [currentExpandedIndex, setCurrentExpandedIndex] = useState('');
@@ -95,10 +99,23 @@ const ImageGallery = ({
   // if current index === carouselIndex[0]
   // then highlight the thumbnail image with that same index
 
+  const thumbnailRenderStyle = {
+    '--thumbnail-bg': isDarkMode ? '#2c2c2c' : '#DADEDF',
+  };
+
+  const thumbnailImgStyle = {
+    width: '100px',
+    height: '100px',
+    objectFit: 'cover',
+    border: '2px solid rgba(96, 96, 96, 0.7)',
+    boxShadow: isDarkMode ? '1.5px 1.5px 1.5px 1.5px rgba(75, 75, 75, 0.55)' : '1.5px 1.5px 1.5px 1.5px rgba(96, 96, 96, 0.6)',
+    '--hover-color': isDarkMode ? '#839c99' : '#9ffcf1',
+  };
+
   const renderGallery = () => {
     if (gallery.length <= 7) {
       return (
-        <div id="thumbnail-render">
+        <div className="thumbnail-render" style={thumbnailRenderStyle}>
           {gallery.map((image, index) => {
             if (index === Number(currentIndex)) {
               return (
@@ -109,13 +126,7 @@ const ImageGallery = ({
                   src={`${image}`}
                   alt=""
                   key={Math.random(index * 54) * 10}
-                  style={{
-                    width: '100px',
-                    height: '100px',
-                    objectFit: 'cover',
-                    border: '2px solid rgba(96, 96, 96, 0.7)',
-                    boxShadow: '1.5px 1.5px 1.5px 1.5px rgba(96, 96, 96, 0.6)',
-                  }}
+                  style={thumbnailImgStyle}
                 />
               );
             }
@@ -133,6 +144,7 @@ const ImageGallery = ({
                     width: '100px',
                     height: '100px',
                     objectFit: 'cover',
+                    '--hover-color': isDarkMode ? '#839c99' : '#9ffcf1',
                   }}
                 />
               );
@@ -142,7 +154,7 @@ const ImageGallery = ({
       );
     } if (gallery.length > 7) {
       return (
-        <div id="thumbnail-render">
+        <div className="thumbnail-render" style={thumbnailRenderStyle}>
           <div className="thumbnail-arrow-container">
             {carouselIndex[0] !== 0 ? <IoIosArrowUp onClick={() => { handleUpClick(); }} style={{ color: 'rgba(96, 96, 96, 0.4)', fontSize: '2em' }} /> : null}
           </div>
@@ -158,13 +170,7 @@ const ImageGallery = ({
                   src={`${image}`}
                   alt=""
                   key={Math.random(index * 54) * 10}
-                  style={{
-                    width: '100px',
-                    height: '100px',
-                    objectFit: 'cover',
-                    border: '2px solid rgba(96, 96, 96, 0.7)',
-                    boxShadow: '1.5px 1.5px 1.5px 1.5px rgba(96, 96, 96, 0.6)',
-                  }}
+                  style={thumbnailImgStyle}
                 />
               );
             }
@@ -186,6 +192,7 @@ const ImageGallery = ({
                     width: '100px',
                     height: '100px',
                     objectFit: 'cover',
+                    '--hover-color': isDarkMode ? '#839c99' : '#9ffcf1',
                   }}
                 />
               );

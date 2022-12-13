@@ -14,7 +14,9 @@ import RelatedProducts from './related-products/index.jsx';
 import QA from './qa/index.jsx';
 import Reviews from './Reviews/index.jsx';
 import Footer from './Footer.jsx';
-import { AppDiv, Wrapper, Div } from '../lib/styledComponents';
+import {
+  AppDiv, Wrapper, Div, Button,
+} from '../lib/styledComponents';
 import Logo from '../assets/fec-logo.png';
 
 const App = () => {
@@ -25,6 +27,7 @@ const App = () => {
   } = useSelector((state) => state.product);
 
   const { reviewList } = useSelector((state) => state.reviews);
+  const { isDarkMode } = useSelector((state) => state.productPage);
   const dispatch = useDispatch();
 
   const calculateTotalRatings = (ratings) => {
@@ -97,17 +100,22 @@ const App = () => {
     }
   }, [reviewList]);
 
-  if (Object.keys(relatedProducts).length > 0) {
-    console.log('product info', productInfo);
-    console.log('product meta', productMeta);
-    console.log('related products', relatedProducts);
-    console.log('product styles', productStyles);
-    console.log('product questions', productQuestions);
-    console.log('product reviews', productReviews);
-  }
+  useEffect(() => {
+    document.getElementById('root').style.backgroundColor = isDarkMode ? '#242526' : 'white';
+    document.documentElement.style.backgroundColor = isDarkMode ? '#242526' : 'white';
+  }, [isDarkMode]);
+
+  // if (Object.keys(relatedProducts).length > 0) {
+  //   console.log('product info', productInfo);
+  //   console.log('product meta', productMeta);
+  //   console.log('related products', relatedProducts);
+  //   console.log('product styles', productStyles);
+  //   console.log('product questions', productQuestions);
+  //   console.log('product reviews', productReviews);
+  // }
 
   return (
-    <AppDiv data-testid="app-1">
+    <AppDiv data-testid="app-1" isDarkMode={isDarkMode}>
       <Wrapper><img id="app-logo" src={Logo} alt="TechStyles" /></Wrapper>
       <Overview />
       <RelatedProducts />

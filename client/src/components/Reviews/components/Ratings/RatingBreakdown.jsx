@@ -13,11 +13,11 @@ const RatingBreakdown = memo(() => {
       {Object.values(relatedProducts).length > 0
       && <RatingHeading /> }
       {Object.values(relatedProducts).length > 0
-      && Object.values(productMeta.ratings).map((count, idx) => {
+      && Object.values(productMeta.ratings).reverse().map((count, idx, col) => {
         return (
           <RatingRender
             key={Math.random(idx * 54) * 10}
-            rating={{ rating: idx + 1, count }}
+            rating={{ rating: col.length - idx, count }}
           />
         );
       })}
