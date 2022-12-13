@@ -1,18 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import {
+  RiDeleteBin6Line,
+} from 'react-icons/ri';
 import Comparaison from './Comparaison.jsx';
 import {
-  ButtonFloatRight,
-  Card,
   ImageRelatedProduct,
-  ComparaisonModal,
 } from '../lib/styledComponents';
+import { getData } from '../../../lib';
+
+// what info do I need to use same component as product card
+/*
+{
+  product: { productDetails, styles, meta },
+  setProperty,
+  property,
+  idx,
+}
+*/
 
 const ProductCardYourOutfit = ({
   outfitItem, outfitItems,
   setOutfitItems,
   idxOfItem,
 }) => {
-  const [openModal, setOpenModal] = useState(false);
+
   let image = '';
   for (let i = 0; i < outfitItem.styles.length; i += 1) {
     if (outfitItem.styles[i]['default?'] === true) {
@@ -28,20 +39,20 @@ const ProductCardYourOutfit = ({
   };
 
   return (
-    <Card>
-      <div className="btn-text-right">
-        <ButtonFloatRight type="button" onClick={deleteItem}>x</ButtonFloatRight>
-      </div>
+    <div className="card">
+      <RiDeleteBin6Line type="button" className="removeButton" onClick={deleteItem} />
       <div>
         <ImageRelatedProduct src={image} alt={outfitItem.name} />
       </div>
-      <div className="textCentered">
-        <p>{outfitItem.category}</p>
-        <p>{outfitItem.name}</p>
-        <p>{outfitItem.styles[0].original_price}</p>
-        <p>rating</p>
+      <div className="productInfo">
+        <p className="productName">{outfitItem.name}</p>
+        <p className="itemCategory">{outfitItem.category}</p>
+        <p className="productPrice">
+          $
+          {outfitItem.styles[0].original_price}
+        </p>
       </div>
-    </Card>
+    </div>
   );
 };
 
