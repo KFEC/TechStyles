@@ -17,6 +17,24 @@ export const ReviewsDiv = styled.div`
   'pb review';
 `;
 
+export const PicModal = styled.div`
+  display: ${(props) => props.isExpanded ? 'flex' : 'none'};
+  position: fixed;
+  justify-content: center;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, .75);
+`;
+
+export const PicModalContent = styled.img`
+  z-index: 2;
+  align-self: center;
+`;
+
 export const Img = styled.img`
   width: 50px;
   height: 50px;

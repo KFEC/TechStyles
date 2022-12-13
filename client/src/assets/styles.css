@@ -21,14 +21,12 @@ time, mark, audio, video {
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, h1 {
-  background-color: #fff;
 	display: block;
 }
 
 html {
   font-family: 'Work Sans', sans-serif;
   font-weight: 300px;
-  background-color: #fff;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -61,7 +59,6 @@ table {
   --star-color: rgba(173, 173, 173, 0.685);
   --star-background: rgb(97, 113, 142);
 
-  background-color: #fff;
   font-family: 'Work Sans', sans-serif;
   font-weight: 300;
 }

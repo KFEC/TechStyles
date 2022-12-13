@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { IoSearchSharp } from 'react-icons/io5';
 import { Div } from '../../../lib/styledComponents';
 
 
 const QuestionSearch = ({ search }) => {
 
+  const { isDarkMode } = useSelector((state) => state.productPage);
   const [query, setQuery] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (query.length > 2) search(query);
     else search('');
+  };
+
+  const iconStyle = {
+    fontSize: '1.25em',
+    color: isDarkMode ? 'white' : 'black',
   };
 
   return (
@@ -24,7 +31,7 @@ const QuestionSearch = ({ search }) => {
           onChange={(e) => { setQuery(e.target.value); }}
         />
         <button type="submit" style={{ background: 'none', backgroundColor: 'none', border: 'none' }}>
-          <IoSearchSharp style={{ fontSize: '1.25em' }} />
+          <IoSearchSharp style={iconStyle} />
         </button>
       </form>
     </div>

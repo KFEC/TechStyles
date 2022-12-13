@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Div, Button, Modal } from '../../../lib/styledComponents';
 
 import QuestionEntry from './QuestionEntry.jsx';
@@ -7,6 +8,8 @@ import NewQuestion from './NewQuestion.jsx';
 const QuestionList = ({
   pName, id, setUpdate, update, questions,
 }) => {
+
+  const { isDarkMode } = useSelector((state) => state.productPage);
 
   const [display, setDisplay] = useState(false);
   const [currQuestions, setCurrQuestions] = useState([]);
@@ -62,8 +65,8 @@ const QuestionList = ({
       </Modal>
       <div className="QuestionButton">
         {(currQuestions.length !== questions.length)
-          && <Button onClick={loadQuestions}>More Questions</Button>}
-        <Button onClick={() => setDisplay(true)}>Add a Question</Button>
+          && <Button isDarkMode={isDarkMode} onClick={loadQuestions}>More Questions</Button>}
+        <Button isDarkMode={isDarkMode} onClick={() => setDisplay(true)}>Add a Question</Button>
       </div>
     </div>
   );

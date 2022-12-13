@@ -1,10 +1,13 @@
 /* eslint-disable prefer-spread */
 /* eslint-disable no-plusplus */
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { CartButton } from '../../../lib/styledComponents';
 
 const AddToCart = ({
   sku, selectSize, setSelectSize, selectQty, setSelectQty,
 }) => {
+  const { isDarkMode } = useSelector((state) => state.productPage);
   // console.log('i am sku ', sku[0]?.quantity, 'qty ', selectQty, 'size ', selectSize);
 
   const defaultQty = (num) => {
@@ -95,7 +98,7 @@ const AddToCart = ({
     }
     return (
       <div className="cart-btn">
-        <button id="cart" type="button" onClick={(event) => { handleClick(event); }}>Add To Cart</button>
+        <CartButton isDarkMode={isDarkMode} type="button" onClick={(event) => { handleClick(event); }}>Add To Cart</CartButton>
       </div>
     );
   };

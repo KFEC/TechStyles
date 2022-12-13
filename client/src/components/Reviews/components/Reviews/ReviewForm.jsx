@@ -28,6 +28,8 @@ const ReviewForm = () => {
   const [failed, setFailed] = useState(false);
 
   const { productId, productMeta } = useSelector((state) => state.product);
+  const { isDarkMode } = useSelector((state) => state.productPage);
+
   let tempChars = [];
   if (productMeta.characteristics) {
     tempChars = Object.keys(productMeta.characteristics).map(key => (
@@ -80,15 +82,17 @@ const ReviewForm = () => {
 
   return (
     <div>
-      <ModalContent id="new-review-form">
+      <ModalContent id="new-review-form" isDarkMode={isDarkMode}>
         { failed
         && (
-          <ModalContent style={{
-            zIndex: '5',
-            margin: '5% auto',
-            border: '1px solid black',
-            width: '50%',
-          }}
+          <ModalContent
+            isDarkMode={isDarkMode}
+            style={{
+              zIndex: '5',
+              margin: '5% auto',
+              border: '1px solid black',
+              width: '50%',
+            }}
           >
             <CloseModalButton style={{ fontSize: '0.5em' }} type="submit" onClick={() => setFailed(false)}>
               <IoClose />
@@ -298,6 +302,7 @@ const ReviewForm = () => {
             )}
           </div>
           <Button
+            isDarkMode={isDarkMode}
             onClick={() => (
               !failed
               && body.length > 50

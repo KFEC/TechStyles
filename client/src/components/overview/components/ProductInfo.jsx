@@ -42,7 +42,7 @@ const ProductInfo = ({
         <div id="category">{category?.toUpperCase()}</div>
         <RiShareFill
           onClick={() => { setDisplay(!display); }}
-          style={{ color: 'black', fontSize: '1.5em' }}
+          style={{ fontSize: '1.5em' }}
         />
         <SocialMediaModal changeDisplay={display}>
           <SocialMedia setDisplay={setDisplay} />
