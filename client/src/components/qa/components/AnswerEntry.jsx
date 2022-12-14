@@ -34,7 +34,7 @@ const AnswerEntry = ({ answer, setUpdate2, update2 }) => {
   };
 
   return (
-    <Div style={{ border: 'none', borderBottom: '1px solid grey' }}>
+    <Div data-testid="test AnswerEntry" style={{ border: 'none', borderBottom: '1px solid grey' }}>
       <span style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: '500', fontSize: '16px' }}>A: </span>
       {answer.body}
       <div style={{
