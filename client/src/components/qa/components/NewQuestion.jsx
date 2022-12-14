@@ -58,7 +58,7 @@ const NewQuestion = ({
   };
 
   return (
-    <ModalContent id="QAForm" isDarkMode={isDarkMode}>
+    <ModalContent id="QAForm" isDarkMode={isDarkMode} data-testid="test NewQuestion">
       {failed
       && (
         <ModalContent

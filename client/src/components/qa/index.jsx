@@ -49,7 +49,7 @@ const QA = () => {
   };
 
   return (
-    <Div>
+    <Div data-testid="test QA">
       <QuestionSearch search={search} />
       <QuestionList
         pName={productInfo.name}
