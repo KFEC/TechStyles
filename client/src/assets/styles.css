@@ -97,7 +97,7 @@ table {
 
 .link-outer-container {
   display: flex;
-  width: 59%;
+  width: 58.75%;
   align-items: flex-end;
   justify-content: flex-end;
   background-color: rgb(109, 109, 109);
@@ -113,7 +113,7 @@ table {
 
 .nav-icon-outer-container {
   display: flex;
-  width: 41%;
+  width: 41.25%;
   align-items: flex-end;
   justify-content: flex-end;
   background-color: rgb(109, 109, 109);

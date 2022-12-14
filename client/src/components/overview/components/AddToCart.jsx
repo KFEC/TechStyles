@@ -2,13 +2,13 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable prefer-spread */
 /* eslint-disable no-plusplus */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { CartButton, SizeGuideModal } from '../../../lib/styledComponents';
 import SizeGuide from './SizeGuide.jsx';
 
 const AddToCart = ({
-  sku, selectSize, setSelectSize, selectQty, setSelectQty,
+  sku, selectSize, setSelectSize, selectQty, setSelectQty, name,
 }) => {
   const [display, setDisplay] = useState(false);
   const { isDarkMode } = useSelector((state) => state.productPage);
@@ -20,7 +20,7 @@ const AddToCart = ({
 
   const handleChange = (event) => {
     const objectify = JSON.parse(event.target.value);
-    console.log('there has been a change', objectify);
+    // console.log('there has been a change', objectify);
     // setSelectSize(objectify.size);
     setSelectQty(objectify.quantity);
     setSelectSize(event.target.value);
@@ -85,7 +85,17 @@ const AddToCart = ({
       // const targetDropDown = document.getElementById('size-selector');
       window.alert('Please select size');
     } else {
-      console.log('You have added to cart');
+      const select = document.getElementById('qty-selector');
+      const qtyValue = Number(select.value) + 1;
+      const newItem = {
+        itemName: name,
+        quantity: qtyValue,
+        size: JSON.parse(selectSize).size,
+      };
+      // console.log('You have added to cart', newItem);
+      const cart = localStorage.getItem('cart') === null ? [] : [...JSON.parse(localStorage.getItem('cart'))];
+      cart.push(newItem);
+      localStorage.setItem('cart', JSON.stringify(cart));
     }
   };
 
