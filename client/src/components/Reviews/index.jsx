@@ -8,6 +8,7 @@ import {
   updateRenderedReviews, updateIsReviewForm, updateIsReviewsUpdated,
   updateFilter, updateRenderedReviewCt, updateSort,
 } from '../../reducers/reviewComponentSlice';
+import ReviewSearch from './components/Reviews/ReviewSearch.jsx';
 import { Button, Modal, Div } from '../../lib/styledComponents';
 import { getData } from '../../lib/index.js';
 import './assets/styles.css';
@@ -101,6 +102,25 @@ const Reviews = () => {
     setStringFilter([...filter].sort((a, b) => b - a).join('★/'));
   }, [filter]);
 
+  const search = (query) => {
+    if (query.length < 3) {
+      dispatch((updateRenderedReviews(allReviews.slice(0, renderedReviewsCt))));
+    } else {
+      const filtered = [];
+      allReviews.forEach((review) => {
+        if (review.reviewer_name.toLowerCase().includes(query.toLowerCase())
+        || review.summary.toLowerCase().includes(query.toLowerCase())
+        || review.body.toLowerCase().includes(query.toLowerCase())
+        || (review.recommend && '✓ i recommend this product'.includes(query.toLowerCase()))
+        || (review.response && review.response.toLowerCase().includes(query.toLowerCase()))
+        || String(review.helpfulness).includes(query.toLowerCase())) {
+          filtered.push(review);
+        }
+      });
+      dispatch((updateRenderedReviews(filtered.slice(0, renderedReviewsCt))));
+    }
+  };
+
   return (
     <div id="reviews">
       <div className="rr-info">
@@ -114,7 +134,7 @@ const Reviews = () => {
           </select>
         </div>
         <div className="rr-filter">
-          {filter.length >= 1 && <span>{` Filtering by...${`${stringFilter}★`}  `}</span>}
+          {filter.length >= 1 && <div style={{ margin: 0, padding: 0 }}>{` Filtering by...${`${stringFilter}★`}  `}</div>}
         </div>
         <div className="rr-button">{filter.length >= 2 && <Button type="button" isDarkMode={isDarkMode} onClick={removeFilters}>Remove Filters</Button>}</div>
         <Button
@@ -124,6 +144,7 @@ const Reviews = () => {
         >
           Create Review
         </Button>
+        <ReviewSearch search={search} />
       </div>
       <div className="grid-reviews">
         <div className="rating-breakdown">
