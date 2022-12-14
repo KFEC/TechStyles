@@ -18,7 +18,7 @@ const Footer = () => {
     <Div style={{ display: 'flex', justifyContent: 'center', padding: '30px' }}>
       <div id="footer-container">
         <div id="footer-title">Transparent Pricing</div>
-        <p id="footer-content">We publish what it costs us to make every one of our products. There are a lot of costs we cant neatly account for - like design, fittings, wear testing, rent on office and retail space - but we believe you deserve to know what goes into making the products you love.</p>
+        <p id="footer-content">There are a lot of costs - like design, fittings, wear testing, retail space, and supplies - that go into making our products. We believe you deserve to know what goes into the products you love.</p>
         <div id="footer-icon-container">
           <div id="icon-price-container">
             <FaTshirt style={iconStyle} />

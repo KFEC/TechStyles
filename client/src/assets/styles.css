@@ -93,9 +93,6 @@ table {
   display: flex;
   position: relative;
   width: 100%;
-  /* justify-content: space-evenly; */
-  /* background-color: rgb(109, 109, 109); */
-  /* border: 2px solid grey; */
 }
 
 .link-outer-container {
@@ -131,7 +128,6 @@ table {
 }
 
 .nav-li {
-  /* display: inline-flex; */
   color: white;
   text-align: center;
   padding: 14px 16px;
