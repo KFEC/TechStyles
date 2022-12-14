@@ -40,7 +40,7 @@ const Comparaison = ({
     <div className="modal-contentTest" style={modalStyle}>
       <AiOutlineClose onClick={() => setOpenModal(false)} style={{ cursor: 'pointer' }} />
       <table className="table">
-        <caption>comparison</caption>
+        <caption style={{ fontFamily: 'Work Sans, sans-serif', fontSize: '20px', fontWeight: '300' }}>COMPARISON</caption>
         <thead>
           <tr>
             <th>{productInfo.name}</th>

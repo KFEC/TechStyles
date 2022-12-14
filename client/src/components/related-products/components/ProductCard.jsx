@@ -51,11 +51,11 @@ const ProductCard = ({
 
   useEffect(() => {
     setMainProductChars(productMeta.characteristics); // main product chars for comparaison
-    setReviewCount(getTotalRatings(productMeta.ratings));
+    setReviewCount(getTotalRatings(meta.ratings));
   }, []);
 
   useEffect(() => {
-    setStars(calculateRatingAvg(Object.values(productMeta.ratings)));
+    setStars(calculateRatingAvg(Object.values(meta.ratings)));
   }, [reviewCount]);
 
   /*
@@ -64,29 +64,35 @@ const ProductCard = ({
   Sale prices should be reflected. If the style is currently discounted,
   then the sale price should appear in red, followed by the original price which is struckthrough.
   */
-  let productImage = null;
   let price = null;
   let discountedPrice = null;
-  let defaultStyle = false;
+
+  // use this code if default style is the style with property default value TRUE
+  // let defaultStyle = false;
   // set price and image to default style data
-  for (let i = 0; i < styles.results.length; i += 1) {
-    if (styles.results[i]['default?'] === true) {
-      defaultStyle = true;
-      price = styles.results[i].original_price;
-      if (styles.results[i].sale_price !== null) {
-        discountedPrice = styles.results[i].sale_price;
-      }
-      productImage = styles.results[i].photos[0].thumbnail_url;
-    }
-  }
+  // for (let i = 0; i < styles.results.length; i += 1) {
+  //   if (styles.results[i]['default?'] === true) {
+  //     defaultStyle = true;
+  //     price = styles.results[i].original_price;
+  //     if (styles.results[i].sale_price !== null) {
+  //       discountedPrice = styles.results[i].sale_price;
+  //     }
+  //     productImage = styles.results[i].photos[0].thumbnail_url;
+  //   }
+  // }
+
+  let productImage = styles.results[0].photos[0].thumbnail_url;
+  price = styles.results[0].original_price;
+  discountedPrice = styles.results[0].sale_price;
+
   // if there is no default style use first style
-  if (!defaultStyle) {
-    price = productDetails.default_price;
-    if (styles.results[0].sale_price !== null) {
-      discountedPrice = styles.results[0].sale_price;
-    }
-    productImage = styles.results[0].photos[0].thumbnail_url;
-  }
+  // if (!defaultStyle) {
+  //   price = productDetails.default_price;
+  //   if (styles.results[0].sale_price !== null) {
+  //     discountedPrice = styles.results[0].sale_price;
+  //   }
+  //   productImage = styles.results[0].photos[0].thumbnail_url;
+  // }
   // if there is no image display no product image available
   if (productImage === null) {
     productImage = defaultImage;
@@ -137,17 +143,17 @@ const ProductCard = ({
         <div className="itemCategory">{productDetails.category}</div>
         {discountedPrice === null
           ? (
-            <p className="productPrice">
+            <div className="productPrice">
               $
               {price}
-            </p>
+            </div>
           ) : (
-            <p className="productPrice">
-              {price}
-              {discountedPrice}
-            </p>
+            <div className="productPrice">
+              <div style={{ textDecoration: 'line-through' }}>{price}</div>
+              <div style={{ color: 'red' }}>{discountedPrice}</div>
+            </div>
           )}
-        <span className="StarsRelatedProducts" style={{ '--rating': stars }} />
+        <span className="Stars" style={{ '--rating': stars, '--star-size': '1em' }} />
       </div>
     </div>
   );
