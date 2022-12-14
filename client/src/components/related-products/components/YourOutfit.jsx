@@ -20,11 +20,8 @@ const YourOutfit = () => {
     productStyles,
   } = useSelector((state) => state.product);
   useEffect(() => {
-    // get data in local storage at key outfits
     const dataLocalStorage = localStorage.getItem('outfits');
-    // if there is data assign it to outfitItems
     if (dataLocalStorage !== null) {
-      // assign array of outfit items to outfits
       setOutfitItems(JSON.parse(dataLocalStorage));
     }
   }, []);
@@ -51,23 +48,25 @@ const YourOutfit = () => {
       setOutfitItems([...outfitItems, ItemObject]);
     }
   };
+  // dark mode
   const cardStyle = {
     '--card-color': isDarkMode ? '#303233' : '#FBF9F9',
   };
   return (
-    <div id="your-outfit">
-      Your Outfit
-      <RelatedProductContainer>
+    <div className="yourOutfitContainer">
+      <div>Your Outfit</div>
+      <div className="yourOutfit">
         <div className="card" style={cardStyle}>
-          <p style={{ top: '20%', left: '30%' }}>Add to Outfit</p>
+          <div style={{ textAlign: 'center', top: '80px', position: 'relative' }}>Add to Outfit</div>
           <GrAdd
-            className="center"
             type="button"
             style={{
+              position: 'relative',
               color: isDarkMode ? 'white' : 'black',
-              fontSize: '100px',
-              left: '30%',
-              top: '28%',
+              fontSize: '80px',
+              left: '33%',
+              top: '30%',
+              cursor: 'pointer',
             }}
             onClick={addItem}
           />
@@ -83,7 +82,7 @@ const YourOutfit = () => {
             />
           ),
         )}
-      </RelatedProductContainer>
+      </div>
     </div>
   );
 };

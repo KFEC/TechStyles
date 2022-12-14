@@ -8,6 +8,7 @@ import {
   ImageRelatedProduct,
 } from '../lib/styledComponents';
 import { getData } from '../../../lib';
+import defaultImage from '../lib/images/noProductAvailable.png';
 
 // what info do I need to use same component as product card
 /*
@@ -31,6 +32,9 @@ const ProductCardYourOutfit = ({
       image = outfitItem.styles[i].photos[0].thumbnail_url;
       break;
     }
+  }
+  if (!image) {
+    image = defaultImage;
   }
   const deleteItem = () => {
     const copy = [...outfitItems];
