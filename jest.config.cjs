@@ -8,7 +8,7 @@ module.exports = {
     'client/src/**/*.{js,jsx,ts,tsx}',
   ],
   moduleNameMapper: {
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+    '\\.(css|less|scss|sass|png)$': 'identity-obj-proxy',
   },
   testRegex: '(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$',
   moduleFileExtensions: ['js', 'json', 'jsx'],

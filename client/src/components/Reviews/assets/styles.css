@@ -12,7 +12,7 @@
   'rb'
   'pb'
   'review';
-  padding: 5em;
+  padding: 1em 5em 1em 5em;
 }
 
 .rating-breakdown {
@@ -34,6 +34,35 @@
     'pb review';
   }
 }
+
+#rr-heading {
+  font-size: 3em;
+  grid-area: heading;
+  font-family: 'Tenor Sans';
+  padding-left: 2.7em;
+}
+
+.rr-filter {
+  grid-area: filter;
+}
+
+.rr-info {
+  display: grid;
+  gap: 1em;
+  grid-auto-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas: 'heading sort filter rbutton';
+  align-items: center;
+}
+
+.rr-button {
+  display: flex;
+  grid-area: rbutton;
+  justify-content: space-evenly;
+}
+
+/* #reviews {
+
+} */
 
 /* New Review Styling */
 
@@ -135,6 +164,11 @@
 @keyframes animate-breakdown {
   from{width: 0.2em;}
   to{width: calc(var(--percent) / 100 * 100%);}
+}
+
+.bar-filter {
+  font-size: 0.4em;
+  font-style: italic;
 }
 
 /* Product Breakdown Styles */
@@ -309,4 +343,5 @@
   text-decoration: underline;
   background-color: transparent;
   border-color: transparent;
+  grid-area: sort;
 }

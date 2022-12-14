@@ -21,7 +21,7 @@ export const PicModal = styled.div`
   display: ${(props) => props.isExpanded ? 'flex' : 'none'};
   position: fixed;
   justify-content: center;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   top: 0;
   width: 100%;
@@ -31,7 +31,7 @@ export const PicModal = styled.div`
 `;
 
 export const PicModalContent = styled.img`
-  z-index: 2;
+  z-index: 6;
   align-self: center;
 `;
 
@@ -39,4 +39,5 @@ export const Img = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  obj-fit: cover;
 `;

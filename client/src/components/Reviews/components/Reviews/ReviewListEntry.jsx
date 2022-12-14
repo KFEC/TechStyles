@@ -46,6 +46,7 @@ const ReviewListEntry = ({ review }) => {
   const reportReview = () => {
     if (!reported) {
       putData(`/reviews/${review.review_id}/report`).then(() => {
+        dispatch(updateIsReviewsUpdated());
         setReported(true);
       });
     }

@@ -6,7 +6,7 @@ import {
 import { getProductReviews } from '../../actions';
 import {
   updateRenderedReviews, updateIsReviewForm, updateIsReviewsUpdated,
-  updateFilter, updateRenderedReviewCt,
+  updateFilter, updateRenderedReviewCt, updateSort,
 } from '../../reducers/reviewComponentSlice';
 import { Button, Modal, Div } from '../../lib/styledComponents';
 import { getData } from '../../lib/index.js';
@@ -17,18 +17,49 @@ const Reviews = () => {
   const { productId, productReviews } = useSelector((state) => state.product);
   const {
     reviewList: {
-      allReviews, renderedReviews, renderedReviewsCt, filter,
+      allReviews, renderedReviews, renderedReviewsCt, sort,
+      filter,
     },
     page: { isReviewForm, isReviewsUpdated },
   } = useSelector((state) => state.reviews);
   const { isDarkMode } = useSelector((state) => state.productPage);
+  const [stringFilter, setStringFilter] = useState('');
+
+  const filterThrough = async () => {
+    try {
+      const result = await allReviews.reduce((acc, review) => {
+        console.log('FILTER', filter);
+        [...filter].forEach((item) => {
+          if (review.rating === item) {
+            acc.push(review);
+          }
+        });
+        return acc;
+      }, []);
+      return Promise.resolve(result);
+    } catch (err) {
+      console.error(err);
+      return Promise.reject(err);
+    }
+  };
 
   const loadReviews = () => {
-    dispatch((updateRenderedReviews(allReviews.slice(0, renderedReviewsCt + 2))));
+    if (filter.length < 1) {
+      dispatch((updateRenderedReviews(allReviews.slice(0, renderedReviewsCt + 2))));
+    } else {
+      filterThrough()
+        .then((result) => {
+          console.log('RESULT', result);
+          dispatch(updateRenderedReviews(result
+            .sort((a, b) => b.rating - a.rating)
+            .slice(0, renderedReviewsCt + 2)));
+        })
+        .catch((err) => console.error(err));
+    }
     dispatch(updateRenderedReviewCt(2));
   };
 
-  const filterReviews = (sort) => {
+  const filterReviews = () => {
     dispatch(getProductReviews({
       url: '/reviews',
       params: { product_id: productId, count: 6969, sort },
@@ -37,13 +68,63 @@ const Reviews = () => {
         dispatch(updateRenderedReviews(result.payload.results.slice(0, renderedReviewsCt)));
       });
   };
+  const removeFilters = () => {
+    dispatch((updateRenderedReviews(allReviews.slice(0, renderedReviewsCt))));
+    dispatch(updateFilter([]));
+  };
+
+  const asyncTest = async () => {
+    try {
+      await dispatch(getProductReviews({
+        url: '/reviews',
+        params: { product_id: productId, count: 6969, sort },
+      }))
+        .then(() => loadReviews());
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   useEffect(() => {
-    filterReviews(filter);
-  }, [filter, isReviewsUpdated, productId]);
+    filterReviews();
+    // loadReviews();
+    removeFilters();
+    // asyncTest();
+    // setStringFilter([...filter].sort((a, b) => b - a).join('★/'));
+  }, [sort, isReviewsUpdated, productId]);
+
+  const selectStyle = {
+    color: isDarkMode ? 'white' : 'black',
+  };
+
+  useEffect(() => {
+    setStringFilter([...filter].sort((a, b) => b - a).join('★/'));
+  }, [filter]);
 
   return (
     <div id="reviews">
+      <div className="rr-info">
+        <h1 id="rr-heading">Ratings & Reviews</h1>
+        <div className="sort-select-text">
+          {`${allReviews.length} reviews, sorted by`}
+          <select style={selectStyle} className="sort-select" onChange={(e) => dispatch(updateSort(e.target.value))}>
+            <option value="relevant">Relevance</option>
+            <option value="newest">Newest</option>
+            <option value="helpful">Helpfulness</option>
+          </select>
+        </div>
+        <div className="rr-filter">
+          {filter.length >= 1 && <span>{` Filtering by...${`${stringFilter}★`}  `}</span>}
+        </div>
+        <div className="rr-button">{filter.length >= 2 && <Button type="button" isDarkMode={isDarkMode} onClick={removeFilters}>Remove Filters</Button>}</div>
+        <Button
+          className="rr-button"
+          isDarkMode={isDarkMode}
+          onClick={() => dispatch(updateIsReviewForm())}
+        >
+          Create Review
+        </Button>
+      </div>
       <div className="grid-reviews">
         <div className="rating-breakdown">
           <RatingBreakdown />
@@ -55,12 +136,6 @@ const Reviews = () => {
           <ReviewList />
           {(allReviews.length !== renderedReviews.length)
         && <Button isDarkMode={isDarkMode} onClick={loadReviews}>Load More</Button>}
-          <Button
-            isDarkMode={isDarkMode}
-            onClick={() => dispatch(updateIsReviewForm())}
-          >
-            Create Review
-          </Button>
         </div>
         <div>
           <Modal isDarkMode={isDarkMode} changeDisplay={isReviewForm}>
