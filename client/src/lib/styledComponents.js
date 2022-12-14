@@ -141,7 +141,7 @@ const SocialMediaModal = styled.div`
 const SizeGuideModal = styled.div`
   display: ${(props) => props.changeDisplay ? 'flex' : 'none'};
   position: fixed;
-  left: 25%;
+  left: 30%;
   top: 20%;
   align-items: center;
   justify-content: center;
