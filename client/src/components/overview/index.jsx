@@ -27,6 +27,8 @@ const Overview = () => {
     productId, productInfo, productMeta, productStyles, productReviews,
   } = useSelector((state) => state.product);
 
+  const { isDarkMode } = useSelector((state) => state.productPage);
+
   const dispatch = useDispatch();
 
   /* OVERALL STATE */
@@ -177,7 +179,7 @@ const Overview = () => {
           <ProductInfo category={category} name={name} slogan={slogan} description={description} price={price} sale={sale} stars={productReviews.stars} reviewCount={productReviews.totalReviews} gallery={gallery} currentIndex={currentIndex} />
           <div id="styles-cart-container">
             <StyleSelect styles={styles} styleName={styleName} setStyleName={setStyleName} handleStyleClick={handleStyleClick} />
-            <AddToCart sku={sku} selectSize={selectSize} setSelectSize={setSelectSize} selectQty={selectQty} setSelectQty={setSelectQty} />
+            <AddToCart sku={sku} selectSize={selectSize} setSelectSize={setSelectSize} selectQty={selectQty} setSelectQty={setSelectQty} name={name} />
           </div>
         </div>
       </div>

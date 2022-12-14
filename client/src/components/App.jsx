@@ -116,7 +116,7 @@ const App = () => {
 
   return (
     <AppDiv data-testid="app-1" isDarkMode={isDarkMode}>
-      <Wrapper><img id="app-logo" src={Logo} alt="TechStyles" /></Wrapper>
+      <Wrapper isDarkMode={isDarkMode}><img id="app-logo" src={Logo} alt="TechStyles" /></Wrapper>
       <Overview />
       <RelatedProducts />
       <QA />
