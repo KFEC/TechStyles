@@ -10,14 +10,12 @@ import {
 } from '../lib/styledComponents';
 import { getData } from '../../../lib';
 import defaultImage from '../lib/images/noProductAvailable.png';
-// Image unavailable https://i.imgur.com/MyKhQau.png
 
 const ProductCard = ({
   product: { productDetails, styles, meta },
   setProperty,
   property,
   idx,
-  rpl,
 }) => {
   const { isDarkMode } = useSelector((state) => state.productPage);
   const {
@@ -119,26 +117,14 @@ const ProductCard = ({
             comparedProductDetails={productDetails}
             comparedProductChars={meta}
             mainProductChars={mainProductChars}
-            rpl={rpl}
           />
         </div>
       )}
-
-      {/* original starts here
-      <ComparaisonModal displayModal={openModal}>
-        <Comparaison
-          key={Math.random(69 * idx) * 3}
-          setOpenModal={setOpenModal}
-          comparedProductDetails={productDetails}
-          comparedProductChars={meta}
-          mainProductChars={mainProductChars}
-        />
-      </ComparaisonModal> */}
-
       <AiFillStar type="button" className="comparisonButton" onClick={() => setOpenModal(true)} />
       <ImageRelatedProduct
         src={productImage}
         alt={productDetails.name}
+        style={{ cursor: 'pointer' }}
         onClick={() => {
           if (opacity === 1) {
             dispatch(updateProductId(productDetails.id.toString()));
@@ -147,7 +133,7 @@ const ProductCard = ({
         }}
       />
       <div className="productInfo">
-        <div className="productName">{productDetails.name}</div>
+        <div className="productName" style={{ cursor: 'pointer' }}>{productDetails.name}</div>
         <div className="itemCategory">{productDetails.category}</div>
         {discountedPrice === null
           ? (

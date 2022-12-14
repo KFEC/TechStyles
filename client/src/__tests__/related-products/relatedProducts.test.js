@@ -6,4 +6,4 @@ test('Render Product Card', () => {
   render(<RelatedProductList />);
   const rb = screen.getByTestId('RelatedProductsList');
   expect(rb).toBeInTheDocument();
-});
+});``
