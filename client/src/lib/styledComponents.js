@@ -20,7 +20,7 @@ const Button = styled.button`
   width: fit-content;
   touch-action: manipulation;
   &:hover {
-    background-color: ${(props) => props.isDarkMode ? '#242526' : 'white'};
+    background-color: ${(props) => props.isDarkMode ? 'rgba(83, 83, 83, 0.7)' : 'white'};
     border-color: rgba(0, 0, 0, 0.19);
   };
 `;
@@ -44,7 +44,7 @@ const CartButton = styled.button`
   touch-action: manipulation;
   width: 100%;
   &:hover {
-    background-color: ${(props) => props.isDarkMode ? '#242526' : 'white'};
+    background-color: ${(props) => props.isDarkMode ? 'rgba(83, 83, 83, 0.7)' : 'white'};
     border-color: rgba(0, 0, 0, 0.19);
   };
   `;
@@ -141,9 +141,8 @@ const SocialMediaModal = styled.div`
 const SizeGuideModal = styled.div`
   display: ${(props) => props.changeDisplay ? 'flex' : 'none'};
   position: fixed;
-  left: 30%;
-  top: 25%;
-
+  left: 25%;
+  top: 20%;
   align-items: center;
   justify-content: center;
   z-index: 10;

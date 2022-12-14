@@ -27,6 +27,8 @@ const Overview = () => {
     productId, productInfo, productMeta, productStyles, productReviews,
   } = useSelector((state) => state.product);
 
+  const { isDarkMode } = useSelector((state) => state.productPage);
+
   const dispatch = useDispatch();
 
   /* OVERALL STATE */

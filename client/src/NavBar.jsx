@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { BsCart3 } from 'react-icons/bs';
 import { IoMoonOutline } from 'react-icons/io5';
+import { CgSun } from 'react-icons/cg';
 import { updateIsDarkMode } from './reducers/productPageSlice';
 
 const NavBar = () => {
@@ -31,7 +32,7 @@ const NavBar = () => {
             <NavLink className="link-text" to="/checkout"><BsCart3 /></NavLink>
           </li>
           <li className="nav-li">
-            <NavLink className="link-text" to="/" onClick={settingsClick}><IoMoonOutline /></NavLink>
+            <NavLink className="link-text" to="/" onClick={settingsClick}>{isDarkMode ? <CgSun /> : <IoMoonOutline /> }</NavLink>
           </li>
         </ul>
       </nav>

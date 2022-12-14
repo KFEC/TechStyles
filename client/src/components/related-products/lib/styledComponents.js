@@ -59,8 +59,8 @@ const ImageRelatedProduct = styled.img`
   // position: relative;
 `;
 
-const RelatedProductContainer = styled.section`
-  display: flex
+const RelatedProductContainer = styled.div`
+  display: flex;
 `;
 
 const CloseModalButton = styled.button`
