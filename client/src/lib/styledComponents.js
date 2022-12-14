@@ -104,10 +104,10 @@ const Div = styled.div`
 `;
 
 const Wrapper = styled.section`
+  background-color: ${(props) => props.isDarkMode ? 'rgb(180, 243, 243, 0.5)' : 'rgb(33, 76, 119, 0.2)'};
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(33, 76, 119, 0.2);
   width: 100%
 `;
 
@@ -138,6 +138,22 @@ const SocialMediaModal = styled.div`
   background-color: rgb(0, 0, 0, 0.4);
 `;
 
+const SizeGuideModal = styled.div`
+  display: ${(props) => props.changeDisplay ? 'flex' : 'none'};
+  position: fixed;
+  left: 30%;
+  top: 25%;
+
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+
+  width: fit-content;
+  height: fit-content;
+  overflow: auto;
+  background-color: rgb(0, 0, 0, 0.4);
+`;
+
 const ExpandedViewModal = styled.div`
   display: ${(props) => props.changeDisplay ? 'flex' : 'none'};
   position: absolute;
@@ -161,7 +177,9 @@ const ModalContent = styled.div`
   margin: 15% auto;
   paddding: 5em;
   border: 1em solid #888;
-  width: 35%;
+  width: object-fit;
+  height: object-fit;
+
 `;
 
 const SocialMediaModalContent = styled.div`
@@ -173,6 +191,18 @@ const SocialMediaModalContent = styled.div`
   margin: 10% auto;
   width: 500px;
   height: 500px;
+`;
+
+const SizeGuideContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  margin: 10% auto;
+  width: fit-content;
+  height: fit-content;
+  margin: 15px;
 `;
 
 const ExpandedViewModalContent = styled.div`
@@ -214,9 +244,11 @@ export {
   Div,
   Modal,
   SocialMediaModal,
+  SizeGuideModal,
   ExpandedViewModal,
   ModalContent,
   SocialMediaModalContent,
+  SizeGuideContent,
   ExpandedViewModalContent,
   CloseModalButton,
   Card,
