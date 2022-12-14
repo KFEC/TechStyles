@@ -4,11 +4,11 @@ import {
 } from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateProductId } from '../../../reducers/productSlice';
-import Comparaison from './Comparaison.jsx';
+import Comparison from './Comparison.jsx';
 import {
   ImageRelatedProduct,
 } from '../lib/styledComponents';
-import { getData } from '../../../lib';
+// import { getData } from '../../../lib';
 import defaultImage from '../lib/images/noProductAvailable.png';
 
 const ProductCard = ({
@@ -19,11 +19,7 @@ const ProductCard = ({
 }) => {
   const { isDarkMode } = useSelector((state) => state.productPage);
   const {
-    productId,
-    productInfo,
     productMeta,
-    productStyles,
-    relatedProducts,
   } = useSelector((state) => state.product);
   const dispatch = useDispatch();
   // modal display property set to false by default
@@ -50,7 +46,7 @@ const ProductCard = ({
   };
 
   useEffect(() => {
-    setMainProductChars(productMeta.characteristics); // main product chars for comparaison
+    setMainProductChars(productMeta.characteristics); // main product chars for comparison
     setReviewCount(getTotalRatings(meta.ratings));
   }, []);
 
@@ -117,7 +113,7 @@ const ProductCard = ({
     >
       {openModal && (
         <div className="modalTest" display={openModal ? 'block' : 'none'}>
-          <Comparaison
+          <Comparison
             key={Math.random(69 * idx) * 3}
             setOpenModal={setOpenModal}
             comparedProductDetails={productDetails}

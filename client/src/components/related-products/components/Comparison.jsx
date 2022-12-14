@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   AiOutlineClose,
 } from 'react-icons/ai';
-import { useSelector } from 'react-redux';
 import '../lib/myStyles.css';
 
-const Comparaison = ({
+const Comparison = ({
   setOpenModal,
   comparedProductDetails,
   comparedProductChars,
@@ -15,6 +15,7 @@ const Comparaison = ({
     productInfo,
     productMeta,
   } = useSelector((state) => state.product);
+  const [mainProductChars, setMainProductChars] = useState();
   const { isDarkMode } = useSelector((state) => state.productPage);
   const featuresArray = [...comparedProductDetails.features];
   const currentProductFeatures = [...productInfo.features];
@@ -36,6 +37,7 @@ const Comparaison = ({
     }
   }
   const modalStyle = { '--bg-color': isDarkMode ? '#303233' : '#FBF9F9' };
+
   return (
     <div className="modal-contentTest" style={modalStyle}>
       <AiOutlineClose onClick={() => setOpenModal(false)} style={{ cursor: 'pointer' }} />
@@ -64,4 +66,4 @@ const Comparaison = ({
   );
 };
 
-export default Comparaison;
+export default Comparison;

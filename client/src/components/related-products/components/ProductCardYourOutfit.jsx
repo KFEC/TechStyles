@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import {
   RiDeleteBin6Line,
 } from 'react-icons/ri';
-import Comparaison from './Comparaison.jsx';
+import Comparison from './Comparison.jsx';
 import {
   ImageRelatedProduct,
 } from '../lib/styledComponents';
@@ -26,6 +26,12 @@ const ProductCardYourOutfit = ({
   idxOfItem,
 }) => {
   const { isDarkMode } = useSelector((state) => state.productPage);
+  const {
+    productMeta,
+  } = useSelector((state) => state.product);
+
+  const [mainProductChars, setMainProductChars] = useState();
+
   let image = '';
   for (let i = 0; i < outfitItem.styles.length; i += 1) {
     if (outfitItem.styles[i]['default?'] === true) {
@@ -58,6 +64,7 @@ const ProductCardYourOutfit = ({
           $
           {outfitItem.styles[0].original_price}
         </p>
+        {/* <span className="Stars" style={{ '--rating': stars, '--star-size': '1em' }} /> */}
       </div>
     </div>
   );
