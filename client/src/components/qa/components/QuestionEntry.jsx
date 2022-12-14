@@ -47,9 +47,11 @@ const QuestionEntry = ({
   }, [question.question_id, update2]);
 
   return (
-    <Div style={{
-      border: '1.5px solid grey', borderRadius: '25px', padding: '10px',
-    }}
+    <Div
+      data-testid="test QuestionEntry"
+      style={{
+        border: '1.5px solid grey', borderRadius: '25px', padding: '10px',
+      }}
     >
       <div style={{ display: 'flex' }}>
         <span style={{
