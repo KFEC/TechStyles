@@ -81,14 +81,6 @@ table {
   -webkit-text-fill-color: transparent;
 }
 
-.on {
-  color: #000;
-}
-
-.off {
-  color: #ccc;
-}
-
 .page-nav {
   display: flex;
   position: relative;
