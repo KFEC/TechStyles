@@ -146,3 +146,126 @@ table {
   overflow: hidden;
   background-color: rgb(109, 109, 109);
 }
+
+/* --checkout page */
+
+#checkout-container {
+  display: flex;
+  justify-content: center;
+  /* border: 2px solid red; */
+}
+
+#checkout-content {
+  display: flex;
+  flex-direction: column;
+  padding: 3em;
+  /* border: 2px solid cyan; */
+}
+
+#shopping-cart-title {
+	font-family: 'Tenor Sans', sans-serif;
+	font-size: 28px;
+  font-size: 500;
+  /* border: 5px solid pink; */
+}
+
+#cart-items {
+  /* border: 8px dashed grey; */
+}
+
+#item {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  width: 500px;
+  border: 1px solid black;
+  margin: 1em;
+}
+
+#item-details {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  flex-wrap: wrap;
+  max-width: 100px;
+  min-width: 100px;
+  /* border: 2px dashed cyan; */
+}
+
+#item-price {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  /* border: 2px dashed cyan; */
+}
+
+#checkout-btn {
+  display: flex;
+  flex-direction: column;
+  padding-top: 3em;
+  height: fit-content;
+  /* border: 2px solid cyan; */
+}
+
+#actual-checkout-btn {
+  width: fit-content;
+  padding: 5px;
+  background-color: #FFFFFF;
+  border: 1px solid #222222;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #222222;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
+  user-select: none;
+  -webkit-user-select: none;
+  width: auto;
+  font-family: 'Noto Sans';
+}
+
+#actual-checkout-btn:hover {
+  box-shadow: #222222 0 0 0 1px, rgba(255, 255, 255, 0.8) 0 0 0 1px;
+  transition: box-shadow .2s;
+}
+
+#order-summary {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 150px;
+  padding: 5px;
+  justify-content: space-evenly;
+  border: 1.5px solid rgba(189, 195, 199);
+}
+
+#summary-price {
+  display: flex;
+  justify-content: space-between;
+  /* border: 2px solid coral; */
+}
+
+#summary-delivery {
+  display: flex;
+  justify-content: space-between;
+  /* border: 2px solid coral; */
+}
+
+#summary-tax {
+  display: flex;
+  justify-content: space-between;
+  /* border: 2px solid coral; */
+}
+
+#paypal {
+  border-top: 1px solid rgba(189, 195, 199);
+  padding-top: 7px;
+}
