@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import {
-  AiFillStar,
-} from 'react-icons/ai';
+import { AiFillStar } from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateProductId } from '../../../reducers/productSlice';
 import Comparison from './Comparison.jsx';
-import {
-  ImageRelatedProduct,
-} from '../lib/styledComponents';
+import { ImageRelatedProduct } from '../lib/styledComponents';
 // import { getData } from '../../../lib';
 import defaultImage from '../lib/images/noProductAvailable.png';
 
@@ -106,6 +102,7 @@ const ProductCard = ({
     flexDirection: 'column',
     opacity: `${opacity}`,
   };
+
   return (
     <div
       className="card"

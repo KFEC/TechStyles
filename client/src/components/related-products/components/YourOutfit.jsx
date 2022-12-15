@@ -18,6 +18,7 @@ const YourOutfit = () => {
     productId,
     productInfo,
     productStyles,
+    productMeta,
   } = useSelector((state) => state.product);
   useEffect(() => {
     const dataLocalStorage = localStorage.getItem('outfits');
@@ -32,6 +33,7 @@ const YourOutfit = () => {
       name: productInfo.name,
       category: productInfo.category,
       styles: productStyles.results,
+      ratings: productMeta.ratings,
     };
     // check if item already present in outfits items
     if (outfitItems.length > 0) {

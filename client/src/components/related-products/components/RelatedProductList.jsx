@@ -16,6 +16,7 @@ const RelatedProductsList = () => {
     productStyles,
     relatedProducts,
   } = useSelector((state) => state.product);
+  console.log(productMeta.ratings);
   const numberOfCards = relatedProducts.length;
   // property to move the cards' slide
   const [property, setProperty] = useState(0);
