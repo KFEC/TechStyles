@@ -50,7 +50,7 @@ const QuestionEntry = ({
     <Div
       data-testid="test QuestionEntry"
       style={{
-        border: '1.5px solid grey', borderRadius: '25px', padding: '10px',
+        border: '1.5px solid grey', borderRadius: '25px', padding: '10px', width: '95%',
       }}
     >
       <div style={{ display: 'flex' }}>
@@ -94,7 +94,11 @@ const QuestionEntry = ({
                 update2={update2}
               />
             ))
-          : <div>No Answers Available</div>}
+          : (
+            <Div style={{ borderBottom: '1px solid grey' }}>
+              No Answers Available
+            </Div>
+          )}
         {answers.length > 2
           ? !collapse
             ? (

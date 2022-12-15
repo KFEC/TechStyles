@@ -17,7 +17,7 @@ const QA = () => {
 
   useEffect(() => {
     setFilter(productQuestions);
-  });
+  }, [productQuestions]);
 
   useEffect(() => {
     dispatch(getProductQuestions({ url: '/qa/questions', params: { product_id: productId, count: 999 } }));
