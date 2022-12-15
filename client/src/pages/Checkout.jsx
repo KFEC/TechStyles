@@ -78,7 +78,7 @@ const Checkout = () => {
         <button id="actual-checkout-btn" type="button">Proceed to checkout</button>
         {cart.length > 0 ? <div style={{ padding: '1em 0 1em 0' }}>{`Subtotal (${cart.length}): $${totalPrice + 6.99}`}</div> : null}
         <div id="order-summary">
-          <div>ORDER SUMMARY</div>
+          <div style={{ fontFamily: 'Work Sans, sans-serif', fontSize: '18px' }}>ORDER SUMMARY</div>
 
           <div id="summary-price">
             <div>

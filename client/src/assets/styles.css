@@ -237,6 +237,7 @@ table {
   user-select: none;
   -webkit-user-select: none;
   width: auto;
+  font-family: 'Noto Sans';
 }
 
 #actual-checkout-btn:hover {
@@ -251,7 +252,7 @@ table {
   height: 150px;
   padding: 5px;
   justify-content: space-evenly;
-  border: 1.5px solid grey;
+  border: 1.5px solid rgba(189, 195, 199);
 }
 
 #summary-price {
@@ -270,4 +271,9 @@ table {
   display: flex;
   justify-content: space-between;
   /* border: 2px solid coral; */
+}
+
+#paypal {
+  border-top: 1px solid rgba(189, 195, 199);
+  padding-top: 7px;
 }
