@@ -1,14 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  AppDiv, Wrapper, Div, Button,
+  ContactDiv, Wrapper, Div, Button,
 } from '../lib/styledComponents';
 import Logo from '../assets/fec-logo.png';
 
 const Contact = () => {
   const { isDarkMode } = useSelector((state) => state.productPage);
   return (
-    <div>
+    <ContactDiv isDarkMode={isDarkMode}>
       <Wrapper isDarkMode={isDarkMode}><img id="app-logo" src={Logo} alt="TechStyles" /></Wrapper>
       <div className="contact-page" style={{ marginLeft: '10px', color: isDarkMode ? 'white' : 'black' }}>
         <div style={{ marginBottom: '15px', marginTop: '20px', fontSize: '40px' }}>Contact Us</div>
@@ -48,7 +48,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </div>
+    </ContactDiv>
   );
 };
 export default Contact;
