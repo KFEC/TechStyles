@@ -200,11 +200,31 @@ const Card = styled.section`
   border: 2px solid black;
 `;
 
-const Stars = styled.span`
+const FormStars = styled.span`
   background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;
+`;
+
+const Stars = styled.span`
+  --star-size: 2em;
+  --star-color: rgba(173, 173, 173, 0.685);
+  --star-background: rgb(97, 113, 142);
+  --percent: calc(var(--rating) / 5 * 100%);
+  display: inline-block;
+  font-size: var(--star-size);
+  font-family: Times;
+  line-height: 1;
+
+  &:before {
+    content: '★★★★★';
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 `;
 
 export {
@@ -220,9 +240,10 @@ export {
   ExpandedViewModalContent,
   CloseModalButton,
   Card,
-  Stars,
+  FormStars,
   HelpfulButton,
   ReportButton,
   ExtrasButton,
   CartButton,
+  Stars,
 };

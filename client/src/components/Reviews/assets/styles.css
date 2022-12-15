@@ -36,16 +36,16 @@
 }
 
 #rr-heading {
-  font-size: 3em;
   grid-area: heading;
+  font-size: 3em;
   font-family: 'Tenor Sans';
-  padding-left: 2.7em;
-  margin-top: 1.2;
+  padding: 0.6em 0 0 2.35em;
 }
 
 .rr-filter {
   grid-area: filter;
   min-height: 4em;
+  font-size: 1em;
   display: flex;
   align-items: flex-end;
   /* margin: 1.2em; */
@@ -53,11 +53,9 @@
 
 .rr-search {
   grid-area: search;
+  min-height: 4em;
+  display: flex;
   align-items: center;
-}
-
-.rr-search-input {
-  align-self: center;
 }
 
 .rr-clear-search {
@@ -81,10 +79,6 @@
   justify-content: space-evenly;
 }
 
-/* #reviews {
-
-} */
-
 /* New Review Styling */
 
 #new-review-form {
@@ -107,89 +101,9 @@
   font-style: italic;
 }
 
-
-/* Rating Breakdown Styling */
-
-.rb-heading {
-  display: grid;
-  justify-content: center;
-}
-
-.rb-avg {
-  justify-self: left;
-  font-size: 2em;
-  font-weight: 500;
-}
-
-.rb-recommended {
-  font-weight: italic;
-  font-size: 1em;
-}
-
-.rb-stars {
-  justify-self: right;
-}
-
-.rb-stars-container {
-  justify-content: space-between;
-}
-
-.rb-heading-container {
-  display: grid;
-}
-
-.ratings-bar-container {
-  font-size: 1.3em;
-  margin: 1em auto;
-  overflow: hidden;
-}
-
-.ratings-bar {
-  width: 85%;
-  height: 1.7em;
-  position: relative;
-  background: var(--bar-background);
-  border-radius: 0.4em;
-  text-transform: uppercase;
-  margin: 0.5em auto;
-}
-
-.ratings-area {
-  font-size: 0.8em;
-  z-index: 1;
-  position: absolute;
-  margin-top: 0.6em;
-  margin-left: 1.3em;
-  text-shadow: none;
-}
-
-.ratings-percentage {
-  z-index: 2;
-  position: relative;
-  margin-right: 0.8em;
-  margin-top: 0.6em;
-  float: right;
-  text-shadow: none;
-  font-size: 0.8em;
-}
-
-.ratings-bar-content {
-  width: calc(var(--percent) * 1%);
-  animation: animate-breakdown 3s;
-  height: 1.7em;
-  position: relative;
-  border-radius: 0.4em;
-  background-color: var(--bar-color);
-}
-
 @keyframes animate-breakdown {
   from{width: 0.2em;}
   to{width: calc(var(--percent) / 100 * 100%);}
-}
-
-.bar-filter {
-  font-size: 0.4em;
-  font-style: italic;
 }
 
 /* Product Breakdown Styles */
@@ -353,18 +267,18 @@
   font-size: 1em;
 }
 
-.sort-select-text {
-  display: flex;
-  align-items: center;
+.sort-select-container {
   grid-area: sort;
   font-size: 1em;
+  min-height: 4em;
+  display: flex;
+  align-items: center;
 }
 
-.sort-select {
-  font-size: 1em;
-  font-weight: 400;
-  font-style: italic;
-  text-decoration: underline;
-  background-color: transparent;
-  border-color: transparent;
+.on {
+  color: #000;
+}
+
+.off {
+  color: #ccc;
 }

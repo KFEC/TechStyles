@@ -1,60 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { IoSearchSharp } from 'react-icons/io5';
-import { Button, HelpfulButton, ReportButton } from '../../../../lib/styledComponents';
+import { Button } from '../../../../lib/styledComponents';
+import { QueryInput, ClearQueryButton } from '../../lib';
+import {
+  updateRenderedReviews, updateIsReviewForm, updateIsReviewsUpdated,
+  updateFilter, updateRenderedReviewCt, updateSort, updateQuery,
+} from '../../../../reducers/reviewComponentSlice';
 
-const ReviewSearch = ({ search }) => {
 
+const ReviewSearch = ({ search, filterThrough }) => {
+
+  const dispatch = useDispatch();
+  const { productId, productReviews } = useSelector((state) => state.product);
+  const {
+    reviewList: {
+      allReviews, renderedReviews, renderedReviewsCt, sort,
+      filter, query,
+    },
+    page: { isReviewForm, isReviewsUpdated },
+  } = useSelector((state) => state.reviews);
   const { isDarkMode } = useSelector((state) => state.productPage);
-  const [query, setQuery] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (query.length > 2) search(query);
-    else search('');
+  const resetReviews = () => {
+    if (filter.length < 1) {
+      dispatch((updateRenderedReviews(allReviews.slice(0, renderedReviewsCt))));
+    } else {
+      filterThrough()
+        .then((result) => {
+          dispatch(updateRenderedReviews(result
+            .sort((a, b) => b.rating - a.rating)
+            .slice(0, renderedReviewsCt)));
+        })
+        .catch((err) => console.error(err));
+    }
+    dispatch(updateQuery(''));
   };
 
-  const clearHandler = () => {
-    search('');
-    setQuery('');
-  };
-
-  const iconStyle = {
-    fontSize: '1.25em',
-    color: isDarkMode ? 'white' : 'black',
+  const inputKeyPress = (e) => {
+    if (e.keyCode === 13 && query.length > 2) {
+      search();
+    }
   };
 
   return (
     <>
       <div className="rr-search">
-        <input
-          className="rr-search-input"
-          style={{
-            backgroundColor: 'none', fontFamily: 'Work Sans, sans-serif', fontSize: '16px', width: '18em', margin: '0.5em', padding: '0.2em',
-          }}
+        <QueryInput
           placeholder="Find the review for you…"
           value={query}
-          onChange={(e) => { setQuery(e.target.value); }}
+          onChange={(e) => dispatch(updateQuery(e.target.value))}
+          onKeyDown={inputKeyPress}
         />
-        <button
-          type="button"
-          style={{
-            border: 'none', background: 'none', fontFamily: 'Work Sans, sans-serif', margin: '0.5em', padding: '0.2em',
-          }}
-        >
-          <IoSearchSharp style={iconStyle} onClick={handleSubmit} />
-        </button>
+        <IoSearchSharp style={{ fontSize: '1.25em', color: isDarkMode ? 'white' : 'black' }} onClick={search} />
       </div>
       <div>
         {query.length > 2 && (
-          <Button
-            className="rr-clear-search"
-            type="button"
+          <ClearQueryButton
             isDarkMode={isDarkMode}
-            onClick={clearHandler}
+            onClick={resetReviews}
           >
             Clear Search
-          </Button>
+          </ClearQueryButton>
         )}
       </div>
     </>

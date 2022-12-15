@@ -7,8 +7,12 @@ import React,
 import { useSelector, useDispatch } from 'react-redux';
 import {
   updateRenderedReviews, updateIsReviewForm, updateIsReviewsUpdated,
-  updateFilter, updateRenderedReviewCt,
+  updateFilter, updateRenderedReviewCt, updateQuery,
 } from '../../../../reducers/reviewComponentSlice';
+import {
+  RatingsBarContainer, RatingsBar, RatingsBarFill, RatingsNum,
+  RatingsPercent,
+} from '../../lib';
 
 const RatingRender = ({ rating }) => {
 
@@ -27,14 +31,6 @@ const RatingRender = ({ rating }) => {
   const dispatch = useDispatch();
   const ratingRef = useRef();
 
-  const barStyle = {
-    '--percent': Math.round((rating.count / totalRatings) * 100),
-    '--bar-color': isDarkMode ? '#87a589' : '#bbe2bd',
-  };
-
-  const barBackground = {
-    '--bar-background': isDarkMode ? 'rgba(95, 95, 95, 0.685)' : 'rgba(173, 173, 173, 0.685)',
-  };
   useEffect(() => {
     if (filter.length === 0) {
       setIsFiltered(false);
@@ -75,7 +71,9 @@ const RatingRender = ({ rating }) => {
             });
         }
         await dispatch(updateFilter(updatedFilter));
+        dispatch(updateQuery(''));
       } else if (!isFiltered) {
+        dispatch(updateQuery(''));
         setIsFiltered(!isFiltered);
         await dispatch(updateFilter([...filter, Number(ratingVal)]));
         filterThrough([...filter, Number(ratingVal)])
@@ -90,24 +88,38 @@ const RatingRender = ({ rating }) => {
     }
   };
 
+  const barStyle = {
+    '--percent': Math.round((rating.count / totalRatings) * 100),
+    '--bar-color': isDarkMode ? '#87a589' : '#bbe2bd',
+  };
+
+  const filterStyle = {
+    '--percent': Math.round((rating.count / totalRatings) * 100),
+    '--bar-color': isDarkMode ? '#91863d' : '#d4cc70',
+  };
+
+  const barBackground = {
+    '--bar-background': isDarkMode ? 'rgba(95, 95, 95, 0.685)' : 'rgba(173, 173, 173, 0.685)',
+  };
+
   return (
-    <div className="ratings-bar-container">
-      <div
-        className="ratings-bar"
+    <RatingsBarContainer>
+      <RatingsBar
         data-rating={rating.rating}
         ref={ratingRef}
         onClick={handleRatingClick}
         style={barBackground}
+        isDarkMode={isDarkMode}
       >
-        <span className="ratings-percentage">
+        <RatingsPercent>
           {Math.round((rating.count / totalRatings) * 100)}
           %
-        </span>
-        <div className="ratings-bar-content" style={barStyle}>
-          <span className="ratings-area">{rating.rating}</span>
-        </div>
-      </div>
-    </div>
+        </RatingsPercent>
+        <RatingsBarFill style={isFiltered ? filterStyle : barStyle}>
+          <RatingsNum>{rating.rating}</RatingsNum>
+        </RatingsBarFill>
+      </RatingsBar>
+    </RatingsBarContainer>
   );
 };
 

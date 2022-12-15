@@ -8,6 +8,7 @@ const initialState = {
     renderedReviewsCt: 2,
     sort: 'relevant',
     filter: [],
+    query: '',
   },
   page: {
     isReviewForm: false,
@@ -34,6 +35,9 @@ const reviewComponentSlice = createSlice({
     updateFilter: (state, action) => {
       state.reviewList.filter = action.payload;
     },
+    updateQuery: (state, action) => {
+      state.reviewList.query = action.payload;
+    },
     updateRenderedReviewCt: (state, action) => {
       state.reviewList.renderedReviewsCt += action.payload;
     },
@@ -49,6 +53,7 @@ export const {
   updateRenderedReviews, updateIsReviewForm,
   updateIsReviewsUpdated, updateSort,
   updateRenderedReviewCt, updateFilter,
+  updateQuery,
 } = reviewComponentSlice.actions;
 
 export default reviewComponentSlice.reducer;

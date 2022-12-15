@@ -6,10 +6,13 @@ import {
 import { getProductReviews } from '../../actions';
 import {
   updateRenderedReviews, updateIsReviewForm, updateIsReviewsUpdated,
-  updateFilter, updateRenderedReviewCt, updateSort,
+  updateFilter, updateRenderedReviewCt, updateSort, updateQuery,
 } from '../../reducers/reviewComponentSlice';
 import ReviewSearch from './components/Reviews/ReviewSearch.jsx';
-import { Button, Modal, Div } from '../../lib/styledComponents';
+import { Button, Modal } from '../../lib/styledComponents';
+import {
+  Div, SelectContainer, Select, Option,
+} from './lib';
 import { getData } from '../../lib/index.js';
 import './assets/styles.css';
 
@@ -19,7 +22,7 @@ const Reviews = () => {
   const {
     reviewList: {
       allReviews, renderedReviews, renderedReviewsCt, sort,
-      filter,
+      filter, query,
     },
     page: { isReviewForm, isReviewsUpdated },
   } = useSelector((state) => state.reviews);
@@ -29,8 +32,7 @@ const Reviews = () => {
   const filterThrough = async () => {
     try {
       const result = await allReviews.reduce((acc, review) => {
-        console.log('FILTER', filter);
-        [...filter].forEach((item) => {
+        filter.forEach((item) => {
           if (review.rating === item) {
             acc.push(review);
           }
@@ -58,6 +60,7 @@ const Reviews = () => {
         .catch((err) => console.error(err));
     }
     dispatch(updateRenderedReviewCt(2));
+    dispatch(updateQuery(''));
   };
 
   const filterReviews = () => {
@@ -72,6 +75,7 @@ const Reviews = () => {
   const removeFilters = () => {
     dispatch((updateRenderedReviews(allReviews.slice(0, renderedReviewsCt))));
     dispatch(updateFilter([]));
+    dispatch(updateQuery(''));
   };
 
   const asyncTest = async () => {
@@ -88,21 +92,14 @@ const Reviews = () => {
 
   useEffect(() => {
     filterReviews();
-    // loadReviews();
     removeFilters();
-    // asyncTest();
-    // setStringFilter([...filter].sort((a, b) => b - a).join('★/'));
   }, [sort, isReviewsUpdated, productId]);
-
-  const selectStyle = {
-    color: isDarkMode ? 'white' : 'black',
-  };
 
   useEffect(() => {
     setStringFilter([...filter].sort((a, b) => b - a).join('★/'));
   }, [filter]);
 
-  const search = (query) => {
+  const search = () => {
     if (query.length < 3) {
       dispatch((updateRenderedReviews(allReviews.slice(0, renderedReviewsCt))));
     } else {
@@ -125,14 +122,16 @@ const Reviews = () => {
     <div id="reviews">
       <div className="rr-info">
         <h1 id="rr-heading">Ratings & Reviews</h1>
-        <div className="sort-select-text">
-          {`${allReviews.length} reviews, sorted by`}
-          <select style={selectStyle} className="sort-select" onChange={(e) => dispatch(updateSort(e.target.value))}>
-            <option value="relevant">Relevance</option>
-            <option value="newest">Newest</option>
-            <option value="helpful">Helpfulness</option>
-          </select>
-        </div>
+        <SelectContainer className="sort-select-container">
+          <Div>
+            {`${allReviews.length} reviews, sorted by`}
+            <Select isDarkMode={isDarkMode} onChange={(e) => dispatch(updateSort(e.target.value))}>
+              <Option value="relevant">Relevance</Option>
+              <Option value="newest">Newest</Option>
+              <Option value="helpful">Helpfulness</Option>
+            </Select>
+          </Div>
+        </SelectContainer>
         <div className="rr-filter">
           {filter.length >= 1 && <div style={{ margin: 0, padding: 0 }}>{` Filtering by...${`${stringFilter}★`}  `}</div>}
         </div>
@@ -144,7 +143,7 @@ const Reviews = () => {
         >
           Create Review
         </Button>
-        <ReviewSearch search={search} />
+        <ReviewSearch search={search} filterThrough={filterThrough} />
       </div>
       <div className="grid-reviews">
         <div className="rating-breakdown">
