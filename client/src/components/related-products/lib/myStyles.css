@@ -36,7 +36,7 @@ th, td {
   cursor: pointer;
   overflow: hidden;
   outline: none;
-  color: purple;
+  color:rgb(97, 113, 142);
 }
 
 .removeButton {
@@ -48,7 +48,7 @@ th, td {
   cursor: pointer;
   overflow: hidden;
   outline: none;
-  color: purple;
+  color:rgb(97, 113, 142);
 }
 
 .productInfo {
@@ -58,37 +58,18 @@ th, td {
 
 .itemCategory {
   font-size: 12px;
-  color: grey;
+  font-family: 'Work Sans', sans-serif;
   text-transform: uppercase;
   padding-bottom: 5px;
 }
 
 .productName {
   font-weight: bold;
+  font-family: 'Tenor Sans', sans-serif;
 }
 
 .productPrice {
-  font-weight: bold;
-}
-
-.StarsRelatedProducts {
-  --percent: calc(var(--rating) / 5 * 100%);
-  --star-size: 1em;
-  --star-color: rgba(173, 173, 173, 0.685);
-  --star-background: rgb(227, 148, 231);
-  display: inline-block;
-  font-size: var(--star-size);
-  font-family: Times;
-  line-height: 1;
-}
-
-.StarsRelatedProducts:before {
-  content: '★★★★★';
-  letter-spacing: 1px;
-  background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-weight: 300;
 }
 
 .related-product-list {
@@ -115,49 +96,37 @@ th, td {
   display: flex;
 }
 
-/* modal for comparison */
-/* modal itself */
-
-.modalTest {
-  position: static; /* Stay in place */
-  z-index: 999; /* Sit on top */
-  /* padding-top: 100px;  Location of the box */
-  display: block;
-  /* width: 200px; */
-  /* height: 200px;
-  width: 200px; */
-  /* right: 0;
-  left: 0; */
-  /* right: 0;
-  top: 0;
-  width: 80%;
-  height: 100%; */
-  /* overflow: auto; */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+.modal-wrapper {
+  display: var(--modal-display);
+  position: fixed;
+  justify-content: center;
+  z-index: 999;
+  /* left: 0;
+  top: 0; */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 /* modal content */
 .modal-contentTest {
   position: fixed;
   z-index: 1000;
-  background-color: #303233;
   background-color: var(--bg-color);
+  font-family: 'Work Sans';
   /* margin: auto; */
   /* padding: 20px; */
-  /* border: 1px solid #888; */
   /* height: 200px;
   width: 200px; */
   border: 5px;
 }
 
+/* .comparisonProductsName {
+
+} */
+
 .tableRow {
   padding-bottom: 5em;
 }
 
-/* .buttonRight {
-  float: right;
-}
-.buttonLeft {
-  float: left;
-} */
+tr:nth-child(even) {background-color: #a3a3a3;}

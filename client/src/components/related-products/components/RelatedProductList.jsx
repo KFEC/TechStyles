@@ -29,11 +29,14 @@ const RelatedProductsList = () => {
     setProperty(property - 1);
   };
   return (
-    <div className="relatedProductContainer">
-      <div>Related Products</div>
+    <div className="relatedProductContainer" style={{ marginBottom: '50px' }}>
+      <div style={{ fontFamily: 'Tenor Sans', marginBottom: '5px', fontSize: '1.5em' }}>Related Products</div>
       <div className="buttons">
         { numberOfCards < 5 || property === 0
-          ? <div className="buttonLeft"> </div>
+          ? (
+            <IoIosArrowBack style={{ fontSize: '2em', color: '#A3A3A3' }} />
+          )
+          // ? <div className="buttonLeft"> </div>
           : (
             <IoIosArrowBack
               onClick={prevProperty}
@@ -44,7 +47,9 @@ const RelatedProductsList = () => {
             />
           ) }
         { numberOfCards < 5 || (numberOfCards - 4) === property
-          ? <div className="buttonRight" style={{ position: 'relative', left: '100px' }}> </div>
+          ? (
+            <IoIosArrowForward style={{ position: 'relative', fontSize: '2em', color: '#A3A3A3' }} />
+          )
           : (
             <IoIosArrowForward
               onClick={nextProperty}
@@ -53,7 +58,7 @@ const RelatedProductsList = () => {
                 fontSize: '2em', cursor: 'pointer',
               }}
             />
-          )}
+          ) }
       </div>
       <div className="related-product-list">
         <div className="cards-slider">

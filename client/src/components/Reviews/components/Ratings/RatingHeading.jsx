@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import {
+  Div, RatingsContainer, RatingsAverage, RatingsRecommended,
+} from '../../lib';
+import { Stars } from '../../../../lib/styledComponents';
 
 const RatingHeading = () => {
 
   const { productReviews: { stars, recommended } } = useSelector((state) => state.product);
 
   return (
-    <div className="rb-heading">
-      <div className="rb-heading-container">
-        <div className="rb-stars-container">
-          <span className="rb-avg">{`${stars}  `}</span>
-          <span className="Stars rb-stars" style={{ '--rating': stars }} />
-        </div>
-        <div className="rb-recommended">{`${recommended}% of reviews recommended this product`}</div>
-      </div>
-    </div>
+    <RatingsContainer>
+      <Div>
+        <RatingsAverage>{`${stars}  `}</RatingsAverage>
+        <Stars style={{ '--rating': stars }} />
+      </Div>
+      <RatingsRecommended>{`${recommended}% of reviews recommended this product`}</RatingsRecommended>
+    </RatingsContainer>
   );
 };
 

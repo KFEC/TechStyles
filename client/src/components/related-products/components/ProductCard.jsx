@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {
-  AiFillStar,
-} from 'react-icons/ai';
+import { AiFillStar } from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateProductId } from '../../../reducers/productSlice';
-import Comparaison from './Comparaison.jsx';
-import {
-  ImageRelatedProduct,
-} from '../lib/styledComponents';
-import { getData } from '../../../lib';
+import Comparison from './Comparison.jsx';
+import { ImageRelatedProduct } from '../lib/styledComponents';
+// import { getData } from '../../../lib';
 import defaultImage from '../lib/images/noProductAvailable.png';
 
 const ProductCard = ({
@@ -19,11 +15,7 @@ const ProductCard = ({
 }) => {
   const { isDarkMode } = useSelector((state) => state.productPage);
   const {
-    productId,
-    productInfo,
     productMeta,
-    productStyles,
-    relatedProducts,
   } = useSelector((state) => state.product);
   const dispatch = useDispatch();
   // modal display property set to false by default
@@ -50,12 +42,12 @@ const ProductCard = ({
   };
 
   useEffect(() => {
-    setMainProductChars(productMeta.characteristics); // main product chars for comparaison
-    setReviewCount(getTotalRatings(productMeta.ratings));
+    setMainProductChars(productMeta.characteristics); // main product chars for comparison
+    setReviewCount(getTotalRatings(meta.ratings));
   }, []);
 
   useEffect(() => {
-    setStars(calculateRatingAvg(Object.values(productMeta.ratings)));
+    setStars(calculateRatingAvg(Object.values(meta.ratings)));
   }, [reviewCount]);
 
   /*
@@ -64,29 +56,35 @@ const ProductCard = ({
   Sale prices should be reflected. If the style is currently discounted,
   then the sale price should appear in red, followed by the original price which is struckthrough.
   */
-  let productImage = null;
   let price = null;
   let discountedPrice = null;
-  let defaultStyle = false;
+
+  // use this code if default style is the style with property default value TRUE
+  // let defaultStyle = false;
   // set price and image to default style data
-  for (let i = 0; i < styles.results.length; i += 1) {
-    if (styles.results[i]['default?'] === true) {
-      defaultStyle = true;
-      price = styles.results[i].original_price;
-      if (styles.results[i].sale_price !== null) {
-        discountedPrice = styles.results[i].sale_price;
-      }
-      productImage = styles.results[i].photos[0].thumbnail_url;
-    }
-  }
+  // for (let i = 0; i < styles.results.length; i += 1) {
+  //   if (styles.results[i]['default?'] === true) {
+  //     defaultStyle = true;
+  //     price = styles.results[i].original_price;
+  //     if (styles.results[i].sale_price !== null) {
+  //       discountedPrice = styles.results[i].sale_price;
+  //     }
+  //     productImage = styles.results[i].photos[0].thumbnail_url;
+  //   }
+  // }
+
+  let productImage = styles.results[0].photos[0].thumbnail_url;
+  price = styles.results[0].original_price;
+  discountedPrice = styles.results[0].sale_price;
+
   // if there is no default style use first style
-  if (!defaultStyle) {
-    price = productDetails.default_price;
-    if (styles.results[0].sale_price !== null) {
-      discountedPrice = styles.results[0].sale_price;
-    }
-    productImage = styles.results[0].photos[0].thumbnail_url;
-  }
+  // if (!defaultStyle) {
+  //   price = productDetails.default_price;
+  //   if (styles.results[0].sale_price !== null) {
+  //     discountedPrice = styles.results[0].sale_price;
+  //   }
+  //   productImage = styles.results[0].photos[0].thumbnail_url;
+  // }
   // if there is no image display no product image available
   if (productImage === null) {
     productImage = defaultImage;
@@ -104,21 +102,24 @@ const ProductCard = ({
     flexDirection: 'column',
     opacity: `${opacity}`,
   };
+
   return (
     <div
       className="card"
       style={cardStyle}
     >
       {openModal && (
-        <div className="modalTest" display={openModal ? 'block' : 'none'}>
-          <Comparaison
-            key={Math.random(69 * idx) * 3}
-            setOpenModal={setOpenModal}
-            comparedProductDetails={productDetails}
-            comparedProductChars={meta}
-            mainProductChars={mainProductChars}
-          />
-        </div>
+        // <div className="modalTest" display={openModal ? 'block' : 'none'}>
+        <Comparison
+          display={openModal ? 'block' : 'none'}
+          key={Math.random(69 * idx) * 3}
+          setOpenModal={setOpenModal}
+          comparedProductDetails={productDetails}
+          comparedProductChars={meta}
+          mainProductChars={mainProductChars}
+          openModal={openModal}
+        />
+        // </div>
       )}
       <AiFillStar type="button" className="comparisonButton" onClick={() => setOpenModal(true)} />
       <ImageRelatedProduct
@@ -137,17 +138,17 @@ const ProductCard = ({
         <div className="itemCategory">{productDetails.category}</div>
         {discountedPrice === null
           ? (
-            <p className="productPrice">
+            <div className="productPrice">
               $
               {price}
-            </p>
+            </div>
           ) : (
-            <p className="productPrice">
-              {price}
-              {discountedPrice}
-            </p>
+            <div className="productPrice">
+              <div style={{ textDecoration: 'line-through' }}>{price}</div>
+              <div style={{ color: 'red' }}>{discountedPrice}</div>
+            </div>
           )}
-        <span className="StarsRelatedProducts" style={{ '--rating': stars }} />
+        <span className="Stars" style={{ '--rating': stars, '--star-size': '1em' }} />
       </div>
     </div>
   );
