@@ -15,7 +15,6 @@ const RelatedProducts = () => {
     productStyles,
     relatedProducts,
   } = useSelector((state) => state.product);
-  console.log(productInfo, productMeta.charateristics);
   return (
     <Div style={{ display: 'flex' }}>
       { relatedProducts.length > 0 && Object.keys(relatedProducts).length > 0

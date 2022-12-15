@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import {
-  GrAdd,
-} from 'react-icons/gr';
+import { GrAdd } from 'react-icons/gr';
+import { BiAddToQueue } from 'react-icons/bi';
 import {
   ButtonAddItem,
   ImageRelatedProduct,
@@ -56,11 +55,11 @@ const YourOutfit = () => {
   };
   return (
     <div className="yourOutfitContainer">
-      <div>Your Outfit</div>
+      <div className="your-outfit-title" style={{ fontFamily: 'Tenor Sans', fontSize: '1.5em', marginBottom: '10px' }}>Your Outfit</div>
       <div className="yourOutfit">
         <div className="card" style={cardStyle}>
           <div style={{ textAlign: 'center', top: '80px', position: 'relative' }}>Add to Outfit</div>
-          <GrAdd
+          <BiAddToQueue
             type="button"
             style={{
               position: 'relative',
@@ -69,6 +68,7 @@ const YourOutfit = () => {
               left: '33%',
               top: '30%',
               cursor: 'pointer',
+              opacity: '75%',
             }}
             onClick={addItem}
           />

@@ -109,15 +109,17 @@ const ProductCard = ({
       style={cardStyle}
     >
       {openModal && (
-        <div className="modalTest" display={openModal ? 'block' : 'none'}>
-          <Comparison
-            key={Math.random(69 * idx) * 3}
-            setOpenModal={setOpenModal}
-            comparedProductDetails={productDetails}
-            comparedProductChars={meta}
-            mainProductChars={mainProductChars}
-          />
-        </div>
+        // <div className="modalTest" display={openModal ? 'block' : 'none'}>
+        <Comparison
+          display={openModal ? 'block' : 'none'}
+          key={Math.random(69 * idx) * 3}
+          setOpenModal={setOpenModal}
+          comparedProductDetails={productDetails}
+          comparedProductChars={meta}
+          mainProductChars={mainProductChars}
+          openModal={openModal}
+        />
+        // </div>
       )}
       <AiFillStar type="button" className="comparisonButton" onClick={() => setOpenModal(true)} />
       <ImageRelatedProduct

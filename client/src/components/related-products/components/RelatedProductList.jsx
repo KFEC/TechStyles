@@ -16,7 +16,6 @@ const RelatedProductsList = () => {
     productStyles,
     relatedProducts,
   } = useSelector((state) => state.product);
-  console.log(productMeta.ratings);
   const numberOfCards = relatedProducts.length;
   // property to move the cards' slide
   const [property, setProperty] = useState(0);
@@ -30,8 +29,8 @@ const RelatedProductsList = () => {
     setProperty(property - 1);
   };
   return (
-    <div className="relatedProductContainer">
-      <div>Related Products</div>
+    <div className="relatedProductContainer" style={{ marginBottom: '50px' }}>
+      <div style={{ fontFamily: 'Tenor Sans', marginBottom: '5px', fontSize: '1.5em' }}>Related Products</div>
       <div className="buttons">
         { numberOfCards < 5 || property === 0
           ? (
