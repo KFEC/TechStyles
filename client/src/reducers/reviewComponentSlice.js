@@ -43,9 +43,14 @@ const reviewComponentSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getProductReviews.fulfilled, (state, action) => {
-      state.reviewList.allReviews = action.payload.results;
-    });
+    builder
+      .addCase(getProductReviews.fulfilled, (state, action) => {
+        state.reviewList.allReviews = action.payload.results;
+      })
+      .addCase(getProductReviews.rejected, (state, action) => {
+        state.reviewList.allReviews = [];
+        console.log('Product Reviews Rejected');
+      });
   },
 });
 
