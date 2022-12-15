@@ -8,12 +8,12 @@ import { CartButton, SizeGuideModal } from '../../../lib/styledComponents';
 import SizeGuide from './SizeGuide.jsx';
 
 const AddToCart = ({
-  sku, selectSize, setSelectSize, selectQty, setSelectQty, name,
+  sku, selectSize, setSelectSize, selectQty, setSelectQty, name, price, sale, gallery, currentIndex,
 }) => {
   const [display, setDisplay] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
   const { isDarkMode } = useSelector((state) => state.productPage);
   // console.log('i am sku ', sku[0]?.quantity, 'qty ', selectQty, 'size ', selectSize);
-
   const defaultQty = (num) => {
     return Array.apply(null, Array(num)).map((x, i) => { return i; });
   };
@@ -79,18 +79,26 @@ const AddToCart = ({
     );
   };
 
+  console.log('price', price, 'sale', sale);
+
   const handleClick = (event) => {
     if (selectSize.length === 0) {
       // (1) forcibly open the dropdown - BACKLOG
       // const targetDropDown = document.getElementById('size-selector');
       window.alert('Please select size');
     } else {
+      setIsAdded(true);
+      setTimeout(() => {
+        setIsAdded(false);
+      }, 3000);
       const select = document.getElementById('qty-selector');
       const qtyValue = Number(select.value) + 1;
       const newItem = {
         itemName: name,
         quantity: qtyValue,
         size: JSON.parse(selectSize).size,
+        itemPrice: sale === undefined || sale === null ? price : sale,
+        img: gallery[0],
       };
       // console.log('You have added to cart', newItem);
       const cart = localStorage.getItem('cart') === null ? [] : [...JSON.parse(localStorage.getItem('cart'))];
@@ -113,6 +121,7 @@ const AddToCart = ({
     return (
       <div className="cart-btn">
         <CartButton isDarkMode={isDarkMode} type="button" onClick={(event) => { handleClick(event); }}>Add To Cart</CartButton>
+        {isAdded && <div style={{ fontSize: '11px', fontStyle: 'italic' }}>Item added to cart</div>}
       </div>
     );
   };
