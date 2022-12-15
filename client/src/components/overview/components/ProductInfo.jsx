@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { RiShareFill } from 'react-icons/ri';
+import { useSelector } from 'react-redux';
 import {
   SocialMediaModal,
 } from '../../../lib/styledComponents';
@@ -9,6 +10,7 @@ const ProductInfo = ({
   category, name, slogan, description, price, sale, stars, reviewCount, gallery, currentIndex,
 }) => {
   const [display, setDisplay] = useState(false);
+  const { isDarkMode } = useSelector((state) => state.productPage);
 
   const renderSale = () => {
     if (sale !== null) {
@@ -28,7 +30,7 @@ const ProductInfo = ({
     return (
       <div id="stars-reviews-container">
         <div className="overview-stars" style={{ '--rating': stars }} />
-        <a href="#reviews" style={{ color: 'black', textDecoration: 'none' }}>
+        <a href="#reviews" style={{ color: isDarkMode ? 'white' : 'black', textDecoration: 'none' }}>
           <div className="overview-reviews" style={{ paddingLeft: '8px' }}>
             {`Read all ${reviewCount} reviews`}
             {/* add href anchor here */}

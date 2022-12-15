@@ -8,7 +8,7 @@ import {
   RelatedProductContainer,
 } from '../lib/styledComponents';
 
-const RelatedProductsList = ({ setOpenModaproductData, currentProduct }) => {
+const RelatedProductsList = () => {
   const {
     productId,
     productInfo,
@@ -17,74 +17,69 @@ const RelatedProductsList = ({ setOpenModaproductData, currentProduct }) => {
     relatedProducts,
   } = useSelector((state) => state.product);
   const numberOfCards = relatedProducts.length;
+  // property to move the cards' slide
   const [property, setProperty] = useState(0);
+  // go to next card
   const nextProperty = () => {
     setProperty(property + 1);
   };
+  // go to previous card
   const prevProperty = () => {
     const newNumber = property - 1;
     setProperty(property - 1);
   };
-  const rpl = useRef();
   return (
-    <div className="related-product-list" ref={rpl}>
-      { numberOfCards < 5 || property === 0
-        ? (
-          <IoIosArrowBack
-            type="button"
-            disabled
-            style={{
-              opacity: '0', top: '45%', left: '45%', cursor: 'pointer', margin: 'auto', zIndex: '2', fontSize: '2em',
-            }}
-          />
-        )
-        : (
-          <IoIosArrowBack
-            onClick={prevProperty}
-            type="button"
-            style={{
-              top: '45%', left: '45%', cursor: 'pointer', margin: 'auto', zIndex: '2', fontSize: '2em',
-            }}
-          />
-        ) }
-      <div className="cards-slider">
-        <div className="cards-slider-wrapper" style={{ transform: `translateX(-${property * (100 / numberOfCards)}%)` }}>
-          {relatedProducts?.map((product, idx) => {
-            return (
-              <ProductCard
-                className="card"
-                idx={idx}
-                key={Math.random(69 * idx) * 3}
-                product={product}
-                setProperty={setProperty}
-                property={property}
-                rpl={rpl}
-              />
-            );
-          })}
+    <div className="relatedProductContainer" style={{ marginBottom: '50px' }}>
+      <div style={{ fontFamily: 'Tenor Sans', marginBottom: '5px', fontSize: '1.5em' }}>Related Products</div>
+      <div className="buttons">
+        { numberOfCards < 5 || property === 0
+          ? (
+            <IoIosArrowBack style={{ fontSize: '2em', color: '#A3A3A3' }} />
+          )
+          // ? <div className="buttonLeft"> </div>
+          : (
+            <IoIosArrowBack
+              onClick={prevProperty}
+              type="button"
+              style={{
+                cursor: 'pointer', fontSize: '2em',
+              }}
+            />
+          ) }
+        { numberOfCards < 5 || (numberOfCards - 4) === property
+          ? (
+            <IoIosArrowForward style={{ position: 'relative', fontSize: '2em', color: '#A3A3A3' }} />
+          )
+          : (
+            <IoIosArrowForward
+              onClick={nextProperty}
+              type="button"
+              style={{
+                fontSize: '2em', cursor: 'pointer',
+              }}
+            />
+          ) }
+      </div>
+      <div className="related-product-list">
+        <div className="cards-slider">
+          <div className="cards-slider-wrapper" style={{ transform: `translateX(-${property * (100 / numberOfCards)}%)` }}>
+            {relatedProducts?.map((product, idx) => {
+              return (
+                <ProductCard
+                  className="card"
+                  idx={idx}
+                  key={Math.random(69 * idx) * 3}
+                  product={product}
+                  setProperty={setProperty}
+                  property={property}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
-      { numberOfCards < 5 || (numberOfCards - 4) === property
-        ? (
-          <IoIosArrowForward
-            type="button"
-            disabled
-            style={{
-              opacity: '0', margin: 'auto', zIndex: '2', fontSize: '2em',
-            }}
-          />
-        ) : (
-          <IoIosArrowForward
-            onClick={nextProperty}
-            type="button"
-            style={{
-              margin: 'auto', zIndex: '2', fontSize: '2em',
-            }}
-          />
-        )}
     </div>
   );
-
 };
 
 export default RelatedProductsList;

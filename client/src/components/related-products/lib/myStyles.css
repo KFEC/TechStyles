@@ -1,37 +1,16 @@
-th, td {
-  padding: 10px;
-}
 
-td {
-  text-align: center;
-}
-
-th {
-  text-align: left;
+/* Your Outfit container */
+.yourOutfit {
+  display: flex;
 }
 
 .btn-text-right {
 	text-align: right;
 }
 
-table {
-border-collapse: collapse;
-border-spacing: 0;
-width: 100%;
-border: 5px solid;
-}
-
 th, td {
   text-align: center;
   padding: 10px;
-}
-
-th:second-child, td:second-child {
-  text-align: right;
-}
-
-th:third-child, td:third-child {
-  text-align: right;
 }
 
 /* product card - background color: rgb(251, 249, 249) */
@@ -57,7 +36,7 @@ th:third-child, td:third-child {
   cursor: pointer;
   overflow: hidden;
   outline: none;
-  color: purple;
+  color:rgb(97, 113, 142);
 }
 
 .removeButton {
@@ -69,12 +48,7 @@ th:third-child, td:third-child {
   cursor: pointer;
   overflow: hidden;
   outline: none;
-  color: purple;
-}
-
-.related-product-container {
-  height: 80%;
-  padding:5px
+  color:rgb(97, 113, 142);
 }
 
 .productInfo {
@@ -84,37 +58,18 @@ th:third-child, td:third-child {
 
 .itemCategory {
   font-size: 12px;
-  color: grey;
+  font-family: 'Work Sans', sans-serif;
   text-transform: uppercase;
   padding-bottom: 5px;
 }
 
 .productName {
   font-weight: bold;
+  font-family: 'Tenor Sans', sans-serif;
 }
 
 .productPrice {
-  font-weight: bold;
-}
-
-.StarsRelatedProducts {
-  --percent: calc(var(--rating) / 5 * 100%);
-  --star-size: 1em;
-  --star-color: rgba(173, 173, 173, 0.685);
-  --star-background: rgb(227, 148, 231);
-  display: inline-block;
-  font-size: var(--star-size);
-  font-family: Times;
-  line-height: 1;
-}
-
-.StarsRelatedProducts:before {
-  content: '★★★★★';
-  letter-spacing: 1px;
-  background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-weight: 300;
 }
 
 .related-product-list {
@@ -141,58 +96,37 @@ th:third-child, td:third-child {
   display: flex;
 }
 
-/* modal */
-/* .modal-header {
-	align-items: baseline;
-	display: flex;
-	justify-content: space-between;
-}
 .modal-wrapper {
-    align-items: center;
-    background: rgba(0, 0, 0, 0.7);
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-} */
-
-
-.modalTest {
-  position: fixed; /* Stay in place */
-  z-index: 999; /* Sit on top */
-  /* padding-top: 100px;  Location of the box */
-  display: block;
-  left: 0;
-  /* right: 0; */
-  top: 0;
-  width: 80%;
+  display: var(--modal-display);
+  position: fixed;
+  justify-content: center;
+  z-index: 999;
+  /* left: 0;
+  top: 0; */
+  width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+
+/* modal content */
 .modal-contentTest {
-  /* position: absolute; */
+  position: fixed;
   z-index: 1000;
-  background-color: #303233;
   background-color: var(--bg-color);
-  margin: auto;
+  font-family: 'Work Sans';
+  /* margin: auto; */
   /* padding: 20px; */
-  border: 1px solid #888;
-  /* width: 80%; */
+  /* height: 200px;
+  width: 200px; */
+  border: 5px;
 }
+
+/* .comparisonProductsName {
+
+} */
 
 .tableRow {
   padding-bottom: 5em;
 }
 
-/* Your Outfit */
-/* #your-outfit {
-  display: flex;
-} */
-/* .addButton {
-  size: 70;
-} */
+tr:nth-child(even) {background-color: #a3a3a3;}

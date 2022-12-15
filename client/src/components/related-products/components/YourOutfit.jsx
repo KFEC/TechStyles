@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import {
-  GrAdd,
-} from 'react-icons/gr';
+import { GrAdd } from 'react-icons/gr';
+import { BiAddToQueue } from 'react-icons/bi';
 import {
   ButtonAddItem,
   ImageRelatedProduct,
@@ -11,19 +10,18 @@ import {
 import ProductCardYourOutfit from './ProductCardYourOutfit.jsx';
 
 const YourOutfit = () => {
+  const { isDarkMode } = useSelector((state) => state.productPage);
   // state for outfit items
   const [outfitItems, setOutfitItems] = useState([]);
   const {
     productId,
     productInfo,
     productStyles,
+    productMeta,
   } = useSelector((state) => state.product);
   useEffect(() => {
-    // get data in local storage at key outfits
     const dataLocalStorage = localStorage.getItem('outfits');
-    // if there is data assign it to outfitItems
     if (dataLocalStorage !== null) {
-      // assign array of outfit items to outfits
       setOutfitItems(JSON.parse(dataLocalStorage));
     }
   }, []);
@@ -34,6 +32,7 @@ const YourOutfit = () => {
       name: productInfo.name,
       category: productInfo.category,
       styles: productStyles.results,
+      ratings: productMeta.ratings,
     };
     // check if item already present in outfits items
     if (outfitItems.length > 0) {
@@ -50,19 +49,26 @@ const YourOutfit = () => {
       setOutfitItems([...outfitItems, ItemObject]);
     }
   };
+  // dark mode
+  const cardStyle = {
+    '--card-color': isDarkMode ? '#303233' : '#FBF9F9',
+  };
   return (
-    <div id="your-outfit">
-      Your Outfit
-      <RelatedProductContainer>
-        <div className="card">
-          <p style={{ top: '20%', left: '30%' }}>Add to Outfit</p>
-          <GrAdd
-            className="center"
+    <div className="yourOutfitContainer">
+      <div className="your-outfit-title" style={{ fontFamily: 'Tenor Sans', fontSize: '1.5em', marginBottom: '10px' }}>Your Outfit</div>
+      <div className="yourOutfit">
+        <div className="card" style={cardStyle}>
+          <div style={{ textAlign: 'center', top: '80px', position: 'relative' }}>Add to Outfit</div>
+          <BiAddToQueue
             type="button"
             style={{
-              fontSize: '100px',
-              left: '30%',
-              top: '28%',
+              position: 'relative',
+              color: isDarkMode ? 'white' : 'black',
+              fontSize: '80px',
+              left: '33%',
+              top: '30%',
+              cursor: 'pointer',
+              opacity: '75%',
             }}
             onClick={addItem}
           />
@@ -78,7 +84,7 @@ const YourOutfit = () => {
             />
           ),
         )}
-      </RelatedProductContainer>
+      </div>
     </div>
   );
 };

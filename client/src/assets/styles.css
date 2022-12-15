@@ -32,7 +32,7 @@ html {
 }
 
 #app-logo {
-  width: 400px;
+  width: 300px;
   padding: 2em;
 }
 
@@ -83,13 +83,43 @@ table {
 
 .page-nav {
   display: flex;
+  position: relative;
   width: 100%;
-  justify-content: space-evenly;
+}
+
+.link-outer-container {
+  display: flex;
+  width: 58.75%;
+  align-items: flex-end;
+  justify-content: flex-end;
   background-color: rgb(109, 109, 109);
+  /* border: 2px solid cyan; */
+}
+
+.link-inner-container {
+  display: flex;
+  width: fit-content;
+  background-color: rgb(109, 109, 109);
+  /* border: 2px solid red; */
+}
+
+.nav-icon-outer-container {
+  display: flex;
+  width: 41.25%;
+  align-items: flex-end;
+  justify-content: flex-end;
+  background-color: rgb(109, 109, 109);
+  /* border: 2px solid cyan; */
+}
+
+.nav-icon-inner-container {
+  display: flex;
+  width: fit-content;
+  background-color: rgb(109, 109, 109);
+  /* border: 2px solid red; */
 }
 
 .nav-li {
-  display: inline-flex;
   color: white;
   text-align: center;
   padding: 14px 16px;
