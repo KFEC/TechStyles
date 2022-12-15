@@ -15,6 +15,7 @@ const Thumbnail = ({ photo }) => {
       >
         <img
           className="reviews-img"
+          style={{ objFit: 'cover' }}
           src={photo}
           alt="text"
         />

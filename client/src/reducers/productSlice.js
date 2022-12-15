@@ -45,20 +45,44 @@ const productSlice = createSlice({
       .addCase(getProductInfo.fulfilled, (state, action) => {
         state.productInfo = action.payload;
       })
+      .addCase(getProductInfo.rejected, (state, action) => {
+        state.productInfo = {};
+        console.log('Product Info Rejected');
+      })
       .addCase(getProductMeta.fulfilled, (state, action) => {
         state.productMeta = action.payload;
+      })
+      .addCase(getProductMeta.rejected, (state, action) => {
+        state.productMeta = {};
+        console.log('Product Meta Rejected');
       })
       .addCase(getProductStyles.fulfilled, (state, action) => {
         state.productStyles = action.payload;
       })
+      .addCase(getProductStyles.rejected, (state, action) => {
+        state.productStyles = {};
+        console.log('Product Styles Rejected');
+      })
       .addCase(getProductQuestions.fulfilled, (state, action) => {
         state.productQuestions = action.payload.results;
+      })
+      .addCase(getProductQuestions.rejected, (state, action) => {
+        state.productQuestions = [];
+        console.log('Product Questions Rejected');
       })
       .addCase(getProductReviews.fulfilled, (state, action) => {
         state.productReviews.allReviews = action.payload.results;
       })
+      .addCase(getProductReviews.rejected, (state, action) => {
+        state.productReviews.allReviews = [];
+        console.log('Product Reviews Rejected');
+      })
       .addCase(getRelatedProducts.fulfilled, (state, action) => {
         state.relatedProducts = action.payload;
+      })
+      .addCase(getRelatedProducts.rejected, (state, action) => {
+        state.relatedProducts = [];
+        console.log('Related Products Rejected');
       });
   },
 });

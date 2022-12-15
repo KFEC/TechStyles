@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { IoSearchSharp } from 'react-icons/io5';
-import { Div } from '../../../lib/styledComponents';
+import { Div, Button } from '../../../lib/styledComponents';
 
 
 const QuestionSearch = ({ search }) => {
@@ -9,10 +9,21 @@ const QuestionSearch = ({ search }) => {
   const { isDarkMode } = useSelector((state) => state.productPage);
   const [query, setQuery] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
     if (query.length > 2) search(query);
     else search('');
+  };
+
+  const handleClick = (e) => {
+    setQuery('');
+    search('');
+  };
+
+  const inputKeyPress = (e) => {
+    if (e.keyCode === 13 && query.length > 2) {
+      search(query);
+    }
   };
 
   const iconStyle = {
@@ -22,18 +33,20 @@ const QuestionSearch = ({ search }) => {
 
   return (
     <div data-testid="test QuestionSearch">
-      <form onSubmit={handleSubmit}>
-        <input
-          style={{
-            width: '90%', backgroundColor: 'none', fontFamily: 'Work Sans, sans-serif', fontSize: '16px',
-          }}
-          placeholder="Have a question? Search for answers…"
-          onChange={(e) => { setQuery(e.target.value); }}
-        />
-        <button type="submit" style={{ background: 'none', backgroundColor: 'none', border: 'none' }}>
-          <IoSearchSharp style={iconStyle} />
-        </button>
-      </form>
+      <input
+        style={{
+          width: '70%', backgroundColor: 'none', fontFamily: 'Work Sans, sans-serif', fontSize: '16px',
+        }}
+        placeholder="Have a question? Search for answers…"
+        value={query}
+        onChange={(e) => { setQuery(e.target.value); }}
+        onKeyDown={inputKeyPress}
+      />
+      <button type="submit" style={{ background: 'none', backgroundColor: 'none', border: 'none' }}>
+        <IoSearchSharp style={iconStyle} onClick={handleSearch} />
+      </button>
+      {query.length > 2
+        && <Button onClick={handleClick} isDarkMode={isDarkMode}>Clear Search</Button>}
     </div>
   );
 };
