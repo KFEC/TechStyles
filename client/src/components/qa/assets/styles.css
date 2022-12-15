@@ -26,6 +26,7 @@
 .QList:hover {
   overflow-y:auto;
   overflow-x: hidden;
+  overflow: overlay;
   scroll-behavior: smooth;
 }
 
@@ -41,6 +42,7 @@
 .AList:hover {
   overflow-y:auto;
   overflow-x: auto;
+  overflow: overlay;
   scroll-behavior: smooth;
 }
 
