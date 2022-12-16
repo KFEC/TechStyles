@@ -55,7 +55,7 @@ const Checkout = () => {
                 style={{
                   height: '175px', width: '175px', objectFit: 'cover',
                 }}
-                alt=""
+                alt="cart"
               />
 
               <div id="item-details">

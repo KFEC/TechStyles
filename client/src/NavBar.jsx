@@ -34,10 +34,10 @@ const NavBar = () => {
         <div className="nav-icon-outer-container">
           <div className="nav-icon-inner-container">
             <div className="nav-li">
-              <NavLink className="link-text" to="/checkout"><BsCart3 /></NavLink>
+              <NavLink className="link-text" to="/checkout"><BsCart3 aria-label="View Checkout" /></NavLink>
             </div>
             <div className="nav-li">
-              <NavLink className="link-text" to="/" onClick={settingsClick}>{isDarkMode ? <CgSun /> : <IoMoonOutline /> }</NavLink>
+              <NavLink className="link-text" to="/" onClick={settingsClick}>{isDarkMode ? <CgSun aria-label="Toggle Lightmode" /> : <IoMoonOutline aria-label="Toggle Darkmode" /> }</NavLink>
             </div>
           </div>
         </div>

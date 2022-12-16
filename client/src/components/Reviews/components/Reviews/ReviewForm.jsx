@@ -30,13 +30,15 @@ const ReviewForm = () => {
 
   const { productId, productMeta } = useSelector((state) => state.product);
   const { isDarkMode } = useSelector((state) => state.productPage);
+  const regEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 
-  let tempChars = [];
-  if (productMeta.characteristics) {
-    tempChars = Object.keys(productMeta.characteristics).map(key => (
-      [key, productMeta.characteristics[key].id]
-    ));
-  }
+  const didSummaryFail = summary.trim().length < 1 && failed;
+  const didNameFail = name.trim().length < 1 && failed;
+  const didBodyFail = body.length < 50 && failed;
+  const didEmailFail = regEmail.test(email) < 1 && failed;
+  const didRatingFail = rating < 1 && failed;
+  const didCharsLoad = productMeta.characteristics
+  && Object.keys(productMeta.characteristics).length > 0;
 
   const dispatch = useDispatch();
 
@@ -51,67 +53,42 @@ const ReviewForm = () => {
     setPhotos([]);
   };
 
+  const updateCharacteristics = (key, val) => {
+    const temp = characteristics;
+    const { id } = productMeta.characteristics[key];
+    temp[id] = val;
+    setCharacteristics(temp);
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
-    if (body.length < 50 || !name.trim().length || !email.trim().length || rating < 0) {
+    if (!didBodyFail || !didEmailFail || !didNameFail || !didRatingFail || !didSummaryFail) {
       setFailed(true);
-      return;
+    } else {
+      postData('/reviews', {
+        product_id: Number(productId),
+        rating,
+        summary,
+        body,
+        recommend: isRecommended,
+        name,
+        email,
+        photos,
+        characteristics,
+      }).then(() => {
+        resetStates();
+        dispatch(getProductReviews({
+          url: '/reviews',
+          params: { product_id: productId, count: 6969 },
+        }));
+        dispatch(updateIsReviewForm());
+      });
     }
-    console.log({
-      rating, characteristics, summary, body, name, email, isRecommended: !isRecommended, photos,
-    });
-
-    postData('/reviews', {
-      product_id: Number(productId),
-      rating,
-      summary,
-      body,
-      recommend: isRecommended,
-      name,
-      email,
-      photos,
-      characteristics,
-    }).then(() => {
-      resetStates();
-      dispatch(getProductReviews({
-        url: '/reviews',
-        params: { product_id: productId, count: 6969 },
-      }));
-      dispatch(updateIsReviewForm());
-    });
   };
 
   return (
     <div>
       <ReviewFormModalContent id="new-review-form" isDarkMode={isDarkMode}>
-        { failed
-        && (
-          <ReviewPopUpModalContent
-            isDarkMode={isDarkMode}
-            style={{
-              zIndex: '5',
-              margin: '5% auto',
-              border: '1px solid black',
-            }}
-          >
-            {/* <CloseModalButton
-              style={{ padding: 'none' }}
-              type="submit"
-              onClick={() => setFailed(false)}
-            >
-              <IoClose />
-            </CloseModalButton> */}
-            <div>
-              <div>You must enter the following.</div>
-              <div>The review body must be longer than 50 characters</div>
-              <div>Rating</div>
-              <div>Name</div>
-              <div>Summary</div>
-              <div>Email</div>
-            </div>
-          </ReviewPopUpModalContent>
-        )}
-
         <div style={{
           width: '100%', display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end',
         }}
@@ -121,13 +98,13 @@ const ReviewForm = () => {
         <h2 style={{ fontSize: '24px', paddingBottom: '5px' }}>Submit Review</h2>
         <form onSubmit={submitHandler}>
           <div>
-            {/* <label
+            <label
+              className="input-label"
               id="new-review-rating-label"
               htmlFor="new-review-rating-input"
             >
               Rating:
-            </label> */}
-            <div className="input-label">Rating</div>
+            </label>
             <ReviewStars setRating={setRating} rating={rating} />
             {rating === 1 && <span>Poor</span>}
             {rating === 2 && <span>Fair</span>}
@@ -135,44 +112,36 @@ const ReviewForm = () => {
             {rating === 4 && <span>Good</span>}
             {rating === 5 && <span>Great</span>}
           </div>
+          {didRatingFail && <div className="review-form-error">Rating error</div>}
           <div>
-            {/* <label
+            <label
+              className="input-label"
               id="new-review-characteristics-label"
               htmlFor="new-review-characteristics-input"
             >
-              characteristics:
-            </label> */}
-            <div className="input-label">Characteristics</div>
-            {/* <input
-              type="range"
-              min="0"
-              max="5"
-              id="new-review-characteristics-input"
-              value={characteristics}
-              onChange={e => setCharacteristics(e.target.value)}
-            />
-            {characteristics} */}
-            {tempChars.map((pair, index) => {
+              Characteristics:
+            </label>
+            {didCharsLoad && Object.keys(productMeta.characteristics).map((char, idx) => {
               return (
                 <ReviewFormChars
-                  key={Math.random(index * 54) * 10}
-                  char={pair[0]}
-                  id={pair[1]}
-                  setCharacteristics={setCharacteristics}
-                  characteristics={characteristics}
+                  key={Math.random(idx * 54) * 10}
+                  char={char}
+                  idx={idx}
+                  update={updateCharacteristics}
                 />
               );
             })}
           </div>
           <div style={{ paddingTop: '10px' }}>
-            {/* <label
+            <label
+              className="input-label"
               id="new-review-summary-label"
               htmlFor="new-review-summary-input"
             >
               Summary:
-            </label> */}
-            <div className="input-label">Summary</div>
+            </label>
             <textarea
+              aria-label="Review Summary"
               id="new-review-summary-input"
               placeholder="Best purchase ever!"
               maxLength="60"
@@ -186,16 +155,18 @@ const ReviewForm = () => {
               onChange={e => setSummary(e.target.value)}
             />
           </div>
+          {didSummaryFail && <div className="review-form-error">Summary error</div>}
           <div style={{ paddingTop: '10px' }}>
-            {/* <label
+            <label
+              className="input-label"
               id="new-review-body-label"
               htmlFor="new-review-body-input"
             >
               Body:
-            </label> */}
-            <div className="input-label">Body</div>
+            </label>
             <textarea
               id="new-review-body-input"
+              aria-label="Review Body"
               placeholder="Why did you like the product or not?"
               maxLength="1000"
               style={{
@@ -216,17 +187,19 @@ const ReviewForm = () => {
                 </div>
               )
               : <div>Minimum reached.</div>}
+            {didBodyFail && <div className="review-form-error">Body error</div>}
           </div>
           <div style={{ paddingTop: '10px' }}>
-            {/* <label
+            <label
+              className="input-label"
               id="new-review-name-label"
               htmlFor="new-review-name-input"
             >
               Name:
-            </label> */}
-            <div className="input-label">Name</div>
+            </label>
             <textarea
               id="new-review-name-input"
+              aria-label="Review Name"
               placeholder="robert11"
               maxLength="60"
               style={{
@@ -241,17 +214,19 @@ const ReviewForm = () => {
             <div className="sub-text">
               For privacy reasons, do not use your full name or email address.
             </div>
+            {didNameFail && <div className="review-form-error">Name error</div>}
           </div>
           <div style={{ paddingTop: '10px' }}>
-            {/* <label
+            <label
+              className="input-label"
               id="new-review-email-label"
               htmlFor="new-review-email-input"
             >
               Email:
-            </label> */}
-            <div className="input-label">Email</div>
+            </label>
             <textarea
               type="email"
+              aria-label="Review Email"
               id="new-review-email-input"
               placeholder="robert11@gmail.com"
               maxLength="60"
@@ -265,6 +240,7 @@ const ReviewForm = () => {
               onChange={e => setEmail(e.target.value)}
             />
             <div className="sub-text">For authentication reasons, you will not be emailed.</div>
+            {didEmailFail && <div className="review-form-error">Email error</div>}
           </div>
           <div style={{ paddingTop: '15px' }}>
             Recommended:
@@ -302,7 +278,6 @@ const ReviewForm = () => {
             >
               Upload Images
             </label>
-            {/* <div className="input-label">Image</div> */}
             {photos.length <= 5 && (
               <input
                 className="sub-label"

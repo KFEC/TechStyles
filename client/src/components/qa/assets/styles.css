@@ -46,13 +46,39 @@
   scroll-behavior: smooth;
 }
 
-#QAForm {
+#QA-Question {
   display: grid;
   grid-auto-rows: min-content;
   justify-content: center;
 }
 
-#answer-label {
+#QA-Answer {
+  display: grid;
+  grid-auto-rows: min-content;
+  justify-content: center;
+}
+
+.answer-label {
+  font-weight: bold;
+  font-variant: small-caps;
+}
+
+#answer-body-label {
+  font-weight: bold;
+  font-variant: small-caps;
+}
+
+#answer-name-label {
+  font-weight: bold;
+  font-variant: small-caps;
+}
+
+#answer-email-label {
+  font-weight: bold;
+  font-variant: small-caps;
+}
+
+#answer-photos-label {
   font-weight: bold;
   font-variant: small-caps;
 }

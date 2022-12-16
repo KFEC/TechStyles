@@ -57,7 +57,7 @@ const NewQuestion = ({
   };
 
   return (
-    <ModalContent id="QAForm" isDarkMode={isDarkMode} data-testid="test NewQuestion">
+    <ModalContent id="QA-Question" isDarkMode={isDarkMode} data-testid="test NewQuestion">
       {failed
       && (
         <ModalContent
@@ -86,7 +86,7 @@ const NewQuestion = ({
       <div style={{ fontSize: '1.2em' }}>{`About the ${pName}`}</div>
       <form onSubmit={handleSubmit}>
         <div>
-          <label id="answer-label" htmlFor="question-body">
+          <label className="answer-label" htmlFor="question-body">
             Body*
           </label>
           <br />
@@ -100,9 +100,10 @@ const NewQuestion = ({
             }}
             value={body}
             onChange={changeBody}
+            aria-label="Question Body"
           />
           <p />
-          <label id="answer-label" htmlFor="question-name">
+          <label className="answer-label" htmlFor="question-name">
             Name*
           </label>
           <br />
@@ -115,18 +116,20 @@ const NewQuestion = ({
               resize: 'none',
             }}
             placeholder="Example: jackson11!"
+            aria-label="Question Name"
             value={name}
             onChange={changeName}
           />
           <br />
           <span id="answer-warning">For privacy reasons, do not use your full name or email address</span>
           <p />
-          <label id="answer-label" htmlFor="question-email">
+          <label className="answer-label" htmlFor="question-email">
             Email*
           </label>
           <br />
           <textarea
             id="question-email"
+            aria-label="Question Email"
             maxLength="60"
             style={{
               width: '20em',
