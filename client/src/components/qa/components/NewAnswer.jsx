@@ -199,7 +199,7 @@ const NewAnswer = ({
           <div style={{ width: '400px', overflow: 'hidden' }}>
             {photos.length === 0
               ? ''
-              : photos.map((photo, ind) => <img key={Math.random(ind * 54) * 10} style={{ padding: '5px' }} width={photo ? '100' : '0'} height={photo ? '100' : '0'} src={photo} alt="new review" />)}
+              : photos.map((photo, ind) => <img key={Math.random(ind * 54) * 10} style={{ padding: '5px' }} width={photo ? '100' : '0'} height={photo ? '100' : '0'} src={photo} alt="new answer" />)}
           </div>
         </div>
         <Button
