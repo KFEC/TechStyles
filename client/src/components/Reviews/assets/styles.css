@@ -140,6 +140,7 @@
 
 #new-review-characteristics-label {
   text-align: center;
+  padding: 0 0 1em 0;
 }
 
 .review-form-characteristics-container {
@@ -210,10 +211,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .review-form-image-container {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -414,4 +417,8 @@
 
 .off {
   color: #ccc;
+}
+
+.form-char-tuple {
+  padding-top: 0.25em;
 }
