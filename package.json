@@ -1,5 +1,5 @@
 {
-  "name": "atelier",
+  "name": "TechStyles",
   "version": "1.0.0",
   "scripts": {
     "start": "npx nodemon --watch server server/index.js",
