@@ -18,21 +18,54 @@ const RelatedProductsList = () => {
   } = useSelector((state) => state.product);
   const numberOfCards = relatedProducts.length;
   // property to move the cards' slide
+  const [direction, setDirection] = useState(0);
   const [property, setProperty] = useState(0);
   // go to next card
   const nextProperty = () => {
     setProperty(property + 1);
+    setDirection(true);
   };
   // go to previous card
   const prevProperty = () => {
     const newNumber = property - 1;
     setProperty(property - 1);
+    setDirection(false);
   };
   return (
     <div className="relatedProductContainer" style={{ marginBottom: '50px' }}>
-      <div style={{ fontFamily: 'Tenor Sans', marginBottom: '5px', fontSize: '1.5em' }}>Related Products</div>
-      <div className="buttons">
-        { numberOfCards < 5 || property === 0
+      <div style={{
+        fontFamily: 'Tenor Sans', marginBottom: '5px', fontSize: '2em', display: 'flex', justifyContent: 'center', alignItems: 'center', paddingBottom: '0.5em',
+      }}
+      >
+        Related Products & Your Outfit
+      </div>
+      <div className="related-product-list">
+        <div className="cards-slider">
+          <div className="cards-slider-wrapper">
+            {relatedProducts?.map((product, idx) => {
+              return (
+                <ProductCard
+                  className="card"
+                  idx={idx}
+                  key={Math.random(69 * idx) * 3}
+                  product={product}
+                  setProperty={setProperty}
+                  property={property}
+                  direction={direction}
+                  setDirection={setDirection}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      <div
+        className="buttons"
+        style={{
+          display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '0.5em',
+        }}
+      >
+        { numberOfCards < 6 || property === 0
           ? (
             <IoIosArrowBack style={{ fontSize: '2em', color: '#A3A3A3' }} />
           )
@@ -46,7 +79,7 @@ const RelatedProductsList = () => {
               }}
             />
           ) }
-        { numberOfCards < 5 || (numberOfCards - 4) === property
+        { numberOfCards < 6 || (numberOfCards - 5) === property
           ? (
             <IoIosArrowForward style={{ position: 'relative', fontSize: '2em', color: '#A3A3A3' }} />
           )
@@ -59,24 +92,6 @@ const RelatedProductsList = () => {
               }}
             />
           ) }
-      </div>
-      <div className="related-product-list">
-        <div className="cards-slider">
-          <div className="cards-slider-wrapper" style={{ transform: `translateX(-${property * (100 / numberOfCards)}%)` }}>
-            {relatedProducts?.map((product, idx) => {
-              return (
-                <ProductCard
-                  className="card"
-                  idx={idx}
-                  key={Math.random(69 * idx) * 3}
-                  product={product}
-                  setProperty={setProperty}
-                  property={property}
-                />
-              );
-            })}
-          </div>
-        </div>
       </div>
     </div>
   );

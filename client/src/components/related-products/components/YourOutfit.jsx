@@ -55,7 +55,6 @@ const YourOutfit = () => {
   };
   return (
     <div className="yourOutfitContainer">
-      <div className="your-outfit-title" style={{ fontFamily: 'Tenor Sans', fontSize: '1.5em', marginBottom: '10px' }}>Your Outfit</div>
       <div className="yourOutfit">
         <div className="card" style={cardStyle}>
           <div style={{ textAlign: 'center', top: '80px', position: 'relative' }}>Add to Outfit</div>

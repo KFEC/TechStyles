@@ -5,7 +5,6 @@ import { updateProductId } from '../../../reducers/productSlice';
 import Comparison from './Comparison.jsx';
 import { ImageRelatedProduct } from '../lib/styledComponents';
 import { getData } from '../../../lib';
-import defaultImage from '../lib/images/noProductAvailable.png';
 
 const ProductCardYourOutfit = ({
   outfitItem,
@@ -46,17 +45,7 @@ const ProductCardYourOutfit = ({
     setStars(calculateRatingAvg(Object.values(outfitItem.ratings)));
   }, [reviewCount]);
 
-
-  let image = '';
-  for (let i = 0; i < outfitItem.styles.length; i += 1) {
-    if (outfitItem.styles[i]['default?'] === true) {
-      image = outfitItem.styles[i].photos[0].thumbnail_url;
-      break;
-    }
-  }
-  if (!image) {
-    image = defaultImage;
-  }
+  const image = outfitItem.styles[0].photos[0].thumbnail_url || 'https://i.imgur.com/safclRR.png';
   const deleteItem = () => {
     const copy = [...outfitItems];
     copy.splice(idxOfItem, 1);
@@ -76,7 +65,6 @@ const ProductCardYourOutfit = ({
           style={{ cursor: 'pointer' }}
           onClick={() => {
             dispatch(updateProductId(outfitItem.product_id.toString()));
-            console.log(outfitItem.product_id.toString());
           }}
         />
       </div>

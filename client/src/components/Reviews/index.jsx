@@ -52,7 +52,6 @@ const Reviews = () => {
     } else {
       filterThrough()
         .then((result) => {
-          console.log('RESULT', result);
           dispatch(updateRenderedReviews(result
             .sort((a, b) => b.rating - a.rating)
             .slice(0, renderedReviewsCt + 2)));
