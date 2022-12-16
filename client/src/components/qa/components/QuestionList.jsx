@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Div, Button, FormModal } from '../../../lib/styledComponents';
+import { Div, Button } from '../../../lib/styledComponents';
+import { FormModal } from '../lib/qaStyledComponents';
 
 import QuestionEntry from './QuestionEntry.jsx';
 import NewQuestion from './NewQuestion.jsx';

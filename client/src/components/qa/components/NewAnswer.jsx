@@ -4,10 +4,9 @@ import { IoClose } from 'react-icons/io5';
 import {
   Div,
   Button,
-  FormModalContent,
-  FormPopUpModalContent,
   CloseModalButton,
 } from '../../../lib/styledComponents';
+import { FormModalContent, FormPopUpModalContent } from '../lib/qaStyledComponents';
 import { postData } from '../../../lib/index.js';
 
 const NewAnswer = ({
@@ -48,18 +47,17 @@ const NewAnswer = ({
     (error, result) => {
       if (!error && result && result.event === 'success') {
         const temp = [...photos];
-        temp.push(result.info);
+        temp.push(result.info.secure_url);
         setPhotos(temp);
-        console.log(photos);
       }
     },
   );
 
-  const changePhotos = (e) => {
-    const temp = [...photos];
-    temp.push(URL.createObjectURL(e.target.files[0]));
-    setPhotos(temp);
-  };
+  // const changePhotos = (e) => {
+  //   const temp = [...photos];
+  //   temp.push(URL.createObjectURL(e.target.files[0]));
+  //   setPhotos(temp);
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -68,6 +66,8 @@ const NewAnswer = ({
       setFailed(true);
       return;
     }
+
+    console.log(body, name, email, photos);
 
     postData(`/qa/questions/${id}/answers`, {
       body,
@@ -119,10 +119,10 @@ const NewAnswer = ({
       <div style={{ fontSize: '16px', paddingBottom: '3px' }}>{`${pName}: ${qBody}`}</div>
       <form onSubmit={handleSubmit}>
         <div>
-          {/* <label className="answer-label" htmlFor="answer-body">
+          {/* <label className="QA-label" htmlFor="answer-body">
             Body*
           </label> */}
-          <div className="answer-label">Body*</div>
+          <div className="QA-label">Body*</div>
           <textarea
             id="answer-body"
             name="answer-body"
@@ -141,8 +141,7 @@ const NewAnswer = ({
           {/* <label id="answer-name-label" htmlFor="answer-name">
             Name*
           </label> */}
-          <div className="answer-label">Name*</div>
-          <br />
+          <div className="QA-label">Name*</div>
           <textarea
             id="answer-name"
             aria-label="answer-name"
@@ -158,14 +157,13 @@ const NewAnswer = ({
             onChange={changeName}
           />
           <br />
-          <span className="answer-warning">For privacy reasons, do not use your full name or email address</span>
+          <span className="QA-warning">For privacy reasons, do not use your full name or email address</span>
         </div>
         <div style={{ paddingTop: '10px' }}>
-          {/* <label className="answer-label" htmlFor="answer-email">
+          {/* <label className="QA-label" htmlFor="answer-email">
             Email*
           </label> */}
-          <div className="answer-label">Email*</div>
-          <br />
+          <div className="QA-label">Email*</div>
           <textarea
             id="answer-email"
             name="answer-email"
@@ -180,21 +178,20 @@ const NewAnswer = ({
             onChange={changeEmail}
           />
           <br />
-          <span className="answer-warning">For authentication reasons, you will not be emailed</span>
+          <span className="QA-warning">For authentication reasons, you will not be emailed</span>
         </div>
         <div style={{ paddingTop: '10px' }}>
-          {/* <label className="answer-label" htmlFor="answer-photos">
+          {/* <label className="QA-label" htmlFor="answer-photos">
             Photos
           </label> */}
-          <div className="answer-label">Photos*</div>
-          <br />
+          <div className="QA-label">Photos*</div>
           {photos.length < 5 && (
             <button type="button" onClick={() => upload.open()}>Upload</button>
           )}
           <div style={{ width: '400px', overflow: 'hidden' }}>
             {photos.length === 0
               ? ''
-              : photos.map(photo => <img style={{ padding: '5px' }} width={photo ? '100' : '0'} height={photo ? '100' : '0'} src={photo.secure_url} alt="new review" />)}
+              : photos.map((photo, ind) => <img key={Math.random(ind * 54) * 10} style={{ padding: '5px' }} width={photo ? '100' : '0'} height={photo ? '100' : '0'} src={photo} alt="new review" />)}
           </div>
         </div>
         <Button

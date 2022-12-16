@@ -4,10 +4,9 @@ import { IoClose } from 'react-icons/io5';
 import {
   Div,
   Button,
-  FormModalContent,
-  FormPopUpModalContent,
   CloseModalButton,
 } from '../../../lib/styledComponents';
+import { FormModalContent, FormPopUpModalContent } from '../lib/qaStyledComponents';
 import { postData } from '../../../lib/index.js';
 
 const NewQuestion = ({
@@ -94,9 +93,10 @@ const NewQuestion = ({
       <form onSubmit={handleSubmit}>
         <div>
           <div>
-            <label className="answer-label" htmlFor="question-body">
+            {/* <label className="QA-label" htmlFor="question-body">
               Body*
-            </label>
+            </label> */}
+            <div className="QA-label">Body*</div>
             <br />
             <textarea
               id="question-body"
@@ -112,10 +112,10 @@ const NewQuestion = ({
             />
           </div>
           <div style={{ paddingTop: '10px' }}>
-            <label className="answer-label" htmlFor="question-name">
+            {/* <label className="QA-label" htmlFor="question-name">
               Name*
-            </label>
-            <br />
+            </label> */}
+            <div className="QA-label">Name*</div>
             <textarea
               id="question-name"
               maxLength="60"
@@ -130,13 +130,13 @@ const NewQuestion = ({
               onChange={changeName}
             />
             <br />
-            <span id="answer-warning">For privacy reasons, do not use your full name or email address</span>
+            <span className="QA-warning">For privacy reasons, do not use your full name or email address</span>
           </div>
           <div style={{ paddingTop: '10px' }}>
-            <label className="answer-label" htmlFor="question-email">
+            {/* <label className="QA-label" htmlFor="question-email">
               Email*
-            </label>
-            <br />
+            </label> */}
+            <div className="QA-label">Email*</div>
             <textarea
               id="question-email"
               aria-label="Question Email"
@@ -151,7 +151,7 @@ const NewQuestion = ({
               onChange={changeEmail}
             />
             <br />
-            <span id="answer-warning">For authentication reasons, you will not be emailed</span>
+            <span className="QA-warning">For authentication reasons, you will not be emailed</span>
           </div>
         </div>
         <Button

@@ -60,46 +60,14 @@
   font-family: 'Work Sans', sans-serif;
 }
 
-.answer-label {
+.QA-label {
   font-family: 'Work Sans', sans-serif;
   font-size: 15px;
   font-weight: 400;
   text-transform: uppercase;
 }
 
-#answer-body-label {
-  font-family: 'Work Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 400;
-  text-transform: uppercase;
-}
-
-.answer-label {
-  font-weight: bold;
-  font-variant: small-caps;
-}
-
-#answer-body-label {
-  font-weight: bold;
-  font-variant: small-caps;
-}
-
-#answer-name-label {
-  font-weight: bold;
-  font-variant: small-caps;
-}
-
-#answer-email-label {
-  font-weight: bold;
-  font-variant: small-caps;
-}
-
-#answer-photos-label {
-  font-weight: bold;
-  font-variant: small-caps;
-}
-
-#answer-warning {
+.QA-warning {
   font-size: 0.8em;
   font-style: italic;
   font-family: 'Work Sans', sans-serif;
