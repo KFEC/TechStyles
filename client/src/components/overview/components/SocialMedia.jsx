@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import { TiSocialFacebook, TiSocialPinterest, TiSocialTwitter } from 'react-icons/ti';
+import { IoCloseOutline } from 'react-icons/io5';
 import {
   SocialMediaModalContent,
   CloseModalButton,
@@ -9,7 +10,9 @@ import {
 const SocialMedia = ({ setDisplay, gallery, currentIndex }) => {
   return (
     <SocialMediaModalContent>
-      <CloseModalButton className="close-btn" onClick={() => setDisplay(false)}>✖</CloseModalButton>
+      <CloseModalButton className="close-btn" onClick={() => setDisplay(false)}>
+        <IoCloseOutline style={{ fontSize: '1.5em' }} />
+      </CloseModalButton>
       <div id="social-media-icon-container">
         <div id="share-look">Share your look</div>
         <div id="share-img-container">
