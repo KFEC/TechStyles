@@ -57,8 +57,13 @@ const ReviewForm = () => {
   };
 
   const submitHandler = (e) => {
+    console.log('submitted');
     e.preventDefault();
-    if (!didBodyFail || !didEmailFail || !didNameFail || !didRatingFail || !didSummaryFail) {
+    if (summary.trim().length < 1
+    || name.trim().length < 1
+    || body.length < 50
+    || regEmail.test(email) < 1
+    || rating < 1) {
       setFailed(true);
     } else {
       postData('/reviews', {
@@ -296,11 +301,8 @@ const ReviewForm = () => {
         </div>
         <div className="new-review-submit-container">
           <Button
+            type="submit"
             isDarkMode={isDarkMode}
-            onClick={() => (
-              !failed
-              && body.length > 50
-            )}
           >
             Submit Form
           </Button>
