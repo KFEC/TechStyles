@@ -36,6 +36,25 @@ const NewAnswer = ({
     setEmail(e.target.value);
   };
 
+  // eslint-disable-next-line no-undef
+  const upload = cloudinary.createUploadWidget(
+    {
+      cloudName: 'dmv4johjt',
+      uploadPreset: 'm3vjreqx',
+      maxFiles: 5,
+      sources: ['local', 'url', 'camera', 'google_drive', 'instagram', 'facebook', 'gettyimages', 'unsplash'],
+      multiple: true,
+    },
+    (error, result) => {
+      if (!error && result && result.event === 'success') {
+        const temp = [...photos];
+        temp.push(result.info);
+        setPhotos(temp);
+        console.log(photos);
+      }
+    },
+  );
+
   const changePhotos = (e) => {
     const temp = [...photos];
     temp.push(URL.createObjectURL(e.target.files[0]));
@@ -162,18 +181,12 @@ const NewAnswer = ({
           </label>
           <br />
           {photos.length < 5 && (
-            <input
-              id="answer-photos"
-              type="file"
-              accept="image/jpg, image/jpeg, image/png"
-              multiple
-              onChange={changePhotos}
-            />
+            <button type="button" onClick={() => upload.open()}>Upload</button>
           )}
           <div style={{ width: '400px', overflow: 'hidden' }}>
             {photos.length === 0
               ? ''
-              : photos.map(photo => <img style={{ padding: '5px' }} width={photo ? '100' : '0'} height={photo ? '100' : '0'} src={photo} alt="" />)}
+              : photos.map(photo => <img style={{ padding: '5px' }} width={photo ? '100' : '0'} height={photo ? '100' : '0'} src={photo.secure_url} alt="" />)}
           </div>
         </div>
         <Button
