@@ -24,7 +24,7 @@ const ExpandedView = ({
   const renderExpandedMain = () => {
     return (
       <div id="expanded-img-container">
-        <ImageMagnifier id="expanded-main-img" src={`${expandedMain}`} alt="" />
+        <ImageMagnifier id="expanded-main-img" src={`${expandedMain}`} alt="expanded image" />
       </div>
     );
   };

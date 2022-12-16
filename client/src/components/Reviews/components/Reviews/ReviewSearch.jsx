@@ -52,13 +52,14 @@ const ReviewSearch = ({ search, filterThrough }) => {
           onChange={(e) => dispatch(updateQuery(e.target.value))}
           onKeyDown={inputKeyPress}
         />
-        <IoSearchSharp style={{ fontSize: '1.25em', color: isDarkMode ? 'white' : 'black' }} onClick={search} />
+        <IoSearchSharp style={{ fontSize: '1.25em', color: isDarkMode ? 'white' : 'black' }} onClick={search} type="button" aria-label="Seach Reviews" />
       </div>
       <div>
         {query.length > 2 && (
           <ClearQueryButton
             isDarkMode={isDarkMode}
             onClick={resetReviews}
+            aria-label="Clear Query"
           >
             Clear Search
           </ClearQueryButton>

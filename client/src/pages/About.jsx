@@ -33,7 +33,7 @@ const About = () => {
           <h3 style={{ fontSize: '1em', padding: '0 0 1em 0.5em' }}>Team Manager</h3>
           <div>
             <img
-              alt=""
+              alt="about mo"
               src="https://avatars.githubusercontent.com/u/67610514?v=4"
               style={{
                 width: '250px', height: '250px', float: 'left', padding: '1em',
@@ -54,11 +54,11 @@ const About = () => {
           textAlign: 'justify', padding: '1em', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
         }}
         >
-          <h1 style={{ fontSize: '3em' }}>Maddie King</h1>
+          <h1 style={{ fontSize: '3em' }}>Madeline King</h1>
           <h3 style={{ fontSize: '1em', padding: '0 0 1em 0.5em' }}>Project Manager/Designer</h3>
           <div>
             <img
-              alt=""
+              alt="about madeline"
               src="https://avatars.githubusercontent.com/u/106297124?v=4"
               style={{
                 width: '250px', height: '250px', float: 'left', padding: '1em',
@@ -81,7 +81,7 @@ const About = () => {
           <h1 style={{ fontSize: '3em' }}>Robert Hu</h1>
           <h3 style={{ fontSize: '1em', padding: '0 0 1em 0.5em' }}>Code Architect</h3>
           <img
-            alt=""
+            alt="about robert"
             src="https://avatars.githubusercontent.com/u/52551319?v=4"
             style={{
               width: '250px', height: '250px', float: 'left', padding: '1em',
@@ -105,7 +105,7 @@ const About = () => {
           <h3 style={{ fontSize: '1em', padding: '0 0 1em 0.5em' }}>Product Manager</h3>
           <div>
             <img
-              alt=""
+              alt="about simon"
               src="https://avatars.githubusercontent.com/u/99362878?v=4"
               style={{
                 width: '250px', height: '250px', float: 'left', padding: '1em',
