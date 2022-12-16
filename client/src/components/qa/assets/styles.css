@@ -61,3 +61,21 @@
   font-size: 0.8em;
   font-style: italic;
 }
+
+.answer-img-container {
+  grid-area: img;
+  display: flex;
+  width: fit-content;
+  justify-content: space-evenly;
+  margin: 1em 0em;
+  padding: 0.5em;
+  border: solid 2px var(--border-color);
+  border-radius: 2em;
+}
+
+.answer-img {
+  padding-left: 0.65em;
+  padding-right: 0.65em;
+  width: 65px;
+  height: 65px;
+}
