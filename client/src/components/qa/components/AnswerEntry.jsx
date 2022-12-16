@@ -45,8 +45,9 @@ const AnswerEntry = ({ answer, setUpdate2, update2 }) => {
       {answer.photos.length > 0 && (
         <div className="answer-img-container" style={imgContainer}>
           {answer.photos.map((photo, idx) => {
-            if (photo.url.includes('127.0.0.1') || photo.url.includes('localhost') || photo.url.includes('amazonaws')) {
-              return <AnswerThumbnail photo="https://i.imgur.com/RGhnZ6V.png" key={Math.random(69 * idx) * 59} />;
+            const res = photo.url.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/g);
+            if (res === null) {
+              return <AnswerThumbnail photo="https://i.imgur.com/safclRR.png" key={Math.random(69 * idx) * 59} />;
             }
             return <AnswerThumbnail photo={photo.url} key={Math.random(69 * idx) * 59} />;
           })}

@@ -36,28 +36,28 @@ const NewAnswer = ({
   };
 
   // eslint-disable-next-line no-undef
-  const upload = cloudinary.createUploadWidget(
-    {
-      cloudName: 'dmv4johjt',
-      uploadPreset: 'm3vjreqx',
-      maxFiles: 5,
-      sources: ['local', 'url', 'camera', 'google_drive', 'instagram', 'facebook', 'gettyimages', 'unsplash'],
-      multiple: true,
-    },
-    (error, result) => {
-      if (!error && result && result.event === 'success') {
-        const temp = [...photos];
-        temp.push(result.info.secure_url);
-        setPhotos(temp);
-      }
-    },
-  );
+  // const upload = cloudinary.createUploadWidget(
+  //   {
+  //     cloudName: 'dmv4johjt',
+  //     uploadPreset: 'm3vjreqx',
+  //     maxFiles: 5,
+  //     sources: ['local', 'url'],
+  //     multiple: true,
+  //   },
+  //   (error, result) => {
+  //     if (!error && result && result.event === 'success') {
+  //       const temp = [...photos];
+  //       temp.push(result.info.secure_url);
+  //       setPhotos(temp);
+  //     }
+  //   },
+  // );
 
-  // const changePhotos = (e) => {
-  //   const temp = [...photos];
-  //   temp.push(URL.createObjectURL(e.target.files[0]));
-  //   setPhotos(temp);
-  // };
+  const changePhotos = (e) => {
+    const temp = [...photos];
+    temp.push(URL.createObjectURL(e.target.files[0]));
+    setPhotos(temp);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -66,8 +66,6 @@ const NewAnswer = ({
       setFailed(true);
       return;
     }
-
-    console.log(body, name, email, photos);
 
     postData(`/qa/questions/${id}/answers`, {
       body,
@@ -185,8 +183,18 @@ const NewAnswer = ({
             Photos
           </label> */}
           <div className="QA-label">Photos*</div>
-          {photos.length < 5 && (
+          {/* {photos.length < 5 && (
             <button type="button" onClick={() => upload.open()}>Upload</button>
+          )} */}
+          {photos.length < 5 && (
+            <input
+              id="answer-photos"
+              name="answer-photos"
+              type="file"
+              accept="image/jpg, image/jpeg, image/png"
+              multiple
+              onChange={changePhotos}
+            />
           )}
           <div style={{ width: '400px', overflow: 'hidden' }}>
             {photos.length === 0
