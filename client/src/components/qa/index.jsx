@@ -53,7 +53,7 @@ const QA = () => {
       <QuestionSearch search={search} />
       <QuestionList
         pName={productInfo.name}
-        id={40344}
+        id={productId}
         setUpdate={setUpdate}
         update={update}
         questions={filter}

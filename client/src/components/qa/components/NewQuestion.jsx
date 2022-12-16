@@ -44,7 +44,7 @@ const NewQuestion = ({
     }
 
     postData('/qa/questions', {
-      product_id: id,
+      product_id: Number(id),
       body,
       name,
       email,
