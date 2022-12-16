@@ -8,13 +8,12 @@ const fs = require('fs');
 const app = express();
 const router = express.Router();
 const PORT = process.env.PORT || 8080;
-
 router.use(cors());
 
 const clientDirPath = path.join(__dirname, '/../client/dist');
 const clientIndexHtml = path.join(clientDirPath, 'index.html');
 
-app.get('*.js', (req, res, next) => {
+app.get('/*.js', (req, res, next) => {
   const pathToGzipFile = `${req.url}.gz`;
   try {
     if (fs.existsSync(path.join(clientDirPath, pathToGzipFile))) {
@@ -30,7 +29,7 @@ app.get('*.js', (req, res, next) => {
 
 app.use(express.static(clientDirPath));
 
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(clientIndexHtml);
 });
 
