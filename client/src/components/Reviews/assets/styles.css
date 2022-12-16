@@ -84,21 +84,26 @@
 #new-review-form {
   display: grid;
   justify-content: center;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .input-label {
-  font-weight: bold;
-  font-variant: small-caps;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 .sub-label {
   font-size: 1em;
   font-style: italic;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .sub-text {
   font-size: 0.8em;
   font-style: italic;
+  font-family: 'Work Sans', sans-serif;
 }
 
 @keyframes animate-breakdown {
