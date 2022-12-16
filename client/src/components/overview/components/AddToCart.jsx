@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable prefer-spread */
@@ -78,8 +79,6 @@ const AddToCart = ({
       </div>
     );
   };
-
-  console.log('price', price, 'sale', sale);
 
   const handleClick = (event) => {
     if (selectSize.length === 0) {

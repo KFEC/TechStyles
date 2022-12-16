@@ -12,6 +12,8 @@ const ProductCard = ({
   setProperty,
   property,
   idx,
+  direction,
+  setDirection,
 }) => {
   const { isDarkMode } = useSelector((state) => state.productPage);
   const {
@@ -91,16 +93,18 @@ const ProductCard = ({
   }
   // hide cards that are outside of related profucts box
   let opacity = 1;
-  let disable = 'false';
-  if (idx < property || idx > property + 3) {
+  let isDisabled = false;
+  if (idx < property || idx > property + 4) {
     opacity = 0;
-    disable = 'true';
+    isDisabled = true;
   }
+  const isReady = direction !== 0;
   const cardStyle = {
     '--card-color': isDarkMode ? '#303233' : '#FBF9F9',
-    display: 'flex',
+    display: isDisabled ? 'none' : 'flex',
     flexDirection: 'column',
-    opacity: `${opacity}`,
+    opacity: '1',
+    '--move-direction': (isReady && direction && '240px') || (isReady && '-240px'),
   };
 
   return (
@@ -121,13 +125,18 @@ const ProductCard = ({
         />
         // </div>
       )}
-      <AiFillStar type="button" className="comparisonButton" onClick={() => setOpenModal(true)} />
+      <AiFillStar
+        type="button"
+        className="comparisonButton"
+        onClick={() => setOpenModal(!openModal)}
+      />
       <ImageRelatedProduct
         src={productImage}
         alt={productDetails.name}
         style={{ cursor: 'pointer' }}
         onClick={() => {
           if (opacity === 1) {
+            setDirection(0);
             dispatch(updateProductId(productDetails.id.toString()));
           }
           setProperty(0);
