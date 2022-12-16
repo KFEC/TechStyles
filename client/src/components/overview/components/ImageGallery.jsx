@@ -66,7 +66,7 @@ const ImageGallery = ({
       <div id="main-img-container-arrows">
         <IoIosArrowBack className="main-img-arrows" onClick={() => { handleLeftClick(); }} style={{ color: 'rgba(96, 96, 96, 0.4)', zIndex: 5, fontSize: '2.5em' }} />
         <div id="main-img-container">
-          <img id="main-img" onClick={() => { setDisplay(!display); }} src={`${main}`} alt="" />
+          <img id="main-img" onClick={() => { setDisplay(!display); }} src={`${main}`} alt="main" />
           <ExpandedViewModal changeDisplay={display}>
             <ExpandedView
               setDisplay={setDisplay}
@@ -124,7 +124,7 @@ const ImageGallery = ({
                   name={index}
                   onClick={(event) => { handleClick(event); }}
                   src={`${image}`}
-                  alt=""
+                  alt="Overview Thumbnail"
                   key={Math.random(index * 54) * 10}
                   style={thumbnailImgStyle}
                 />
@@ -138,7 +138,7 @@ const ImageGallery = ({
                   name={index}
                   onClick={(event) => { handleClick(event); }}
                   src={`${image}`}
-                  alt=""
+                  alt="Thumbnail"
                   key={Math.random(index * 54) * 10}
                   style={{
                     width: '100px',
@@ -168,7 +168,7 @@ const ImageGallery = ({
                   name={index}
                   onClick={(event) => { handleClick(event); }}
                   src={`${image}`}
-                  alt=""
+                  alt="Thumbnail"
                   key={Math.random(index * 54) * 10}
                   style={thumbnailImgStyle}
                 />
@@ -186,7 +186,7 @@ const ImageGallery = ({
                   name={index}
                   onClick={(event) => { handleClick(event); }}
                   src={`${image}`}
-                  alt=""
+                  alt="thumbnail"
                   key={Math.random(index * 54) * 10}
                   style={{
                     width: '100px',

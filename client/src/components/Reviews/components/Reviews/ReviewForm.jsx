@@ -56,9 +56,6 @@ const ReviewForm = () => {
       setFailed(true);
       return;
     }
-    console.log({
-      rating, characteristics, summary, body, name, email, isRecommended: !isRecommended, photos,
-    });
 
     postData('/reviews', {
       product_id: Number(productId),
@@ -164,6 +161,7 @@ const ReviewForm = () => {
             </label> */}
             <div className="input-label">Summary</div>
             <textarea
+              aria-label="Review Summary"
               id="new-review-summary-input"
               placeholder="Best purchase ever!"
               maxLength="60"
@@ -186,6 +184,7 @@ const ReviewForm = () => {
             <div className="input-label">Body</div>
             <textarea
               id="new-review-body-input"
+              aria-label="Review Body"
               placeholder="Why did you like the product or not?"
               maxLength="1000"
               style={{
@@ -216,6 +215,7 @@ const ReviewForm = () => {
             <div className="input-label">Name</div>
             <textarea
               id="new-review-name-input"
+              aria-label="Review Name"
               placeholder="robert11"
               maxLength="60"
               style={{
@@ -240,6 +240,7 @@ const ReviewForm = () => {
             <div className="input-label">Email</div>
             <textarea
               type="email"
+              aria-label="Review Email"
               id="new-review-email-input"
               placeholder="robert11@gmail.com"
               maxLength="60"

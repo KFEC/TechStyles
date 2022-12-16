@@ -67,7 +67,7 @@ const NewAnswer = ({
   };
 
   return (
-    <ModalContent id="QAForm" isDarkMode={isDarkMode} data-testid="test NewAnswer">
+    <ModalContent id="QA-Answer" isDarkMode={isDarkMode} data-testid="test NewAnswer">
       {failed
       && (
         <ModalContent
@@ -96,12 +96,13 @@ const NewAnswer = ({
       <div style={{ fontSize: '1.2em', maxWidth: '30ch' }}>{`${pName}: ${qBody}`}</div>
       <form onSubmit={handleSubmit}>
         <div>
-          <label id="answer-label" htmlFor="answer-body">
+          {/* <label className="answer-label" htmlFor="answer-body">
             Body*
-          </label>
-          <br />
+          </label> */}
+          <div className="answer-label">Body*</div>
           <textarea
             id="answer-body"
+            name="answer-body"
             maxLength="1000"
             style={{
               width: '20em',
@@ -111,13 +112,17 @@ const NewAnswer = ({
             value={body}
             onChange={changeBody}
           />
+          <br />
           <p />
-          <label id="answer-label" htmlFor="answer-name">
+          {/* <label id="answer-name-label" htmlFor="answer-name">
             Name*
-          </label>
+          </label> */}
+          <div className="answer-label">Name*</div>
           <br />
           <textarea
             id="answer-name"
+            aria-label="answer-name"
+            name="answer-name"
             maxLength="60"
             style={{
               width: '20em',
@@ -129,14 +134,16 @@ const NewAnswer = ({
             onChange={changeName}
           />
           <br />
-          <span id="answer-warning">For privacy reasons, do not use your full name or email address</span>
+          <span className="answer-warning">For privacy reasons, do not use your full name or email address</span>
           <p />
-          <label id="answer-label" htmlFor="answer-email">
+          {/* <label className="answer-label" htmlFor="answer-email">
             Email*
-          </label>
+          </label> */}
+          <div className="answer-label">Email*</div>
           <br />
           <textarea
             id="answer-email"
+            name="answer-email"
             maxLength="60"
             style={{
               width: '20em',
@@ -148,15 +155,17 @@ const NewAnswer = ({
             onChange={changeEmail}
           />
           <br />
-          <span id="answer-warning">For authentication reasons, you will not be emailed</span>
+          <span className="answer-warning">For authentication reasons, you will not be emailed</span>
           <p />
-          <label id="answer-label" htmlFor="answer-photos">
+          {/* <label className="answer-label" htmlFor="answer-photos">
             Photos
-          </label>
+          </label> */}
+          <div className="answer-label">Photos*</div>
           <br />
           {photos.length <= 5 && (
             <input
               id="answer-photos"
+              name="answer-photos"
               type="file"
               accept="image/jpg, image/jpeg, image/png"
               multiple
@@ -165,7 +174,7 @@ const NewAnswer = ({
           )}
           {photos.length === 0
             ? ''
-            : photos.map(photo => <img width={photo ? '100' : '0'} height={photo ? '100' : '0'} src={photo} alt="" />)}
+            : photos.map(photo => <img width={photo ? '100' : '0'} height={photo ? '100' : '0'} src={photo} alt="new review" />)}
         </div>
         <Button
           isDarkMode={isDarkMode}

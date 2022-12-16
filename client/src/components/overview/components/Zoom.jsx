@@ -39,7 +39,7 @@ const ImageMagnifier = ({
           cursor: 'none',
           width: '650px',
         }}
-        alt=""
+        alt="Main Zoom"
       />
 
       <div
