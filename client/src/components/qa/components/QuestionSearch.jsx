@@ -43,10 +43,10 @@ const QuestionSearch = ({ search }) => {
         onKeyDown={inputKeyPress}
       />
       <button type="submit" style={{ background: 'none', backgroundColor: 'none', border: 'none' }}>
-        <IoSearchSharp style={iconStyle} onClick={handleSearch} />
+        <IoSearchSharp style={iconStyle} onClick={handleSearch} aria-label="Seach Questions" />
       </button>
       {query.length > 2
-        && <Button onClick={handleClick} isDarkMode={isDarkMode}>Clear Search</Button>}
+        && <Button type="button" aria-label="Clear Question Search" onClick={handleClick} isDarkMode={isDarkMode}>Clear Search</Button>}
     </div>
   );
 };

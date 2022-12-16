@@ -58,7 +58,7 @@ const NewQuestion = ({
   };
 
   return (
-    <FormModalContent id="QAForm" isDarkMode={isDarkMode} data-testid="test NewQuestion">
+    <FormModalContent id="QA-Question" isDarkMode={isDarkMode} data-testid="test NewQuestion">
       {failed
       && (
         <FormPopUpModalContent
@@ -94,7 +94,7 @@ const NewQuestion = ({
       <form onSubmit={handleSubmit}>
         <div>
           <div>
-            <label id="answer-label" htmlFor="question-body">
+            <label className="answer-label" htmlFor="question-body">
               Body*
             </label>
             <br />
@@ -108,10 +108,11 @@ const NewQuestion = ({
               }}
               value={body}
               onChange={changeBody}
+              aria-label="Question Body"
             />
           </div>
           <div style={{ paddingTop: '10px' }}>
-            <label id="answer-label" htmlFor="question-name">
+            <label className="answer-label" htmlFor="question-name">
               Name*
             </label>
             <br />
@@ -124,6 +125,7 @@ const NewQuestion = ({
                 resize: 'none',
               }}
               placeholder="Example: jackson11!"
+              aria-label="Question Name"
               value={name}
               onChange={changeName}
             />
@@ -131,12 +133,13 @@ const NewQuestion = ({
             <span id="answer-warning">For privacy reasons, do not use your full name or email address</span>
           </div>
           <div style={{ paddingTop: '10px' }}>
-            <label id="answer-label" htmlFor="question-email">
+            <label className="answer-label" htmlFor="question-email">
               Email*
             </label>
             <br />
             <textarea
               id="question-email"
+              aria-label="Question Email"
               maxLength="60"
               style={{
                 width: '20em',

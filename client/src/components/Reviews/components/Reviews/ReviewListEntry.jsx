@@ -90,10 +90,11 @@ const ReviewListEntry = ({ review }) => {
                 <Thumbnail
                   photo="https://i.imgur.com/safclRR.png"
                   key={Math.random(69 * idx) * 59}
+                  alt="review thumbnail"
                 />
               );
             }
-            return <Thumbnail photo={photo.url} key={Math.random(69 * idx) * 59} />;
+            return <Thumbnail photo={photo.url} key={Math.random(69 * idx) * 59} alt="review thumbnail" />;
           })}
         </div>
       )}
