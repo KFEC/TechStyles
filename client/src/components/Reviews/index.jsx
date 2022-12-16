@@ -9,9 +9,10 @@ import {
   updateFilter, updateRenderedReviewCt, updateSort, updateQuery,
 } from '../../reducers/reviewComponentSlice';
 import ReviewSearch from './components/Reviews/ReviewSearch.jsx';
-import { Button, ReviewFormModal } from '../../lib/styledComponents';
+import { Button } from '../../lib/styledComponents';
 import {
   Div, SelectContainer, Select, Option,
+  ReviewFormModal,
 } from './lib';
 import { getData } from '../../lib/index.js';
 import './assets/styles.css';
@@ -156,11 +157,12 @@ const Reviews = () => {
           {(allReviews.length !== renderedReviews.length)
         && <Button isDarkMode={isDarkMode} onClick={loadReviews}>Load More</Button>}
         </div>
-        <div>
-          <ReviewFormModal isDarkMode={isDarkMode} changeDisplay={isReviewForm}>
-            <ReviewForm />
-          </ReviewFormModal>
-        </div>
+        <ReviewFormModal
+          isDarkMode={isDarkMode}
+          changeDisplay={isReviewForm}
+        >
+          <ReviewForm />
+        </ReviewFormModal>
       </div>
     </div>
   );

@@ -13,9 +13,7 @@ const ReviewFormChars = ({ char, update }) => {
     <div>
       <h6>
         {`${char}`}
-        {rating
-          ? <div>{`:  "${FORM_CHARS[char][rating]}"`}</div>
-          : null }
+        {rating ? <span>{`:   "${FORM_CHARS[char][rating]}"`}</span> : null}
       </h6>
       <label htmlFor={char}>
         1
