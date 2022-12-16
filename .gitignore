@@ -1,4 +1,10 @@
 node_modules
-client/dist
+client/dist/01f9162ff82ce44b1fcc.png
+client/dist/90138478c5e3b26bbc34.png
+client/dist/bundle.js
+client/dist/bundle.js.gz
+client/dist/bundle.js.LICENSE.txt
+client/dist/bundle.js.LICENSE.txt.gz
+client/dist/fa17c65b947f0a444654.png
 .env
 coverage
