@@ -105,9 +105,29 @@ const ContactDiv = styled.div`
   border: 2px none black;
 `;
 
+const CheckoutDiv = styled.div`
+  color: ${(props) => props.isDarkMode ? 'white' : '#242526'};
+  background-color: ${(props) => props.isDarkMode ? '#242526' : 'white'};
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+  padding: 0.25em;
+`;
+
 const Div = styled.div`
   margin: 0.25em;
   padding: 2em;
+  border: 2px none black;
+  width: 85%;
+`;
+
+const RelatedProductsDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.25em;
+  padding: 2em 0 2em 2em;
   border: 2px none black;
   width: 85%;
 `;
@@ -271,6 +291,7 @@ export {
   AppDiv,
   ContactDiv,
   Div,
+  RelatedProductsDiv,
   Modal,
   SocialMediaModal,
   SizeGuideModal,
@@ -287,4 +308,5 @@ export {
   ExtrasButton,
   CartButton,
   Stars,
+  CheckoutDiv,
 };

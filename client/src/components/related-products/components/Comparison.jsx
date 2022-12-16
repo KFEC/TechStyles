@@ -44,7 +44,7 @@ const Comparison = ({
     <div
       className="modal-wrapper"
       onClick={() => setOpenModal(false)}
-      style={{ '--modal-display': openModal ? 'block' : 'none' }}
+      style={{ '--modal-display': openModal ? 'flex' : 'none' }}
     >
       <div className="modal-contentTest" style={modalStyle}>
         <AiOutlineClose onClick={() => setOpenModal(false)} style={{ cursor: 'pointer' }} />

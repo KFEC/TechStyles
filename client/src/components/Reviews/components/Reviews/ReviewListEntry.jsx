@@ -84,6 +84,15 @@ const ReviewListEntry = ({ review }) => {
       {review.photos.length > 0 && (
         <div className="reviews-img-container" style={imgContainer}>
           {review.photos.map((photo, idx) => {
+            const res = photo.url.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/g);
+            if (res === null) {
+              return (
+                <Thumbnail
+                  photo="https://i.imgur.com/safclRR.png"
+                  key={Math.random(69 * idx) * 59}
+                />
+              );
+            }
             return <Thumbnail photo={photo.url} key={Math.random(69 * idx) * 59} />;
           })}
         </div>
