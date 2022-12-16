@@ -95,6 +95,15 @@ const AppDiv = styled.div`
   padding: 0.25em;
   border: 2px none black;
 `;
+const ContactDiv = styled.div`
+  color: ${(props) => props.isDarkMode ? 'white' : '#242526'};
+  background-color: ${(props) => props.isDarkMode ? '#242526' : 'white'};
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+  padding: 0.25em;
+  border: 2px none black;
+`;
 
 const CheckoutDiv = styled.div`
   color: ${(props) => props.isDarkMode ? 'white' : '#242526'};
@@ -280,6 +289,7 @@ export {
   Button,
   Wrapper,
   AppDiv,
+  ContactDiv,
   Div,
   RelatedProductsDiv,
   Modal,
