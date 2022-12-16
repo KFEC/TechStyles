@@ -89,34 +89,6 @@ const ReviewForm = () => {
   return (
     <div>
       <ReviewFormModalContent id="new-review-form" isDarkMode={isDarkMode}>
-        { failed
-        && (
-          <ReviewPopUpModalContent
-            isDarkMode={isDarkMode}
-            style={{
-              zIndex: '5',
-              margin: '5% auto',
-              border: '1px solid black',
-            }}
-          >
-            {/* <CloseModalButton
-              style={{ padding: 'none' }}
-              type="submit"
-              onClick={() => setFailed(false)}
-            >
-              <IoClose />
-            </CloseModalButton> */}
-            <div>
-              <div>You must enter the following.</div>
-              <div>The review body must be longer than 50 characters</div>
-              <div>Rating</div>
-              <div>Name</div>
-              <div>Summary</div>
-              <div>Email</div>
-            </div>
-          </ReviewPopUpModalContent>
-        )}
-
         <div style={{
           width: '100%', display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end',
         }}
