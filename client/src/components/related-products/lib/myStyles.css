@@ -145,4 +145,4 @@ th, td {
   padding-bottom: 5em;
 }
 
-tr:nth-child(even) {background-color: #a3a3a3;}
+tr:nth-child(even) {background-color: rgba(163, 163, 163, 0.3);}

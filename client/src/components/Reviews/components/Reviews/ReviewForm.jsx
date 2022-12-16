@@ -8,7 +8,8 @@ import {
 import { getProductReviews } from '../../../../actions';
 import {
   Button,
-  ModalContent,
+  ReviewFormModalContent,
+  ReviewPopUpModalContent,
   CloseModalButton,
 } from '../../../../lib/styledComponents';
 import ReviewStars from './ReviewStars.jsx';
@@ -79,21 +80,24 @@ const ReviewForm = () => {
 
   return (
     <div>
-      <ModalContent id="new-review-form" isDarkMode={isDarkMode}>
+      <ReviewFormModalContent id="new-review-form" isDarkMode={isDarkMode}>
         { failed
         && (
-          <ModalContent
+          <ReviewPopUpModalContent
             isDarkMode={isDarkMode}
             style={{
               zIndex: '5',
               margin: '5% auto',
               border: '1px solid black',
-              width: '50%',
             }}
           >
-            <CloseModalButton style={{ fontSize: '0.5em' }} type="submit" onClick={() => setFailed(false)}>
+            {/* <CloseModalButton
+              style={{ padding: 'none' }}
+              type="submit"
+              onClick={() => setFailed(false)}
+            >
               <IoClose />
-            </CloseModalButton>
+            </CloseModalButton> */}
             <div>
               <div>You must enter the following.</div>
               <div>The review body must be longer than 50 characters</div>
@@ -102,11 +106,16 @@ const ReviewForm = () => {
               <div>Summary</div>
               <div>Email</div>
             </div>
-          </ModalContent>
+          </ReviewPopUpModalContent>
         )}
 
-        <CloseModalButton type="submit" onClick={() => dispatch(updateIsReviewForm())}><IoClose /></CloseModalButton>
-        <h2>Submit Review</h2>
+        <div style={{
+          width: '100%', display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end',
+        }}
+        >
+          <CloseModalButton type="submit" style={{ padding: 'none' }} onClick={() => dispatch(updateIsReviewForm())}><IoClose style={{ fontSize: '1em', padding: 'none' }} /></CloseModalButton>
+        </div>
+        <h2 style={{ fontSize: '24px', paddingBottom: '5px' }}>Submit Review</h2>
         <form onSubmit={submitHandler}>
           <div>
             {/* <label
@@ -152,7 +161,7 @@ const ReviewForm = () => {
               );
             })}
           </div>
-          <div>
+          <div style={{ paddingTop: '10px' }}>
             {/* <label
               id="new-review-summary-label"
               htmlFor="new-review-summary-input"
@@ -169,12 +178,13 @@ const ReviewForm = () => {
                 width: '20em',
                 height: '3em',
                 resize: 'none',
+                fontFamily: 'Work Sans, sans-serif',
               }}
               value={summary}
               onChange={e => setSummary(e.target.value)}
             />
           </div>
-          <div>
+          <div style={{ paddingTop: '10px' }}>
             {/* <label
               id="new-review-body-label"
               htmlFor="new-review-body-input"
@@ -191,6 +201,7 @@ const ReviewForm = () => {
                 width: '20em',
                 height: '8em',
                 resize: 'none',
+                fontFamily: 'Work Sans, sans-serif',
               }}
               value={body}
               onChange={e => setBody(e.target.value)}
@@ -205,7 +216,7 @@ const ReviewForm = () => {
               )
               : <div>Minimum reached.</div>}
           </div>
-          <div>
+          <div style={{ paddingTop: '10px' }}>
             {/* <label
               id="new-review-name-label"
               htmlFor="new-review-name-input"
@@ -222,6 +233,7 @@ const ReviewForm = () => {
                 width: '20em',
                 height: '3em',
                 resize: 'none',
+                fontFamily: 'Work Sans, sans-serif',
               }}
               value={name}
               onChange={e => setName(e.target.value)}
@@ -230,7 +242,7 @@ const ReviewForm = () => {
               For privacy reasons, do not use your full name or email address.
             </div>
           </div>
-          <div>
+          <div style={{ paddingTop: '10px' }}>
             {/* <label
               id="new-review-email-label"
               htmlFor="new-review-email-input"
@@ -248,13 +260,14 @@ const ReviewForm = () => {
                 width: '20em',
                 height: '3em',
                 resize: 'none',
+                fontFamily: 'Work Sans, sans-serif',
               }}
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
             <div className="sub-text">For authentication reasons, you will not be emailed.</div>
           </div>
-          <div>
+          <div style={{ paddingTop: '15px' }}>
             Recommended:
             <input
               type="radio"
@@ -283,7 +296,7 @@ const ReviewForm = () => {
               No
             </label>
           </div>
-          <div>
+          <div style={{ paddingTop: '10px' }}>
             <label
               id="new-review-image-label"
               htmlFor="new-review-image-input"
@@ -312,7 +325,7 @@ const ReviewForm = () => {
             Submit
           </Button>
         </form>
-      </ModalContent>
+      </ReviewFormModalContent>
     </div>
   );
 };

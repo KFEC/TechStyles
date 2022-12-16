@@ -42,8 +42,7 @@ const NewQuestion = ({
       setFailed(true);
       return;
     }
-    console.log('New Question Submited!');
-    console.log({ body, email, name });
+
     postData('/qa/questions', {
       product_id: id,
       body,

@@ -48,10 +48,7 @@ const NewAnswer = ({
       setFailed(true);
       return;
     }
-    console.log('New Question Submited!');
-    console.log({
-      body, email, name, photos,
-    });
+
     postData(`/qa/questions/${id}/answers`, {
       body,
       name,
