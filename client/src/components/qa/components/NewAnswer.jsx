@@ -4,7 +4,8 @@ import { IoClose } from 'react-icons/io5';
 import {
   Div,
   Button,
-  ModalContent,
+  FormModalContent,
+  FormPopUpModalContent,
   CloseModalButton,
 } from '../../../lib/styledComponents';
 import { postData } from '../../../lib/index.js';
@@ -64,10 +65,10 @@ const NewAnswer = ({
   };
 
   return (
-    <ModalContent id="QAForm" isDarkMode={isDarkMode} data-testid="test NewAnswer">
+    <FormModalContent id="QAForm" isDarkMode={isDarkMode} data-testid="test NewAnswer">
       {failed
       && (
-        <ModalContent
+        <FormPopUpModalContent
           isDarkMode={isDarkMode}
           style={{
             zIndex: '5',
@@ -76,9 +77,10 @@ const NewAnswer = ({
             width: '50%',
           }}
         >
-          <CloseModalButton style={{ fontSize: '0.5em' }} type="submit" onClick={() => setFailed(false)}>
+          {/* <CloseModalButton
+            style={{ fontSize: '0.5em' }} type="submit" onClick={() => setFailed(false)}>
             <IoClose />
-          </CloseModalButton>
+          </CloseModalButton> */}
           <div>
             <div>You must enter the following.</div>
             <div>Body</div>
@@ -86,11 +88,16 @@ const NewAnswer = ({
             <div>Email</div>
             <div>Email must be formatted correctly</div>
           </div>
-        </ModalContent>
+        </FormPopUpModalContent>
       )}
-      <CloseModalButton style={{ height: '1em' }} onClick={() => setDisplay(false)}><IoClose /></CloseModalButton>
-      <div style={{ fontSize: '1.5em' }}>Submit your Answer</div>
-      <div style={{ fontSize: '1.2em', maxWidth: '30ch' }}>{`${pName}: ${qBody}`}</div>
+      <div style={{
+        width: '100%', display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end',
+      }}
+      >
+        <CloseModalButton type="submit" style={{ padding: 'none' }} onClick={() => setDisplay(false)}><IoClose style={{ fontSize: '1em', padding: 'none' }} /></CloseModalButton>
+      </div>
+      <div style={{ fontSize: '24px', paddingBottom: '5px' }}>Submit your Answer</div>
+      <div style={{ fontSize: '16px', paddingBottom: '3px' }}>{`${pName}: ${qBody}`}</div>
       <form onSubmit={handleSubmit}>
         <div>
           <label id="answer-label" htmlFor="answer-body">
@@ -108,7 +115,8 @@ const NewAnswer = ({
             value={body}
             onChange={changeBody}
           />
-          <p />
+        </div>
+        <div style={{ paddingTop: '10px' }}>
           <label id="answer-label" htmlFor="answer-name">
             Name*
           </label>
@@ -127,7 +135,8 @@ const NewAnswer = ({
           />
           <br />
           <span id="answer-warning">For privacy reasons, do not use your full name or email address</span>
-          <p />
+        </div>
+        <div style={{ paddingTop: '10px' }}>
           <label id="answer-label" htmlFor="answer-email">
             Email*
           </label>
@@ -146,12 +155,13 @@ const NewAnswer = ({
           />
           <br />
           <span id="answer-warning">For authentication reasons, you will not be emailed</span>
-          <p />
+        </div>
+        <div style={{ paddingTop: '10px' }}>
           <label id="answer-label" htmlFor="answer-photos">
             Photos
           </label>
           <br />
-          {photos.length <= 5 && (
+          {photos.length < 5 && (
             <input
               id="answer-photos"
               type="file"
@@ -160,9 +170,11 @@ const NewAnswer = ({
               onChange={changePhotos}
             />
           )}
-          {photos.length === 0
-            ? ''
-            : photos.map(photo => <img width={photo ? '100' : '0'} height={photo ? '100' : '0'} src={photo} alt="" />)}
+          <div style={{ width: '400px', overflow: 'hidden' }}>
+            {photos.length === 0
+              ? ''
+              : photos.map(photo => <img style={{ padding: '5px' }} width={photo ? '100' : '0'} height={photo ? '100' : '0'} src={photo} alt="" />)}
+          </div>
         </div>
         <Button
           isDarkMode={isDarkMode}
@@ -175,7 +187,7 @@ const NewAnswer = ({
           Submit
         </Button>
       </form>
-    </ModalContent>
+    </FormModalContent>
   );
 };
 

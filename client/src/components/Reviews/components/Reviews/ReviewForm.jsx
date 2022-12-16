@@ -8,8 +8,8 @@ import {
 import { getProductReviews } from '../../../../actions';
 import {
   Button,
-  ReviewFormModalContent,
-  ReviewPopUpModalContent,
+  FormModalContent,
+  FormPopUpModalContent,
   CloseModalButton,
 } from '../../../../lib/styledComponents';
 import ReviewStars from './ReviewStars.jsx';
@@ -83,10 +83,10 @@ const ReviewForm = () => {
 
   return (
     <div>
-      <ReviewFormModalContent id="new-review-form" isDarkMode={isDarkMode}>
+      <FormModalContent id="new-review-form" isDarkMode={isDarkMode}>
         { failed
         && (
-          <ReviewPopUpModalContent
+          <FormPopUpModalContent
             isDarkMode={isDarkMode}
             style={{
               zIndex: '5',
@@ -109,7 +109,7 @@ const ReviewForm = () => {
               <div>Summary</div>
               <div>Email</div>
             </div>
-          </ReviewPopUpModalContent>
+          </FormPopUpModalContent>
         )}
 
         <div style={{
@@ -324,7 +324,7 @@ const ReviewForm = () => {
             Submit
           </Button>
         </form>
-      </ReviewFormModalContent>
+      </FormModalContent>
     </div>
   );
 };

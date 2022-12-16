@@ -4,7 +4,8 @@ import { IoClose } from 'react-icons/io5';
 import {
   Div,
   Button,
-  ModalContent,
+  FormModalContent,
+  FormPopUpModalContent,
   CloseModalButton,
 } from '../../../lib/styledComponents';
 import { postData } from '../../../lib/index.js';
@@ -57,21 +58,21 @@ const NewQuestion = ({
   };
 
   return (
-    <ModalContent id="QAForm" isDarkMode={isDarkMode} data-testid="test NewQuestion">
+    <FormModalContent id="QAForm" isDarkMode={isDarkMode} data-testid="test NewQuestion">
       {failed
       && (
-        <ModalContent
+        <FormPopUpModalContent
           isDarkMode={isDarkMode}
           style={{
             zIndex: '5',
             margin: '5% auto',
             border: '1px solid black',
-            width: '50%',
           }}
         >
-          <CloseModalButton style={{ fontSize: '0.5em' }} type="submit" onClick={() => setFailed(false)}>
+          {/* <CloseModalButton
+            style={{ fontSize: '0.5em' }} type="submit" onClick={() => setFailed(false)}>
             <IoClose />
-          </CloseModalButton>
+          </CloseModalButton> */}
           <div>
             <div>You must enter the following.</div>
             <div>Body</div>
@@ -79,66 +80,76 @@ const NewQuestion = ({
             <div>Email</div>
             <div>Email must be formatted correctly</div>
           </div>
-        </ModalContent>
+        </FormPopUpModalContent>
       )}
-      <CloseModalButton style={{ height: '1em' }} onClick={() => setDisplay(false)}><IoClose /></CloseModalButton>
-      <div style={{ fontSize: '1.5em' }}>Ask Your Question</div>
-      <div style={{ fontSize: '1.2em' }}>{`About the ${pName}`}</div>
+      <div style={{
+        width: '100%', display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end',
+      }}
+      >
+        <CloseModalButton style={{ padding: 'none' }} onClick={() => setDisplay(false)}><IoClose style={{ fontSize: '1em', padding: 'none' }} /></CloseModalButton>
+      </div>
+
+      <div style={{ fontSize: '24px', paddingBottom: '5px' }}>Ask Your Question</div>
+      <div style={{ fontSize: '16px', paddingBottom: '3px' }}>{`About the ${pName}`}</div>
       <form onSubmit={handleSubmit}>
         <div>
-          <label id="answer-label" htmlFor="question-body">
-            Body*
-          </label>
-          <br />
-          <textarea
-            id="question-body"
-            maxLength="1000"
-            style={{
-              width: '20em',
-              height: '8em',
-              resize: 'none',
-            }}
-            value={body}
-            onChange={changeBody}
-          />
-          <p />
-          <label id="answer-label" htmlFor="question-name">
-            Name*
-          </label>
-          <br />
-          <textarea
-            id="question-name"
-            maxLength="60"
-            style={{
-              width: '20em',
-              height: '3em',
-              resize: 'none',
-            }}
-            placeholder="Example: jackson11!"
-            value={name}
-            onChange={changeName}
-          />
-          <br />
-          <span id="answer-warning">For privacy reasons, do not use your full name or email address</span>
-          <p />
-          <label id="answer-label" htmlFor="question-email">
-            Email*
-          </label>
-          <br />
-          <textarea
-            id="question-email"
-            maxLength="60"
-            style={{
-              width: '20em',
-              height: '3em',
-              resize: 'none',
-            }}
-            placeholder="Why did you like the product or not?"
-            value={email}
-            onChange={changeEmail}
-          />
-          <br />
-          <span id="answer-warning">For authentication reasons, you will not be emailed</span>
+          <div>
+            <label id="answer-label" htmlFor="question-body">
+              Body*
+            </label>
+            <br />
+            <textarea
+              id="question-body"
+              maxLength="1000"
+              style={{
+                width: '20em',
+                height: '8em',
+                resize: 'none',
+              }}
+              value={body}
+              onChange={changeBody}
+            />
+          </div>
+          <div style={{ paddingTop: '10px' }}>
+            <label id="answer-label" htmlFor="question-name">
+              Name*
+            </label>
+            <br />
+            <textarea
+              id="question-name"
+              maxLength="60"
+              style={{
+                width: '20em',
+                height: '3em',
+                resize: 'none',
+              }}
+              placeholder="Example: jackson11!"
+              value={name}
+              onChange={changeName}
+            />
+            <br />
+            <span id="answer-warning">For privacy reasons, do not use your full name or email address</span>
+          </div>
+          <div style={{ paddingTop: '10px' }}>
+            <label id="answer-label" htmlFor="question-email">
+              Email*
+            </label>
+            <br />
+            <textarea
+              id="question-email"
+              maxLength="60"
+              style={{
+                width: '20em',
+                height: '3em',
+                resize: 'none',
+              }}
+              placeholder="Why did you like the product or not?"
+              value={email}
+              onChange={changeEmail}
+            />
+            <br />
+            <span id="answer-warning">For authentication reasons, you will not be emailed</span>
+          </div>
         </div>
         <Button
           isDarkMode={isDarkMode}
@@ -151,7 +162,7 @@ const NewQuestion = ({
           Submit
         </Button>
       </form>
-    </ModalContent>
+    </FormModalContent>
   );
 };
 

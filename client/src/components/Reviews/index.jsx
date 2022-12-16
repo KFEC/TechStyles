@@ -9,7 +9,7 @@ import {
   updateFilter, updateRenderedReviewCt, updateSort, updateQuery,
 } from '../../reducers/reviewComponentSlice';
 import ReviewSearch from './components/Reviews/ReviewSearch.jsx';
-import { Button, ReviewFormModal } from '../../lib/styledComponents';
+import { Button, FormModal } from '../../lib/styledComponents';
 import {
   Div, SelectContainer, Select, Option,
 } from './lib';
@@ -157,9 +157,9 @@ const Reviews = () => {
         && <Button isDarkMode={isDarkMode} onClick={loadReviews}>Load More</Button>}
         </div>
         <div>
-          <ReviewFormModal isDarkMode={isDarkMode} changeDisplay={isReviewForm}>
+          <FormModal isDarkMode={isDarkMode} changeDisplay={isReviewForm}>
             <ReviewForm />
-          </ReviewFormModal>
+          </FormModal>
         </div>
       </div>
     </div>

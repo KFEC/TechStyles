@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Div, Button, Modal } from '../../../lib/styledComponents';
+import { Div, Button, FormModal } from '../../../lib/styledComponents';
 
 import QuestionEntry from './QuestionEntry.jsx';
 import NewQuestion from './NewQuestion.jsx';
@@ -54,7 +54,7 @@ const QuestionList = ({
           );
         })
         : null}
-      <Modal changeDisplay={display}>
+      <FormModal isDarkMode={isDarkMode} changeDisplay={display} style={{ height: 'auto' }}>
         <NewQuestion
           pName={pName}
           id={id}
@@ -62,7 +62,7 @@ const QuestionList = ({
           setUpdate={setUpdate}
           update={update}
         />
-      </Modal>
+      </FormModal>
       <div className="QuestionButton">
         {(currQuestions.length !== questions.length)
           && <Button isDarkMode={isDarkMode} onClick={loadQuestions}>More Questions</Button>}

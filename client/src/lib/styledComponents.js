@@ -143,7 +143,7 @@ const Modal = styled.div`
   background-color: rgb(0, 0, 0, 0.4);
 `;
 
-const ReviewFormModal = styled.div`
+const FormModal = styled.div`
   display: ${(props) => props.changeDisplay ? 'grid' : 'none'};
   z-index: 5;
   position: fixed;
@@ -160,7 +160,7 @@ const ReviewFormModal = styled.div`
   margin: auto;
 `;
 
-const ReviewFormModalContent = styled.div`
+const FormModalContent = styled.div`
   background-color: ${(props) => props.isDarkMode ? '#242526' : 'white'};
   display: flex;
   flex-direction: column;
@@ -174,7 +174,7 @@ const ReviewFormModalContent = styled.div`
   padding: 2em;
 `;
 
-const ReviewPopUpModalContent = styled.div`
+const FormPopUpModalContent = styled.div`
   background-color: ${(props) => props.isDarkMode ? '#242526' : 'white'};
   display: flex;
   flex-direction: column;
@@ -328,13 +328,13 @@ export {
   Div,
   RelatedProductsDiv,
   Modal,
-  ReviewFormModal,
-  ReviewPopUpModalContent,
+  FormModal,
+  FormPopUpModalContent,
   SocialMediaModal,
   SizeGuideModal,
   ExpandedViewModal,
   ModalContent,
-  ReviewFormModalContent,
+  FormModalContent,
   SocialMediaModalContent,
   SizeGuideContent,
   ExpandedViewModalContent,
