@@ -52,7 +52,7 @@ export const FORM_CHARS = {
     1: 'Uncomfortable',
     2: 'Slightly uncomfortable',
     3: 'Ok',
-    4: 'Comforatble',
+    4: 'Comfortable',
     5: 'Perfect',
   },
 
