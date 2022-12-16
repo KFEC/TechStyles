@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Div, HelpfulButton, ReportButton } from '../../../lib/styledComponents';
 import { getData, putData } from '../../../lib/index.js';
+import AnswerThumbnail from './AnswerThumbnail.jsx';
 
 const AnswerEntry = ({ answer, setUpdate2, update2 }) => {
 
@@ -14,6 +15,10 @@ const AnswerEntry = ({ answer, setUpdate2, update2 }) => {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
+  };
+
+  const imgContainer = {
+    '--border-color': isDarkMode ? 'white' : 'rgb(87, 87, 87)',
   };
 
   const helpfulAnswer = () => {
@@ -37,8 +42,19 @@ const AnswerEntry = ({ answer, setUpdate2, update2 }) => {
     <Div data-testid="test AnswerEntry" style={{ border: 'none', borderBottom: '1px solid grey' }}>
       <span style={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: '500', fontSize: '16px' }}>A: </span>
       {answer.body}
+      {answer.photos.length > 0 && (
+        <div className="answer-img-container" style={imgContainer}>
+          {answer.photos.map((photo, idx) => {
+            const res = photo.url.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/g);
+            if (res === null) {
+              return <AnswerThumbnail photo="https://i.imgur.com/safclRR.png" key={Math.random(69 * idx) * 59} />;
+            }
+            return <AnswerThumbnail photo={photo.url} key={Math.random(69 * idx) * 59} />;
+          })}
+        </div>
+      )}
       <div style={{
-        /* color: '#3A3B3C', */ fontFamily: 'Noto Sans, sans-serif', fontWeight: '400', fontSize: '14px',
+        fontFamily: 'Noto Sans, sans-serif', fontWeight: '400', fontSize: '14px',
       }}
       >
         by

@@ -20,6 +20,33 @@ export const PicModalContent = styled.img`
   align-self: center;
 `;
 
+export const ReviewFormModal = styled.div`
+  display: ${(props) => props.changeDisplay ? 'flex' : 'none'};
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.4);
+`;
+
+export const ReviewFormModalContent = styled.div`
+  background-color: ${(props) => props.isDarkMode ? '#242526' : 'white'};
+  align-self: center;
+  z-index: 999;
+  width: 35%;
+  top: 50%;
+  max-height: 85%;
+  margin: 15% auto;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+  padding-bottom: 2em;
+  overflow-y: auto;
+`;
+
 export const Img = styled.img`
   width: 50px;
   height: 50px;
@@ -147,4 +174,3 @@ export const RatingsRecommended = styled.div`
   font-weight: italic;
   font-size: 1em;
 `;
-

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import {
   IoIosArrowBack, IoIosArrowForward,
 } from 'react-icons/io';
+import { IoCloseOutline } from 'react-icons/io5';
 import ImageMagnifier from './Zoom.jsx';
 import {
   ExpandedViewModalContent,
@@ -23,7 +24,7 @@ const ExpandedView = ({
   const renderExpandedMain = () => {
     return (
       <div id="expanded-img-container">
-        <ImageMagnifier id="expanded-main-img" src={`${expandedMain}`} alt="" />
+        <ImageMagnifier id="expanded-main-img" src={`${expandedMain}`} alt="expanded image" />
       </div>
     );
   };
@@ -69,7 +70,9 @@ const ExpandedView = ({
 
   return (
     <ExpandedViewModalContent>
-      <CloseModalButton className="close-btn" onClick={() => setDisplay(false)}>✖</CloseModalButton>
+      <CloseModalButton className="close-btn" onClick={() => setDisplay(false)}>
+        <IoCloseOutline />
+      </CloseModalButton>
       <div id="expanded-arrows-container">
         <IoIosArrowBack onClick={(event) => { handleLeftClick(event); }} style={{ color: 'white', fontSize: '2.5em' }} />
         {expandedMain?.length > 0 ? renderExpandedMain() : null}

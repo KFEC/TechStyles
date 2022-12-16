@@ -6,7 +6,7 @@ const ReviewStars = ({ setRating, rating }) => {
   const [hover, setHover] = useState(0);
 
   return (
-    <div>
+    <div className="form-stars">
       {[...Array(5)].map((star, idx) => {
         const newIdx = idx + 1;
         return (

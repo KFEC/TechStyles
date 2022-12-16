@@ -2,7 +2,8 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
-import { PicModal, PicModalContent } from '../../lib';
+
+import { PicModal, PicModalContent } from '../../Reviews/lib';
 
 const Thumbnail = ({ photo }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -13,7 +14,7 @@ const Thumbnail = ({ photo }) => {
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <img
-          className="reviews-img"
+          className="answer-img"
           style={{ objFit: 'cover' }}
           src={photo}
           alt="text"

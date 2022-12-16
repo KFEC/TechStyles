@@ -207,7 +207,6 @@ const ModalContent = styled.div`
   border: 1em solid #888;
   width: object-fit;
   height: object-fit;
-
 `;
 
 const SocialMediaModalContent = styled.div`
@@ -245,10 +244,11 @@ const ExpandedViewModalContent = styled.div`
 
 const CloseModalButton = styled.button`
   color: #aaa;
-  float: right;
-  font-size: 2em;
-  font-weight: bold;
+  font-size: 1em;
+  width: fit-content;
+  height: fit-content;
 `;
+
 const Card = styled.section`
   width: 150px;
   height: 220px;

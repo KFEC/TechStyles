@@ -92,14 +92,14 @@ table {
   width: 58.75%;
   align-items: flex-end;
   justify-content: flex-end;
-  background-color: rgb(109, 109, 109);
+  background-color: rgb(85, 85, 85);
   /* border: 2px solid cyan; */
 }
 
 .link-inner-container {
   display: flex;
   width: fit-content;
-  background-color: rgb(109, 109, 109);
+  background-color: rgb(85, 85, 85);
   /* border: 2px solid red; */
 }
 
@@ -108,14 +108,14 @@ table {
   width: 41.25%;
   align-items: flex-end;
   justify-content: flex-end;
-  background-color: rgb(109, 109, 109);
+  background-color: rgb(85, 85, 85);
   /* border: 2px solid cyan; */
 }
 
 .nav-icon-inner-container {
   display: flex;
   width: fit-content;
-  background-color: rgb(109, 109, 109);
+  background-color: rgb(85, 85, 85);
   /* border: 2px solid red; */
 }
 

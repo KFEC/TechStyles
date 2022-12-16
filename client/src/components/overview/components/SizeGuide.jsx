@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TiSocialFacebook, TiSocialPinterest, TiSocialTwitter } from 'react-icons/ti';
+import { IoCloseOutline } from 'react-icons/io5';
 import {
   SizeGuideContent,
   CloseModalButton,
@@ -11,7 +12,9 @@ const SizeGuide = ({ setDisplay }) => {
 
   return (
     <SizeGuideContent>
-      <CloseModalButton className="close-btn" onClick={() => setDisplay(false)}>✖</CloseModalButton>
+      <CloseModalButton className="close-btn" onClick={() => setDisplay(false)}>
+        <IoCloseOutline style={{ fontSize: '1.5em' }} />
+      </CloseModalButton>
       <div id="size-guide-container">
         <div id="size-guide-title">Size Guide</div>
         <img src={SizeChart} alt="No chart available" style={{ border: '2px solid black' }} />

@@ -28,7 +28,7 @@ const StyleSelect = ({
                   verticalAlign: 'center',
                 }}
               >
-                <StyleSelector isDarkMode={isDarkMode} className="style" onClick={(event) => handleStyleClick(event, index)} name={`${style.name}`} src={`${style.thumbnail}`} />
+                <StyleSelector isDarkMode={isDarkMode} className="style" onClick={(event) => handleStyleClick(event, index)} name={`${style.name}`} src={`${style.thumbnail}`} alt="Style" />
                 <HiCheck
                   className="checkmark-icon"
                   style={{
@@ -51,7 +51,7 @@ const StyleSelect = ({
                   verticalAlign: 'center',
                 }}
               >
-                <StyleSelector isDarkMode={isDarkMode} className="style" onClick={(event) => handleStyleClick(event, index)} name={`${style.name}`} src={`${style.thumbnail}`} />
+                <StyleSelector isDarkMode={isDarkMode} className="style" onClick={(event) => handleStyleClick(event, index)} name={`${style.name}`} src={`${style.thumbnail}`} alt="Style" />
                 <HiCheck
                   className="checkmark-icon"
                   style={{
@@ -61,7 +61,7 @@ const StyleSelect = ({
               </div>
             );
           }
-          return <StyleSelector isDarkMode={isDarkMode} className="style" onClick={(event) => handleStyleClick(event, index)} name={`${style.name}`} src={`${style.thumbnail}`} key={Math.random(index * 54) * 10} />;
+          return <StyleSelector isDarkMode={isDarkMode} className="style" onClick={(event) => handleStyleClick(event, index)} name={`${style.name}`} alt="Style" src={`${style.thumbnail}`} key={Math.random(index * 54) * 10} />;
         })}
       </div>
     );
