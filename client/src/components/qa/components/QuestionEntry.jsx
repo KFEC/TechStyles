@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  Div, Button, Modal, HelpfulButton, ExtrasButton,
+  Div, Button, HelpfulButton, ExtrasButton,
 } from '../../../lib/styledComponents';
+import { FormModal } from '../lib/qaStyledComponents';
 import { getData, putData } from '../../../lib/index.js';
 
 import AnswerEntry from './AnswerEntry.jsx';
@@ -118,7 +119,7 @@ const QuestionEntry = ({
               </Button>
             )
           : null}
-        <Modal changeDisplay={display}>
+        <FormModal isDarkMode={isDarkMode} changeDisplay={display} style={{ height: 'auto' }}>
           <NewAnswer
             pName={pName}
             qBody={question.question_body}
@@ -127,7 +128,7 @@ const QuestionEntry = ({
             setUpdate2={setUpdate2}
             update2={update2}
           />
-        </Modal>
+        </FormModal>
       </div>
     </Div>
   );

@@ -4,9 +4,9 @@ import { IoClose } from 'react-icons/io5';
 import {
   Div,
   Button,
-  ModalContent,
   CloseModalButton,
 } from '../../../lib/styledComponents';
+import { FormModalContent, FormPopUpModalContent } from '../lib/qaStyledComponents';
 import { postData } from '../../../lib/index.js';
 
 const NewAnswer = ({
@@ -34,6 +34,24 @@ const NewAnswer = ({
   const changeEmail = (e) => {
     setEmail(e.target.value);
   };
+
+  // eslint-disable-next-line no-undef
+  // const upload = cloudinary.createUploadWidget(
+  //   {
+  //     cloudName: 'dmv4johjt',
+  //     uploadPreset: 'm3vjreqx',
+  //     maxFiles: 5,
+  //     sources: ['local', 'url'],
+  //     multiple: true,
+  //   },
+  //   (error, result) => {
+  //     if (!error && result && result.event === 'success') {
+  //       const temp = [...photos];
+  //       temp.push(result.info.secure_url);
+  //       setPhotos(temp);
+  //     }
+  //   },
+  // );
 
   const changePhotos = (e) => {
     const temp = [...photos];
@@ -64,10 +82,10 @@ const NewAnswer = ({
   };
 
   return (
-    <ModalContent id="QA-Answer" isDarkMode={isDarkMode} data-testid="test NewAnswer">
+    <FormModalContent id="QA-Answer" isDarkMode={isDarkMode} data-testid="test NewAnswer">
       {failed
       && (
-        <ModalContent
+        <FormPopUpModalContent
           isDarkMode={isDarkMode}
           style={{
             zIndex: '5',
@@ -76,9 +94,10 @@ const NewAnswer = ({
             width: '50%',
           }}
         >
-          <CloseModalButton style={{ fontSize: '0.5em' }} type="submit" onClick={() => setFailed(false)}>
+          {/* <CloseModalButton
+            style={{ fontSize: '0.5em' }} type="submit" onClick={() => setFailed(false)}>
             <IoClose />
-          </CloseModalButton>
+          </CloseModalButton> */}
           <div>
             <div>You must enter the following.</div>
             <div>Body</div>
@@ -86,17 +105,22 @@ const NewAnswer = ({
             <div>Email</div>
             <div>Email must be formatted correctly</div>
           </div>
-        </ModalContent>
+        </FormPopUpModalContent>
       )}
-      <CloseModalButton style={{ height: '1em' }} onClick={() => setDisplay(false)}><IoClose /></CloseModalButton>
-      <div style={{ fontSize: '1.5em' }}>Submit your Answer</div>
-      <div style={{ fontSize: '1.2em', maxWidth: '30ch' }}>{`${pName}: ${qBody}`}</div>
+      <div style={{
+        width: '100%', display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end',
+      }}
+      >
+        <CloseModalButton type="submit" style={{ padding: 'none' }} onClick={() => setDisplay(false)}><IoClose style={{ fontSize: '1em', padding: 'none' }} /></CloseModalButton>
+      </div>
+      <div style={{ fontSize: '24px', paddingBottom: '5px' }}>Submit your Answer</div>
+      <div style={{ fontSize: '16px', paddingBottom: '3px' }}>{`${pName}: ${qBody}`}</div>
       <form onSubmit={handleSubmit}>
         <div>
-          {/* <label className="answer-label" htmlFor="answer-body">
+          {/* <label className="QA-label" htmlFor="answer-body">
             Body*
           </label> */}
-          <div className="answer-label">Body*</div>
+          <div className="QA-label">Body*</div>
           <textarea
             id="answer-body"
             name="answer-body"
@@ -110,12 +134,12 @@ const NewAnswer = ({
             onChange={changeBody}
           />
           <br />
-          <p />
+        </div>
+        <div style={{ paddingTop: '10px' }}>
           {/* <label id="answer-name-label" htmlFor="answer-name">
             Name*
           </label> */}
-          <div className="answer-label">Name*</div>
-          <br />
+          <div className="QA-label">Name*</div>
           <textarea
             id="answer-name"
             aria-label="answer-name"
@@ -131,13 +155,13 @@ const NewAnswer = ({
             onChange={changeName}
           />
           <br />
-          <span className="answer-warning">For privacy reasons, do not use your full name or email address</span>
-          <p />
-          {/* <label className="answer-label" htmlFor="answer-email">
+          <span className="QA-warning">For privacy reasons, do not use your full name or email address</span>
+        </div>
+        <div style={{ paddingTop: '10px' }}>
+          {/* <label className="QA-label" htmlFor="answer-email">
             Email*
           </label> */}
-          <div className="answer-label">Email*</div>
-          <br />
+          <div className="QA-label">Email*</div>
           <textarea
             id="answer-email"
             name="answer-email"
@@ -152,14 +176,17 @@ const NewAnswer = ({
             onChange={changeEmail}
           />
           <br />
-          <span className="answer-warning">For authentication reasons, you will not be emailed</span>
-          <p />
-          {/* <label className="answer-label" htmlFor="answer-photos">
+          <span className="QA-warning">For authentication reasons, you will not be emailed</span>
+        </div>
+        <div style={{ paddingTop: '10px' }}>
+          {/* <label className="QA-label" htmlFor="answer-photos">
             Photos
           </label> */}
-          <div className="answer-label">Photos*</div>
-          <br />
-          {photos.length <= 5 && (
+          <div className="QA-label">Photos*</div>
+          {/* {photos.length < 5 && (
+            <button type="button" onClick={() => upload.open()}>Upload</button>
+          )} */}
+          {photos.length < 5 && (
             <input
               id="answer-photos"
               name="answer-photos"
@@ -169,9 +196,11 @@ const NewAnswer = ({
               onChange={changePhotos}
             />
           )}
-          {photos.length === 0
-            ? ''
-            : photos.map(photo => <img width={photo ? '100' : '0'} height={photo ? '100' : '0'} src={photo} alt="new review" />)}
+          <div style={{ width: '400px', overflow: 'hidden' }}>
+            {photos.length === 0
+              ? ''
+              : photos.map((photo, ind) => <img key={Math.random(ind * 54) * 10} style={{ padding: '5px' }} width={photo ? '100' : '0'} height={photo ? '100' : '0'} src={photo} alt="new answer" />)}
+          </div>
         </div>
         <Button
           isDarkMode={isDarkMode}
@@ -184,7 +213,7 @@ const NewAnswer = ({
           Submit
         </Button>
       </form>
-    </ModalContent>
+    </FormModalContent>
   );
 };
 
