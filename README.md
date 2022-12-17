@@ -46,6 +46,10 @@ A modernized e-commerce site built for an optimal user browsing experience.
 - Question and Answers lists with Load More functionality
 - Question and Answer modals for adding to the list
 
+![Questions and Answers](https://user-images.githubusercontent.com/52551319/208265749-aa075175-c951-4d29-bf6d-26f5789e94db.png)
+![qaforms](https://user-images.githubusercontent.com/52551319/208266127-5a313e33-37d7-4804-a53f-1541c13b101b.png)
+
+
 ## Ratings & Reviews
 #### Features
 - Filter reviews by both rating and query
