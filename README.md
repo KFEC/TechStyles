@@ -119,5 +119,5 @@ Installation
 - Run the following script
     ```
         npm run dev
-	npm run start
+        npm run start
     ```
