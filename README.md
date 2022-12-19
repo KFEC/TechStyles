@@ -106,7 +106,7 @@ Installation
     ```
         npm install
     ```
-- Create .env file
+- Copy example.env file and rename to .env with the following within
     ```
         PORT=3000
 
@@ -118,5 +118,6 @@ Installation
     ```
 - Run the following script
     ```
-        npm run start-dev
+        npm run dev
+	npm run start
     ```
