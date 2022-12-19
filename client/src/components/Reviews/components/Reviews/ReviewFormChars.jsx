@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FORM_CHARS } from '../../lib';
 
-
 const ReviewFormChars = ({ char, update }) => {
   const [rating, setRating] = useState(0);
   const updateRating = (value) => {
@@ -10,9 +9,13 @@ const ReviewFormChars = ({ char, update }) => {
   };
 
   return (
-    <div style={{
-      minWidth: '250px', maxWidth: '250px', padding: '0.45em', textAlign: 'center',
-    }}
+    <div
+      style={{
+        minWidth: '250px',
+        maxWidth: '250px',
+        padding: '0.45em',
+        textAlign: 'center',
+      }}
     >
       <h6>
         {`${char}`}
@@ -20,9 +23,7 @@ const ReviewFormChars = ({ char, update }) => {
       </h6>
       <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
         <div className="form-char-tuple">
-          <label htmlFor={char}>
-            1
-          </label>
+          <label htmlFor={char}>1</label>
           <input
             role="button"
             type="radio"
@@ -31,9 +32,7 @@ const ReviewFormChars = ({ char, update }) => {
           />
         </div>
         <div className="form-char-tuple">
-          <label htmlFor={char}>
-            2
-          </label>
+          <label htmlFor={char}>2</label>
           <input
             role="button"
             type="radio"
@@ -42,9 +41,7 @@ const ReviewFormChars = ({ char, update }) => {
           />
         </div>
         <div className="form-char-tuple">
-          <label htmlFor={char}>
-            3
-          </label>
+          <label htmlFor={char}>3</label>
           <input
             role="button"
             type="radio"
@@ -53,9 +50,7 @@ const ReviewFormChars = ({ char, update }) => {
           />
         </div>
         <div className="form-char-tuple">
-          <label htmlFor={char}>
-            4
-          </label>
+          <label htmlFor={char}>4</label>
           <input
             role="button"
             type="radio"
@@ -64,9 +59,7 @@ const ReviewFormChars = ({ char, update }) => {
           />
         </div>
         <div className="form-char-tuple">
-          <label htmlFor={char}>
-            5
-          </label>
+          <label htmlFor={char}>5</label>
           <input
             role="button"
             type="radio"

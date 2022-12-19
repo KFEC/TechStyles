@@ -7,9 +7,10 @@ module.exports = {
     'plugin:react/recommended',
     'airbnb',
     'airbnb/hooks',
+    'prettier',
+    'prettier/react',
   ],
-  overrides: [
-  ],
+  overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -17,10 +18,7 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: [
-    'react',
-    'jest',
-  ],
+  plugins: ['react', 'jest'],
   rules: {
     indent: [2, 2],
     'no-console': 0,
@@ -37,5 +35,7 @@ module.exports = {
     'no-unused-vars': 0,
     'react-hooks/exhaustive-deps': 0,
     'no-param-reassign': 0,
+    'object-curly-newline': 0,
+    'operator-linebreak': 0,
   },
 };

@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {
-  Div, RatingsContainer, RatingsAverage, RatingsRecommended,
+  Div,
+  RatingsContainer,
+  RatingsAverage,
+  RatingsRecommended,
 } from '../../lib';
 import { Stars } from '../../../../lib/styledComponents';
 
 const RatingHeading = () => {
-
-  const { productReviews: { stars, recommended } } = useSelector((state) => state.product);
+  const {
+    productReviews: { stars, recommended },
+  } = useSelector((state) => state.product);
 
   return (
     <RatingsContainer>

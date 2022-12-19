@@ -9,9 +9,9 @@
   gap: 1em;
   grid-auto-columns: 1fr 3fr;
   grid-template-areas:
-  'rb'
-  'pb'
-  'review';
+    'rb'
+    'pb'
+    'review';
   padding: 1em 5em 1em 5em;
 }
 
@@ -30,8 +30,8 @@
 @media (min-width: 50em) {
   .grid-reviews {
     grid-template-areas:
-    'rb review'
-    'pb review';
+      'rb review'
+      'pb review';
   }
 }
 
@@ -137,7 +137,6 @@
   align-items: center;
 }
 
-
 #new-review-characteristics-label {
   text-align: center;
   padding: 0 0 1em 0;
@@ -238,8 +237,12 @@
 }
 
 @keyframes animate-breakdown {
-  from{width: 0.2em;}
-  to{width: calc(var(--percent) / 100 * 100%);}
+  from {
+    width: 0.2em;
+  }
+  to {
+    width: calc(var(--percent) / 100 * 100%);
+  }
 }
 
 /* Product Breakdown Styles */
@@ -266,8 +269,12 @@
 }
 
 @keyframes animate-product {
-  from{width: 100%;}
-  to{width: calc(var(--value) / var(--value) * 10%);}
+  from {
+    width: 100%;
+  }
+  to {
+    width: calc(var(--value) / var(--value) * 10%);
+  }
 }
 
 .pb-range-left {
@@ -296,7 +303,7 @@
 .review-list-comp {
   display: grid;
   background: linear-gradient(var(--color), var(--color)) padding-box,
-              linear-gradient(to top, var(--border-color), var(--color)) border-box;
+    linear-gradient(to top, var(--border-color), var(--color)) border-box;
   border-radius: 0.5em;
   border: 2px solid transparent;
   grid-auto-columns: 1fr 1fr 1fr 1fr;
@@ -305,33 +312,39 @@
   padding: 1em;
   animation: fadeIn 0.5s;
   grid-template-areas:
-  'stars stars'
-  'user date'
-  'sum sum'
-  'bod bod'
-  'rec rec'
-  'res res'
-  'img img'
-  'helpful report';
+    'stars stars'
+    'user date'
+    'sum sum'
+    'bod bod'
+    'rec rec'
+    'res res'
+    'img img'
+    'helpful report';
 }
 
 @media (min-width: 50em) {
   .review-list-comp {
     grid-template-areas:
-    'stars stars user date'
-    'sum sum sum sum'
-    'bod bod bod bod'
-    'rec rec rec rec'
-    'res res res res'
-    'img img img img'
-    'helpful helpful report report';
+      'stars stars user date'
+      'sum sum sum sum'
+      'bod bod bod bod'
+      'rec rec rec rec'
+      'res res res res'
+      'img img img img'
+      'helpful helpful report report';
   }
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .reviews-stars {

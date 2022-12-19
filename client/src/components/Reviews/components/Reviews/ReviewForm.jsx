@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { IoClose } from 'react-icons/io5';
 import {
-  updateRenderedReviews, updateIsReviewForm, updateIsReviewsUpdated,
-  updateFilter, updateRenderedReviewCt,
+  updateRenderedReviews,
+  updateIsReviewForm,
+  updateIsReviewsUpdated,
+  updateFilter,
+  updateRenderedReviewCt,
 } from '../../../../reducers/reviewComponentSlice';
 import { getProductReviews } from '../../../../actions';
 import { Button, CloseModalButton } from '../../../../lib/styledComponents';
@@ -13,7 +16,6 @@ import ReviewFormChars from './ReviewFormChars.jsx';
 import { postData } from '../../../../lib/index.js';
 
 const ReviewForm = () => {
-
   const [rating, setRating] = useState(0);
   const [characteristics, setCharacteristics] = useState({});
   const [summary, setSummary] = useState('');
@@ -33,8 +35,9 @@ const ReviewForm = () => {
   const didBodyFail = body.length < 50 && failed;
   const didEmailFail = regEmail.test(email) < 1 && failed;
   const didRatingFail = rating < 1 && failed;
-  const didCharsLoad = productMeta.characteristics
-  && Object.keys(productMeta.characteristics).length > 0;
+  const didCharsLoad =
+    productMeta.characteristics &&
+    Object.keys(productMeta.characteristics).length > 0;
 
   const dispatch = useDispatch();
 
@@ -59,11 +62,13 @@ const ReviewForm = () => {
   const submitHandler = (e) => {
     console.log('submitted');
     e.preventDefault();
-    if (summary.trim().length < 1
-    || name.trim().length < 1
-    || body.length < 50
-    || regEmail.test(email) < 1
-    || rating < 1) {
+    if (
+      summary.trim().length < 1 ||
+      name.trim().length < 1 ||
+      body.length < 50 ||
+      regEmail.test(email) < 1 ||
+      rating < 1
+    ) {
       setFailed(true);
     } else {
       postData('/reviews', {
@@ -78,10 +83,12 @@ const ReviewForm = () => {
         characteristics,
       }).then(() => {
         resetStates();
-        dispatch(getProductReviews({
-          url: '/reviews',
-          params: { product_id: productId, count: 6969 },
-        }));
+        dispatch(
+          getProductReviews({
+            url: '/reviews',
+            params: { product_id: productId, count: 6969 },
+          }),
+        );
         dispatch(updateIsReviewForm());
       });
     }
@@ -89,11 +96,21 @@ const ReviewForm = () => {
 
   return (
     <ReviewFormModalContent id="new-review-form" isDarkMode={isDarkMode}>
-      <div style={{
-        width: '100%', display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end',
-      }}
+      <div
+        style={{
+          width: '100%',
+          display: 'flex',
+          alignItems: 'flex-end',
+          justifyContent: 'flex-end',
+        }}
       >
-        <CloseModalButton type="submit" style={{ padding: 'none', float: 'right' }} onClick={() => dispatch(updateIsReviewForm())}><IoClose style={{ fontSize: '1em', padding: 'none' }} /></CloseModalButton>
+        <CloseModalButton
+          type="submit"
+          style={{ padding: 'none', float: 'right' }}
+          onClick={() => dispatch(updateIsReviewForm())}
+        >
+          <IoClose style={{ fontSize: '1em', padding: 'none' }} />
+        </CloseModalButton>
       </div>
       <div className="title-container">
         <h2 className="review-form-title">Submit New Review</h2>
@@ -113,7 +130,9 @@ const ReviewForm = () => {
             {rating === 5 && <span>Great</span>}
           </label>
           <ReviewStars setRating={setRating} rating={rating} />
-          {didRatingFail && <div className="review-form-error">You must rate this product</div>}
+          {didRatingFail && (
+            <div className="review-form-error">You must rate this product</div>
+          )}
         </div>
         <div className="review-form-characteristics-container review-form-containers">
           <label
@@ -123,16 +142,17 @@ const ReviewForm = () => {
           >
             Characteristics:
           </label>
-          {didCharsLoad && Object.keys(productMeta.characteristics).map((char, idx) => {
-            return (
-              <ReviewFormChars
-                key={Math.random(idx * 54) * 10}
-                char={char}
-                idx={idx}
-                update={updateCharacteristics}
-              />
-            );
-          })}
+          {didCharsLoad &&
+            Object.keys(productMeta.characteristics).map((char, idx) => {
+              return (
+                <ReviewFormChars
+                  key={Math.random(idx * 54) * 10}
+                  char={char}
+                  idx={idx}
+                  update={updateCharacteristics}
+                />
+              );
+            })}
         </div>
         <div className="review-form-name-container review-form-containers">
           <label
@@ -154,12 +174,14 @@ const ReviewForm = () => {
               fontFamily: 'Work Sans, sans-serif',
             }}
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
           <div className="sub-text">
             Do not use your full name or email address.
           </div>
-          {didNameFail && <div className="review-form-error">Please enter your name</div>}
+          {didNameFail && (
+            <div className="review-form-error">Please enter your name</div>
+          )}
         </div>
         <div className="review-form-email-container review-form-containers">
           <label
@@ -182,10 +204,16 @@ const ReviewForm = () => {
               fontFamily: 'Work Sans, sans-serif',
             }}
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <div className="sub-text">For authentication reasons, you will not be emailed.</div>
-          {didEmailFail && <div className="review-form-error">Please enter a valid email address</div>}
+          <div className="sub-text">
+            For authentication reasons, you will not be emailed.
+          </div>
+          {didEmailFail && (
+            <div className="review-form-error">
+              Please enter a valid email address
+            </div>
+          )}
         </div>
         <div className="review-form-summary-container review-form-containers">
           <label
@@ -207,9 +235,11 @@ const ReviewForm = () => {
               fontFamily: 'Work Sans, sans-serif',
             }}
             value={summary}
-            onChange={e => setSummary(e.target.value)}
+            onChange={(e) => setSummary(e.target.value)}
           />
-          {didSummaryFail && <div className="review-form-error">You must fill out a summary</div>}
+          {didSummaryFail && (
+            <div className="review-form-error">You must fill out a summary</div>
+          )}
         </div>
         <div className="review-form-body-container review-form-containers">
           <label
@@ -231,24 +261,24 @@ const ReviewForm = () => {
               fontFamily: 'Work Sans, sans-serif',
             }}
             value={body}
-            onChange={e => setBody(e.target.value)}
+            onChange={(e) => setBody(e.target.value)}
           />
-          {body.length < 50
-            ? (
-              <div className="sub-text">
-                Minimum required characters left-
-                {50 - body.length}
-                .
-              </div>
-            )
-            : <div className="sub-text">Minimum reached.</div>}
-          {didBodyFail && <div className="review-form-error">Please enter body text of valid length</div>}
+          {body.length < 50 ? (
+            <div className="sub-text">
+              Minimum required characters left-
+              {50 - body.length}.
+            </div>
+          ) : (
+            <div className="sub-text">Minimum reached.</div>
+          )}
+          {didBodyFail && (
+            <div className="review-form-error">
+              Please enter body text of valid length
+            </div>
+          )}
         </div>
         <div id="review-form-recommended-container">
-          <label
-            className="input-label"
-            id="new-review-recommended-label"
-          >
+          <label className="input-label" id="new-review-recommended-label">
             Recommended:
           </label>
           <div className="review-form-recommended-container review-form-containers">
@@ -295,15 +325,12 @@ const ReviewForm = () => {
               type="file"
               accept="image/*"
               multiple
-              onChange={e => setPhotos([...photos, e.target?.files[0]?.name])}
+              onChange={(e) => setPhotos([...photos, e.target?.files[0]?.name])}
             />
           )}
         </div>
         <div className="new-review-submit-container">
-          <Button
-            type="submit"
-            isDarkMode={isDarkMode}
-          >
+          <Button type="submit" isDarkMode={isDarkMode}>
             Submit Form
           </Button>
         </div>
