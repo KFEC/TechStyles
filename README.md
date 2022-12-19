@@ -14,7 +14,7 @@ A modernized e-commerce site built for an optimal user browsing experience.
 
 ## Key Features
 - Light/dark mode toggle
-- Something about redux
+- Optimized performance using Redux
 
 ## Overview
 #### Features
@@ -22,12 +22,15 @@ A modernized e-commerce site built for an optimal user browsing experience.
 - Details page describing product attributes and pricing
 - Styles selector along with a user-friendly size guide
 
+![fec-overview-readme](https://user-images.githubusercontent.com/106297124/208506471-d7e17ca2-3b99-4c99-9c5b-2db417800de1.png)
+
 <details>
     <summary>Additional Features</summary>
-    <ul>
+	<ul>
 		<li>Social media sharing ability</li>
 		<li>Checkout cart for product purchases</li>
 	</ul>
+![fec-cart-readme](https://user-images.githubusercontent.com/106297124/208507697-c684493c-0899-4e74-bf68-2bb1635b1fb8.png)
 </details>
 
 ## Related Products & Your Outfit
