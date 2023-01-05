@@ -1,9 +1,20 @@
 import axios from 'axios';
 
 const getData = async (url, options = {}) => {
+  let newURL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp${url}`;
+  if (url.includes('qa')) {
+    // newURL = `http://localhost:8080${url}`;
+    console.log('qa');
+  } else if (url.includes('products')) {
+    // newURL = `http://localhost:8080${url}`;
+    console.log('products');
+  } else if (url.includes('reviews')) {
+    // newURL = `http://localhost:8080${url}`;
+    console.log('reviews');
+  }
   try {
     const data = await axios({
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp${url}`,
+      url: newURL,
       method: 'GET',
       headers: {
         Authorization: process.env.API_TOKEN,
@@ -18,9 +29,20 @@ const getData = async (url, options = {}) => {
 };
 
 const postData = async (url, options) => {
+  let newURL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp${url}`;
+  if (url.includes('qa')) {
+    // newURL = `http://localhost:8080${url}`;
+    console.log('qa');
+  } else if (url.includes('products')) {
+    // newURL = `http://localhost:8080${url}`;
+    console.log('products');
+  } else if (url.includes('reviews')) {
+    // newURL = `http://localhost:8080${url}`;
+    console.log('reviews');
+  }
   try {
     const data = await axios({
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp${url}`,
+      url: newURL,
       method: 'POST',
       headers: {
         Authorization: process.env.API_TOKEN,
@@ -35,10 +57,20 @@ const postData = async (url, options) => {
 };
 
 const patchData = async (url, options) => {
+  let newURL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp${url}`;
+  if (url.includes('qa')) {
+    // newURL = `http://localhost:8080${url}`;
+    console.log('qa');
+  } else if (url.includes('products')) {
+    // newURL = `http://localhost:8080${url}`;
+    console.log('products');
+  } else if (url.includes('reviews')) {
+    // newURL = `http://localhost:8080${url}`;
+    console.log('reviews');
+  }
   try {
-    // const data = await axios.patch(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp${url}`, options);
     const data = await axios({
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp${url}`,
+      url: newURL,
       method: 'PATCH',
       headers: {
         Authorization: process.env.API_TOKEN,
@@ -53,10 +85,20 @@ const patchData = async (url, options) => {
 };
 
 const putData = async (url, options) => {
+  let newURL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp${url}`;
+  if (url.includes('qa')) {
+    // newURL = `http://localhost:8080${url}`;
+    console.log('qa');
+  } else if (url.includes('products')) {
+    // newURL = `http://localhost:8080${url}`;
+    console.log('products');
+  } else if (url.includes('reviews')) {
+    // newURL = `http://localhost:8080${url}`;
+    console.log('reviews');
+  }
   try {
-    // const data = await axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp${url}`, options);
     const data = await axios({
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp${url}`,
+      url: newURL,
       method: 'PUT',
       headers: {
         Authorization: process.env.API_TOKEN,
@@ -76,7 +118,8 @@ const postAndGet = async (url, postOptions, getOptions = {}) => {
   } catch (err) {
     console.error(err);
     return Promise.reject(err);
-  } try {
+  }
+  try {
     const data = await getData(url, getOptions);
     return Promise.resolve(data);
   } catch (err) {
@@ -85,14 +128,7 @@ const postAndGet = async (url, postOptions, getOptions = {}) => {
   }
 };
 
-export {
-  getData,
-  postData,
-  patchData,
-  putData,
-  postAndGet,
-};
-
+export { getData, postData, patchData, putData, postAndGet };
 
 // EXAMPLE HEADERS AND OPTIONS ----->
 
