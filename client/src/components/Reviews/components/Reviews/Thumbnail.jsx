@@ -9,9 +9,7 @@ const Thumbnail = ({ photo }) => {
 
   return (
     <div>
-      <div
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
+      <div onClick={() => setIsExpanded(!isExpanded)}>
         <img
           className="reviews-img"
           style={{ objFit: 'cover' }}
@@ -24,10 +22,7 @@ const Thumbnail = ({ photo }) => {
           isExpanded={isExpanded}
           onClick={() => setIsExpanded(!isExpanded)}
         >
-          <PicModalContent
-            src={photo}
-            alt="text"
-          />
+          <PicModalContent src={photo} alt="text" />
         </PicModal>
       )}
     </div>

@@ -4,19 +4,26 @@ import { IoSearchSharp } from 'react-icons/io5';
 import { Button } from '../../../../lib/styledComponents';
 import { QueryInput, ClearQueryButton } from '../../lib';
 import {
-  updateRenderedReviews, updateIsReviewForm, updateIsReviewsUpdated,
-  updateFilter, updateRenderedReviewCt, updateSort, updateQuery,
+  updateRenderedReviews,
+  updateIsReviewForm,
+  updateIsReviewsUpdated,
+  updateFilter,
+  updateRenderedReviewCt,
+  updateSort,
+  updateQuery,
 } from '../../../../reducers/reviewComponentSlice';
 
-
 const ReviewSearch = ({ search, filterThrough }) => {
-
   const dispatch = useDispatch();
   const { productId, productReviews } = useSelector((state) => state.product);
   const {
     reviewList: {
-      allReviews, renderedReviews, renderedReviewsCt, sort,
-      filter, query,
+      allReviews,
+      renderedReviews,
+      renderedReviewsCt,
+      sort,
+      filter,
+      query,
     },
     page: { isReviewForm, isReviewsUpdated },
   } = useSelector((state) => state.reviews);
@@ -24,13 +31,17 @@ const ReviewSearch = ({ search, filterThrough }) => {
 
   const resetReviews = () => {
     if (filter.length < 1) {
-      dispatch((updateRenderedReviews(allReviews.slice(0, renderedReviewsCt))));
+      dispatch(updateRenderedReviews(allReviews.slice(0, renderedReviewsCt)));
     } else {
       filterThrough()
         .then((result) => {
-          dispatch(updateRenderedReviews(result
-            .sort((a, b) => b.rating - a.rating)
-            .slice(0, renderedReviewsCt)));
+          dispatch(
+            updateRenderedReviews(
+              result
+                .sort((a, b) => b.rating - a.rating)
+                .slice(0, renderedReviewsCt),
+            ),
+          );
         })
         .catch((err) => console.error(err));
     }
@@ -52,7 +63,12 @@ const ReviewSearch = ({ search, filterThrough }) => {
           onChange={(e) => dispatch(updateQuery(e.target.value))}
           onKeyDown={inputKeyPress}
         />
-        <IoSearchSharp style={{ fontSize: '1.25em', color: isDarkMode ? 'white' : 'black' }} onClick={search} type="button" aria-label="Seach Reviews" />
+        <IoSearchSharp
+          style={{ fontSize: '1.25em', color: isDarkMode ? 'white' : 'black' }}
+          onClick={search}
+          type="button"
+          aria-label="Seach Reviews"
+        />
       </div>
       <div>
         {query.length > 2 && (

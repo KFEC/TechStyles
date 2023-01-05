@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FormStars } from '../../../../lib/styledComponents';
 
 const ReviewStars = ({ setRating, rating }) => {
-
   const [hover, setHover] = useState(0);
 
   return (
